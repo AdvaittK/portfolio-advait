@@ -306,30 +306,6 @@ export default function HomePage() {
               </div>
             </motion.div>
           </div>
-          
-          {/* Scroll indicator */}
-          <motion.div 
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6, 
-              delay: 1.5 
-            }}
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ 
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-              className="flex flex-col items-center"
-            >
-              <span className="text-sm text-muted-foreground mb-2">Scroll to explore</span>
-              <ArrowDown className="w-5 h-5 text-muted-foreground" />
-            </motion.div>
-          </motion.div>
         </section>
       </motion.div>
     </>

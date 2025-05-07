@@ -1,9 +1,10 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { Github, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useRef } from "react"
+import LogoMark from "@/components/ui/logo-mark"
 
 export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null)
@@ -21,50 +22,45 @@ export default function Footer() {
   return (
     <motion.footer 
       ref={footerRef}
-      className="relative w-full py-12 px-6 border-t border-zinc-200 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-950 mt-auto"
+      className="relative w-full py-16 px-6 overflow-hidden bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"
       style={{ y, opacity, scale }}
     >
-      {/* Glow effect */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at center, rgba(99, 102, 241, ${glow.get() * 0.1}) 0%, transparent 70%)`,
-          filter: 'blur(40px)',
-        }}
-      />
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-zinc-900/30 to-zinc-900/50" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid md:grid-cols-4 gap-12">
           {/* Brand Section */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.h3 
-              className="text-lg font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Advait
-            </motion.h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            <div className="flex items-center space-x-3">
+              <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2.5 rounded-2xl shadow-sm">
+                <LogoMark className="w-7 h-7 text-white dark:text-zinc-900" />
+              </div>
+              <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400">
+                Advait
+              </span>
+            </div>
+            <p className="text-sm text-zinc-400 leading-relaxed">
               Crafting immersive digital experiences that combine stunning visuals with flawless functionality.
             </p>
           </motion.div>
 
           {/* Quick Links */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Quick Links</h3>
+            <ul className="space-y-3">
               {[
                 { name: "Home", href: "/" },
                 { name: "About", href: "/about" },
@@ -81,36 +77,103 @@ export default function Footer() {
                 >
                   <Link 
                     href={item.href}
-                    className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors relative group"
+                    className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors relative group"
                   >
                     {item.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-600 to-zinc-400 group-hover:w-full transition-all duration-300" />
                   </Link>
                 </motion.li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Services */}
           <motion.div 
-            className="space-y-4"
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Services</h3>
+            <ul className="space-y-3">
+              {[
+                "Web Development",
+                "Frontend Development",
+                "Backend Development",
+                "UI/UX Design"
+              ].map((service, index) => (
+                <motion.li 
+                  key={service}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="text-sm text-zinc-400"
+                >
+                  {service}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact */}
+          <motion.div 
+            className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="text-lg font-semibold">Connect</h3>
-            <div className="flex gap-4">
+            <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Contact</h3>
+            <ul className="space-y-4">
+              <motion.li 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="flex items-start space-x-3"
+              >
+                <MapPin className="w-5 h-5 text-zinc-500 mt-0.5" />
+                <span className="text-sm text-zinc-400">Pune, Maharashtra, India</span>
+              </motion.li>
+              <motion.li 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="flex items-start space-x-3"
+              >
+                <Mail className="w-5 h-5 text-zinc-500 mt-0.5" />
+                <a href="mailto:advaitt.dev@gmail.com" className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors">
+                  advaitt.dev@gmail.com
+                </a>
+              </motion.li>
+              <motion.li 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="flex items-start space-x-3"
+              >
+                <Phone className="w-5 h-5 text-zinc-500 mt-0.5" />
+                <a href="tel:+919975556093" className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors">
+                  +91 9975556093
+                </a>
+              </motion.li>
+            </ul>
+
+            {/* Social Links */}
+            <div className="flex gap-4 pt-4">
               {[
                 { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "#" },
                 { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", link: "#" },
-                { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "#" },
-                { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:hello@advait.com" }
+                { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "#" }
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
                   href={social.link}
-                  className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors relative group"
+                  className="p-3 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800 transition-all duration-300 relative group shadow-lg border border-zinc-700/20"
                   aria-label={social.label}
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -129,7 +192,7 @@ export default function Footer() {
                   whileTap={{ scale: 0.95 }}
                 >
                   {social.icon}
-                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-zinc-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-300 text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 border border-zinc-700/20">
                     {social.label}
                   </span>
                 </motion.a>
@@ -140,29 +203,29 @@ export default function Footer() {
 
         {/* Copyright */}
         <motion.div 
-          className="mt-8 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4"
+          className="mt-12 pt-8 border-t border-zinc-800/50 flex flex-col md:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <div className="text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="text-sm text-zinc-500">
             © {new Date().getFullYear()} Advait. All rights reserved.
           </div>
           <div className="flex gap-6">
             <Link
               href="#"
-              className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors relative group"
+              className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors relative group"
             >
               Privacy Policy
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300" />
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-600 to-zinc-400 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               href="#"
-              className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors relative group"
+              className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors relative group"
             >
               Terms of Service
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300" />
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-600 to-zinc-400 group-hover:w-full transition-all duration-300" />
             </Link>
           </div>
         </motion.div>
