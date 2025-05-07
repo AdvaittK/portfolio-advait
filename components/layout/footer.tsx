@@ -39,10 +39,10 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 p-2.5 rounded-2xl shadow-sm">
-                <LogoMark className="w-7 h-7 text-white" />
+              <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2.5 rounded-2xl shadow-sm">
+                <LogoMark className="w-7 h-7 text-white dark:text-zinc-900" />
               </div>
-              <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500">
+              <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400">
                 Advait
               </span>
             </div>

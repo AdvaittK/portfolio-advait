@@ -1,13 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, LayoutGrid, ArrowLeftRight } from "lucide-react"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Check, Globe, Github } from "lucide-react"
+import { ExternalLink, LayoutGrid, ArrowLeftRight, Github, Globe, Code2, Star, ChevronLeft, ChevronRight, Search, Filter } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
+import { Input } from "@/components/ui/input"
 
 // Define project type
 interface Project {
@@ -20,13 +19,23 @@ interface Project {
   demoLink: string;
   githubLink: string;
   features: string[];
+  stats?: {
+    stars?: number;
+    forks?: number;
+    views?: number;
+  };
+  category?: string;
+  technologies?: string[];
+  year?: number;
 }
 
 export default function ProjectsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'carousel'>('grid');
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
 
   // Define projects array
   const projects: Project[] = [
@@ -44,7 +53,15 @@ export default function ProjectsPage() {
         "Interactive drag-and-drop interface",
         "Customizable dashboard widgets",
         "Export reports as PDF"
-      ]
+      ],
+      stats: {
+        stars: 245,
+        forks: 89,
+        views: 1200
+      },
+      category: "Web Application",
+      technologies: ["React", "TypeScript", "D3.js", "Firebase", "Tailwind CSS"],
+      year: 2024
     },
     {
       id: "ecommerce-platform",
@@ -60,7 +77,15 @@ export default function ProjectsPage() {
         "Secure payment processing",
         "Inventory management system",
         "Customer reviews and ratings"
-      ]
+      ],
+      stats: {
+        stars: 189,
+        forks: 45,
+        views: 950
+      },
+      category: "E-Commerce",
+      technologies: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
+      year: 2023
     },
     {
       id: "ai-content-generator",
@@ -76,7 +101,15 @@ export default function ProjectsPage() {
         "Content optimization for SEO",
         "Multiple content formats support",
         "Tone and style customization"
-      ]
+      ],
+      stats: {
+        stars: 312,
+        forks: 156,
+        views: 2100
+      },
+      category: "AI/ML",
+      technologies: ["Python", "OpenAI", "React", "MongoDB", "FastAPI"],
+      year: 2024
     },
   ]
 
@@ -84,51 +117,108 @@ export default function ProjectsPage() {
   const allTags: string[] = Array.from(
     new Set(projects.flatMap(project => project.tags))
   ).sort();
+
+  // Categories for filtering
+  const categories = Array.from(
+    new Set(projects.map(project => project.category))
+  ).filter(Boolean) as string[];
   
-  const filteredProjects = activeFilter 
-    ? projects.filter(project => project.tags.includes(activeFilter))
-    : projects;
+  const filteredProjects = projects.filter(project => {
+    const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesFilter = !activeFilter || project.tags.includes(activeFilter);
+    return matchesSearch && matchesFilter;
+  });
+
+  // Auto-play carousel
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isAutoPlaying && viewMode === 'carousel') {
+      interval = setInterval(() => {
+        setCarouselIndex((prev) => (prev + 1) % filteredProjects.length);
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, viewMode, filteredProjects.length]);
+
+  const nextSlide = () => {
+    setCarouselIndex((prev) => (prev + 1) % filteredProjects.length);
+  };
+
+  const prevSlide = () => {
+    setCarouselIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+  };
 
   return (
     <PageContainer>
       <div className="container mx-auto px-6 py-16">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
+          className="text-center mb-16"
         >
-          Featured Projects
-        </motion.h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+            Featured Projects
+          </h2>
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+            Explore my latest work and personal projects. Each project showcases different aspects of my skills and expertise.
+          </p>
+        </motion.div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-8"
+          className="flex flex-col gap-6 mb-12"
         >
-          <div className="flex flex-wrap gap-2 justify-center">
-            {/* View toggle */}
-            <div className="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-1 mb-4 mx-auto">
-              <Button
-                variant={viewMode === 'grid' ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setViewMode('grid')}
-                className="rounded-full flex items-center gap-1"
-              >
-                <LayoutGrid className="w-4 h-4" /> Grid
-              </Button>
-              <Button
-                variant={viewMode === 'carousel' ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setViewMode('carousel')}
-                className="rounded-full flex items-center gap-1"
-              >
-                <ArrowLeftRight className="w-4 h-4" /> Carousel
-              </Button>
+          {/* Search and View Controls */}
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div className="flex items-center gap-4 w-full md:w-auto">
+              <div className="relative flex-1 md:flex-none">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 w-4 h-4" />
+                <Input
+                  type="text"
+                  placeholder="Search projects..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 w-full md:w-[300px]"
+                />
+              </div>
+              <div className="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-1">
+                <Button
+                  variant={viewMode === 'grid' ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setViewMode('grid')}
+                  className="rounded-full flex items-center gap-1"
+                >
+                  <LayoutGrid className="w-4 h-4" /> Grid
+                </Button>
+                <Button
+                  variant={viewMode === 'carousel' ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setViewMode('carousel')}
+                  className="rounded-full flex items-center gap-1"
+                >
+                  <ArrowLeftRight className="w-4 h-4" /> Carousel
+                </Button>
+              </div>
             </div>
-            
-            {/* Filter buttons */}
+            {viewMode === 'carousel' && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                className="rounded-full"
+              >
+                {isAutoPlaying ? "Pause" : "Auto Play"}
+              </Button>
+            )}
+          </div>
+
+          {/* Filter buttons */}
+          <div className="flex flex-wrap gap-4 justify-center">
             <Button
               variant={activeFilter === null ? "default" : "outline"}
               onClick={() => setActiveFilter(null)}
@@ -136,6 +226,16 @@ export default function ProjectsPage() {
             >
               All Projects
             </Button>
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={activeFilter === category ? "default" : "outline"}
+                onClick={() => setActiveFilter(category)}
+                className="rounded-full"
+              >
+                {category}
+              </Button>
+            ))}
             {allTags.map((tag) => (
               <Button
                 key={tag}
@@ -153,35 +253,59 @@ export default function ProjectsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group"
+                className="group relative"
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
               >
-                <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50">
+                <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 h-full">
                   <div className="relative overflow-hidden aspect-video">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button
-                        size="sm"
-                        className="rounded-full bg-white/90 text-black hover:bg-white"
-                        onClick={() => setSelectedProject(project)}
-                      >
-                        View Details <ExternalLink className="ml-2 w-4 h-4" />
-                      </Button>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
+                          onClick={() => window.open(project.demoLink, '_blank')}
+                        >
+                          <Globe className="w-4 h-4 mr-2" /> Live Demo
+                        </Button>
+                        <Button
+                          size="sm"
+                          className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
+                          onClick={() => window.open(project.githubLink, '_blank')}
+                        >
+                          <Github className="w-4 h-4 mr-2" /> Source Code
+                        </Button>
+                      </div>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                      {project.title}
-                    </h3>
-                    <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm">{project.description}</p>
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                        {project.title}
+                      </h3>
+                      {project.stats && (
+                        <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                          <div className="flex items-center">
+                            <Star className="w-4 h-4 mr-1" />
+                            {project.stats.stars}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm line-clamp-2">
+                      {project.description}
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <Badge
@@ -195,44 +319,133 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                 </div>
+
+                {/* Hover Info Tab */}
+                <AnimatePresence>
+                  {hoveredProject === project.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-0 left-0 right-0 bg-white dark:bg-zinc-800 rounded-t-2xl shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6 z-30"
+                    >
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="text-lg font-semibold">Project Details</h4>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="rounded-full"
+                          onClick={() => setHoveredProject(null)}
+                        >
+                          <Code2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                      <div className="space-y-4">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          {project.longDescription}
+                        </p>
+                        <div>
+                          <h5 className="text-sm font-medium mb-2">Key Features:</h5>
+                          <ul className="space-y-2">
+                            {project.features.map((feature, idx) => (
+                              <li key={idx} className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                                <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 mr-2" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        {project.stats && (
+                          <div className="flex items-center gap-4 pt-2 border-t border-zinc-200/50 dark:border-zinc-700/50">
+                            <div className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                              <Star className="w-4 h-4 mr-1" />
+                              {project.stats.stars} stars
+                            </div>
+                            <div className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                              <Code2 className="w-4 h-4 mr-1" />
+                              {project.stats.forks} forks
+                            </div>
+                            <div className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                              <Globe className="w-4 h-4 mr-1" />
+                              {project.stats.views} views
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>
         ) : (
-          <div className="relative">
-            <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${carouselIndex * 100}%)` }}>
-                {filteredProjects.map((project, index) => (
-                  <div key={index} className="min-w-full">
-                    <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50">
+          <div className="relative h-[600px] perspective-1000">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {filteredProjects.map((project, index) => {
+                const isActive = index === carouselIndex;
+                const isNext = index === (carouselIndex + 1) % filteredProjects.length;
+                const isPrev = index === (carouselIndex - 1 + filteredProjects.length) % filteredProjects.length;
+                
+                return (
+                  <motion.div
+                    key={project.id}
+                    className="absolute w-full max-w-2xl"
+                    initial={false}
+                    animate={{
+                      scale: isActive ? 1 : 0.85,
+                      rotateY: isActive ? 0 : isNext ? 45 : -45,
+                      x: isActive ? 0 : isNext ? "60%" : "-60%",
+                      z: isActive ? 0 : -200,
+                      opacity: isActive ? 1 : 0.3,
+                      filter: isActive ? "none" : "blur(1px)",
+                    }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      backfaceVisibility: "hidden",
+                    }}
+                  >
+                    <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 transform-gpu">
                       <div className="relative overflow-hidden aspect-video">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <img
                           src={project.image || "/placeholder.svg"}
                           alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-full object-cover"
                         />
-                        <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <Button
-                            size="sm"
-                            className="rounded-full bg-white/90 text-black hover:bg-white"
-                            onClick={() => setSelectedProject(project)}
-                          >
-                            View Details <ExternalLink className="ml-2 w-4 h-4" />
-                          </Button>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="flex gap-2">
+                            <Button
+                              size="sm"
+                              className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
+                              onClick={() => window.open(project.demoLink, '_blank')}
+                            >
+                              <Globe className="w-4 h-4 mr-2" /> Live Demo
+                            </Button>
+                            <Button
+                              size="sm"
+                              className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
+                              onClick={() => window.open(project.githubLink, '_blank')}
+                            >
+                              <Github className="w-4 h-4 mr-2" /> Source Code
+                            </Button>
+                          </div>
                         </div>
                       </div>
                       <div className="p-6">
-                        <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                        <h3 className="text-2xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                           {project.title}
                         </h3>
-                        <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm">{project.description}</p>
+                        <p className="text-zinc-600 dark:text-zinc-300 mb-4">
+                          {project.description}
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
                             <Badge
                               key={tag}
                               variant="outline"
-                              className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                              className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200"
                             >
                               {tag}
                             </Badge>
@@ -240,78 +453,61 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+            
+            {/* Carousel Navigation */}
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-white/90 text-black hover:bg-white pointer-events-auto ml-4"
+                onClick={prevSlide}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-white/90 text-black hover:bg-white pointer-events-auto mr-4"
+                onClick={nextSlide}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Button>
             </div>
           </div>
         )}
+      </div>
 
-        {/* Project detail modal */}
-        <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
-          <DialogContent className="sm:max-w-3xl">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                {selectedProject?.title}
-              </DialogTitle>
-              <DialogDescription className="text-base mt-2">
-                {selectedProject?.longDescription}
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="mt-6 space-y-6">
-              <div className="relative aspect-video rounded-xl overflow-hidden">
-                <img
-                  src={selectedProject?.image || "/placeholder.svg"}
-                  alt={selectedProject?.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold">Key Features</h4>
-                <ul className="space-y-2">
-                  {selectedProject?.features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <Check className="w-5 h-5 text-green-500" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {selectedProject?.tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200"
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                <Button
-                  className="flex-1"
-                  onClick={() => window.open(selectedProject?.demoLink, '_blank')}
-                >
-                  <Globe className="w-4 h-4 mr-2" />
-                  Live Demo
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex-1"
-                  onClick={() => window.open(selectedProject?.githubLink, '_blank')}
-                >
-                  <Github className="w-4 h-4 mr-2" />
-                  View Code
-                </Button>
-              </div>
+      {/* Let's Grow Together Section */}
+      <div className="w-full flex flex-col items-center justify-center mt-24 mb-8 px-4">
+        <div className="w-full max-w-3xl relative overflow-hidden rounded-3xl shadow-2xl border border-zinc-700/70 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 p-8 md:p-14 flex flex-col items-center">
+          {/* Metallic highlight overlay */}
+          <div className="pointer-events-none absolute inset-0 rounded-3xl" style={{background: 'radial-gradient(ellipse at 60% 0%,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.00) 60%)'}} />
+          <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 text-zinc-100 text-sm font-semibold shadow-lg tracking-wide border border-zinc-400/30 backdrop-blur-sm" style={{boxShadow:'0 2px 8px 0 rgba(255,255,255,0.08) inset'}}>● Let's Connect</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-center leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-200 drop-shadow-[0_2px_16px_rgba(255,255,255,0.10)]" style={{letterSpacing:'-0.02em', fontFamily:'inherit'}}>
+            Let's <span className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 via-zinc-400 to-white drop-shadow-[0_2px_16px_rgba(255,255,255,0.15)]">Grow</span> <span className="font-extrabold text-zinc-100">Together</span>
+          </h2>
+          <div className="w-full flex flex-col gap-8 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <span className="text-xl md:text-2xl font-bold text-zinc-100 tracking-tight" style={{fontFamily:'inherit'}}>Simple Web Design</span>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-100 text-zinc-800 text-xs font-bold shadow border border-zinc-300/60 backdrop-blur-sm" style={{boxShadow:'0 2px 8px 0 rgba(255,255,255,0.10) inset'}}>Starting from $299</span>
             </div>
-          </DialogContent>
-        </Dialog>
+            <p className="text-zinc-300 text-base md:text-lg text-center md:text-left font-medium">Showcasing sleek, high-performance designs tailored for impact</p>
+            <hr className="my-2 border-zinc-700/60" />
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <span className="text-xl md:text-2xl font-bold text-zinc-100 tracking-tight" style={{fontFamily:'inherit'}}>Full Stack Development</span>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-100 text-zinc-800 text-xs font-bold shadow border border-zinc-300/60 backdrop-blur-sm" style={{boxShadow:'0 2px 8px 0 rgba(255,255,255,0.10) inset'}}>Starting from $549</span>
+            </div>
+            <p className="text-zinc-300 text-base md:text-lg text-center md:text-left font-medium">Building visually stunning, user-focused websites that elevate brands.</p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 w-full justify-center mt-4">
+            <a href="/projects" className="rounded-full px-8 py-4 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-900 text-zinc-100 font-semibold text-lg shadow hover:from-zinc-700 hover:to-zinc-800 transition-all text-center border border-zinc-600/60 backdrop-blur-sm" style={{boxShadow:'0 2px 16px 0 rgba(255,255,255,0.08)'}}>See All Projects</a>
+            <a href="/contact" className="rounded-full px-8 py-4 bg-gradient-to-r from-zinc-100 via-zinc-400 to-white text-zinc-900 font-bold text-lg shadow-lg hover:from-zinc-200 hover:to-zinc-300 transition-all text-center border border-zinc-300/60 backdrop-blur-sm" style={{boxShadow:'0 4px 24px 0 rgba(255,255,255,0.12)'}}>Get Started Now</a>
+          </div>
+        </div>
       </div>
     </PageContainer>
   )

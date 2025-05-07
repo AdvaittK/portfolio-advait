@@ -305,20 +305,27 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full"
           >
-            <div className="p-8">
-              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                Essential Professional Presence
-              </h3>
-              <div className="mb-6">
-                <span className="text-3xl font-bold">$499</span>
-                <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50">
+              <div className="mb-6 text-center">
+                <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Essential Professional Presence
+                </h3>
+                <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-                A professional online presence for individuals or small businesses
-              </p>
-              <ul className="space-y-3 mb-8">
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-3xl font-bold">$299</span>
+                  <span className="text-zinc-600 dark:text-zinc-400">onwards</span>
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
+                  A professional online presence for individuals or small businesses
+                </p>
+              </div>
+            </div>
+            <div className="p-8 flex-1 flex flex-col">
+              <ul className="space-y-3 mb-8 w-full text-left">
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
                   Custom-coded responsive website
@@ -352,9 +359,11 @@ export default function ServicesPage() {
                   2-3 weeks delivery
                 </li>
               </ul>
-              <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
-                Get Started
-              </Button>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
+                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                  Get Started
+                </Button>
+              </div>
             </div>
           </motion.div>
 
@@ -362,9 +371,9 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-500/30 dark:border-green-400/30 transform scale-105 z-10"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-500/30 dark:border-green-400/30 transform scale-105 z-10 flex flex-col h-full"
           >
-            <div className="p-8 pt-6 flex flex-col items-center">
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50">
               <motion.div 
                 className="mb-4 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 px-4 py-1 rounded-full shadow-lg border border-zinc-200/20 dark:border-zinc-700/20 whitespace-nowrap flex items-center gap-1.5"
                 initial={{ y: -20, opacity: 0 }}
@@ -385,17 +394,24 @@ export default function ServicesPage() {
                 />
                 <span className="text-xs font-medium text-white">Most Popular</span>
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-center">
-                Enhanced Professional Solution
-              </h3>
               <div className="mb-6 text-center">
-                <span className="text-3xl font-bold">$1,199</span>
-                <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+                <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Enhanced Professional Solution
+                </h3>
+                <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6 text-center">
-                A more comprehensive website for established businesses
-              </p>
-              <ul className="space-y-3 mb-8 w-full text-left mx-0">
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-3xl font-bold">$549</span>
+                  <span className="text-zinc-600 dark:text-zinc-400">onwards</span>
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
+                  A more comprehensive website for established businesses
+                </p>
+              </div>
+            </div>
+            <div className="p-8 flex-1 flex flex-col">
+              <ul className="space-y-3 mb-8 w-full text-left">
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
                   All ESSENTIAL features
@@ -429,9 +445,11 @@ export default function ServicesPage() {
                   3-4 weeks delivery
                 </li>
               </ul>
-              <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
-                Get Started
-              </Button>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
+                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                  Get Started
+                </Button>
+              </div>
             </div>
           </motion.div>
 
@@ -439,20 +457,27 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full"
           >
-            <div className="p-8">
-              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                Complete Business Platform
-              </h3>
-              <div className="mb-6">
-                <span className="text-3xl font-bold">$1,999</span>
-                <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50">
+              <div className="mb-6 text-center">
+                <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Complete Business Platform
+                </h3>
+                <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-                A fully-featured website with additional functionality
-              </p>
-              <ul className="space-y-3 mb-8">
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-3xl font-bold">$899</span>
+                  <span className="text-zinc-600 dark:text-zinc-400">onwards</span>
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
+                  A fully-featured website with additional functionality
+                </p>
+              </div>
+            </div>
+            <div className="p-8 flex-1 flex flex-col">
+              <ul className="space-y-3 mb-8 w-full text-left">
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
                   All ENHANCED features
@@ -486,9 +511,11 @@ export default function ServicesPage() {
                   4-5 weeks delivery
                 </li>
               </ul>
-              <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
-                Get Started
-              </Button>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
+                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                  Get Started
+                </Button>
+              </div>
             </div>
           </motion.div>
         </motion.div>
