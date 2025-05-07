@@ -39,10 +39,10 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2.5 rounded-2xl shadow-sm">
-                <LogoMark className="w-7 h-7 text-white dark:text-zinc-900" />
+              <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 p-2.5 rounded-2xl shadow-sm">
+                <LogoMark className="w-7 h-7 text-white" />
               </div>
-              <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400">
+              <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500">
                 Advait
               </span>
             </div>
@@ -166,9 +166,9 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex gap-4 pt-4">
               {[
-                { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "#" },
-                { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", link: "#" },
-                { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "#" }
+                { icon: <Github className="w-5 h-5 !text-zinc-200" />, label: "GitHub", link: "#" },
+                { icon: <Linkedin className="w-5 h-5 !text-zinc-200" />, label: "LinkedIn", link: "#" },
+                { icon: <Twitter className="w-5 h-5 !text-zinc-200" />, label: "Twitter", link: "#" }
               ].map((social, index) => (
                 <motion.a
                   key={social.label}

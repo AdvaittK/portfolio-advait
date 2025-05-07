@@ -61,6 +61,15 @@ export const SkillsRadarBrowser = ({
     damping: 30
   })
 
+  // Add useEffect to handle tab changes
+  useEffect(() => {
+    // Force a re-render when tab changes
+    const contentArea = document.querySelector('.content-area')
+    if (contentArea) {
+      contentArea.scrollTop = 0
+    }
+  }, [activeTab])
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return
     
@@ -105,7 +114,15 @@ export function SkillMeter({
   name, 
   level 
 }: SkillProps) {
-  const [hovered, setHovered] = false`;
+  const [hovered, setHovered] = useState(false);
+  
+  return (
+    <div className="skill-meter">
+      <div className="skill-name">{name}</div>
+      <div className="skill-level">{level}%</div>
+    </div>
+  );
+}`
 
   const backendCode = `// Express API Route
 import express from 'express';
@@ -113,12 +130,21 @@ import { db } from '../config';
 
 const router = express.Router();
 
-// Get projects endpoint
+// Get skills endpoint
 router.get('/api/skills', async (req, res) => {
   try {
     const skills = await db.collection('skills')
       .find()
-      .toArray();`;
+      .toArray();
+    
+    res.json({ success: true, data: skills });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to fetch skills' 
+    });
+  }
+});`
 
   return (
     <motion.div
@@ -178,12 +204,12 @@ router.get('/api/skills', async (req, res) => {
       </div>
 
       {/* Browser tabs */}
-      <div className="flex h-8 border-b border-zinc-200/50 dark:border-zinc-700/50 bg-zinc-100/50 dark:bg-zinc-800/50">
+      <div className="flex h-8 border-b border-zinc-200/50 dark:border-zinc-700/50">
         <button
           onClick={() => setActiveTab('frontend')}
           type="button"
           aria-selected={activeTab === 'frontend'}
-          className={`flex items-center px-3 h-full text-xs relative z-10 cursor-pointer ${
+          className={`flex items-center px-4 h-full text-sm font-medium relative z-10 cursor-pointer transition-all duration-200 ${
             activeTab === 'frontend'
               ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-r border-zinc-200/50 dark:border-zinc-700/50'
               : 'bg-zinc-100/50 dark:bg-zinc-800/70 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
@@ -195,7 +221,7 @@ router.get('/api/skills', async (req, res) => {
           onClick={() => setActiveTab('backend')}
           type="button"
           aria-selected={activeTab === 'backend'}
-          className={`flex items-center px-3 h-full text-xs relative z-10 cursor-pointer ${
+          className={`flex items-center px-4 h-full text-sm font-medium relative z-10 cursor-pointer transition-all duration-200 ${
             activeTab === 'backend'
               ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-r border-zinc-200/50 dark:border-zinc-700/50'
               : 'bg-zinc-100/50 dark:bg-zinc-800/70 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
@@ -206,7 +232,7 @@ router.get('/api/skills', async (req, res) => {
       </div>
 
       {/* Content area */}
-      <div className="flex flex-col overflow-hidden" style={{ height: "calc(100% - 58px)" }}>
+      <div className="flex flex-col overflow-hidden content-area" style={{ height: "calc(100% - 58px)" }}>
         {/* Main content */}
         <div className="flex flex-col sm:flex-row flex-1 overflow-hidden h-full">
           {/* Code Editor Section */}
@@ -220,12 +246,12 @@ router.get('/api/skills', async (req, res) => {
                   <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500" />
                 </div>
                 <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">
-                  {activeTab === 'frontend' ? 'SkillMeter.tsx' : 'projects.routes.js'}
+                  {activeTab === 'frontend' ? 'SkillMeter.tsx' : 'skills.routes.js'}
                 </span>
               </div>
               
               {/* Code Content */}
-              <div className="p-3 font-mono text-2xs overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-transparent" style={{ height: '0', flexGrow: 1 }}>
+              <div className="p-3 font-mono text-2xs overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-transparent">
                 <pre className="whitespace-pre-wrap break-words">
                   <code className="text-[9px] sm:text-xs overflow-hidden">
                     {activeTab === 'frontend' ? frontendCode : backendCode}
@@ -251,7 +277,7 @@ router.get('/api/skills', async (req, res) => {
               </div>
 
               {/* Skills Grid */}
-              <div className="p-4 overflow-y-auto flex-1" style={{ height: '0', flexGrow: 1 }}>
+              <div className="p-4 overflow-y-auto flex-1">
                 <h4 className="text-xs font-semibold mb-4 text-zinc-800 dark:text-zinc-200">
                   {activeTab === 'frontend' ? 'Frontend Technologies' : 'Backend Technologies'}
                 </h4>

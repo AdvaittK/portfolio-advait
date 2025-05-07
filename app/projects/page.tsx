@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, LayoutGrid, ArrowLeftRight } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Check, Globe, Github } from "lucide-react"
+import { PageContainer } from "@/components/layout/page-container"
 
 // Define project type
 interface Project {
@@ -89,13 +90,13 @@ export default function ProjectsPage() {
     : projects;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-zinc-100 to-zinc-200 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900">
-      <div className="max-w-6xl mx-auto px-6 py-20">
+    <PageContainer>
+      <div className="container mx-auto px-6 py-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-5xl font-bold mb-12 text-center"
+          className="text-3xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
         >
           Featured Projects
         </motion.h2>
@@ -158,7 +159,7 @@ export default function ProjectsPage() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="group"
               >
-                <div className="bg-white dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50">
                   <div className="relative overflow-hidden aspect-video">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <img
@@ -177,14 +178,16 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                      {project.title}
+                    </h3>
                     <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <Badge
                           key={tag}
                           variant="outline"
-                          className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                          className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                         >
                           {tag}
                         </Badge>
@@ -201,7 +204,7 @@ export default function ProjectsPage() {
               <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${carouselIndex * 100}%)` }}>
                 {filteredProjects.map((project, index) => (
                   <div key={index} className="min-w-full">
-                    <div className="bg-white dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50">
                       <div className="relative overflow-hidden aspect-video">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <img
@@ -220,14 +223,16 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                       <div className="p-6">
-                        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                        <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                          {project.title}
+                        </h3>
                         <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm">{project.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
                             <Badge
                               key={tag}
                               variant="outline"
-                              className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                              className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                             >
                               {tag}
                             </Badge>
@@ -246,60 +251,68 @@ export default function ProjectsPage() {
         <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
           <DialogContent className="sm:max-w-3xl">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-bold">{selectedProject?.title}</DialogTitle>
-              <DialogDescription className="text-base mt-2">{selectedProject?.longDescription}</DialogDescription>
+              <DialogTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                {selectedProject?.title}
+              </DialogTitle>
+              <DialogDescription className="text-base mt-2">
+                {selectedProject?.longDescription}
+              </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-6 mt-4">
-              <div className="rounded-xl overflow-hidden">
+            <div className="mt-6 space-y-6">
+              <div className="relative aspect-video rounded-xl overflow-hidden">
                 <img
-                  src={selectedProject?.image}
+                  src={selectedProject?.image || "/placeholder.svg"}
                   alt={selectedProject?.title}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              
+
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <LayoutGrid className="w-5 h-5 text-purple-500" /> Key Features
-                </h3>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+                <h4 className="text-lg font-semibold">Key Features</h4>
+                <ul className="space-y-2">
                   {selectedProject?.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <Check className="min-w-4 h-4 mt-1 text-green-500" />
+                    <li key={index} className="flex items-center gap-2">
+                      <Check className="w-5 h-5 text-green-500" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              
-              <div className="flex flex-wrap gap-2 pt-2">
+
+              <div className="flex flex-wrap gap-2">
                 {selectedProject?.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary">
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200"
+                  >
                     {tag}
                   </Badge>
                 ))}
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+
+              <div className="flex gap-4">
                 <Button
-                  onClick={() => window.open(selectedProject?.demoLink, "_blank")}
-                  className="flex items-center gap-2"
+                  className="flex-1"
+                  onClick={() => window.open(selectedProject?.demoLink, '_blank')}
                 >
-                  <Globe className="w-4 h-4" /> View Live Demo
+                  <Globe className="w-4 h-4 mr-2" />
+                  Live Demo
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => window.open(selectedProject?.githubLink, "_blank")}
-                  className="flex items-center gap-2"
+                  className="flex-1"
+                  onClick={() => window.open(selectedProject?.githubLink, '_blank')}
                 >
-                  <Github className="w-4 h-4" /> View Source Code
+                  <Github className="w-4 h-4 mr-2" />
+                  View Code
                 </Button>
               </div>
             </div>
           </DialogContent>
         </Dialog>
       </div>
-    </div>
+    </PageContainer>
   )
 } 

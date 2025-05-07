@@ -126,6 +126,7 @@ export default function Header() {
                     { name: "Home", href: "/" },
                     { name: "About", href: "/about" },
                     { name: "Projects", href: "/projects" },
+                    { name: "Services", href: "/services" },
                     { name: "Skills", href: "/skills" },
                     { name: "Contact", href: "/contact" }
                   ].map((item, index) => (
@@ -234,6 +235,7 @@ export default function Header() {
                   { name: "Home", href: "/" },
                   { name: "About", href: "/about" },
                   { name: "Projects", href: "/projects" },
+                  { name: "Services", href: "/services" },
                   { name: "Skills", href: "/skills" },
                   { name: "Contact", href: "/contact" }
                 ].map((item, index) => (
