@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -10,9 +10,61 @@ import Typewriter from "typewriter-effect"
 import Link from "next/link"
 import { gsap } from "gsap"
 import { GlassCard } from "@/components/ui/glass-card"
-import { TechOrbit } from "@/components/ui/tech-orbit"
 import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma } from "react-icons/si"
 import { SkillsRadarBrowser } from "@/components/ui/skills-radar-browser"
+import { ProjectCarousel3D } from "@/components/ui/project-carousel-3d"
+
+// Featured projects data
+const featuredProjects = [
+  {
+    id: "1",
+    title: "E-Commerce Platform",
+    description: "A modern e-commerce platform built with Next.js and Stripe integration",
+    longDescription: "A full-featured e-commerce platform with real-time inventory management, secure payments, and an intuitive admin dashboard.",
+    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
+    image: "/projects/ecommerce.jpg",
+    demoLink: "https://demo.ecommerce.com",
+    githubLink: "https://github.com/advait/ecommerce",
+    features: [
+      "Real-time inventory tracking",
+      "Secure payment processing",
+      "Admin dashboard",
+      "Responsive design"
+    ]
+  },
+  {
+    id: "2",
+    title: "AI Content Generator",
+    description: "AI-powered content generation platform with advanced NLP",
+    longDescription: "An intelligent content generation platform that uses advanced NLP to create high-quality, contextually relevant content.",
+    tags: ["React", "Node.js", "OpenAI", "MongoDB"],
+    image: "/projects/ai-content.jpg",
+    demoLink: "https://demo.aicontent.com",
+    githubLink: "https://github.com/advait/ai-content",
+    features: [
+      "AI-powered content generation",
+      "Customizable templates",
+      "Content analytics",
+      "API integration"
+    ]
+  },
+  {
+    id: "3",
+    title: "Task Management System",
+    description: "Collaborative task management with real-time updates",
+    longDescription: "A powerful task management system that enables teams to collaborate effectively with real-time updates and advanced filtering.",
+    tags: ["React", "Firebase", "Material-UI", "Redux"],
+    image: "/projects/task-manager.jpg",
+    demoLink: "https://demo.taskmanager.com",
+    githubLink: "https://github.com/advait/task-manager",
+    features: [
+      "Real-time collaboration",
+      "Task prioritization",
+      "Progress tracking",
+      "Team management"
+    ]
+  }
+]
 
 export default function HomePage() {
   const [isMounted, setIsMounted] = useState(false)
@@ -304,6 +356,61 @@ export default function HomePage() {
                   <SiNextdotjs className="w-5 h-5" />
                 </motion.div>
               </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Featured Projects Section */}
+        <section className="min-h-screen py-20 px-6 relative overflow-hidden">
+          {/* Background gradients */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div 
+              className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
+              animate={{
+                x: [0, 10, -5, 0],
+                y: [0, -5, 10, 0],
+                scale: [1, 1.02, 0.98, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            />
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4">
+                Featured Work
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
+                Featured Projects
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Explore some of my recent work that showcases my expertise in building modern web applications
+              </p>
+            </motion.div>
+
+            {/* Projects Carousel */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <ProjectCarousel3D 
+                projects={featuredProjects}
+                onSelect={(project) => window.open(project.demoLink, '_blank')}
+              />
             </motion.div>
           </div>
         </section>
