@@ -1,0 +1,25 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fine linear grain texture -->
+  <defs>
+    <pattern id="metallicPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <!-- Light mode metallic lines -->
+      <line x1="0" y1="0" x2="100" y2="100" stroke="#f8fafc" stroke-width="0.5" opacity="0.3" />
+      <line x1="10" y1="0" x2="110" y2="100" stroke="#f1f5f9" stroke-width="0.5" opacity="0.2" />
+      <line x1="20" y1="0" x2="120" y2="100" stroke="#f8fafc" stroke-width="0.5" opacity="0.3" />
+      <line x1="30" y1="0" x2="130" y2="100" stroke="#f1f5f9" stroke-width="0.5" opacity="0.2" />
+      <line x1="40" y1="0" x2="140" y2="100" stroke="#f8fafc" stroke-width="0.5" opacity="0.3" />
+      <line x1="50" y1="0" x2="150" y2="100" stroke="#f1f5f9" stroke-width="0.5" opacity="0.2" />
+      <line x1="60" y1="0" x2="160" y2="100" stroke="#f8fafc" stroke-width="0.5" opacity="0.3" />
+      <line x1="70" y1="0" x2="170" y2="100" stroke="#f1f5f9" stroke-width="0.5" opacity="0.2" />
+      <line x1="80" y1="0" x2="180" y2="100" stroke="#f8fafc" stroke-width="0.5" opacity="0.3" />
+      <line x1="90" y1="0" x2="190" y2="100" stroke="#f1f5f9" stroke-width="0.5" opacity="0.2" />
+      
+      <!-- Perpendicular lines for brushed metal effect -->
+      <line x1="0" y1="100" x2="100" y2="0" stroke="#f8fafc" stroke-width="0.2" opacity="0.1" />
+      <line x1="25" y1="100" x2="125" y2="0" stroke="#f1f5f9" stroke-width="0.2" opacity="0.1" />
+      <line x1="50" y1="100" x2="150" y2="0" stroke="#f8fafc" stroke-width="0.2" opacity="0.1" />
+      <line x1="75" y1="100" x2="175" y2="0" stroke="#f1f5f9" stroke-width="0.2" opacity="0.1" />
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#metallicPattern)" />
+</svg>

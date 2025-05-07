@@ -1,0 +1,19 @@
+{
+  "name": "Advait Portfolio",
+  "short_name": "Advait",
+  "icons": [
+    {
+      "src": "/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2d2d2d",
+  "background_color": "#2d2d2d",
+  "display": "standalone"
+}

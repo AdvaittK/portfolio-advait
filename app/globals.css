@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    cursor: none !important;
+    /* Allow background to be transparent but don't use !important to allow theme override */
+    background-color: transparent;
+  }
+  body * {
+    cursor: none !important;
+  }
+  
+  /* Only make specific elements transparent by default instead of all divs */
+  .bg-transparent-element {
+    background-color: transparent !important;
+  }
+  
+  /* For UI components that should respect the theme */
+  .theme-bg {
+    @apply bg-background text-foreground transition-colors;
+  }
+  
+  /* For cards and other UI elements that need themed backgrounds */
+  .card-themed {
+    @apply bg-card text-card-foreground;
+  }
+  
+  /* For secondary elements */
+  .secondary-themed {
+    @apply bg-secondary text-secondary-foreground;
+  }
+  
+  /* Explicitly add background when needed */
+  .bg-solid {
+    @apply bg-background;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Remove scroll-snap and smooth scroll behavior */
+html {
+  scroll-behavior: auto;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Animation for the blinking cursor in loading screen */
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Film grain animation for loading screen */
+@keyframes noise {
+  0%, 100% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+}
+
+.animate-noise {
+  animation: noise 0.5s infinite;
+}
+
+/* Hide default cursor when custom cursor is active */
+body {
+  cursor: none !important;
+}
+
+body * {
+  cursor: none !important;
+}
+
+/* New Preloader Styles */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.preloader-text {
+  font-size: 5rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  overflow: hidden;
+  display: flex;
+}
+
+/* Make the text smaller */
+.preloader-text-small {
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+}
+
+.preloader-char {
+  transform: translateY(100%);
+  opacity: 0; /* Start with characters invisible */
+  display: inline-block;
+}
+
+/* Add Montserrat font for preloader if needed */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
