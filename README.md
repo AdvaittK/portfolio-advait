@@ -27,7 +27,7 @@ A modern, full-stack developer portfolio built with Next.js, React, and Tailwind
 ### Installation
 ```bash
 # Clone the repository
-https://github.com/yourusername/portfolio-advait.git
+https://github.com/AdvaittK/portfolio-advait.git
 cd portfolio-advait
 
 # Install dependencies
