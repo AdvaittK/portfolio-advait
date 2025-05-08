@@ -2,28 +2,82 @@
 
 import { motion } from "framer-motion"
 import { SkillsRadarBrowser } from "@/components/ui/skills-radar-browser"
+import { 
+  Code2, 
+  Database, 
+  Cloud, 
+  GitBranch, 
+  Layout, 
+  Server, 
+  Terminal, 
+  Globe, 
+  Cpu, 
+  Settings,
+  Code,
+  FileCode,
+  FileType,
+  FileText,
+  Palette,
+  Layers,
+  GitBranchIcon,
+  Box,
+  DatabaseIcon,
+  Container,
+  CloudIcon,
+  Flame,
+  Search,
+  Brain,
+  FileJson,
+  Network,
+  TerminalSquare,
+  GitPullRequest
+} from "lucide-react"
 
-const technicalSkills = [
-  { name: "React.js", percentage: 90 },
-  { name: "Next.js", percentage: 90 },
-  { name: "JavaScript", percentage: 90 },
-  { name: "TypeScript", percentage: 85 },
-  { name: "HTML/CSS", percentage: 95 },
-  { name: "Tailwind CSS", percentage: 95 },
-  { name: "Redux", percentage: 80 },
-  { name: "Node.js", percentage: 85 },
-  { name: "Express.js", percentage: 85 },
-  { name: "MongoDB", percentage: 85 },
-  { name: "PostgreSQL", percentage: 75 },
-  { name: "Python", percentage: 70 },
-  { name: "Git", percentage: 85 },
-  { name: "Docker", percentage: 70 },
-  { name: "AWS", percentage: 75 },
-  { name: "Azure", percentage: 70 },
-  { name: "Firebase", percentage: 80 },
-  { name: "Postman/Axios", percentage: 85 },
-  { name: "SEO", percentage: 75 },
-  { name: "Problem Solving", percentage: 90 },
+const skillCategories = [
+  {
+    name: "Frontend Development",
+    icon: Layout,
+    skills: [
+      { name: "React.js", percentage: 90, icon: Code, description: "Building interactive and responsive user interfaces" },
+      { name: "Next.js", percentage: 90, icon: FileCode, description: "Server-side rendering and static site generation" },
+      { name: "JavaScript", percentage: 90, icon: FileType, description: "Core language fundamentals and modern ES6+ features" },
+      { name: "TypeScript", percentage: 85, icon: FileText, description: "Type-safe development and enhanced code quality" },
+      { name: "HTML/CSS", percentage: 95, icon: Palette, description: "Semantic markup and modern styling techniques" },
+      { name: "Tailwind CSS", percentage: 95, icon: Layers, description: "Utility-first CSS framework for rapid development" },
+      { name: "Redux", percentage: 80, icon: GitBranchIcon, description: "State management and predictable data flow" },
+    ]
+  },
+  {
+    name: "Backend Development",
+    icon: Server,
+    skills: [
+      { name: "Node.js", percentage: 85, icon: Box, description: "Server-side JavaScript runtime" },
+      { name: "Express.js", percentage: 85, icon: Network, description: "Web application framework for Node.js" },
+      { name: "MongoDB", percentage: 85, icon: DatabaseIcon, description: "NoSQL database management" },
+      { name: "PostgreSQL", percentage: 75, icon: Database, description: "Relational database management" },
+      { name: "Python", percentage: 70, icon: TerminalSquare, description: "General-purpose programming and automation" },
+    ]
+  },
+  {
+    name: "DevOps & Tools",
+    icon: Settings,
+    skills: [
+      { name: "Git", percentage: 85, icon: GitPullRequest, description: "Version control and collaboration" },
+      { name: "Docker", percentage: 70, icon: Container, description: "Containerization and deployment" },
+      { name: "AWS", percentage: 75, icon: CloudIcon, description: "Cloud services and infrastructure" },
+      { name: "Azure", percentage: 70, icon: Cloud, description: "Microsoft cloud platform" },
+      { name: "Firebase", percentage: 80, icon: Flame, description: "Backend-as-a-Service platform" },
+      { name: "Postman/Axios", percentage: 85, icon: FileJson, description: "API testing and development" },
+    ]
+  },
+  {
+    name: "Additional Skills",
+    icon: Brain,
+    skills: [
+      { name: "SEO", percentage: 75, icon: Search, description: "Search engine optimization and analytics" },
+      { name: "Problem Solving", percentage: 90, icon: Brain, description: "Analytical thinking and solution design" },
+    ]
+  }
 ]
 
 const containerVariants = {
@@ -121,7 +175,7 @@ export function SkillsContent() {
           <SkillsRadarBrowser />
         </motion.div>
         
-        {/* Detailed Skills Grid */}
+        {/* Enhanced Technical Expertise Section */}
         <motion.div 
           className="mt-16"
           initial={{ opacity: 0 }}
@@ -137,52 +191,82 @@ export function SkillsContent() {
           >
             Technical Expertise
           </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {technicalSkills.map((skill, index) => (
+          
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.name}
+              className="mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <category.icon className="w-6 h-6 text-zinc-600 dark:text-zinc-400" />
+                <h3 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                  {category.name}
+                </h3>
+              </div>
+              
               <motion.div
-                key={skill.name}
-                variants={itemVariants}
-                whileHover="hover"
-                className="group relative bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
-                {/* Metallic border effects */}
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-                <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-                <div className="flex justify-between items-center mb-3">
-                  <motion.h3 
-                    className="text-lg font-semibold text-zinc-800 dark:text-zinc-200"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                {category.skills.map((skill) => (
+                  <motion.div
+                    key={skill.name}
+                    variants={itemVariants}
+                    whileHover="hover"
+                    className="group relative bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
                   >
-                    {skill.name}
-                  </motion.h3>
-                  <motion.span 
-                    className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                  >
-                    {skill.percentage}%
-                  </motion.span>
-                </div>
-                <div className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-                  <motion.div 
-                    className="h-full bg-gradient-to-r from-zinc-600 to-zinc-800 dark:from-zinc-400 dark:to-zinc-200 rounded-full"
-                    variants={progressBarVariants}
-                    custom={skill.percentage}
-                  />
-                </div>
+                    {/* Metallic border effects */}
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                    <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                    <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <skill.icon className="w-8 h-8 text-zinc-600 dark:text-zinc-400" />
+                      </div>
+                      <div className="flex-grow">
+                        <div className="flex justify-between items-center mb-2">
+                          <motion.h3 
+                            className="text-lg font-semibold text-zinc-800 dark:text-zinc-200"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          >
+                            {skill.name}
+                          </motion.h3>
+                          <motion.span 
+                            className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                          >
+                            {skill.percentage}%
+                          </motion.span>
+                        </div>
+                        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3">
+                          {skill.description}
+                        </p>
+                        <div className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+                          <motion.div 
+                            className="h-full bg-gradient-to-r from-zinc-600 to-zinc-800 dark:from-zinc-400 dark:to-zinc-200 rounded-full"
+                            variants={progressBarVariants}
+                            custom={skill.percentage}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </motion.div>

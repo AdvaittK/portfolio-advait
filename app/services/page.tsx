@@ -196,7 +196,7 @@ export default function ServicesPage() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 mb-24"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -296,7 +296,7 @@ export default function ServicesPage() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 max-w-7xl mx-auto mb-24"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -545,7 +545,7 @@ export default function ServicesPage() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto mb-24"
+          className="flex flex-col sm:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto mb-24"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -555,40 +555,44 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+            className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
           >
-            <div className="p-8">
-              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                Technical Maintenance Package
-              </h3>
-              <div className="mb-6">
-                <span className="text-3xl font-bold">$149</span>
-                <span className="text-zinc-600 dark:text-zinc-400">/month</span>
+            <div className="p-8 flex flex-col h-full">
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Technical Maintenance Package
+                </h3>
+                <div className="mb-6">
+                  <span className="text-3xl font-bold">$99</span>
+                  <span className="text-zinc-600 dark:text-zinc-400">/month</span>
+                </div>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                  Available only for websites with backend functionality
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                    <Check className="w-4 h-4 mr-2 text-green-500" />
+                    Regular code updates
+                  </li>
+                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                    <Check className="w-4 h-4 mr-2 text-green-500" />
+                    Security monitoring
+                  </li>
+                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                    <Check className="w-4 h-4 mr-2 text-green-500" />
+                    Database management
+                  </li>
+                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+                    <Check className="w-4 h-4 mr-2 text-green-500" />
+                    Booking system maintenance
+                  </li>
+                </ul>
               </div>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-                Available only for websites with backend functionality
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Regular code updates
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Security monitoring
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Database management
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Booking system maintenance
-                </li>
-              </ul>
-              <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
-                Enquire Now
-              </Button>
+              <div className="mt-8">
+                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                  Enquire Now
+                </Button>
+              </div>
             </div>
           </motion.div>
 
@@ -597,40 +601,44 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+            className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
           >
-            <div className="p-8">
-              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                Enhance Your Package
-              </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-                Additional features to customize your website
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-600 dark:text-zinc-400">Additional Pages</span>
-                  <span className="font-semibold">$59/page</span>
-                </li>
-                <li className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-600 dark:text-zinc-400">E-commerce Integration</span>
-                  <span className="font-semibold">$299</span>
-                </li>
-                <li className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-600 dark:text-zinc-400">Custom Animations</span>
-                  <span className="font-semibold">$199</span>
-                </li>
-                <li className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-600 dark:text-zinc-400">Advanced SEO Package</span>
-                  <span className="font-semibold">$249</span>
-                </li>
-                <li className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-600 dark:text-zinc-400">Content Management System</span>
-                  <span className="font-semibold">$399</span>
-                </li>
-              </ul>
-              <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
-                Customize Your Package
-              </Button>
+            <div className="p-8 flex flex-col h-full">
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Enhance Your Package
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                  Additional features to customize your website
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-center justify-between text-sm">
+                    <span className="text-zinc-600 dark:text-zinc-400">Additional Pages</span>
+                    <span className="font-semibold">$59/page</span>
+                  </li>
+                  <li className="flex items-center justify-between text-sm">
+                    <span className="text-zinc-600 dark:text-zinc-400">E-commerce Integration</span>
+                    <span className="font-semibold">$299</span>
+                  </li>
+                  <li className="flex items-center justify-between text-sm">
+                    <span className="text-zinc-600 dark:text-zinc-400">Custom Animations</span>
+                    <span className="font-semibold">$199</span>
+                  </li>
+                  <li className="flex items-center justify-between text-sm">
+                    <span className="text-zinc-600 dark:text-zinc-400">Advanced SEO Package</span>
+                    <span className="font-semibold">$249</span>
+                  </li>
+                  <li className="flex items-center justify-between text-sm">
+                    <span className="text-zinc-600 dark:text-zinc-400">Content Management System</span>
+                    <span className="font-semibold">$399</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-8">
+                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                  Customize Your Package
+                </Button>
+              </div>
             </div>
           </motion.div>
         </motion.div>

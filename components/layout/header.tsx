@@ -18,21 +18,21 @@ export default function Header() {
   const { scrollY } = useScroll()
 
   // Transform scroll position to opacity and blur values
-  const headerOpacity = useTransform(scrollY, [0, 100], [0.7, 0.85])
+  const headerOpacity = useTransform(scrollY, [0, 100], [0.92, 0.97])
   const headerBackground = useTransform(
     scrollY,
     [0, 100],
     [
-      "rgba(255, 255, 255, 0.7)",
-      "rgba(255, 255, 255, 0.85)"
+      "rgba(255, 255, 255, 0.92)",
+      "rgba(255, 255, 255, 0.97)"
     ]
   )
   const headerBackgroundDark = useTransform(
     scrollY,
     [0, 100],
     [
-      "rgba(24, 24, 27, 0.7)",
-      "rgba(24, 24, 27, 0.85)"
+      "rgba(24, 24, 27, 0.92)",
+      "rgba(24, 24, 27, 0.97)"
     ]
   )
 
@@ -102,7 +102,7 @@ export default function Header() {
         >
           <div className="max-w-6xl mx-auto">
             <motion.div 
-              className="rounded-3xl shadow-xl border border-zinc-200/30 dark:border-zinc-700/30 transition-all duration-300 backdrop-blur-md"
+              className="rounded-3xl shadow-2xl border border-zinc-200/60 dark:border-zinc-700/60 transition-all duration-300 backdrop-blur-md"
             >
               <div className="flex justify-between items-center px-8 py-5">
                 {/* Logo with gradient effect */}
@@ -112,12 +112,26 @@ export default function Header() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 }}
                 >
-                  <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2.5 rounded-2xl shadow-sm">
-                    <LogoMark className="w-7 h-7 text-white dark:text-zinc-900" />
-                  </div>
-                  <span className="ml-3 font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400">
-                    Advait
-                  </span>
+                  <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+                    <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2.5 rounded-2xl shadow-sm">
+                      <LogoMark className="w-7 h-7 text-white dark:text-zinc-900" />
+                    </div>
+                    <span className="ml-3 font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 relative drop-shadow dark:drop-shadow-[0_4px_32px_rgba(255,255,255,0.25)]"
+                      style={{
+                        textShadow: '0 2px 16px rgba(0,0,0,0.10)',
+                        filter: 'drop-shadow(0 2px 16px rgba(255,255,255,0.10))',
+                      }}
+                    >
+                      <span className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true"
+                        style={{
+                          background: 'radial-gradient(ellipse at 50% 60%,rgba(255,255,255,0.10) 0%,rgba(0,0,0,0.00) 70%)',
+                          filter: 'blur(8px)',
+                          borderRadius: 'inherit',
+                        }}
+                      />
+                      Advait
+                    </span>
+                  </Link>
                 </motion.div>
                 
                 {/* Navigation items */}

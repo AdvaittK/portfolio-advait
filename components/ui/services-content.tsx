@@ -272,172 +272,174 @@ export function ServicesContent() {
       </motion.div>
 
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        className="flex justify-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div
-          variants={itemVariants}
-          whileHover="hover"
-          className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
-        >
-          <div className="p-8">
-            <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-              Essential Professional Presence
-            </h3>
-            <div className="mb-6">
-              <span className="text-3xl font-bold">$499</span>
-              <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+          <motion.div
+            variants={itemVariants}
+            whileHover="hover"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+          >
+            <div className="p-8">
+              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                Essential Professional Presence
+              </h3>
+              <div className="mb-6">
+                <span className="text-3xl font-bold">$499</span>
+                <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+              </div>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                A professional online presence for individuals or small businesses
+              </p>
+              <ul className="space-y-3 mb-8">
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={0}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Custom-coded responsive website
+                </motion.li>
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={1}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Basic SEO optimization
+                </motion.li>
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={2}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Contact form integration
+                </motion.li>
+              </ul>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="w-full">
+                  Get Started
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </motion.div>
             </div>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-              A professional online presence for individuals or small businesses
-            </p>
-            <ul className="space-y-3 mb-8">
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={0}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Custom-coded responsive website
-              </motion.li>
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={1}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Basic SEO optimization
-              </motion.li>
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={2}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Contact form integration
-              </motion.li>
-            </ul>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button className="w-full">
-                Get Started
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover="hover"
-          className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
-        >
-          <div className="p-8">
-            <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-              Business Growth Package
-            </h3>
-            <div className="mb-6">
-              <span className="text-3xl font-bold">$999</span>
-              <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+          <motion.div
+            variants={itemVariants}
+            whileHover="hover"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+          >
+            <div className="p-8">
+              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                Business Growth Package
+              </h3>
+              <div className="mb-6">
+                <span className="text-3xl font-bold">$999</span>
+                <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+              </div>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                Comprehensive solutions for growing businesses
+              </p>
+              <ul className="space-y-3 mb-8">
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={0}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Advanced web application
+                </motion.li>
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={1}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Full SEO optimization
+                </motion.li>
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={2}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Analytics integration
+                </motion.li>
+              </ul>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="w-full">
+                  Get Started
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </motion.div>
             </div>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-              Comprehensive solutions for growing businesses
-            </p>
-            <ul className="space-y-3 mb-8">
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={0}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Advanced web application
-              </motion.li>
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={1}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Full SEO optimization
-              </motion.li>
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={2}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Analytics integration
-              </motion.li>
-            </ul>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button className="w-full">
-                Get Started
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          whileHover="hover"
-          className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
-        >
-          <div className="p-8">
-            <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-              Enterprise Solution
-            </h3>
-            <div className="mb-6">
-              <span className="text-3xl font-bold">Custom</span>
-              <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+          <motion.div
+            variants={itemVariants}
+            whileHover="hover"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+          >
+            <div className="p-8">
+              <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                Enterprise Solution
+              </h3>
+              <div className="mb-6">
+                <span className="text-3xl font-bold">Custom</span>
+                <span className="text-zinc-600 dark:text-zinc-400">/project</span>
+              </div>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                Tailored solutions for enterprise-level requirements
+              </p>
+              <ul className="space-y-3 mb-8">
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={0}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Custom enterprise solution
+                </motion.li>
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={1}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Advanced security features
+                </motion.li>
+                <motion.li 
+                  className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
+                  variants={featureVariants}
+                  custom={2}
+                >
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
+                  Priority support
+                </motion.li>
+              </ul>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="w-full">
+                  Contact Us
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </motion.div>
             </div>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-              Tailored solutions for enterprise-level requirements
-            </p>
-            <ul className="space-y-3 mb-8">
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={0}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Custom enterprise solution
-              </motion.li>
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={1}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Advanced security features
-              </motion.li>
-              <motion.li 
-                className="flex items-center text-sm text-zinc-600 dark:text-zinc-400"
-                variants={featureVariants}
-                custom={2}
-              >
-                <Check className="w-4 h-4 mr-2 text-green-500" />
-                Priority support
-              </motion.li>
-            </ul>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button className="w-full">
-                Contact Us
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   )

@@ -119,12 +119,12 @@ export default function HomePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="min-h-[90vh] flex flex-col justify-center items-center relative px-6 py-16 overflow-hidden"
+        className="min-h-[90vh] flex flex-col justify-center items-center relative px-4 xs:px-6 py-12 xs:py-16 overflow-hidden"
       >
         {/* Background gradients with enhanced effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div 
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
+            className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
             animate={{
               x: [0, 10, -5, 0],
               y: [0, -5, 10, 0],
@@ -137,7 +137,7 @@ export default function HomePage() {
             }}
           />
           <motion.div 
-            className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30"
+            className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30"
             animate={{
               x: [0, -10, 5, 0],
               y: [0, 10, -8, 0],
@@ -150,7 +150,7 @@ export default function HomePage() {
             }}
           />
           <motion.div 
-            className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30"
+            className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30"
             animate={{
               x: [0, 8, -8, 0],
               y: [0, -8, 4, 0],
@@ -164,7 +164,7 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="grid md:grid-cols-5 gap-8 w-full max-w-6xl mx-auto items-center">
+        <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-center">
           {/* Hero content with staggered animations */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -172,8 +172,8 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
-            <div className="space-y-6">
-              <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border">
+            <div className="space-y-4 xs:space-y-6">
+              <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border text-sm xs:text-base">
                 Frontend Developer & UI Designer
               </Badge>
               
@@ -181,7 +181,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl md:text-7xl font-bold mb-2"
+                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2"
               >
                 Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
               </motion.h1>
@@ -190,7 +190,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
+                className="text-lg xs:text-xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
               >
                 <Typewriter
                   options={{
@@ -213,7 +213,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-base md:text-lg text-muted-foreground max-w-lg mt-2"
+                className="text-sm xs:text-base md:text-lg text-muted-foreground max-w-lg mt-2"
               >
                 Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
               </motion.p>
@@ -222,20 +222,20 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="flex flex-wrap gap-4 pt-2"
+                className="flex flex-col xs:flex-row gap-3 xs:gap-4 pt-2"
               >
-                <Link href="/projects">
+                <Link href="/projects" className="w-full xs:w-auto">
                   <Button
-                    className="rounded-full px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-lg"
+                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-base xs:text-lg"
                   >
                     Explore My Work
                   </Button>
                 </Link>
                 
-                <Link href="/contact">
+                <Link href="/contact" className="w-full xs:w-auto">
                   <Button
                     variant="outline"
-                    className="rounded-full px-8 py-6 border-border hover:bg-secondary font-medium text-lg"
+                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 border-border hover:bg-secondary font-medium text-base xs:text-lg"
                   >
                     Contact Me
                   </Button>
@@ -277,7 +277,7 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="md:col-span-3 lg:col-span-2 h-[450px] hidden md:flex items-center justify-center relative"
+            className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
           >
             <SkillsRadarBrowser 
               skills={[
@@ -362,12 +362,12 @@ export default function HomePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-        className="min-h-screen py-20 px-6 relative overflow-hidden"
+        className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
         {/* Background gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div 
-            className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
+            className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
             animate={{
               x: [0, 10, -5, 0],
               y: [0, -5, 10, 0],
@@ -388,15 +388,15 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 xs:mb-16"
           >
-            <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4">
+            <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
               Featured Work
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
+            <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
               Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Explore some of my recent work that showcases my expertise in building modern web applications
             </p>
           </motion.div>

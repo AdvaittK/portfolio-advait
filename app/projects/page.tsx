@@ -174,19 +174,19 @@ export default function ProjectsPage() {
           className="flex flex-col gap-6 mb-12"
         >
           {/* Search and View Controls */}
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="flex items-center gap-4 w-full md:w-auto">
-              <div className="relative flex-1 md:flex-none">
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+            <div className="flex flex-col xs:flex-row items-center gap-4 w-full sm:w-auto">
+              <div className="relative w-full xs:w-auto">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 w-4 h-4" />
                 <Input
                   type="text"
                   placeholder="Search projects..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-full md:w-[300px]"
+                  className="pl-10 w-full xs:w-[300px]"
                 />
               </div>
-              <div className="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-1">
+              <div className="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-1 w-full xs:w-auto justify-center">
                 <Button
                   variant={viewMode === 'grid' ? "default" : "ghost"}
                   size="sm"
@@ -218,7 +218,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Filter buttons */}
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-2 xs:gap-4 justify-center">
             <Button
               variant={activeFilter === null ? "default" : "outline"}
               onClick={() => setActiveFilter(null)}
@@ -250,7 +250,7 @@ export default function ProjectsPage() {
         </motion.div>
 
         {viewMode === 'grid' ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 sm:gap-8">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -483,30 +483,101 @@ export default function ProjectsPage() {
 
       {/* Let's Grow Together Section */}
       <div className="w-full flex flex-col items-center justify-center mt-24 mb-8 px-4">
-        <div className="w-full max-w-3xl relative overflow-hidden rounded-3xl shadow-2xl border border-zinc-700/70 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 p-8 md:p-14 flex flex-col items-center">
-          {/* Metallic highlight overlay */}
-          <div className="pointer-events-none absolute inset-0 rounded-3xl" style={{background: 'radial-gradient(ellipse at 60% 0%,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.00) 60%)'}} />
-          <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-700 via-zinc-500 to-zinc-700 text-zinc-100 text-sm font-semibold shadow-lg tracking-wide border border-zinc-400/30 backdrop-blur-sm" style={{boxShadow:'0 2px 8px 0 rgba(255,255,255,0.08) inset'}}>● Let's Connect</span>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-center leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-200 drop-shadow-[0_2px_16px_rgba(255,255,255,0.10)]" style={{letterSpacing:'-0.02em', fontFamily:'inherit'}}>
-            Let's <span className="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 via-zinc-400 to-white drop-shadow-[0_2px_16px_rgba(255,255,255,0.15)]">Grow</span> <span className="font-extrabold text-zinc-100">Together</span>
-          </h2>
-          <div className="w-full flex flex-col gap-8 mb-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <span className="text-xl md:text-2xl font-bold text-zinc-100 tracking-tight" style={{fontFamily:'inherit'}}>Simple Web Design</span>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-100 text-zinc-800 text-xs font-bold shadow border border-zinc-300/60 backdrop-blur-sm" style={{boxShadow:'0 2px 8px 0 rgba(255,255,255,0.10) inset'}}>Starting from $299</span>
-            </div>
-            <p className="text-zinc-300 text-base md:text-lg text-center md:text-left font-medium">Showcasing sleek, high-performance designs tailored for impact</p>
-            <hr className="my-2 border-zinc-700/60" />
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <span className="text-xl md:text-2xl font-bold text-zinc-100 tracking-tight" style={{fontFamily:'inherit'}}>Full Stack Development</span>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-100 text-zinc-800 text-xs font-bold shadow border border-zinc-300/60 backdrop-blur-sm" style={{boxShadow:'0 2px 8px 0 rgba(255,255,255,0.10) inset'}}>Starting from $549</span>
-            </div>
-            <p className="text-zinc-300 text-base md:text-lg text-center md:text-left font-medium">Building visually stunning, user-focused websites that elevate brands.</p>
+        <div className="w-full max-w-3xl relative rounded-2xl shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm p-8 md:p-14 flex flex-col items-center">
+          {/* Subtle gradient overlay */}
+          <div className="pointer-events-none absolute inset-0 rounded-2xl" style={{background: 'radial-gradient(ellipse at 60% 0%,rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.00) 60%)'}} />
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8"
+          >
+            <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+              Let's Connect
+            </span>
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-4 leading-tight md:leading-[1.15] bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-[#e0e7ef] dark:to-white whitespace-normal break-words drop-shadow-md dark:drop-shadow-[0_4px_32px_rgba(255,255,255,0.25)] relative"
+              style={{
+                textShadow: '0 2px 16px rgba(0,0,0,0.10)',
+                filter: 'drop-shadow(0 2px 16px rgba(255,255,255,0.10))',
+              }}
+            >
+              <span className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true"
+                style={{
+                  background: 'radial-gradient(ellipse at 50% 60%,rgba(255,255,255,0.10) 0%,rgba(0,0,0,0.00) 70%)',
+                  filter: 'blur(8px)',
+                  borderRadius: 'inherit',
+                }}
+              />
+              {"Let's "}
+              <span className="font-extrabold">Grow</span>{" "}
+              <span className="whitespace-normal">Together</span>
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              Transform your ideas into reality with our comprehensive web development solutions
+            </p>
+          </motion.div>
+
+          <div className="w-full space-y-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 rounded-xl bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 border border-zinc-200/50 dark:border-zinc-700/50"
+            >
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Simple Web Design
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  Showcasing sleek, high-performance designs tailored for impact
+                </p>
+              </div>
+              <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                Starting from $299
+              </span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 rounded-xl bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 border border-zinc-200/50 dark:border-zinc-700/50"
+            >
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                  Full Stack Development
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  Building visually stunning, user-focused websites that elevate brands
+                </p>
+              </div>
+              <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                Starting from $549
+              </span>
+            </motion.div>
           </div>
-          <div className="flex flex-col md:flex-row gap-4 w-full justify-center mt-4">
-            <a href="/projects" className="rounded-full px-8 py-4 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-900 text-zinc-100 font-semibold text-lg shadow hover:from-zinc-700 hover:to-zinc-800 transition-all text-center border border-zinc-600/60 backdrop-blur-sm" style={{boxShadow:'0 2px 16px 0 rgba(255,255,255,0.08)'}}>See All Projects</a>
-            <a href="/contact" className="rounded-full px-8 py-4 bg-gradient-to-r from-zinc-100 via-zinc-400 to-white text-zinc-900 font-bold text-lg shadow-lg hover:from-zinc-200 hover:to-zinc-300 transition-all text-center border border-zinc-300/60 backdrop-blur-sm" style={{boxShadow:'0 4px 24px 0 rgba(255,255,255,0.12)'}}>Get Started Now</a>
-          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 mt-8 w-full"
+          >
+            <Button
+              className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg"
+              onClick={() => window.location.href = '/projects'}
+            >
+              See All Projects
+            </Button>
+            <Button
+              className="flex-1 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 hover:from-zinc-200 hover:to-zinc-300 dark:hover:from-zinc-600 dark:hover:to-zinc-500 text-zinc-800 dark:text-zinc-100 border-0 shadow-lg"
+              onClick={() => window.location.href = '/contact'}
+            >
+              Get Started Now
+            </Button>
+          </motion.div>
         </div>
       </div>
     </PageContainer>
