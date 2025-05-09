@@ -566,13 +566,13 @@ export default function ProjectsPage() {
             className="flex flex-col sm:flex-row gap-4 mt-8 w-full"
           >
             <Button
-              className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg"
+              className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200"
               onClick={() => window.location.href = '/projects'}
             >
               See All Projects
             </Button>
             <Button
-              className="flex-1 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 hover:from-zinc-200 hover:to-zinc-300 dark:hover:from-zinc-600 dark:hover:to-zinc-500 text-zinc-800 dark:text-zinc-100 border-0 shadow-lg"
+              className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200"
               onClick={() => window.location.href = '/contact'}
             >
               Get Started Now

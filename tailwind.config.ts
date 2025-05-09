@@ -77,10 +77,12 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       screens: {
-        'xs': '480px',
-        'tablet': '768px',
-        'laptop': '1024px',
-        'desktop': '1280px',
+        'xs': '480px',      // Small phones
+        'sm': '640px',      // Large phones
+        'md': '768px',      // Tablets
+        'lg': '1024px',     // Small laptops
+        'xl': '1280px',     // Large laptops
+        '2xl': '1536px',    // Desktops
       },
     },
   },

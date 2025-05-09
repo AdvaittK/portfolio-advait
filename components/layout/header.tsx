@@ -78,7 +78,7 @@ export default function Header() {
       <AnimatePresence mode="wait">
         <motion.nav 
           key={pathname}
-          className="fixed top-0 left-0 right-0 z-[9990] px-6 py-4"
+          className="fixed top-2 sm:top-3 md:top-4 left-0 right-0 z-[9990] px-4 sm:px-6 md:px-8"
           initial={{ 
             y: -100, 
             opacity: 0,
@@ -102,9 +102,9 @@ export default function Header() {
         >
           <div className="max-w-6xl mx-auto">
             <motion.div 
-              className="rounded-3xl shadow-2xl border border-zinc-200/60 dark:border-zinc-700/60 transition-all duration-300 backdrop-blur-md"
+              className="rounded-2xl sm:rounded-3xl shadow-2xl border border-zinc-200/60 dark:border-zinc-700/60 transition-all duration-300 backdrop-blur-md"
             >
-              <div className="flex justify-between items-center px-8 py-5">
+              <div className="flex justify-between items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5">
                 {/* Logo with gradient effect */}
                 <motion.div 
                   className="flex items-center"
@@ -113,10 +113,10 @@ export default function Header() {
                   transition={{ duration: 0.4, delay: 0.2 }}
                 >
                   <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-                    <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2.5 rounded-2xl shadow-sm">
-                      <LogoMark className="w-7 h-7 text-white dark:text-zinc-900" />
+                    <div className="bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl shadow-sm">
+                      <LogoMark className="w-6 h-6 sm:w-7 sm:h-7 text-white dark:text-zinc-900" />
                     </div>
-                    <span className="ml-3 font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 relative drop-shadow dark:drop-shadow-[0_4px_32px_rgba(255,255,255,0.25)]"
+                    <span className="ml-2 sm:ml-3 font-bold text-lg sm:text-xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400 relative drop-shadow dark:drop-shadow-[0_4px_32px_rgba(255,255,255,0.25)]"
                       style={{
                         textShadow: '0 2px 16px rgba(0,0,0,0.10)',
                         filter: 'drop-shadow(0 2px 16px rgba(255,255,255,0.10))',
@@ -135,7 +135,7 @@ export default function Header() {
                 </motion.div>
                 
                 {/* Navigation items */}
-                <ul className="hidden md:flex items-center gap-8">
+                <ul className="hidden md:flex items-center gap-4 lg:gap-8">
                   {[
                     { name: "Home", href: "/" },
                     { name: "About", href: "/about" },
@@ -153,7 +153,7 @@ export default function Header() {
                       <Link 
                         href={item.href}
                         className={cn(
-                          "relative px-4 py-2.5 text-base font-medium transition-all",
+                          "relative px-2 sm:px-3 md:px-4 py-2 text-sm sm:text-base font-medium transition-all",
                           "text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white"
                         )}
                       >
@@ -186,7 +186,7 @@ export default function Header() {
 
                 {/* Right side controls */}
                 <motion.div 
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-2 sm:gap-4"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 }}
@@ -194,7 +194,7 @@ export default function Header() {
                   {mounted && (
                     <button
                       onClick={toggleDarkMode}
-                      className="p-3 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200/80 dark:hover:bg-zinc-700/80 transition-colors shadow-sm backdrop-blur-sm"
+                      className="p-2 sm:p-3 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200/80 dark:hover:bg-zinc-700/80 transition-colors shadow-sm backdrop-blur-sm"
                       aria-label="Toggle dark mode"
                     >
                       <AnimatePresence mode="wait">
@@ -205,14 +205,14 @@ export default function Header() {
                           exit={{ scale: 0.5, rotate: 30, opacity: 0 }}
                           transition={{ duration: 0.2 }}
                         >
-                          {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                          {theme === "dark" ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
                         </motion.div>
                       </AnimatePresence>
                     </button>
                   )}
                   <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden p-3 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200/80 dark:hover:bg-zinc-700/80 transition-colors shadow-sm backdrop-blur-sm"
+                    className="md:hidden p-2 sm:p-3 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200/80 dark:hover:bg-zinc-700/80 transition-colors shadow-sm backdrop-blur-sm"
                     aria-label="Toggle mobile menu"
                   >
                     <AnimatePresence mode="wait">
@@ -223,7 +223,7 @@ export default function Header() {
                         exit={{ scale: 0.5, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        {mobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
                       </motion.div>
                     </AnimatePresence>
                   </button>

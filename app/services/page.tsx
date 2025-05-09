@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check } from "lucide-react"
+import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check, HelpCircle } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -317,11 +317,29 @@ export default function ServicesPage() {
               <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
                 <div className="flex items-center justify-center gap-1">
                   <span className="text-3xl font-bold">$299</span>
-                  <span className="text-zinc-600 dark:text-zinc-400">onwards</span>
+                  <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
+                  <div className="relative flex items-center">
+                    <span className="group">
+                      <HelpCircle className="w-4 h-4 ml-1 text-zinc-500 dark:text-zinc-400 cursor-help align-middle" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        Final price may vary based on specific requirements such as:
+                        <ul className="mt-2 space-y-1">
+                          <li>• Custom animations and interactions</li>
+                          <li>• Special integrations and APIs</li>
+                          <li>• Additional pages or features</li>
+                          <li>• Content management needs</li>
+                        </ul>
+                      </div>
+                    </span>
+                  </div>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
                   A professional online presence for individuals or small businesses
                 </p>
+              </div>
+              <div className="w-full flex flex-col items-center mt-2">
+                <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
+                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium text-center">Ideal for individuals and startups.</span>
               </div>
             </div>
             <div className="p-8 flex-1 flex flex-col">
@@ -360,7 +378,7 @@ export default function ServicesPage() {
                 </li>
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Get Started
                 </Button>
               </div>
@@ -403,11 +421,29 @@ export default function ServicesPage() {
               <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
                 <div className="flex items-center justify-center gap-1">
                   <span className="text-3xl font-bold">$549</span>
-                  <span className="text-zinc-600 dark:text-zinc-400">onwards</span>
+                  <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
+                  <div className="relative flex items-center">
+                    <span className="group">
+                      <HelpCircle className="w-4 h-4 ml-1 text-zinc-500 dark:text-zinc-400 cursor-help align-middle" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        Final price may vary based on specific requirements such as:
+                        <ul className="mt-2 space-y-1">
+                          <li>• Custom animations and interactions</li>
+                          <li>• Special integrations and APIs</li>
+                          <li>• Additional pages or features</li>
+                          <li>• Content management needs</li>
+                        </ul>
+                      </div>
+                    </span>
+                  </div>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
                   A more comprehensive website for established businesses
                 </p>
+              </div>
+              <div className="w-full flex flex-col items-center mt-2">
+                <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
+                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium text-center">Perfect for growing businesses ready to scale online.</span>
               </div>
             </div>
             <div className="p-8 flex-1 flex flex-col">
@@ -446,7 +482,7 @@ export default function ServicesPage() {
                 </li>
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Get Started
                 </Button>
               </div>
@@ -469,11 +505,29 @@ export default function ServicesPage() {
               <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
                 <div className="flex items-center justify-center gap-1">
                   <span className="text-3xl font-bold">$899</span>
-                  <span className="text-zinc-600 dark:text-zinc-400">onwards</span>
+                  <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
+                  <div className="relative flex items-center">
+                    <span className="group">
+                      <HelpCircle className="w-4 h-4 ml-1 text-zinc-500 dark:text-zinc-400 cursor-help align-middle" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                        Final price may vary based on specific requirements such as:
+                        <ul className="mt-2 space-y-1">
+                          <li>• Custom animations and interactions</li>
+                          <li>• Special integrations and APIs</li>
+                          <li>• Additional pages or features</li>
+                          <li>• Content management needs</li>
+                        </ul>
+                      </div>
+                    </span>
+                  </div>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
                   A fully-featured website with additional functionality
                 </p>
+              </div>
+              <div className="w-full flex flex-col items-center mt-2">
+                <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
+                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium text-center">Best suited for brands needing high-conversion features.</span>
               </div>
             </div>
             <div className="p-8 flex-1 flex flex-col">
@@ -512,7 +566,7 @@ export default function ServicesPage() {
                 </li>
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Get Started
                 </Button>
               </div>
@@ -589,7 +643,7 @@ export default function ServicesPage() {
                 </ul>
               </div>
               <div className="mt-8">
-                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Enquire Now
                 </Button>
               </div>
@@ -635,7 +689,7 @@ export default function ServicesPage() {
                 </ul>
               </div>
               <div className="mt-8">
-                <Button className="w-full rounded-full bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Customize Your Package
                 </Button>
               </div>
@@ -794,7 +848,7 @@ export default function ServicesPage() {
             whileTap="tap"
           >
             <Button
-              className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg transition-all duration-200 group"
+              className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 group"
             >
               Get a Quote
               <motion.div

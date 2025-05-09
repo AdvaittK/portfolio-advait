@@ -9,6 +9,7 @@ export default function CustomCursor() {
   const [clicked, setClicked] = useState(false)
   const [linkHovered, setLinkHovered] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const { resolvedTheme } = useTheme()
   
   // Use Framer Motion's values for smoother animation
@@ -53,10 +54,32 @@ export default function CustomCursor() {
 
   useEffect(() => {
     setMounted(true)
+    
+    // Check if device is mobile or touch device
+    const checkDevice = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isMobileWidth = window.matchMedia('(max-width: 768px)').matches;
+      setIsMobile(isTouchDevice || isMobileWidth);
+    }
+    
+    // Initial check
+    checkDevice()
+    
+    // Add resize listener
+    window.addEventListener('resize', checkDevice)
+    
+    return () => {
+      window.removeEventListener('resize', checkDevice)
+    }
   }, [])
 
   useEffect(() => {
-    if (!mounted) return
+    if (!mounted || isMobile) {
+      // Remove custom cursor classes when on mobile
+      document.body.classList.remove("custom-cursor-enabled")
+      document.documentElement.style.removeProperty('--cursor-trail-opacity')
+      return
+    }
 
     document.body.classList.add("custom-cursor-enabled")
     document.documentElement.style.setProperty('--cursor-trail-opacity', '1')
@@ -143,9 +166,9 @@ export default function CustomCursor() {
       document.body.classList.remove("custom-cursor-enabled")
       document.documentElement.style.removeProperty('--cursor-trail-opacity')
     }
-  }, [mounted, mouseX, mouseY])
+  }, [mounted, mouseX, mouseY, isMobile])
 
-  if (!mounted) return null;
+  if (!mounted || isMobile) return null;
 
   return (
     <>

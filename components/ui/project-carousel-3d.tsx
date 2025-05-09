@@ -240,7 +240,7 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
       <div className="text-center mt-48 relative z-20">
         <Link href="/projects">
           <Button
-            className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 shadow-lg transition-all duration-200 group"
+            className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 group"
           >
             View All Projects
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

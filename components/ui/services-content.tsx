@@ -324,7 +324,7 @@ export function ServicesContent() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="w-full">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Get Started
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -378,7 +378,7 @@ export function ServicesContent() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="w-full">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Get Started
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -432,7 +432,7 @@ export function ServicesContent() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="w-full">
+                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
                   Contact Us
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
