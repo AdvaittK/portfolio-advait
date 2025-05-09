@@ -339,7 +339,6 @@ export default function ServicesPage() {
               </div>
               <div className="w-full flex flex-col items-center mt-2">
                 <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium text-center">Ideal for individuals and startups.</span>
               </div>
             </div>
             <div className="p-8 flex-1 flex flex-col">
@@ -350,19 +349,19 @@ export default function ServicesPage() {
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  3-5 pages (Home, About, Services, etc.)
+                  Modern, minimalist design
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Mobile-optimized design
+                  Mobile-first approach
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Basic SEO setup
+                  Basic SEO optimization
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  GDPR-compliant contact form
+                  Contact form with spam protection
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
@@ -443,38 +442,37 @@ export default function ServicesPage() {
               </div>
               <div className="w-full flex flex-col items-center mt-2">
                 <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium text-center">Perfect for growing businesses ready to scale online.</span>
               </div>
             </div>
             <div className="p-8 flex-1 flex flex-col">
               <ul className="space-y-3 mb-8 w-full text-left">
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  All ESSENTIAL features
+                  All Essential features included
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Up to 8 pages of content
+                  Advanced animations & interactions
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Team/staff profiles
+                  Custom content management system
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Client testimonials section
+                  Blog/news section with admin panel
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Blog/news capability
+                  Team/staff profiles & testimonials
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Google Maps integration
+                  Advanced SEO & analytics setup
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Enhanced SEO features
+                  Google Maps & social media integration
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
@@ -527,38 +525,37 @@ export default function ServicesPage() {
               </div>
               <div className="w-full flex flex-col items-center mt-2">
                 <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium text-center">Best suited for brands needing high-conversion features.</span>
               </div>
             </div>
             <div className="p-8 flex-1 flex flex-col">
               <ul className="space-y-3 mb-8 w-full text-left">
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  All ENHANCED features
+                  All Enhanced features included
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Custom design elements
+                  Custom booking/appointment system
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Basic enquiry/booking system
+                  Advanced user authentication
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Document download area
+                  Document management system
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  FAQ section
+                  Interactive image/video gallery
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Image gallery
+                  Multi-language support
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Advanced contact forms
+                  Advanced form builder & validation
                 </li>
                 <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
                   <Check className="w-4 h-4 mr-2 text-green-500" />
