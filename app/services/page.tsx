@@ -355,19 +355,20 @@ export default function ServicesPage() {
                 <div className="w-full flex flex-col items-center relative overflow-visible">
                   <div className="flex items-center justify-center gap-1 relative z-10">
                     <motion.span 
-                      className="text-3xl font-bold relative"
+                      className="text-3xl font-bold relative bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-100"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-base align-top -mt-3">$</span>299
+                      <span className="text-base align-top mr-0.5">$</span>299
                     </motion.span>
                     <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
+                  <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
+                    A professional online presence for individuals or small businesses
+                  </p>
                 </div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
-                  A professional online presence for individuals or small businesses
-                </p>
               </div>
               <div className="w-full flex flex-col items-center mt-2">
                 <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
@@ -455,19 +456,20 @@ export default function ServicesPage() {
                 <div className="w-full flex flex-col items-center relative overflow-visible">
                   <div className="flex items-center justify-center gap-1 relative z-10">
                     <motion.span 
-                      className="text-3xl font-bold relative"
+                      className="text-3xl font-bold relative bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-100"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-base align-top -mt-3">$</span>549
+                      <span className="text-base align-top mr-0.5">$</span>549
                     </motion.span>
                     <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
+                  <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
+                    A more comprehensive website for established businesses
+                  </p>
                 </div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
-                  A more comprehensive website for established businesses
-                </p>
               </div>
               <div className="w-full flex flex-col items-center mt-2">
                 <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
@@ -533,19 +535,20 @@ export default function ServicesPage() {
                 <div className="w-full flex flex-col items-center relative overflow-visible">
                   <div className="flex items-center justify-center gap-1 relative z-10">
                     <motion.span 
-                      className="text-3xl font-bold relative"
+                      className="text-3xl font-bold relative bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-100"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-base align-top -mt-3">$</span>899
+                      <span className="text-base align-top mr-0.5">$</span>899
                     </motion.span>
                     <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
+                  <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
+                    A fully-featured website with additional functionality
+                  </p>
                 </div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
-                  A fully-featured website with additional functionality
-                </p>
               </div>
               <div className="w-full flex flex-col items-center mt-2">
                 <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>

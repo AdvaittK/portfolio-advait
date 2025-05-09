@@ -9,6 +9,7 @@ import LoadingScreen from "@/components/loading-screen"
 import TransitionOverlay from "@/components/transition-overlay"
 import ClientLayout from "@/components/client-layout"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
+import { Analytics } from "@vercel/analytics/next"
   
 const inter = Inter({ subsets: ["latin"] })
 
@@ -85,6 +86,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <CustomCursor />
+            <Analytics />
           </div>
         </ThemeProvider>
       </body>
