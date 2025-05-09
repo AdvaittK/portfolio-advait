@@ -129,7 +129,7 @@ const titleVariants = {
 const descriptionVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
-    opacity: 1,
+    opacity: 1, 
     y: 0,
     transition: {
       type: "spring",
@@ -165,6 +165,39 @@ const featureVariants = {
     }
   }
 }
+
+const essentialFeatures = [
+  "Custom-coded responsive website",
+  "Modern, minimalist design",
+  "Mobile-first approach",
+  "Basic SEO optimization",
+  "Contact form with spam protection",
+  "SSL security certificate",
+  "Social media integration",
+  "2-3 weeks delivery"
+];
+
+const enhancedFeatures = [
+  "All Essential features included",
+  "Advanced animations & interactions",
+  "Custom content management system",
+  "Blog/news section with admin panel",
+  "Team/staff profiles & testimonials",
+  "Advanced SEO & analytics setup",
+  "Google Maps & social media integration",
+  "3-4 weeks delivery"
+];
+
+const premiumFeatures = [
+  "All Enhanced features included",
+  "Custom booking/appointment system",
+  "Advanced user authentication",
+  "Document management system",
+  "Interactive image/video gallery",
+  "Multi-language support",
+  "Advanced form builder & validation",
+  "4-5 weeks delivery"
+];
 
 export default function ServicesPage() {
   return (
@@ -305,32 +338,31 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full group"
           >
-            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50">
-              <div className="mb-6 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-100/50 via-transparent to-zinc-200/50 dark:from-zinc-700/50 dark:via-transparent dark:to-zinc-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(0,0,0,0))]"></div>
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-100/20 via-transparent to-transparent dark:from-zinc-700/20"></div>
+              <div className="mb-6 text-center relative">
                 <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                   Essential Professional Presence
                 </h3>
                 <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                <div className="flex items-center justify-center gap-1">
-                  <span className="text-3xl font-bold">$299</span>
-                  <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
-                  <div className="relative flex items-center">
-                    <span className="group">
-                      <HelpCircle className="w-4 h-4 ml-1 text-zinc-500 dark:text-zinc-400 cursor-help align-middle" />
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        Final price may vary based on specific requirements such as:
-                        <ul className="mt-2 space-y-1">
-                          <li>• Custom animations and interactions</li>
-                          <li>• Special integrations and APIs</li>
-                          <li>• Additional pages or features</li>
-                          <li>• Content management needs</li>
-                        </ul>
-                      </div>
-                    </span>
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="w-full flex flex-col items-center relative overflow-visible">
+                  <div className="flex items-center justify-center gap-1 relative z-10">
+                    <motion.span 
+                      className="text-3xl font-bold relative"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <span className="text-base align-top -mt-3">$</span>299
+                    </motion.span>
+                    <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
@@ -338,48 +370,44 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="w-full flex flex-col items-center mt-2">
-                <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
+                <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
               </div>
             </div>
-            <div className="p-8 flex-1 flex flex-col">
-              <ul className="space-y-3 mb-8 w-full text-left">
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Custom-coded responsive website
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Modern, minimalist design
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Mobile-first approach
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Basic SEO optimization
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Contact form with spam protection
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  SSL security certificate
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Social media integration
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  2-3 weeks delivery
-                </li>
+            <div className="p-8 flex-1 flex flex-col relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-100/10 to-zinc-100/20 dark:via-zinc-800/10 dark:to-zinc-800/20"></div>
+              <ul className="space-y-3 mb-8 w-full text-left relative">
+                {essentialFeatures.map((feature, idx) => (
+                  <motion.li 
+                    key={idx}
+                    className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item"
+                    variants={featureVariants}
+                    custom={idx}
+                  >
+                    <motion.div 
+                      className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300"
+                    />
+                    <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">{feature}</span>
+                  </motion.li>
+                ))}
               </ul>
-              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
-                  Get Started
-                </Button>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
+                <div className="flex items-center justify-between gap-2">
+                  <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                    Get Started
+                  </Button>
+                  <div className="group/tooltip inline-block">
+                    <HelpCircle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 cursor-help hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-200" />
+                    <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-[100]">
+                      Final price may vary based on specific requirements such as:
+                      <ul className="mt-2 space-y-1">
+                        <li>• Custom animations and interactions</li>
+                        <li>• Special integrations and APIs</li>
+                        <li>• Additional pages or features</li>
+                        <li>• Content management needs</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -388,11 +416,13 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-500/30 dark:border-green-400/30 transform scale-105 z-10 flex flex-col h-full"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-500/30 dark:border-green-400/30 transform scale-105 z-10 flex flex-col h-full group"
           >
-            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50">
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-100/50 via-transparent to-zinc-200/50 dark:from-zinc-700/50 dark:via-transparent dark:to-zinc-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(0,0,0,0))]"></div>
+            <div className="absolute top-0 left-0 right-0 flex justify-center pt-4 z-20">
               <motion.div 
-                className="mb-4 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 px-4 py-1 rounded-full shadow-lg border border-zinc-200/20 dark:border-zinc-700/20 whitespace-nowrap flex items-center gap-1.5"
+                className="bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 px-4 py-1 rounded-full shadow-lg border border-zinc-200/20 dark:border-zinc-700/20 whitespace-nowrap flex items-center gap-1.5"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
@@ -411,29 +441,28 @@ export default function ServicesPage() {
                 />
                 <span className="text-xs font-medium text-white">Most Popular</span>
               </motion.div>
-              <div className="mb-6 text-center">
+            </div>
+            <div className="p-8 pt-16 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-100/20 via-transparent to-transparent dark:from-zinc-700/20"></div>
+              <div className="mb-6 text-center relative">
                 <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                   Enhanced Professional Solution
                 </h3>
                 <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                <div className="flex items-center justify-center gap-1">
-                  <span className="text-3xl font-bold">$549</span>
-                  <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
-                  <div className="relative flex items-center">
-                    <span className="group">
-                      <HelpCircle className="w-4 h-4 ml-1 text-zinc-500 dark:text-zinc-400 cursor-help align-middle" />
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        Final price may vary based on specific requirements such as:
-                        <ul className="mt-2 space-y-1">
-                          <li>• Custom animations and interactions</li>
-                          <li>• Special integrations and APIs</li>
-                          <li>• Additional pages or features</li>
-                          <li>• Content management needs</li>
-                        </ul>
-                      </div>
-                    </span>
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="w-full flex flex-col items-center relative overflow-visible">
+                  <div className="flex items-center justify-center gap-1 relative z-10">
+                    <motion.span 
+                      className="text-3xl font-bold relative"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <span className="text-base align-top -mt-3">$</span>549
+                    </motion.span>
+                    <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
@@ -441,48 +470,44 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="w-full flex flex-col items-center mt-2">
-                <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
+                <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
               </div>
             </div>
-            <div className="p-8 flex-1 flex flex-col">
-              <ul className="space-y-3 mb-8 w-full text-left">
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  All Essential features included
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Advanced animations & interactions
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Custom content management system
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Blog/news section with admin panel
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Team/staff profiles & testimonials
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Advanced SEO & analytics setup
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Google Maps & social media integration
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  3-4 weeks delivery
-                </li>
+            <div className="p-8 flex-1 flex flex-col relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-100/10 to-zinc-100/20 dark:via-zinc-800/10 dark:to-zinc-800/20"></div>
+              <ul className="space-y-3 mb-8 w-full text-left relative">
+                {enhancedFeatures.map((feature, idx) => (
+                  <motion.li 
+                    key={idx}
+                    className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item"
+                    variants={featureVariants}
+                    custom={idx}
+                  >
+                    <motion.div 
+                      className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-green-400 to-green-500 mr-2 group-hover/item:scale-150 transition-transform duration-300"
+                    />
+                    <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">{feature}</span>
+                  </motion.li>
+                ))}
               </ul>
-              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
-                  Get Started
-                </Button>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
+                <div className="flex items-center justify-between gap-2">
+                  <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                    Get Started
+                  </Button>
+                  <div className="group/tooltip inline-block">
+                    <HelpCircle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 cursor-help hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-200" />
+                    <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-[100]">
+                      Final price may vary based on specific requirements such as:
+                      <ul className="mt-2 space-y-1">
+                        <li>• Custom animations and interactions</li>
+                        <li>• Special integrations and APIs</li>
+                        <li>• Additional pages or features</li>
+                        <li>• Content management needs</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -491,32 +516,31 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full"
+            className="relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full group"
           >
-            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50">
-              <div className="mb-6 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-100/50 via-transparent to-zinc-200/50 dark:from-zinc-700/50 dark:via-transparent dark:to-zinc-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(0,0,0,0))]"></div>
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-100/20 via-transparent to-transparent dark:from-zinc-700/20"></div>
+              <div className="mb-6 text-center relative">
                 <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                   Complete Business Platform
                 </h3>
                 <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                <div className="flex items-center justify-center gap-1">
-                  <span className="text-3xl font-bold">$899</span>
-                  <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
-                  <div className="relative flex items-center">
-                    <span className="group">
-                      <HelpCircle className="w-4 h-4 ml-1 text-zinc-500 dark:text-zinc-400 cursor-help align-middle" />
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-                        Final price may vary based on specific requirements such as:
-                        <ul className="mt-2 space-y-1">
-                          <li>• Custom animations and interactions</li>
-                          <li>• Special integrations and APIs</li>
-                          <li>• Additional pages or features</li>
-                          <li>• Content management needs</li>
-                        </ul>
-                      </div>
-                    </span>
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="w-full flex flex-col items-center relative overflow-visible">
+                  <div className="flex items-center justify-center gap-1 relative z-10">
+                    <motion.span 
+                      className="text-3xl font-bold relative"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <span className="text-base align-top -mt-3">$</span>899
+                    </motion.span>
+                    <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 text-center">
@@ -524,48 +548,44 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="w-full flex flex-col items-center mt-2">
-                <div className="w-16 h-px bg-zinc-200 dark:bg-zinc-700 mb-2"></div>
+                <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
               </div>
             </div>
-            <div className="p-8 flex-1 flex flex-col">
-              <ul className="space-y-3 mb-8 w-full text-left">
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  All Enhanced features included
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Custom booking/appointment system
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Advanced user authentication
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Document management system
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Interactive image/video gallery
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Multi-language support
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  Advanced form builder & validation
-                </li>
-                <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                  <Check className="w-4 h-4 mr-2 text-green-500" />
-                  4-5 weeks delivery
-                </li>
+            <div className="p-8 flex-1 flex flex-col relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-100/10 to-zinc-100/20 dark:via-zinc-800/10 dark:to-zinc-800/20"></div>
+              <ul className="space-y-3 mb-8 w-full text-left relative">
+                {premiumFeatures.map((feature, idx) => (
+                  <motion.li 
+                    key={idx}
+                    className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item"
+                    variants={featureVariants}
+                    custom={idx}
+                  >
+                    <motion.div 
+                      className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300"
+                    />
+                    <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">{feature}</span>
+                  </motion.li>
+                ))}
               </ul>
-              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
-                  Get Started
-                </Button>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
+                <div className="flex items-center justify-between gap-2">
+                  <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                    Get Started
+                  </Button>
+                  <div className="group/tooltip inline-block">
+                    <HelpCircle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 cursor-help hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-200" />
+                    <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-[100]">
+                      Final price may vary based on specific requirements such as:
+                      <ul className="mt-2 space-y-1">
+                        <li>• Custom animations and interactions</li>
+                        <li>• Special integrations and APIs</li>
+                        <li>• Additional pages or features</li>
+                        <li>• Content management needs</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -861,4 +881,4 @@ export default function ServicesPage() {
       </motion.div>
     </PageContainer>
   )
-} 
+}
