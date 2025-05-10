@@ -71,7 +71,7 @@ export const SkillsRadarBrowser = ({
   }, [activeTab])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return
+    if (!containerRef.current || e.target instanceof HTMLButtonElement || e.buttons !== 0) return
     
     const rect = containerRef.current.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
@@ -86,6 +86,16 @@ export const SkillsRadarBrowser = ({
     mouseY.set(0)
     setIsHovered(false)
   }
+
+  const handleTabClick = (tab: 'frontend' | 'backend') => {
+    setActiveTab(tab)
+    // Reset motion values when tab changes
+    mouseX.set(0)
+    mouseY.set(0)
+  }
+
+  // Add state for tracking if mouse is down
+  const [isMouseDown, setIsMouseDown] = useState(false)
 
   const frontendSkills = [
     { name: "React", level: 90, color: "from-blue-400 to-blue-600" },
@@ -153,13 +163,15 @@ router.get('/api/skills', async (req, res) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       style={{
-        rotateX,
-        rotateY,
+        rotateX: isMouseDown ? 0 : rotateX,
+        rotateY: isMouseDown ? 0 : rotateY,
         transformStyle: "preserve-3d"
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsHovered(true)}
+      onMouseDown={() => setIsMouseDown(true)}
+      onMouseUp={() => setIsMouseDown(false)}
       className={cn(
         "relative w-full max-h-[550px] rounded-2xl overflow-hidden",
         "backdrop-blur-sm bg-gradient-to-br from-zinc-50 to-zinc-200 dark:from-zinc-900 dark:to-zinc-950",
@@ -206,7 +218,7 @@ router.get('/api/skills', async (req, res) => {
       {/* Browser tabs */}
       <div className="flex h-8 border-b border-zinc-200/50 dark:border-zinc-700/50">
         <button
-          onClick={() => setActiveTab('frontend')}
+          onClick={() => handleTabClick('frontend')}
           type="button"
           aria-selected={activeTab === 'frontend'}
           className={`flex items-center px-4 h-full text-sm font-medium relative z-10 cursor-pointer transition-all duration-200 ${
@@ -214,11 +226,12 @@ router.get('/api/skills', async (req, res) => {
               ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-r border-zinc-200/50 dark:border-zinc-700/50'
               : 'bg-zinc-100/50 dark:bg-zinc-800/70 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
           }`}
+          style={{ userSelect: 'none' }}
         >
           Frontend
         </button>
         <button
-          onClick={() => setActiveTab('backend')}
+          onClick={() => handleTabClick('backend')}
           type="button"
           aria-selected={activeTab === 'backend'}
           className={`flex items-center px-4 h-full text-sm font-medium relative z-10 cursor-pointer transition-all duration-200 ${
@@ -226,13 +239,19 @@ router.get('/api/skills', async (req, res) => {
               ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-r border-zinc-200/50 dark:border-zinc-700/50'
               : 'bg-zinc-100/50 dark:bg-zinc-800/70 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
           }`}
+          style={{ userSelect: 'none' }}
         >
           Backend
         </button>
       </div>
 
       {/* Content area */}
-      <div className="flex flex-col overflow-hidden content-area" style={{ height: "calc(100% - 58px)" }}>
+      <div 
+        className="flex flex-col overflow-hidden content-area" 
+        style={{ height: "calc(100% - 58px)" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         {/* Main content */}
         <div className="flex flex-col sm:flex-row flex-1 overflow-hidden h-full">
           {/* Code Editor Section */}
