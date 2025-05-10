@@ -22,7 +22,7 @@ A modern, full-stack developer portfolio built with Next.js, React, and Tailwind
 
 ### Prerequisites
 - Node.js (v18+ recommended)
-- npm or yarn
+- npm or yarn or pnpm
 
 ### Installation
 ```bash
