@@ -14,6 +14,7 @@ import {
   DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 import Portal from "@/components/Portal";
+import { SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiFirebase, SiOpenai, SiFastapi, SiPytorch, SiJavascript, SiPython, SiNodedotjs, SiMongodb, SiPostgresql, SiDocker, SiVercel } from "react-icons/si";
 
 // Define project type
 interface Project {
@@ -77,7 +78,7 @@ export default function ProjectsPage() {
       tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel", "Portfolio"],
       image: "/new_homepage.png",
       demoLink: "https://advaitt.tech",
-      githubLink: "", // To be added later
+      githubLink: "https://github.com/AdvaittK/portfolio-advait",
       features: [
         "Fully responsive, custom-designed UI",
         "Animated page transitions and interactive elements",
@@ -241,12 +242,36 @@ export default function ProjectsPage() {
         document.body.style.overflow = originalOverflow;
       };
     }, []);
+
     // Shorten description if too long
     const shortDescription = project.longDescription.length > 220
       ? project.longDescription.slice(0, 210) + '...'
       : project.longDescription;
+
     // Show only first 4 features
     const featuresToShow = project.features.slice(0, 4);
+
+    // Updated technology icon mapping with colorful icons
+    const getTechnologyIcon = (tech: string) => {
+      const techLower = tech.toLowerCase();
+      if (techLower.includes('next')) return <SiNextdotjs className="w-5 h-5 text-black dark:text-white" />;
+      if (techLower.includes('react')) return <SiReact className="w-5 h-5 text-[#61DAFB]" />;
+      if (techLower.includes('typescript')) return <SiTypescript className="w-5 h-5 text-[#3178C6]" />;
+      if (techLower.includes('tailwind')) return <SiTailwindcss className="w-5 h-5 text-[#06B6D4]" />;
+      if (techLower.includes('firebase')) return <SiFirebase className="w-5 h-5 text-[#FFCA28]" />;
+      if (techLower.includes('openai')) return <SiOpenai className="w-5 h-5 text-[#412991]" />;
+      if (techLower.includes('fastapi')) return <SiFastapi className="w-5 h-5 text-[#009688]" />;
+      if (techLower.includes('pytorch')) return <SiPytorch className="w-5 h-5 text-[#EE4C2C]" />;
+      if (techLower.includes('javascript')) return <SiJavascript className="w-5 h-5 text-[#F7DF1E]" />;
+      if (techLower.includes('python')) return <SiPython className="w-5 h-5 text-[#3776AB]" />;
+      if (techLower.includes('node')) return <SiNodedotjs className="w-5 h-5 text-[#339933]" />;
+      if (techLower.includes('mongodb')) return <SiMongodb className="w-5 h-5 text-[#47A248]" />;
+      if (techLower.includes('postgresql')) return <SiPostgresql className="w-5 h-5 text-[#336791]" />;
+      if (techLower.includes('docker')) return <SiDocker className="w-5 h-5 text-[#2496ED]" />;
+      if (techLower.includes('vercel')) return <SiVercel className="w-5 h-5 text-black dark:text-white" />;
+      return <Code2 className="w-5 h-5" />;
+    };
+
     return (
       <motion.div
         initial={{ opacity: 0 }}
@@ -259,7 +284,7 @@ export default function ProjectsPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative w-full max-w-[55vw] h-[50vh] bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden"
+          className="relative w-full max-w-3xl bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden"
           onClick={e => e.stopPropagation()}
         >
           <div className="absolute top-4 right-4 z-10">
@@ -272,58 +297,84 @@ export default function ProjectsPage() {
               <X className="w-6 h-6" />
             </Button>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-            <div className="relative h-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900">
-              <img
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                className="max-h-[40vh] max-w-full object-contain rounded-xl shadow-md bg-white dark:bg-zinc-900"
-                style={{ margin: 'auto' }}
-              />
-            </div>
-            <div className="p-8 lg:p-10 flex flex-col justify-center h-full">
-              <h3 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+
+          <div className="p-8 lg:p-10">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                 {project.title}
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-6 text-base">
-                {shortDescription}
-              </p>
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold mb-2">Key Features:</h4>
-                <ul className="space-y-2">
-                  {featuresToShow.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-zinc-600 dark:text-zinc-400 text-base">
-                      <div className="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600 mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-xs px-2 py-0.5"
+              {project.stats && (
+                <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  <div className="flex items-center">
+                    <Star className="w-4 h-4 mr-1" />
+                    {project.stats.stars}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <p className="text-zinc-600 dark:text-zinc-400 mb-8 text-base">
+              {shortDescription}
+            </p>
+
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <Code2 className="w-5 h-5" /> Key Features
+              </h4>
+              <ul className="space-y-3">
+                {featuresToShow.map((feature, idx) => (
+                  <li key={idx} className="flex items-start text-zinc-600 dark:text-zinc-400 text-base">
+                    <div className="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600 mt-2 mr-3" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <Code2 className="w-5 h-5" /> Technologies Used
+              </h4>
+              <div className="flex flex-wrap gap-3">
+                {project.technologies?.map((tech) => (
+                  <div
+                    key={tech}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-sm hover:scale-105 transition-transform duration-200"
                   >
-                    {tag}
-                  </Badge>
+                    {getTechnologyIcon(tech)}
+                    {tech}
+                  </div>
                 ))}
               </div>
-              <div className="flex gap-4">
-                <Button
-                  className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-base py-4"
-                  onClick={() => window.open(project.demoLink, '_blank')}
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.tags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant="outline"
+                  className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-xs px-2 py-0.5"
                 >
-                  <Globe className="w-5 h-5 mr-2" /> Live Demo
-                </Button>
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+
+            <div className="flex gap-4">
+              <Button
+                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-base py-4"
+                onClick={() => window.open(project.demoLink, '_blank')}
+              >
+                <Globe className="w-5 h-5 mr-2" /> Live Demo
+              </Button>
+              {project.githubLink && (
                 <Button
                   className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-base py-4"
                   onClick={() => window.open(project.githubLink, '_blank')}
                 >
                   <Github className="w-5 h-5 mr-2" /> Source Code
                 </Button>
-              </div>
+              )}
             </div>
           </div>
         </motion.div>
