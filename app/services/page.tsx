@@ -394,8 +394,8 @@ export default function ServicesPage() {
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
                 <div className="flex items-center justify-between gap-2">
-                  <Link href="/contact">
-                    <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                  <Link href="/contact" className="w-full">
+                    <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
                       Get Started
                     </Button>
                   </Link>
@@ -497,8 +497,8 @@ export default function ServicesPage() {
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
                 <div className="flex items-center justify-between gap-2">
-                  <Link href="/contact">
-                    <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                  <Link href="/contact" className="w-full">
+                    <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
                       Get Started
                     </Button>
                   </Link>
@@ -578,8 +578,8 @@ export default function ServicesPage() {
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
                 <div className="flex items-center justify-between gap-2">
-                  <Link href="/contact">
-                    <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                  <Link href="/contact" className="w-full">
+                    <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
                       Get Started
                     </Button>
                   </Link>
