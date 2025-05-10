@@ -254,22 +254,22 @@ export default function ProjectsPage() {
     // Updated technology icon mapping with colorful icons
     const getTechnologyIcon = (tech: string) => {
       const techLower = tech.toLowerCase();
-      if (techLower.includes('next')) return <SiNextdotjs className="w-5 h-5 text-black dark:text-white" />;
-      if (techLower.includes('react')) return <SiReact className="w-5 h-5 text-[#61DAFB]" />;
-      if (techLower.includes('typescript')) return <SiTypescript className="w-5 h-5 text-[#3178C6]" />;
-      if (techLower.includes('tailwind')) return <SiTailwindcss className="w-5 h-5 text-[#06B6D4]" />;
-      if (techLower.includes('firebase')) return <SiFirebase className="w-5 h-5 text-[#FFCA28]" />;
-      if (techLower.includes('openai')) return <SiOpenai className="w-5 h-5 text-[#412991]" />;
-      if (techLower.includes('fastapi')) return <SiFastapi className="w-5 h-5 text-[#009688]" />;
-      if (techLower.includes('pytorch')) return <SiPytorch className="w-5 h-5 text-[#EE4C2C]" />;
-      if (techLower.includes('javascript')) return <SiJavascript className="w-5 h-5 text-[#F7DF1E]" />;
-      if (techLower.includes('python')) return <SiPython className="w-5 h-5 text-[#3776AB]" />;
-      if (techLower.includes('node')) return <SiNodedotjs className="w-5 h-5 text-[#339933]" />;
-      if (techLower.includes('mongodb')) return <SiMongodb className="w-5 h-5 text-[#47A248]" />;
-      if (techLower.includes('postgresql')) return <SiPostgresql className="w-5 h-5 text-[#336791]" />;
-      if (techLower.includes('docker')) return <SiDocker className="w-5 h-5 text-[#2496ED]" />;
-      if (techLower.includes('vercel')) return <SiVercel className="w-5 h-5 text-black dark:text-white" />;
-      return <Code2 className="w-5 h-5" />;
+      if (techLower.includes('next')) return <SiNextdotjs className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />;
+      if (techLower.includes('react')) return <SiReact className="w-4 h-4 sm:w-5 sm:h-5 text-[#61DAFB]" />;
+      if (techLower.includes('typescript')) return <SiTypescript className="w-4 h-4 sm:w-5 sm:h-5 text-[#3178C6]" />;
+      if (techLower.includes('tailwind')) return <SiTailwindcss className="w-4 h-4 sm:w-5 sm:h-5 text-[#06B6D4]" />;
+      if (techLower.includes('firebase')) return <SiFirebase className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFCA28]" />;
+      if (techLower.includes('openai')) return <SiOpenai className="w-4 h-4 sm:w-5 sm:h-5 text-[#412991]" />;
+      if (techLower.includes('fastapi')) return <SiFastapi className="w-4 h-4 sm:w-5 sm:h-5 text-[#009688]" />;
+      if (techLower.includes('pytorch')) return <SiPytorch className="w-4 h-4 sm:w-5 sm:h-5 text-[#EE4C2C]" />;
+      if (techLower.includes('javascript')) return <SiJavascript className="w-4 h-4 sm:w-5 sm:h-5 text-[#F7DF1E]" />;
+      if (techLower.includes('python')) return <SiPython className="w-4 h-4 sm:w-5 sm:h-5 text-[#3776AB]" />;
+      if (techLower.includes('node')) return <SiNodedotjs className="w-4 h-4 sm:w-5 sm:h-5 text-[#339933]" />;
+      if (techLower.includes('mongodb')) return <SiMongodb className="w-4 h-4 sm:w-5 sm:h-5 text-[#47A248]" />;
+      if (techLower.includes('postgresql')) return <SiPostgresql className="w-4 h-4 sm:w-5 sm:h-5 text-[#336791]" />;
+      if (techLower.includes('docker')) return <SiDocker className="w-4 h-4 sm:w-5 sm:h-5 text-[#2496ED]" />;
+      if (techLower.includes('vercel')) return <SiVercel className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />;
+      return <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />;
     };
 
     return (
@@ -277,69 +277,69 @@ export default function ProjectsPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto"
         onClick={onClose}
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative w-full max-w-3xl bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden"
+          className="relative w-full max-w-3xl my-4 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden"
           onClick={e => e.stopPropagation()}
         >
-          <div className="absolute top-4 right-4 z-10">
+          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10">
             <Button
               variant="ghost"
               size="icon"
               className="rounded-full bg-white/95 text-black hover:bg-white shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={onClose}
             >
-              <X className="w-6 h-6" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
           </div>
 
-          <div className="p-8 lg:p-10">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+          <div className="p-4 sm:p-6 md:p-8">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 pr-8">
                 {project.title}
               </h3>
               {project.stats && (
-                <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
                   <div className="flex items-center">
-                    <Star className="w-4 h-4 mr-1" />
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                     {project.stats.stars}
                   </div>
                 </div>
               )}
             </div>
 
-            <p className="text-zinc-600 dark:text-zinc-400 mb-8 text-base">
+            <p className="text-xs sm:text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-4 sm:mb-6">
               {shortDescription}
             </p>
 
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Code2 className="w-5 h-5" /> Key Features
+            <div className="mb-4 sm:mb-6">
+              <h4 className="text-sm sm:text-base md:text-lg font-semibold mb-2 sm:mb-3 flex items-center gap-2">
+                <Code2 className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" /> Key Features
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-1.5 sm:space-y-2">
                 {featuresToShow.map((feature, idx) => (
-                  <li key={idx} className="flex items-start text-zinc-600 dark:text-zinc-400 text-base">
-                    <div className="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-600 mt-2 mr-3" />
+                  <li key={idx} className="flex items-start text-xs sm:text-sm md:text-base text-zinc-600 dark:text-zinc-400">
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-zinc-400 dark:bg-zinc-600 mt-1.5 sm:mt-2 mr-1.5 sm:mr-2 md:mr-3" />
                     {feature}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Code2 className="w-5 h-5" /> Technologies Used
+            <div className="mb-4 sm:mb-6">
+              <h4 className="text-sm sm:text-base md:text-lg font-semibold mb-2 sm:mb-3 flex items-center gap-2">
+                <Code2 className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" /> Technologies Used
               </h4>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3">
                 {project.technologies?.map((tech) => (
                   <div
                     key={tech}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-sm hover:scale-105 transition-transform duration-200"
+                    className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-xs sm:text-sm hover:scale-105 transition-transform duration-200"
                   >
                     {getTechnologyIcon(tech)}
                     {tech}
@@ -348,31 +348,31 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
               {project.tags.map((tag) => (
                 <Badge
                   key={tag}
                   variant="outline"
-                  className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-xs px-2 py-0.5"
+                  className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-xs px-1.5 sm:px-2 py-0.5"
                 >
                   {tag}
                 </Badge>
               ))}
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <Button
-                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-base py-4"
+                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
                 onClick={() => window.open(project.demoLink, '_blank')}
               >
-                <Globe className="w-5 h-5 mr-2" /> Live Demo
+                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Live Demo
               </Button>
               {project.githubLink && (
                 <Button
-                  className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-base py-4"
+                  className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
                   onClick={() => window.open(project.githubLink, '_blank')}
                 >
-                  <Github className="w-5 h-5 mr-2" /> Source Code
+                  <Github className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Source Code
                 </Button>
               )}
             </div>
@@ -543,8 +543,8 @@ export default function ProjectsPage() {
               ))}
             </div>
           ) : (
-            <div className="relative h-[600px] perspective-1000">
-              <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative min-h-[600px] md:h-[600px] perspective-1000 mb-16">
+              <div className="absolute inset-0 flex items-center justify-center px-4">
                 {filteredProjects.map((project, index) => {
                   const isActive = index === carouselIndex;
                   const isNext = index === (carouselIndex + 1) % filteredProjects.length;
@@ -578,11 +578,11 @@ export default function ProjectsPage() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                         </div>
-                        <div className="p-8">
-                          <h3 className="text-2xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                        <div className="p-6 md:p-8">
+                          <h3 className="text-xl md:text-2xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                             {project.title}
                           </h3>
-                          <p className="text-zinc-600 dark:text-zinc-300 mb-6 text-base">
+                          <p className="text-zinc-600 dark:text-zinc-300 mb-6 text-sm md:text-base">
                             {project.description}
                           </p>
                           <div className="flex flex-wrap gap-2 mb-6">
@@ -590,7 +590,7 @@ export default function ProjectsPage() {
                               <Badge
                                 key={tag}
                                 variant="outline"
-                                className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200"
+                                className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 text-xs"
                               >
                                 {tag}
                               </Badge>
@@ -602,16 +602,16 @@ export default function ProjectsPage() {
                             </MetallicGridButton>
                             <div className="flex gap-4 flex-1">
                               <Button
-                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300"
+                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base py-3 md:py-4"
                                 onClick={() => window.open(project.demoLink, '_blank')}
                               >
-                                <Globe className="w-4 h-4 mr-2" /> Live Demo
+                                <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Live Demo
                               </Button>
                               <Button
-                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300"
+                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base py-3 md:py-4"
                                 onClick={() => window.open(project.githubLink, '_blank')}
                               >
-                                <Github className="w-4 h-4 mr-2" /> Source Code
+                                <Github className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Source Code
                               </Button>
                             </div>
                           </div>
@@ -623,14 +623,14 @@ export default function ProjectsPage() {
               </div>
               
               {/* Carousel Navigation */}
-              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-4">
+              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-2 md:px-4">
                 <Button
                   variant="ghost"
                   size="icon"
                   className="rounded-full bg-white/95 text-black hover:bg-white pointer-events-auto shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={prevSlide}
                 >
-                  <ChevronLeft className="w-6 h-6" />
+                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                 </Button>
                 <Button
                   variant="ghost"
@@ -638,7 +638,7 @@ export default function ProjectsPage() {
                   className="rounded-full bg-white/95 text-black hover:bg-white pointer-events-auto shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={nextSlide}
                 >
-                  <ChevronRight className="w-6 h-6" />
+                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                 </Button>
               </div>
             </div>
@@ -646,7 +646,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* Let's Grow Together Section */}
-        <div className="w-full flex flex-col items-center justify-center mt-24 mb-8 px-4">
+        <div className="w-full flex flex-col items-center justify-center mt-16 md:mt-24 mb-8 px-4">
           <div className="w-full max-w-3xl relative rounded-2xl shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm p-8 md:p-14 flex flex-col items-center">
             {/* Subtle gradient overlay */}
             <div className="pointer-events-none absolute inset-0 rounded-2xl" style={{background: 'radial-gradient(ellipse at 60% 0%,rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.00) 60%)'}} />
