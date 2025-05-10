@@ -21,51 +21,57 @@ import { SkillsServicesMarquee } from "@/components/ui/skills-services-marquee"
 // Featured projects data
 const featuredProjects = [
   {
-    id: "1",
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform built with Next.js and Stripe integration",
-    longDescription: "A full-featured e-commerce platform with real-time inventory management, secure payments, and an intuitive admin dashboard.",
-    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
-    image: "/projects/ecommerce.jpg",
-    demoLink: "https://demo.ecommerce.com",
-    githubLink: "https://github.com/advait/ecommerce",
+    id: "kixkart-ecommerce",
+    title: "KixKart – Premium Sneakers & Streetwear E-Commerce Platform",
+    description: "Cyberpunk-inspired e-commerce platform specializing in premium sneakers and streetwear, built with Next.js, Tailwind, and advanced UI components.",
+    longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories.",
+    tags: ["E-Commerce", "Next.js", "Tailwind CSS", "TypeScript", "Radix UI", "Shadcn UI", "Cyberpunk Design"],
+    image: "/kixkart.png",
+    demoLink: "https://www.kixkart.advaitt.tech/",
+    githubLink: "https://github.com/AdvaittK/kixkart",
     features: [
-      "Real-time inventory tracking",
-      "Secure payment processing",
-      "Admin dashboard",
-      "Responsive design"
+      "Fully responsive e-commerce UI with shopping cart and wishlist",
+      "Theme toggle for dark/light mode",
+      "Browse by product categories",
+      "Product pages with rich descriptions and visuals",
+      "User authentication & account management",
+      "Cyberpunk-inspired UI with smooth animations"
     ]
   },
   {
-    id: "2",
-    title: "AI Content Generator",
-    description: "AI-powered content generation platform with advanced NLP",
-    longDescription: "An intelligent content generation platform that uses advanced NLP to create high-quality, contextually relevant content.",
-    tags: ["React", "Node.js", "OpenAI", "MongoDB"],
-    image: "/projects/ai-content.jpg",
-    demoLink: "https://demo.aicontent.com",
-    githubLink: "https://github.com/advait/ai-content",
+    id: "pulseboard-dashboard",
+    title: "PulseBoard – Interactive Dashboard Frontend Showcase",
+    description: "A modern, responsive dashboard UI with interactive charts, subscription flows, and a mock backend for demo purposes. Showcasing frontend design, state management, and UI component patterns.",
+    longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components.",
+    tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
+    image: "/pulseboard.png",
+    demoLink: "https://www.pulseboard.advaitt.tech/",
+    githubLink: "https://github.com/AdvaittK/pulse-board-main",
     features: [
-      "AI-powered content generation",
-      "Customizable templates",
-      "Content analytics",
-      "API integration"
+      "Responsive dashboard layouts with modern UI/UX",
+      "Dynamic charts powered by mock data",
+      "Theme switcher (dark/light mode)",
+      "Subscription and pricing management UI",
+      "Intuitive sidebar navigation",
+      "Mock API layer simulating backend interaction"
     ]
   },
   {
-    id: "3",
-    title: "Task Management System",
-    description: "Collaborative task management with real-time updates",
-    longDescription: "A powerful task management system that enables teams to collaborate effectively with real-time updates and advanced filtering.",
-    tags: ["React", "Firebase", "Material-UI", "Redux"],
-    image: "/projects/task-manager.jpg",
-    demoLink: "https://demo.taskmanager.com",
-    githubLink: "https://github.com/advait/task-manager",
+    id: "portfolio-website",
+    title: "Advait | Web Developer Portfolio",
+    description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
+    longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form.",
+    tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
+    image: "/new_homepage.png",
+    demoLink: "https://advaitt.tech",
+    githubLink: "https://github.com/AdvaittK/portfolio-advait",
     features: [
-      "Real-time collaboration",
-      "Task prioritization",
-      "Progress tracking",
-      "Team management"
+      "Fully responsive, custom-designed UI",
+      "Animated page transitions and interactive elements",
+      "Dynamic projects and services sections",
+      "SEO and social sharing optimized",
+      "Vercel Analytics integration",
+      "Accessible and performant design"
     ]
   }
 ]

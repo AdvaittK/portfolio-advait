@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check, HelpCircle } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 const services = [
   {
@@ -393,9 +394,11 @@ export default function ServicesPage() {
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
                 <div className="flex items-center justify-between gap-2">
-                  <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
-                    Get Started
-                  </Button>
+                  <Link href="/contact">
+                    <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                      Get Started
+                    </Button>
+                  </Link>
                   <div className="group/tooltip inline-block">
                     <HelpCircle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 cursor-help hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-200" />
                     <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-[100]">
@@ -494,9 +497,11 @@ export default function ServicesPage() {
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
                 <div className="flex items-center justify-between gap-2">
-                  <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
-                    Get Started
-                  </Button>
+                  <Link href="/contact">
+                    <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                      Get Started
+                    </Button>
+                  </Link>
                   <div className="group/tooltip inline-block">
                     <HelpCircle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 cursor-help hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-200" />
                     <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-[100]">
@@ -573,9 +578,11 @@ export default function ServicesPage() {
               </ul>
               <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
                 <div className="flex items-center justify-between gap-2">
-                  <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
-                    Get Started
-                  </Button>
+                  <Link href="/contact">
+                    <Button className="flex-1 rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
+                      Get Started
+                    </Button>
+                  </Link>
                   <div className="group/tooltip inline-block">
                     <HelpCircle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 cursor-help hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors duration-200" />
                     <div className="absolute right-0 bottom-full mb-2 w-64 p-3 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 text-sm text-zinc-600 dark:text-zinc-400 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-200 z-[100]">
@@ -663,9 +670,11 @@ export default function ServicesPage() {
                 </ul>
               </div>
               <div className="mt-8">
-                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
-                  Enquire Now
-                </Button>
+                <Link href="/contact">
+                  <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
+                    Enquire Now
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -709,9 +718,11 @@ export default function ServicesPage() {
                 </ul>
               </div>
               <div className="mt-8">
-                <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
-                  Customize Your Package
-                </Button>
+                <Link href="/contact">
+                  <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
+                    Customize Your Package
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -867,18 +878,20 @@ export default function ServicesPage() {
             whileHover="hover"
             whileTap="tap"
           >
-            <Button
-              className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 group"
-            >
-              Get a Quote
-              <motion.div
-                className="inline-block ml-2"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+            <Link href="/contact">
+              <Button
+                className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 group"
               >
-                <ArrowRight className="w-5 h-5" />
-              </motion.div>
-            </Button>
+                Get a Quote
+                <motion.div
+                  className="inline-block ml-2"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </motion.div>
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </motion.div>

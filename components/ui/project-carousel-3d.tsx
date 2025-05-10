@@ -204,7 +204,7 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
                         onSelect(project);
                       }}
                     >
-                      View Details <ExternalLink className="w-4 h-4 ml-2" />
+                      View Demo <ExternalLink className="w-4 h-4 ml-2" />
                     </Button>
                   )}
                 </div>
