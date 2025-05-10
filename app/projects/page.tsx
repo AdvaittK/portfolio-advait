@@ -250,7 +250,7 @@ export default function ProjectsPage() {
         </motion.div>
 
         {viewMode === 'grid' ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -263,34 +263,19 @@ export default function ProjectsPage() {
               >
                 <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 h-full">
                   <div className="relative overflow-hidden aspect-video">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="flex gap-2">
-                        <Button
-                          size="sm"
-                          className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
-                          onClick={() => window.open(project.demoLink, '_blank')}
-                        >
-                          <Globe className="w-4 h-4 mr-2" /> Live Demo
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
-                          onClick={() => window.open(project.githubLink, '_blank')}
-                        >
-                          <Github className="w-4 h-4 mr-2" /> Source Code
-                        </Button>
-                      </div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="text-white text-sm font-medium">Hover for details</div>
                     </div>
                   </div>
                   <div className="p-6">
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between mb-3">
                       <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                         {project.title}
                       </h3>
@@ -311,7 +296,7 @@ export default function ProjectsPage() {
                         <Badge
                           key={tag}
                           variant="outline"
-                          className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                          className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200"
                         >
                           {tag}
                         </Badge>
@@ -328,14 +313,15 @@ export default function ProjectsPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-0 left-0 right-0 bg-white dark:bg-zinc-800 rounded-t-2xl shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6 z-30"
+                      className="absolute top-0 left-0 right-0 bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6 z-20"
+                      style={{ marginTop: '-1px' }}
                     >
                       <div className="flex items-center justify-between mb-4">
                         <h4 className="text-lg font-semibold">Project Details</h4>
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="rounded-full"
+                          className="rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700"
                           onClick={() => setHoveredProject(null)}
                         >
                           <Code2 className="w-4 h-4" />
@@ -372,6 +358,22 @@ export default function ProjectsPage() {
                             </div>
                           </div>
                         )}
+                        <div className="flex gap-3 pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50">
+                          <Button
+                            size="sm"
+                            className="rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 flex-1 shadow-lg hover:shadow-xl transition-all duration-300"
+                            onClick={() => window.open(project.demoLink, '_blank')}
+                          >
+                            <Globe className="w-4 h-4 mr-2" /> Live Demo
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 flex-1 shadow-lg hover:shadow-xl transition-all duration-300"
+                            onClick={() => window.open(project.githubLink, '_blank')}
+                          >
+                            <Github className="w-4 h-4 mr-2" /> Source Code
+                          </Button>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -395,12 +397,12 @@ export default function ProjectsPage() {
                     animate={{
                       scale: isActive ? 1 : 0.85,
                       rotateY: isActive ? 0 : isNext ? 45 : -45,
-                      x: isActive ? 0 : isNext ? "60%" : "-60%",
+                      x: isActive ? 0 : isNext ? "80%" : "-80%",
                       z: isActive ? 0 : -200,
-                      opacity: isActive ? 1 : 0.3,
-                      filter: isActive ? "none" : "blur(1px)",
+                      opacity: isActive ? 1 : 0.2,
+                      filter: isActive ? "none" : "blur(2px)",
                     }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
                     style={{
                       transformStyle: "preserve-3d",
                       backfaceVisibility: "hidden",
@@ -413,31 +415,16 @@ export default function ProjectsPage() {
                           alt={project.title}
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="flex gap-2">
-                            <Button
-                              size="sm"
-                              className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
-                              onClick={() => window.open(project.demoLink, '_blank')}
-                            >
-                              <Globe className="w-4 h-4 mr-2" /> Live Demo
-                            </Button>
-                            <Button
-                              size="sm"
-                              className="rounded-full bg-white/90 text-black hover:bg-white flex-1"
-                              onClick={() => window.open(project.githubLink, '_blank')}
-                            >
-                              <Github className="w-4 h-4 mr-2" /> Source Code
-                            </Button>
-                          </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="text-white text-sm font-medium">Hover for details</div>
                         </div>
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-2xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                      <div className="p-8">
+                        <h3 className="text-2xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                           {project.title}
                         </h3>
-                        <p className="text-zinc-600 dark:text-zinc-300 mb-4">
+                        <p className="text-zinc-600 dark:text-zinc-300 mb-6 text-base">
                           {project.description}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -445,7 +432,7 @@ export default function ProjectsPage() {
                             <Badge
                               key={tag}
                               variant="outline"
-                              className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200"
+                              className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200"
                             >
                               {tag}
                             </Badge>
@@ -459,11 +446,11 @@ export default function ProjectsPage() {
             </div>
             
             {/* Carousel Navigation */}
-            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-4">
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full bg-white/90 text-black hover:bg-white pointer-events-auto ml-4"
+                className="rounded-full bg-white/95 text-black hover:bg-white pointer-events-auto shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={prevSlide}
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -471,7 +458,7 @@ export default function ProjectsPage() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full bg-white/90 text-black hover:bg-white pointer-events-auto mr-4"
+                className="rounded-full bg-white/95 text-black hover:bg-white pointer-events-auto shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={nextSlide}
               >
                 <ChevronRight className="w-6 h-6" />

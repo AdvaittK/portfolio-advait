@@ -214,14 +214,14 @@ export default function Footer() {
           </div>
           <div className="flex gap-6">
             <Link
-              href="#"
+              href="/privacy-policy"
               className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors relative group"
             >
               Privacy Policy
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-600 to-zinc-400 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
-              href="#"
+              href="/terms-of-service"
               className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors relative group"
             >
               Terms of Service
