@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { PageContainer } from "@/components/layout/page-container"
-import { Code2, Layout, Server, LineChart, Shield, Database, Award, Briefcase, GraduationCap, Heart, ExternalLink } from "lucide-react"
+import { Code2, Layout, Server, LineChart, Shield, Database, Award, Briefcase, GraduationCap, Heart, ExternalLink, Github, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -220,6 +220,53 @@ export default function AboutPage() {
                 I specialize in crafting immersive, user-centered interfaces that not only look stunning but also provide seamless interactions. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
               </p>
             </div>
+
+            {/* Social Links */}
+            <div className="flex gap-4 pt-4">
+              {[
+                { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
+                { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", link: "#" },
+                { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "#" },
+                { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:advaitt.dev@gmail.com" }
+              ].map((social, index) => (
+                <motion.a
+                  key={social.label}
+                  href={social.link}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
+                  className="p-3 rounded-full bg-secondary/80 hover:bg-secondary transition-colors"
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-4 pt-6">
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-muted-foreground" />
+                <a href="mailto:advaitt.dev@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  advaitt.dev@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-muted-foreground" />
+                <a href="tel:+919975556093" className="text-muted-foreground hover:text-foreground transition-colors">
+                  +91 9975556093
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-muted-foreground" />
+                <span className="text-muted-foreground">
+                  Pune, Maharashtra, India
+                </span>
+              </div>
+            </div>
+            
             <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto pt-2 md:pt-4 justify-center md:justify-start">
               <Link href="/contact" className="flex-1 md:flex-initial">
                 <Button

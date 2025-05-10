@@ -215,8 +215,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">Email</h4>
-                    <a href="mailto:your.email@example.com" className="text-muted-foreground hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors duration-200">
-                      your.email@example.com
+                    <a href="mailto:advaitt.dev@gmail.com" className="text-muted-foreground hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors duration-200">
+                      advaitt.dev@gmail.com
                     </a>
                   </div>
                 </div>
@@ -226,8 +226,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">Phone</h4>
-                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors duration-200">
-                      +1 (234) 567-890
+                    <a href="tel:+919975556093" className="text-muted-foreground hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors duration-200">
+                      +91 9975556093
                     </a>
                   </div>
                 </div>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">Location</h4>
                     <p className="text-muted-foreground">
-                      San Francisco, CA
+                      Pune, Maharashtra, India
                     </p>
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export default function ContactPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com/your-username"
+                  href="https://github.com/AdvaittK"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-3 shadow-lg hover:scale-110 transition-transform duration-300"

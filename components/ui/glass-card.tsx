@@ -84,7 +84,7 @@ export const GlassCard = ({
         >
           {socialLinks.github && (
             <motion.a
-              href={socialLinks.github}
+              href={socialLinks.github || "https://github.com/AdvaittK"}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 dark:bg-zinc-800/50 dark:hover:bg-zinc-800/70 transition-colors"

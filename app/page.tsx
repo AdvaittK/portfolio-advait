@@ -255,7 +255,7 @@ export default function HomePage() {
                 className="flex gap-4 pt-4"
               >
                 {[
-                  { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "#" },
+                  { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
                   { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", link: "#" },
                   { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "#" },
                   { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:hello@advait.com" }
