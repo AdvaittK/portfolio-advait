@@ -13,6 +13,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
+import Portal from "@/components/Portal";
 
 // Define project type
 interface Project {
@@ -695,7 +696,9 @@ export default function ProjectsPage() {
       </PageContainer>
       <AnimatePresence>
         {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+          <Portal>
+            <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+          </Portal>
         )}
       </AnimatePresence>
     </>
