@@ -69,14 +69,14 @@ export default function RootLayout({
         {/* Open Graph Meta Tags for Social Sharing */}
         <meta property="og:title" content="Advait | Web Developer Portfolio" />
         <meta property="og:description" content="Frontend Developer & UI Designer. Crafting modern, high-performance web experiences. See my work and get in touch!" />
-        <meta property="og:image" content="/homepage.png" />
+        <meta property="og:image" content="https://www.advaitt.tech/new_homepage.png" />
         <meta property="og:url" content="https://www.advaitt.tech/" />
         <meta property="og:type" content="website" />
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Advait | Web Developer Portfolio" />
         <meta name="twitter:description" content="Frontend Developer & UI Designer. Crafting modern, high-performance web experiences. See my work and get in touch!" />
-        <meta name="twitter:image" content="/homepage.png" />
+        <meta name="twitter:image" content="https://www.advaitt.tech/new_homepage.png" />
       </head>
       <body className={`${inter.className} min-h-screen bg-transparent antialiased`}>
         <ThemeProvider
