@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, LayoutGrid, ArrowLeftRight, Github, Globe, Code2, Star, ChevronLeft, ChevronRight, Search, Filter, X } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
 import { Input } from "@/components/ui/input"
+import { useIsMobile } from "@/hooks/use-mobile"
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -46,6 +47,8 @@ export default function ProjectsPage() {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [showAllTags, setShowAllTags] = useState(false);
+  // Use mobile detection hook
+  const isMobile = useIsMobile();
 
   // Define projects array
   const projects: Project[] = [
@@ -272,20 +275,19 @@ export default function ProjectsPage() {
       return <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />;
     };
 
-    return (
-      <motion.div
+    return (      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto"
+        className={`fixed inset-0 z-[100] flex items-center justify-center ${isMobile ? 'p-1' : 'p-2'} sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto overflow-x-hidden`}
         onClick={onClose}
-      >
-        <motion.div
+      >          <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative w-full max-w-3xl my-4 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden"
+          className={`relative ${isMobile ? 'w-[94%]' : 'w-[95%]'} xs:w-[90%] sm:w-full max-w-3xl my-4 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden`}
           onClick={e => e.stopPropagation()}
+          style={{ maxHeight: isMobile ? '85vh' : '90vh' }}
         >
           <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10">
             <Button
@@ -298,7 +300,7 @@ export default function ProjectsPage() {
             </Button>
           </div>
 
-          <div className="p-4 sm:p-6 md:p-8">
+          <div className={`p-${isMobile ? '3' : '4'} sm:p-6 md:p-8 overflow-y-auto w-full`} style={{ maxHeight: `calc(${isMobile ? '85vh' : '90vh'} - 2rem)` }}>
             <div className="flex items-center justify-between mb-3 sm:mb-4">
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 pr-8">
                 {project.title}
@@ -358,21 +360,19 @@ export default function ProjectsPage() {
                   {tag}
                 </Badge>
               ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+            </div>            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <Button
-                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
+                className={`flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base ${isMobile ? 'py-1.5 px-3' : 'py-2'} sm:py-3`}
                 onClick={() => window.open(project.demoLink, '_blank')}
               >
-                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Live Demo
+                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" /> Live Demo
               </Button>
               {project.githubLink && (
                 <Button
-                  className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
+                  className={`flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base ${isMobile ? 'py-1.5 px-3' : 'py-2'} sm:py-3`}
                   onClick={() => window.open(project.githubLink, '_blank')}
                 >
-                  <Github className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Source Code
+                  <Github className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" /> Source Code
                 </Button>
               )}
             </div>
@@ -541,10 +541,9 @@ export default function ProjectsPage() {
                   </div>
                 </motion.div>
               ))}
-            </div>
-          ) : (
-            <div className="relative min-h-[600px] md:h-[600px] perspective-1000 mb-16">
-              <div className="absolute inset-0 flex items-center justify-center px-4">
+            </div>          ) : (
+            <div className="relative min-h-[600px] md:h-[600px] perspective-1000 mb-16 overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center px-2 sm:px-4 overflow-visible">
                 {filteredProjects.map((project, index) => {
                   const isActive = index === carouselIndex;
                   const isNext = index === (carouselIndex + 1) % filteredProjects.length;
@@ -553,12 +552,13 @@ export default function ProjectsPage() {
                   return (
                     <motion.div
                       key={project.id}
-                      className="absolute w-full max-w-2xl"
-                      initial={false}
-                      animate={{
+                      className={`absolute ${isMobile ? 'w-[85%]' : 'w-[90%]'} sm:w-[90%] md:w-[85%] lg:w-[80%] max-w-2xl`}
+                      initial={false}                      animate={{
                         scale: isActive ? 1 : 0.85,
                         rotateY: isActive ? 0 : isNext ? 45 : -45,
-                        x: isActive ? 0 : isNext ? "80%" : "-80%",
+                        x: isActive ? 0 : isNext ? 
+                          isMobile ? "70%" : "80%" : 
+                          isMobile ? "-70%" : "-80%",
                         z: isActive ? 0 : -200,
                         opacity: isActive ? 1 : 0.2,
                         filter: isActive ? "none" : "blur(2px)",
@@ -578,14 +578,14 @@ export default function ProjectsPage() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                         </div>
-                        <div className="p-6 md:p-8">
-                          <h3 className="text-xl md:text-2xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                        <div className="p-4 sm:p-6 md:p-8">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                             {project.title}
                           </h3>
-                          <p className="text-zinc-600 dark:text-zinc-300 mb-6 text-sm md:text-base">
+                          <p className="text-zinc-600 dark:text-zinc-300 mb-4 sm:mb-6 text-sm md:text-base">
                             {project.description}
                           </p>
-                          <div className="flex flex-wrap gap-2 mb-6">
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
                             {project.tags.map((tag) => (
                               <Badge
                                 key={tag}
@@ -596,22 +596,22 @@ export default function ProjectsPage() {
                               </Badge>
                             ))}
                           </div>
-                          <div className="flex flex-col sm:flex-row gap-4">
+                          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                             <MetallicGridButton onClick={() => setSelectedProject(project)}>
                               View Details
                             </MetallicGridButton>
-                            <div className="flex gap-4 flex-1">
+                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 flex-1">
                               <Button
-                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base py-3 md:py-4"
+                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
                                 onClick={() => window.open(project.demoLink, '_blank')}
                               >
-                                <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Live Demo
+                                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Live Demo
                               </Button>
                               <Button
-                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base py-3 md:py-4"
+                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
                                 onClick={() => window.open(project.githubLink, '_blank')}
                               >
-                                <Github className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Source Code
+                                <Github className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Source Code
                               </Button>
                             </div>
                           </div>
