@@ -190,11 +190,11 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col items-center justify-center"
           >
-            <div className="relative w-[400px] h-[400px] mb-6">
+            <div className="relative w-[200px] h-[200px] md:w-[400px] md:h-[400px] mb-6">
               <img
-                src="/placeholder.svg?height=400&width=400"
+                src="/advait.png"
                 alt="Profile"
-                className="w-[400px] h-[400px] rounded-full object-cover border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105"
+                className="w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full object-cover object-[20%] border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105 mx-auto"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-700/20 to-zinc-400/10 dark:from-zinc-700/30 dark:to-zinc-400/10 z-10 group-hover:opacity-75 transition-opacity duration-300 pointer-events-none" />
             </div>
@@ -208,7 +208,7 @@ export default function AboutPage() {
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">My Journey</h3>
             <div className="space-y-4 max-w-xl">
               <p className="text-muted-foreground leading-relaxed text-lg">
-                I'm a passionate developer and designer with over 5 years of experience creating beautiful, functional digital experiences. My journey began with a curiosity about how things work on the web, which led me to explore the intersection of design and development.
+                I'm a passionate developer and designer with over 3 years of experience creating beautiful, functional digital experiences. My journey began with a curiosity about how things work on the web, which led me to explore the intersection of design and development.
               </p>
               <p className="text-muted-foreground leading-relaxed text-lg">
                 I specialize in crafting immersive, user-centered interfaces that not only look stunning but also provide seamless interactions. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.

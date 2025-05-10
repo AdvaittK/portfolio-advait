@@ -7,6 +7,12 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, LayoutGrid, ArrowLeftRight, Github, Globe, Code2, Star, ChevronLeft, ChevronRight, Search, Filter } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
 import { Input } from "@/components/ui/input"
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from "@/components/ui/dropdown-menu";
 
 // Define project type
 interface Project {
@@ -36,80 +42,139 @@ export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+  const [showAllTags, setShowAllTags] = useState(false);
 
   // Define projects array
   const projects: Project[] = [
     {
-      id: "immersive-dashboard",
-      title: "Immersive Dashboard",
-      description: "A beautiful analytics dashboard with real-time data visualization and interactive charts.",
-      longDescription: "This dashboard application provides business intelligence through interactive visualizations. It features real-time data updates, customizable widgets, and comprehensive reporting tools for making data-driven decisions.",
-      tags: ["React", "D3.js", "Tailwind CSS", "Firebase"],
-      image: "/placeholder.svg?height=600&width=800",
-      demoLink: "https://dashboard-demo.com",
-      githubLink: "https://github.com/yourusername/dashboard",
+      id: "pulseboard-dashboard",
+      title: "PulseBoard – Interactive Dashboard Frontend Showcase",
+      description: "A modern, responsive dashboard UI with interactive charts, subscription flows, and a mock backend for demo purposes. Showcasing frontend design, state management, and UI component patterns.",
+      longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components for dashboards, user profiles, and subscription management. Although it doesn't include real backend functionality, PulseBoard simulates API behavior using mock data and API utilities, allowing full interaction with charts, tables, and flows like login, registration, and subscription comparison. It's an ideal project for showcasing frontend skills and component-based architecture in a professional portfolio.",
+      tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
+      image: "/pulseboard.png",
+      demoLink: "https://www.pulseboard.advaitt.tech/",
+      githubLink: "https://github.com/AdvaittK/pulse-board-main",
       features: [
-        "Real-time data synchronization",
-        "Interactive drag-and-drop interface",
-        "Customizable dashboard widgets",
-        "Export reports as PDF"
+        "Responsive dashboard layouts with modern UI/UX",
+        "Dynamic charts powered by mock data",
+        "Theme switcher (dark/light mode)",
+        "Subscription and pricing management UI",
+        "Intuitive sidebar navigation and user profile interface",
+        "Mock API layer simulating backend interaction"
       ],
-      stats: {
-        stars: 245,
-        forks: 89,
-        views: 1200
-      },
+      category: "Web Application / Dashboard UI",
+      technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Shadcn", "Chart.js", "Zustand"],
+      year: 2024
+    },
+    {
+      id: "portfolio-website",
+      title: "Advait | Web Developer Portfolio",
+      description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
+      longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form. The site is optimized for performance, accessibility, and SEO, and includes integrations such as Vercel Analytics and Open Graph meta tags for rich social sharing. Designed and developed from scratch, it reflects my design sensibility and technical skills.",
+      tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel", "Portfolio"],
+      image: "/new_homepage.png",
+      demoLink: "https://advaitt.tech",
+      githubLink: "", // To be added later
+      features: [
+        "Fully responsive, custom-designed UI",
+        "Animated page transitions and interactive elements",
+        "Dynamic projects and services sections",
+        "SEO and social sharing optimized (Open Graph, Twitter Cards)",
+        "Vercel Analytics integration",
+        "Accessible and performant design",
+        "Contact form and clear call-to-actions"
+      ],
+      category: "Portfolio Website",
+      technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
+      year: 2024
+    },
+    {
+      id: "kixkart-ecommerce",
+      title: "KixKart – Premium Sneakers & Streetwear E-Commerce Platform",
+      description: "Cyberpunk-inspired e-commerce platform specializing in premium sneakers and streetwear, built with Next.js, Tailwind, and advanced UI components.",
+      longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories like running, basketball, lifestyle, training, and exclusive drops. Built with Next.js 15 and styled using Tailwind CSS, the platform features category-based navigation, detailed product pages, a responsive shopping cart, a wishlist system, and user account management. Its frontend leverages advanced tools like Framer Motion for animations, shadcn/ui and Radix UI for sleek components, and form validation using React Hook Form and Zod. The project also includes newsletter subscription and toast notifications, bringing the feel of a premium online store.",
+      tags: ["E-Commerce", "Next.js", "Tailwind CSS", "TypeScript", "Radix UI", "Shadcn UI", "Cyberpunk Design"],
+      image: "/kixkart.png",
+      demoLink: "https://www.kixkart.advaitt.tech/",
+      githubLink: "https://github.com/AdvaittK/kixkart",
+      features: [
+        "Fully responsive e-commerce UI with shopping cart and wishlist",
+        "Theme toggle for dark/light mode",
+        "Browse by product categories (Running, Lifestyle, Basketball, etc.)",
+        "Product pages with rich descriptions and visuals",
+        "User authentication & account management",
+        "Newsletter subscription & promotional alerts",
+        "Cyberpunk-inspired UI with smooth animations and carousels"
+      ],
+      category: "Web Application / E-Commerce Platform",
+      technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Radix UI", "shadcn/ui", "Framer Motion", "Embla Carousel", "Zod", "React Hook Form", "Lucide React", "Sonner"],
+      year: 2025
+    },
+    {
+      id: "json-generator",
+      title: "JSON Generator – Smart JSON Generator & Editor",
+      description: "AI-powered tool for creating, editing, and visualizing JSON files with ease. Supports code, visual, and intelligent AI editing modes.",
+      longDescription: "JSONAI is a powerful, user-friendly platform designed to simplify JSON file creation and editing. Whether you're a developer crafting complex structures or a beginner learning JSON, JSONAI adapts to your needs. It features three interactive modes—code editor for hands-on coding, visual mode for drag-and-drop structure building, and an AI-powered assistant that can generate or modify JSON using natural language prompts. The intuitive interface, real-time preview, and error highlighting make JSONAI a versatile tool for building APIs, configuration files, and structured data.",
+      tags: ["React", "JavaScript", "AI", "JSON", "TailwindCSS"],
+      image: "/jsonge.png",
+      demoLink: "https://www.jsongen.advaitt.tech/",
+      githubLink: "https://github.com/AdvaittK/json-generator",
+      features: [
+        "Three editing modes: Code, Visual, and AI-driven",
+        "Natural language to JSON conversion",
+        "Syntax highlighting and error detection",
+        "Real-time preview and auto-formatting",
+        "Export/import functionality for .json files",
+        "Dark/light theme toggle"
+      ],
       category: "Web Application",
-      technologies: ["React", "TypeScript", "D3.js", "Firebase", "Tailwind CSS"],
-      year: 2024
+      technologies: ["React", "TailwindCSS", "OpenAI API", "Vite", "TypeScript"],
+      year: 2025
     },
     {
-      id: "ecommerce-platform",
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce platform with seamless checkout experience and product recommendations.",
-      longDescription: "This full-featured e-commerce platform delivers a premium shopping experience with product recommendation algorithms, secure payment processing, and a responsive design that works flawlessly across all devices.",
-      tags: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
-      image: "/placeholder.svg?height=600&width=800",
-      demoLink: "https://ecom-demo.com",
-      githubLink: "https://github.com/yourusername/ecommerce",
+      id: "symptolink-healthcare",
+      title: "SymptoLink – AI-Powered Healthcare Assistant",
+      description: "A smart healthcare web app offering AI-based symptom analysis, doctor search, and emergency access features, with Firebase integration and multilingual support.",
+      longDescription: "SymptoLink is an intelligent healthcare platform that empowers users to understand their symptoms, explore possible diagnoses, locate nearby healthcare professionals, and access emergency resources. Built using Next.js, TypeScript, Firebase, and OpenAI, SymptoLink combines responsive design with real-world utility. The application features AI-powered symptom checking, secure authentication via Firebase, internationalization support, and an intuitive UI built with Shadcn components. Though primarily frontend-driven, SymptoLink integrates with Firestore and simulates backend interactions, making it a robust full-stack showcase for healthcare tech.",
+      tags: ["Next.js", "React", "TypeScript", "Firebase", "OpenAI", "TailwindCSS", "Healthcare", "AI"],
+      image: "/symptolink.png",
+      demoLink: "https://www.symptolink.advaitt.tech/",
+      githubLink: "https://github.com/AdvaittK/SymptoLink",
       features: [
-        "AI-powered product recommendations",
-        "Secure payment processing",
-        "Inventory management system",
-        "Customer reviews and ratings"
+        "AI-powered Symptom Checker using OpenAI",
+        "Doctor Finder by location and specialty",
+        "Emergency contact and resource access",
+        "Secure authentication with Firebase Auth",
+        "Multi-language support (i18n)",
+        "Light/Dark theme switching",
+        "Fully responsive across devices",
+        "Mock backend integration for local testing"
       ],
-      stats: {
-        stars: 189,
-        forks: 45,
-        views: 950
-      },
-      category: "E-Commerce",
-      technologies: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
-      year: 2023
+      category: "Web Application / Healthcare",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Firebase", "Firestore", "OpenAI", "Vercel AI SDK", "React Context API", "pnpm"],
+      year: 2025
     },
     {
-      id: "ai-content-generator",
-      title: "AI Content Generator",
-      description: "An AI-powered content generator that creates high-quality articles and social media posts.",
-      longDescription: "Leveraging advanced machine learning algorithms, this tool helps marketers and content creators produce engaging content at scale. It can generate articles, social media posts, and even email campaigns with minimal human input.",
-      tags: ["Python", "OpenAI", "React", "MongoDB"],
-      image: "/placeholder.svg?height=600&width=800",
-      demoLink: "https://ai-writer-demo.com",
-      githubLink: "https://github.com/yourusername/ai-writer",
+      id: "truthsense-lie-detection",
+      title: "TruthSense – Lie Detection System",
+      description: "An AI-driven lie detection system that analyzes facial expressions, voice stress, and micro-gestures using a CNN-LSTM model.",
+      longDescription: "TruthSense is a cutting-edge deception detection platform that uses deep learning to analyze video inputs for signs of lying. By combining Convolutional Neural Networks (CNNs) with Long Short-Term Memory (LSTM) networks, the system evaluates both spatial and temporal features, such as facial micro-expressions, vocal stress levels, and body movements. The frontend is developed using Next.js and Tailwind CSS, providing a sleek, responsive interface, while the backend is powered by FastAPI, PyTorch, OpenCV, and Librosa for deep behavior analysis. Users can upload videos, train custom models, and view detailed feature-level breakdowns of deception indicators. Though not intended for legal or diagnostic purposes, TruthSense offers a compelling research and educational tool in behavioral analysis.",
+      tags: ["AI", "CNN-LSTM", "Computer Vision", "Next.js", "FastAPI", "PyTorch", "TailwindCSS", "Lie Detection", "Audio Processing"],
+      image: "/ts.png",
+      demoLink: "https://www.truthsense.advaitt.tech/",
+      githubLink: "https://github.com/AdvaittK/TruthSense",
       features: [
-        "Natural language processing capabilities",
-        "Content optimization for SEO",
-        "Multiple content formats support",
-        "Tone and style customization"
+        "Upload and analyze videos for signs of deception",
+        "CNN-LSTM model trained for micro-expression and vocal analysis",
+        "Fast video/audio processing with breakdown of detected cues",
+        "Feature-wise deception analysis report",
+        "Responsive UI with modern design components",
+        "Docker support for backend containerization"
       ],
-      stats: {
-        stars: 312,
-        forks: 156,
-        views: 2100
-      },
-      category: "AI/ML",
-      technologies: ["Python", "OpenAI", "React", "MongoDB", "FastAPI"],
-      year: 2024
+      category: "AI Research Tool / Behavioral Analysis",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "PyTorch", "OpenCV", "Librosa", "Docker"],
+      year: 2025
     },
   ]
 
@@ -125,9 +190,13 @@ export default function ProjectsPage() {
   
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesFilter = !activeFilter || project.tags.includes(activeFilter);
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesFilter =
+      !activeFilter ||
+      project.tags.includes(activeFilter) ||
+      project.category === activeFilter ||
+      (project.technologies && project.technologies.includes(activeFilter));
     return matchesSearch && matchesFilter;
   });
 
@@ -218,7 +287,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Filter buttons */}
-          <div className="flex flex-wrap gap-2 xs:gap-4 justify-center">
+          <div className="flex flex-wrap gap-2 xs:gap-4 justify-start py-2 items-center">
             <Button
               variant={activeFilter === null ? "default" : "outline"}
               onClick={() => setActiveFilter(null)}
@@ -226,26 +295,26 @@ export default function ProjectsPage() {
             >
               All Projects
             </Button>
-            {categories.map((category) => (
+            {/* Show limited or all categories/tags based on showAllTags */}
+            {categories.concat(allTags).slice(0, showAllTags ? categories.length + allTags.length : 8).map((item) => (
               <Button
-                key={category}
-                variant={activeFilter === category ? "default" : "outline"}
-                onClick={() => setActiveFilter(category)}
+                key={item}
+                variant={activeFilter === item ? "default" : "outline"}
+                onClick={() => setActiveFilter(item)}
                 className="rounded-full"
               >
-                {category}
+                {item}
               </Button>
             ))}
-            {allTags.map((tag) => (
+            {(categories.length + allTags.length) > 8 && (
               <Button
-                key={tag}
-                variant={activeFilter === tag ? "default" : "outline"}
-                onClick={() => setActiveFilter(tag)}
+                variant="outline"
                 className="rounded-full"
+                onClick={() => setShowAllTags((prev) => !prev)}
               >
-                {tag}
+                {showAllTags ? "Show Less" : "Show More"}
               </Button>
-            ))}
+            )}
           </div>
         </motion.div>
 
