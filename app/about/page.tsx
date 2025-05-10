@@ -89,7 +89,9 @@ const certifications = [
       "Web APIs",
       "Web Accessibility"
     ],
-    icon: Code2
+    icon: Code2,
+    badgeImage: "/html.png",
+    credlyLink: "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview"
   },
   {
     title: "IT Specialist - Databases",
@@ -104,7 +106,9 @@ const certifications = [
       "Data Security",
       "Transaction Management"
     ],
-    icon: Database
+    icon: Database,
+    badgeImage: "/database.png",
+    credlyLink: "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview"
   },
   {
     title: "IT Specialist - Artificial Intelligence",
@@ -119,7 +123,9 @@ const certifications = [
       "Natural Language Processing",
       "Computer Vision"
     ],
-    icon: LineChart
+    icon: LineChart,
+    badgeImage: "/ai.png",
+    credlyLink: "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview"
   }
 ]
 
@@ -330,15 +336,22 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-zinc-200/50 dark:border-zinc-700/50">
-                  <Button
-                    variant="outline"
-                    className="w-full rounded-full px-6 py-5 border-border hover:bg-secondary hover:text-foreground font-medium text-base flex items-center justify-center gap-2"
-                    onClick={() => window.open('#', '_blank')}
+                <div className="mt-6 flex justify-center">
+                  <Link 
+                    href={cert.credlyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
                   >
-                    View Credly Badge
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:scale-105 transition-transform duration-300">
+                      <img
+                        src={cert.badgeImage}
+                        alt={`${cert.title} Badge`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                    </div>
+                  </Link>
                 </div>
               </motion.div>
             ))}
