@@ -188,44 +188,44 @@ export default function AboutPage() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="aspect-square rounded-3xl overflow-hidden relative shadow-xl border border-zinc-200/10 dark:border-zinc-800/40 group"
+            className="flex flex-col items-center justify-center"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-700/30 to-zinc-400/10 z-10 group-hover:opacity-75 transition-opacity duration-300" />
-            <img
-              src="/placeholder.svg?height=600&width=600"
-              alt="Profile"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <div className="relative w-[400px] h-[400px] mb-6">
+              <img
+                src="/placeholder.svg?height=400&width=400"
+                alt="Profile"
+                className="w-[400px] h-[400px] rounded-full object-cover border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-700/20 to-zinc-400/10 dark:from-zinc-700/30 dark:to-zinc-400/10 z-10 group-hover:opacity-75 transition-opacity duration-300 pointer-events-none" />
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8 flex flex-col justify-center"
+            className="flex flex-col justify-center md:items-start items-center text-center md:text-left gap-6"
           >
-            <h3 className="text-2xl font-semibold text-foreground">My Journey</h3>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              I'm a passionate developer and designer with over 5 years of experience creating beautiful, functional
-              digital experiences. My journey began with a curiosity about how things work on the web, which led me
-              to explore the intersection of design and development.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              I specialize in crafting immersive, user-centered interfaces that not only look stunning but also
-              provide seamless interactions. My approach combines technical expertise with creative problem-solving
-              to deliver solutions that exceed expectations.
-            </p>
-            <div className="flex gap-4 pt-4">
-              <Link href="/contact">
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">My Journey</h3>
+            <div className="space-y-4 max-w-xl">
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                I'm a passionate developer and designer with over 5 years of experience creating beautiful, functional digital experiences. My journey began with a curiosity about how things work on the web, which led me to explore the intersection of design and development.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                I specialize in crafting immersive, user-centered interfaces that not only look stunning but also provide seamless interactions. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto pt-2 md:pt-4 justify-center md:justify-start">
+              <Link href="/contact" className="flex-1 md:flex-initial">
                 <Button
                   variant="outline"
-                  className="rounded-full px-6 py-5 border-border hover:bg-secondary hover:text-foreground font-medium text-base"
+                  className="rounded-full px-6 py-5 border-border hover:bg-secondary hover:text-foreground font-medium text-base w-full md:w-auto"
                 >
                   Get in Touch
                 </Button>
               </Link>
-              <Link href="/services">
+              <Link href="/services" className="flex-1 md:flex-initial">
                 <Button
-                  className="rounded-full px-6 py-5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold"
+                  className="rounded-full px-6 py-5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold w-full md:w-auto"
                 >
                   View Services
                 </Button>
