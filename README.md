@@ -1,7 +1,7 @@
 # 🚀 Advait's Portfolio Website
 
 <div align="center">
-  <img src="/new_homepage.png" alt="Portfolio Preview" width="800px"/>
+  <img src="./public/new_homepage.png" alt="Portfolio Preview" width="800px"/>
   
   [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
