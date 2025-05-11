@@ -39,13 +39,10 @@ interface Project {
 }
 
 export default function ProjectsPage() {
-  const [viewMode, setViewMode] = useState<'grid' | 'carousel'>('grid');
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [showAllTags, setShowAllTags] = useState(false);
   // Use mobile detection hook
   const isMobile = useIsMobile();
@@ -205,25 +202,6 @@ export default function ProjectsPage() {
       (project.technologies && project.technologies.includes(activeFilter));
     return matchesSearch && matchesFilter;
   });
-
-  // Auto-play carousel
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isAutoPlaying && viewMode === 'carousel') {
-      interval = setInterval(() => {
-        setCarouselIndex((prev) => (prev + 1) % filteredProjects.length);
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, viewMode, filteredProjects.length]);
-
-  const nextSlide = () => {
-    setCarouselIndex((prev) => (prev + 1) % filteredProjects.length);
-  };
-
-  const prevSlide = () => {
-    setCarouselIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
-  };
 
   // Define a metallic button for grid view only
   const MetallicGridButton = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
@@ -421,44 +399,19 @@ export default function ProjectsPage() {
                 </div>
                 <div className="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-1 w-full xs:w-auto justify-center">
                   <Button
-                    variant={viewMode === 'grid' ? "default" : "ghost"}
+                    variant={activeFilter === null ? "default" : "ghost"}
                     size="sm"
-                    onClick={() => setViewMode('grid')}
+                    onClick={() => setActiveFilter(null)}
                     className="rounded-full flex items-center gap-1"
                   >
-                    <LayoutGrid className="w-4 h-4" /> Grid
-                  </Button>
-                  <Button
-                    variant={viewMode === 'carousel' ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode('carousel')}
-                    className="rounded-full flex items-center gap-1"
-                  >
-                    <ArrowLeftRight className="w-4 h-4" /> Carousel
+                    All Projects
                   </Button>
                 </div>
               </div>
-              {viewMode === 'carousel' && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  className="rounded-full"
-                >
-                  {isAutoPlaying ? "Pause" : "Auto Play"}
-                </Button>
-              )}
             </div>
 
             {/* Filter buttons */}
             <div className="flex flex-wrap gap-2 xs:gap-4 justify-start py-2 items-center">
-              <Button
-                variant={activeFilter === null ? "default" : "outline"}
-                onClick={() => setActiveFilter(null)}
-                className="rounded-full"
-              >
-                All Projects
-              </Button>
               {/* Show limited or all categories/tags based on showAllTags */}
               {categories.concat(allTags).slice(0, showAllTags ? categories.length + allTags.length : 8).map((item) => (
                 <Button
@@ -482,168 +435,93 @@ export default function ProjectsPage() {
             </div>
           </motion.div>
 
-          {viewMode === 'grid' ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 sm:gap-10">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="group relative"
-                  onMouseEnter={() => setHoveredProject(project.id)}
-                  onMouseLeave={() => setHoveredProject(null)}
-                >
-                  <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 h-full">
-                    <div className="relative overflow-hidden aspect-video">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
-                      <img
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-auto">
-                        <MetallicGridButton onClick={() => setSelectedProject(project)}>
-                          View Details
-                        </MetallicGridButton>
-                      </div>
+          {/* Project Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="relative group h-full"
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
+                <div className="relative overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-gradient-to-br from-zinc-50 via-zinc-100 to-zinc-50 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                  {/* Project Image */}
+                  <div className="relative aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  {/* Project Info */}
+                  <div className="p-4 xs:p-5 flex-1 flex flex-col">
+                    <h3 className="text-base xs:text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs xs:text-sm text-zinc-600 dark:text-zinc-400 mb-3 xs:mb-4 line-clamp-2 flex-1">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1 xs:gap-2 mb-3 xs:mb-4">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <Badge
+                          key={tag}
+                          variant="outline"
+                          className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <Badge
+                          variant="outline"
+                          className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5"
+                        >
+                          +{project.tags.length - 3}
+                        </Badge>
+                      )}
                     </div>
-                    <div className="p-6">
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                          {project.title}
-                        </h3>
-                        {project.stats && (
-                          <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-                            <div className="flex items-center">
-                              <Star className="w-4 h-4 mr-1" />
-                              {project.stats.stars}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                      <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm line-clamp-2">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="outline"
-                            className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mt-auto">
+                      <Button
+                        size="sm"
+                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400 transition-all duration-300"
+                        onClick={() => window.open(project.demoLink, '_blank')}
+                      >
+                        View Demo <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400 transition-all duration-300"
+                        onClick={() => window.open(project.githubLink, '_blank')}
+                      >
+                        View Code <Github className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
+                      </Button>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>          ) : (
-            <div className="relative min-h-[600px] md:h-[600px] perspective-1000 mb-16 overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center px-2 sm:px-4 overflow-visible">
-                {filteredProjects.map((project, index) => {
-                  const isActive = index === carouselIndex;
-                  const isNext = index === (carouselIndex + 1) % filteredProjects.length;
-                  const isPrev = index === (carouselIndex - 1 + filteredProjects.length) % filteredProjects.length;
-                  
-                  return (
-                    <motion.div
-                      key={project.id}
-                      className={`absolute ${isMobile ? 'w-[85%]' : 'w-[90%]'} sm:w-[90%] md:w-[85%] lg:w-[80%] max-w-2xl`}
-                      initial={false}                      animate={{
-                        scale: isActive ? 1 : 0.85,
-                        rotateY: isActive ? 0 : isNext ? 45 : -45,
-                        x: isActive ? 0 : isNext ? 
-                          isMobile ? "70%" : "80%" : 
-                          isMobile ? "-70%" : "-80%",
-                        z: isActive ? 0 : -200,
-                        opacity: isActive ? 1 : 0.2,
-                        filter: isActive ? "none" : "blur(2px)",
-                      }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                      style={{
-                        transformStyle: "preserve-3d",
-                        backfaceVisibility: "hidden",
-                      }}
+
+                  {/* View Details Button */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                    <Button
+                      onClick={() => setSelectedProject(project)}
+                      className="bg-white/95 dark:bg-zinc-800/95 text-zinc-800 dark:text-zinc-100 hover:bg-white dark:hover:bg-zinc-800 shadow-lg px-6 py-2 rounded-full font-medium text-sm"
                     >
-                      <div className="bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 transform-gpu">
-                        <div className="relative overflow-hidden aspect-video">
-                          <img
-                            src={project.image || "/placeholder.svg"}
-                            alt={project.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                        </div>
-                        <div className="p-4 sm:p-6 md:p-8">
-                          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                            {project.title}
-                          </h3>
-                          <p className="text-zinc-600 dark:text-zinc-300 mb-4 sm:mb-6 text-sm md:text-base">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                            {project.tags.map((tag) => (
-                              <Badge
-                                key={tag}
-                                variant="outline"
-                                className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 text-xs"
-                              >
-                                {tag}
-                              </Badge>
-                            ))}
-                          </div>
-                          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                            <MetallicGridButton onClick={() => setSelectedProject(project)}>
-                              View Details
-                            </MetallicGridButton>
-                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 flex-1">
-                              <Button
-                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
-                                onClick={() => window.open(project.demoLink, '_blank')}
-                              >
-                                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Live Demo
-                              </Button>
-                              <Button
-                                className="flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base py-2 sm:py-3"
-                                onClick={() => window.open(project.githubLink, '_blank')}
-                              >
-                                <Github className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" /> Source Code
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-              
-              {/* Carousel Navigation */}
-              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-2 md:px-4">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-full bg-white/95 text-black hover:bg-white pointer-events-auto shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={prevSlide}
-                >
-                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-full bg-white/95 text-black hover:bg-white pointer-events-auto shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={nextSlide}
-                >
-                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        
+          </div>
 
         {/* Let's Grow Together Section */}
         <div className="w-full flex flex-col items-center justify-center mt-16 md:mt-24 mb-8 px-4">
