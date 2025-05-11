@@ -81,6 +81,34 @@ const services = [
   }
 ]
 
+const serviceRules = [
+  {
+    title: "Revision Policy",
+    description: "One revision round is included per package; extra revisions are billed at $20/hour.",
+    icon: HelpCircle
+  },
+  {
+    title: "Project Timeline",
+    description: "Project timeline starts only after all required content (text/images) is received from the client.",
+    icon: LineChart
+  },
+  {
+    title: "Content Requirements",
+    description: "Client provides content unless otherwise agreed upon.",
+    icon: Database
+  },
+  {
+    title: "Hosting & Domain",
+    description: "Hosting and domain are not included; recommendations will be shared separately based on your needs.",
+    icon: Server
+  },
+  {
+    title: "Support & Maintenance",
+    description: "Basic bug fixes are free for 14 days post-launch; ongoing support requires a maintenance plan.",
+    icon: Shield
+  }
+]
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -893,6 +921,75 @@ export default function ServicesPage() {
               </Button>
             </Link>
           </motion.div>
+        </motion.div>
+
+        {/* Service Rules Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-24 mb-16"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+              Service Guidelines
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              Clear and transparent policies to ensure smooth project delivery and client satisfaction
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xs:gap-6 max-w-4xl mx-auto">
+            {serviceRules.slice(0, 3).map((rule, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-xl p-6 border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-600">
+                    <rule.icon className="w-5 h-5 text-zinc-800 dark:text-zinc-100" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
+                      {rule.title}
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                      {rule.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-6 max-w-2xl mx-auto mt-4">
+            {serviceRules.slice(3).map((rule, index) => (
+              <motion.div
+                key={index + 3}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: (index + 3) * 0.1 }}
+                className="bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-xl p-6 border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-600">
+                    <rule.icon className="w-5 h-5 text-zinc-800 dark:text-zinc-100" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
+                      {rule.title}
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                      {rule.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </PageContainer>
