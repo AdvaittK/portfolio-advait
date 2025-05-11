@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, transform } from "framer-motion"
 import { ArrowDown, Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -180,7 +180,7 @@ export default function HomePage() {
           >
             <div className="space-y-4 xs:space-y-6">
               <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border text-sm xs:text-base">
-                Frontend Developer & UI Designer
+                Full Stack Developer & UI Designer
               </Badge>
               
               <motion.h1
@@ -201,11 +201,25 @@ export default function HomePage() {
                 <Typewriter
                   options={{
                     strings: [
-                      'I am a Full Stack Developer',
                       'I build elegant user interfaces',
                       'I create seamless experiences',
                       'I design digital products',
-                      'I solve complex problems'
+                      'I solve complex problems',
+                      'I craft responsive interfaces',
+                      'I bring ideas to life in code',
+                      'I engineer user-centric solutions',
+                      'I build fast, accessible websites',
+                      'I transform pixels into performance',
+                      'I design with purpose and precision',
+                      'I develop scalable web apps',
+                      'I blend creativity with functionality',
+                      'I optimize for speed and impact',
+                      'I write clean, modern code',
+                      'I turn challenges into code',
+                      'I connect brands with users',
+                      'I create on the edge of technology',
+                      'I code with clarity and intent',
+                      'I shape the future of the web'
                     ],
                     autoStart: true,
                     loop: true,
