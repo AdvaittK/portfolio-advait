@@ -1,74 +1,185 @@
-# Advait's Portfolio Website
+# 🚀 Advait's Portfolio Website
 
-A modern, full-stack developer portfolio built with Next.js, React, and Tailwind CSS. This site showcases projects, services, and skills with beautiful animations, dark/light mode, and a focus on accessibility and performance.
+<div align="center">
+  <img src="/new_homepage.png" alt="Portfolio Preview" width="800px"/>
+  
+  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+</div>
 
-## 🚀 Features
-- Animated, responsive UI with Framer Motion
-- Light & dark mode support
-- Project showcase with 3D carousel and filtering
-- Services, skills, and about sections
-- Contact form and social links
-- SEO and performance optimized
-- Accessible and mobile-friendly
+## ✨ Overview
+
+A modern, full-stack developer portfolio showcasing projects, services, and skills with beautiful animations, dark/light mode, and a focus on accessibility and performance. Built with cutting-edge technologies and best practices.
+
+## 🌟 Key Features
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <b>🎨 UI/UX</b><br/>
+        • Animated, responsive UI<br/>
+        • Light & dark mode<br/>
+        • Beautiful transitions
+      </td>
+      <td align="center">
+        <b>📱 Responsive</b><br/>
+        • Mobile-first design<br/>
+        • Cross-browser support<br/>
+        • Adaptive layouts
+      </td>
+      <td align="center">
+        <b>⚡ Performance</b><br/>
+        • Optimized loading<br/>
+        • SEO friendly<br/>
+        • Core Web Vitals
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## 🛠️ Tech Stack
-- **Framework:** Next.js (App Router)
-- **Frontend:** React, TypeScript, Tailwind CSS
-- **Animation:** Framer Motion, GSAP
-- **Icons:** Lucide, React Icons
-- **State/Theme:** next-themes
 
-## 📦 Getting Started
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <b>Frontend</b><br/>
+        • Next.js (App Router)<br/>
+        • React 19<br/>
+        • TypeScript<br/>
+        • Tailwind CSS
+      </td>
+      <td align="center">
+        <b>Animation</b><br/>
+        • Framer Motion<br/>
+        • GSAP<br/>
+        • CSS Transitions
+      </td>
+      <td align="center">
+        <b>Tools</b><br/>
+        • next-themes<br/>
+        • Lucide Icons<br/>
+        • React Icons
+      </td>
+    </tr>
+  </table>
+</div>
+
+## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18+ recommended)
-- npm or yarn or pnpm
+- npm, yarn, or pnpm
+- Git
 
 ### Installation
+
 ```bash
 # Clone the repository
-https://github.com/AdvaittK/portfolio-advait.git
+git clone https://github.com/AdvaittK/portfolio-advait.git
 cd portfolio-advait
 
 # Install dependencies
 npm install
 # or
 yarn install
+# or
+pnpm install
 ```
 
 ### Development
+
 ```bash
+# Start development server
 npm run dev
 # or
 yarn dev
+# or
+pnpm dev
 ```
+
 Visit [http://localhost:3000](http://localhost:3000) to view the site.
 
-### Build for Production
+### Production Build
+
 ```bash
+# Build for production
 npm run build
 npm start
 # or
 yarn build
 yarn start
+# or
+pnpm build
+pnpm start
 ```
 
 ## 📁 Project Structure
-- `app/` — Main Next.js app directory (pages, layout, etc.)
-- `components/` — Reusable UI components
-- `public/` — Static assets (images, icons)
-- `styles/` — Global and Tailwind CSS
 
-## ✨ Customization
-- Update your info, projects, and services in the respective files in `app/` and `components/`
-- Change theme colors in `tailwind.config.js` or `globals.css`
+```
+portfolio-advait/
+├── app/                # Next.js app directory
+│   ├── about/         # About page
+│   ├── projects/      # Projects page
+│   ├── services/      # Services page
+│   └── contact/       # Contact page
+├── components/        # Reusable components
+│   ├── ui/           # UI components
+│   └── layout/       # Layout components
+├── public/           # Static assets
+│   ├── images/       # Image assets
+│   └── icons/        # Icon assets
+└── styles/           # Global styles
+```
+
+## 🎨 Customization
+
+- Update personal information in `app/` directory
+- Modify projects in `app/projects/page.tsx`
+- Customize services in `app/services/page.tsx`
+- Adjust theme colors in `tailwind.config.js`
+- Add/modify components in `components/` directory
+
+## 📱 Responsive Design
+
+The portfolio is fully responsive and optimized for:
+- 📱 Mobile devices
+- 💻 Tablets
+- 🖥️ Desktop screens
+- 📺 Large displays
+
+## 🔧 Performance Optimization
+
+- ⚡ Fast page loads
+- 🎯 SEO optimization
+- 📊 Analytics integration
+- 🔍 Accessibility compliance
 
 ## 📝 License
+
 This project is open source and available under the [MIT License](LICENSE).
 
-## 📬 Contact
-Feel free to reach out via [email](mailto:advaitt.dev@gmail.com) 
+## 📬 Contact & Connect
+
+<div align="center">
+  <a href="mailto:advaitt.dev@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  <a href="https://github.com/AdvaittK">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+  <a href="https://linkedin.com/in/advait-k">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+</div>
 
 ---
 
-> Designed & developed by Advait 
+<div align="center">
+  <sub>Built with ❤️ by Advait</sub>
+</div> 

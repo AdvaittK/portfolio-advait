@@ -438,46 +438,46 @@ export default function ProjectsPage() {
           {/* Project Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6">
             {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
+                <motion.div
+                  key={project.id}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 className="relative group h-full"
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
+                  onMouseEnter={() => setHoveredProject(project.id)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
                 <div className="relative overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-gradient-to-br from-zinc-50 via-zinc-100 to-zinc-50 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                   {/* Project Image */}
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={project.image}
-                      alt={project.title}
+                        alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                      </div>
 
                   {/* Project Info */}
                   <div className="p-4 xs:p-5 flex-1 flex flex-col">
                     <h3 className="text-base xs:text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
-                      {project.title}
-                    </h3>
+                          {project.title}
+                        </h3>
                     <p className="text-xs xs:text-sm text-zinc-600 dark:text-zinc-400 mb-3 xs:mb-4 line-clamp-2 flex-1">
-                      {project.description}
-                    </p>
+                        {project.description}
+                      </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1 xs:gap-2 mb-3 xs:mb-4">
                       {project.tags.slice(0, 3).map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="outline"
+                          <Badge
+                            key={tag}
+                            variant="outline"
                           className="bg-zinc-100/80 dark:bg-zinc-800/80 text-zinc-800 dark:text-zinc-200 text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
                       {project.tags.length > 3 && (
                         <Badge
                           variant="outline"
@@ -490,38 +490,38 @@ export default function ProjectsPage() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-2 mt-auto">
-                      <Button
+                              <Button
                         size="sm"
                         className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400 transition-all duration-300"
-                        onClick={() => window.open(project.demoLink, '_blank')}
-                      >
+                                onClick={() => window.open(project.demoLink, '_blank')}
+                              >
                         View Demo <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
-                      </Button>
-                      <Button
+                              </Button>
+                              <Button
                         size="sm"
                         className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400 transition-all duration-300"
-                        onClick={() => window.open(project.githubLink, '_blank')}
-                      >
+                                onClick={() => window.open(project.githubLink, '_blank')}
+                              >
                         View Code <Github className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
-                      </Button>
-                    </div>
-                  </div>
-
+                              </Button>
+                            </div>
+              </div>
+              
                   {/* View Details Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
-                    <Button
+                <Button
                       onClick={() => setSelectedProject(project)}
                       className="bg-white/95 dark:bg-zinc-800/95 text-zinc-800 dark:text-zinc-100 hover:bg-white dark:hover:bg-zinc-800 shadow-lg px-6 py-2 rounded-full font-medium text-sm"
                     >
                       View Details
-                    </Button>
-                  </div>
-                </div>
+                </Button>
+              </div>
+            </div>
               </motion.div>
             ))}
           </div>
         
-          </div>
+        </div>
 
         {/* Let's Grow Together Section */}
         <div className="w-full flex flex-col items-center justify-center mt-16 md:mt-24 mb-8 px-4">
