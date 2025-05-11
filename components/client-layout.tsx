@@ -24,7 +24,7 @@ export default function ClientLayout({
     // Wait for loading screen and transition to complete
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1800) // Match our new total animation duration
+    }, 1200) // Reduced from 1800ms to 1200ms
 
     return () => {
       window.removeEventListener('transitionComplete', handleTransitionComplete)

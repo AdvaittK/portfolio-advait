@@ -11,8 +11,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
+      staggerChildren: 0.05,
+      delayChildren: 0.1
     }
   }
 }
@@ -24,8 +24,8 @@ const itemVariants = {
     opacity: 1,
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 15
+      stiffness: 200,
+      damping: 20
     }
   }
 }
@@ -167,14 +167,14 @@ export default function AboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-24"
         >
           <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             About Me
           </motion.h1>
@@ -182,7 +182,7 @@ export default function AboutPage() {
             className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             Crafting exceptional digital experiences through innovative solutions and modern technologies
           </motion.p>
@@ -193,7 +193,7 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="flex flex-col items-center justify-center"
           >
             <div className="relative w-[200px] h-[200px] md:w-[400px] md:h-[400px] mb-6">
@@ -208,7 +208,7 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="flex flex-col justify-center md:items-start items-center text-center md:text-left gap-6"
           >
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">My Journey</h3>
@@ -234,7 +234,7 @@ export default function AboutPage() {
                   href={social.link}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
+                  transition={{ duration: 0.2, delay: 0.2 + (index * 0.05) }}
                   className="p-3 rounded-full bg-secondary/80 hover:bg-secondary transition-colors"
                   aria-label={social.label}
                   whileHover={{ scale: 1.1 }}

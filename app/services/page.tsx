@@ -276,7 +276,7 @@ export default function ServicesPage() {
                 className="absolute inset-0 pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 dark:from-white/10 dark:to-black/10" />
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
@@ -337,13 +337,13 @@ export default function ServicesPage() {
           className="text-center mb-16"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
         >
           <motion.h2 
             className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.5 }}
           >
             Choose Your Plan
           </motion.h2>
@@ -351,7 +351,7 @@ export default function ServicesPage() {
             className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
           >
             Select the perfect package for your needs, with flexible options to scale as you grow
           </motion.p>
@@ -457,7 +457,7 @@ export default function ServicesPage() {
                 className="bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 px-4 py-1 rounded-full shadow-lg border border-zinc-200/20 dark:border-zinc-700/20 whitespace-nowrap flex items-center gap-1.5"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
               >
                 <motion.div 
                   className="w-1.5 h-1.5 rounded-full bg-green-400"
@@ -633,13 +633,13 @@ export default function ServicesPage() {
           className="text-center mt-32 mb-24"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
         >
           <motion.h2 
             className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.9 }}
+            transition={{ duration: 0.4, delay: 0.9 }}
           >
             Additional Services
           </motion.h2>
@@ -647,7 +647,7 @@ export default function ServicesPage() {
             className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
+            transition={{ duration: 0.4, delay: 1.0 }}
           >
             Enhance your website with our maintenance and addon services
           </motion.p>
@@ -760,13 +760,13 @@ export default function ServicesPage() {
           className="text-center mt-32 mb-16"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.1 }}
+          transition={{ duration: 0.4, delay: 1.1 }}
         >
           <motion.h2 
             className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
+            transition={{ duration: 0.4, delay: 1.2 }}
           >
             Why Choose Us
           </motion.h2>
@@ -774,7 +774,7 @@ export default function ServicesPage() {
             className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.3 }}
+            transition={{ duration: 0.4, delay: 1.3 }}
           >
             We combine technical expertise with creative innovation to deliver exceptional results
           </motion.p>
@@ -875,7 +875,7 @@ export default function ServicesPage() {
           className="max-w-2xl mx-auto mb-24"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.4 }}
+          transition={{ duration: 0.4, delay: 1.4 }}
         >
           <div className="bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-8">
             <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
@@ -899,7 +899,7 @@ export default function ServicesPage() {
           className="text-center mt-16"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
         >
           <motion.div
             variants={buttonVariants}
@@ -927,7 +927,7 @@ export default function ServicesPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-24 mb-16"
         >
           <div className="text-center mb-12">

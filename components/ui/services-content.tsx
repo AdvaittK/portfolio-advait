@@ -152,19 +152,19 @@ export function ServicesContent() {
       className="container mx-auto px-6 py-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       <motion.div 
         className="text-center mb-12"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
       >
         <motion.h1 
           className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
           Professional Services
         </motion.h1>
@@ -172,7 +172,7 @@ export function ServicesContent() {
           className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
         >
           Elevate your digital presence with our comprehensive suite of professional services, designed to transform your vision into reality
         </motion.p>
@@ -251,13 +251,13 @@ export function ServicesContent() {
         className="text-center mb-16"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.4, delay: 0.4 }}
       >
         <motion.h2 
           className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.5 }}
         >
           Choose Your Plan
         </motion.h2>
@@ -265,7 +265,7 @@ export function ServicesContent() {
           className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.6 }}
         >
           Select the perfect package for your needs, with flexible options to scale as you grow
         </motion.p>

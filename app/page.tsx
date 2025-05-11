@@ -114,7 +114,7 @@ export default function HomePage() {
       ref={pageTransitionRef}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         "min-h-screen bg-transparent text-foreground transition-colors duration-300",
       )}
@@ -124,7 +124,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        transition={{ duration: 0.5, delay: 0.2 }}
         className="min-h-[90vh] flex flex-col justify-center items-center relative px-4 xs:px-6 py-12 xs:py-16 overflow-hidden"
       >
         {/* Background gradients with enhanced effects */}
@@ -175,7 +175,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
@@ -186,7 +186,7 @@ export default function HomePage() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
                 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2"
               >
                 Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
@@ -195,7 +195,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
                 className="text-lg xs:text-xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
               >
                 <Typewriter
@@ -232,7 +232,7 @@ export default function HomePage() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.5, delay: 1.0 }}
                 className="text-sm xs:text-base md:text-lg text-muted-foreground max-w-lg mt-2"
               >
                 Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
@@ -241,7 +241,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
                 className="flex flex-col xs:flex-row gap-3 xs:gap-4 pt-2"
               >
                 <Link href="/projects" className="w-full xs:w-auto">
@@ -265,7 +265,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.0 }}
+                transition={{ duration: 0.5, delay: 1.4 }}
                 className="flex gap-4 pt-4"
               >
                 {[
@@ -296,7 +296,7 @@ export default function HomePage() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
           >
             <SkillsRadarBrowser 
@@ -381,7 +381,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
         className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
         {/* Background gradients */}
@@ -407,7 +407,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="text-center mb-12 xs:mb-16"
           >
             <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
@@ -426,7 +426,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="relative"
           >
             <ProjectCarousel3D 
@@ -439,26 +439,26 @@ export default function HomePage() {
 
       {/* Services Section */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
       >
         <ServicesSection />
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
       >
         <NextStepsSection />
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
       >
         <LetsWorkTogetherSection />
       </motion.div>

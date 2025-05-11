@@ -85,8 +85,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3
+      staggerChildren: 0.05,
+      delayChildren: 0.1
     }
   }
 }
@@ -98,8 +98,8 @@ const itemVariants = {
     y: 0,
     transition: {
       type: "spring",
-      stiffness: 100,
-      damping: 15
+      stiffness: 200,
+      damping: 20
     }
   },
   hover: {
@@ -117,9 +117,9 @@ const progressBarVariants = {
   visible: (percentage: number) => ({
     width: `${percentage}%`,
     transition: {
-      duration: 1,
+      duration: 0.4,
       ease: "easeOut",
-      delay: 0.5
+      delay: 0.2
     }
   })
 }
@@ -137,17 +137,16 @@ export function SkillsContent() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-            duration: 0.8
+            duration: 0.3,
+            delay: 0.1,
+            ease: "easeOut"
           }}
         >
           <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
             My Skills
           </motion.h1>
@@ -155,7 +154,7 @@ export function SkillsContent() {
             className="text-xl text-zinc-600 dark:text-zinc-400 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
             Explore my technical expertise and professional competencies
           </motion.p>
@@ -167,8 +166,8 @@ export function SkillsContent() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
-            duration: 0.8,
-            delay: 0.4,
+            duration: 0.3,
+            delay: 0.1,
             ease: "easeOut"
           }}
         >
@@ -180,14 +179,14 @@ export function SkillsContent() {
           className="mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
         >
           <motion.h2
             className="text-3xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
             Technical Expertise
           </motion.h2>

@@ -27,9 +27,9 @@ export default function PageTransition({ children }: PageTransitionProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{
-        duration: 0.6,
+        duration: 0.4,
         ease: [0.22, 1, 0.36, 1],
-        delay: 0.2 // Add a small delay to ensure it starts after loading screen
+        delay: 0.1 // Reduced delay
       }}
       className="will-change-transform"
     >
