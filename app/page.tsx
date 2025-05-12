@@ -403,44 +403,18 @@ export default function HomePage() {
       </motion.section>
       <SkillsServicesMarquee />
 
-      {/* Featured Projects Section - simplified animations for mobile */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: isMobile ? 0.2 : 0.3, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
+      {/* Featured Projects Section - no animations */}
+      <section
         className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
-        {/* Background gradients - static on mobile */}
+        {/* Static background gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {!isMobile ? (
-            <motion.div 
-              className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
-              animate={{
-                x: [0, 10, -5, 0],
-                y: [0, -5, 10, 0],
-                scale: [1, 1.02, 0.98, 1],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-          ) : (
-            <div className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30" />
-          )}
+          <div className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30" />
         </div>
 
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: isMobile ? 0.2 : 0.3 }}
-            className="text-center mb-12 xs:mb-16"
-          >
+          {/* Section Header - no animations */}
+          <div className="text-center mb-12 xs:mb-16">
             <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
               Featured Work
             </Badge>
@@ -450,49 +424,32 @@ export default function HomePage() {
             <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Explore some of my recent work that showcases my expertise in building modern web applications
             </p>
-          </motion.div>
+          </div>
 
-          {/* Projects Carousel */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1 }}
-            className="relative"
-          >
+          {/* Projects Carousel - no animations */}
+          <div className="relative">
             <ProjectCarousel3D 
               projects={featuredProjects}
               onSelect={(project) => window.open(project.demoLink, '_blank')}
             />
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Services Section - simplified for mobile */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
-      >
+      {/* Services Section - no animations */}
+      <div>
         <ServicesSection />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
-      >
+      </div>
+      
+      {/* Next Steps Section - no animations */}
+      <div>
         <NextStepsSection />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
-      >
+      </div>
+      
+      {/* Let's Work Together Section - no animations */}
+      <div>
         <LetsWorkTogetherSection />
-      </motion.div>
+      </div>
     </motion.div>
   )
 }

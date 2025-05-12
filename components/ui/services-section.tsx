@@ -41,55 +41,25 @@ export function ServicesSection() {
   return (
     <section className="py-24 relative">
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.h2 
+        <div className="text-center mb-16">
+          <h2 
             className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
           >
             Professional Services
-          </motion.h2>
-          <motion.p 
+          </h2>
+          <p 
             className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
           >
             Transforming ideas into exceptional digital experiences with cutting-edge technology and innovative solutions
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
+        <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-            }
-          }}
         >
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 18 } },
-                hover: { scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }
-              }}
-              whileHover="hover"
               className="group relative bg-gradient-to-br from-zinc-50/50 to-zinc-100/50 dark:from-zinc-800/50 dark:to-zinc-900/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
             >
               {/* Enhanced metallic effect overlay */}
@@ -115,16 +85,12 @@ export function ServicesSection() {
                   {service.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
+        <div
           className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4 }}
         >
           <Link href="/services">
             <Button
@@ -134,7 +100,7 @@ export function ServicesSection() {
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
