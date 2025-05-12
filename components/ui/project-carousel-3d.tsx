@@ -271,7 +271,8 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
         className={`absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
       >
         <ChevronRight className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
-      </button>{/* CTA Button */}      <div className="text-center mt-32 sm:mt-40 md:mt-48 relative z-20">
+    </button>{/* CTA Button */}      
+      <div className="text-center mt-40 sm:mt-44 md:mt-48 relative z-20">
         <Link href="/projects">
           <Button
             className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm sm:text-base font-semibold transition-all duration-200 group"

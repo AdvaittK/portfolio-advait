@@ -23,10 +23,10 @@ import { useIsMobile } from "@/hooks/use-mobile"
 const featuredProjects = [
   {
     id: "kixkart-ecommerce",
-    title: "KixKart – Premium Sneakers & Streetwear E-Commerce Platform",
+    title: "KixKart – Premium Sneakers E-Commerce Platform",
     description: "Cyberpunk-inspired e-commerce platform specializing in premium sneakers and streetwear, built with Next.js, Tailwind, and advanced UI components.",
     longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories.",
-    tags: ["E-Commerce", "Next.js", "Tailwind CSS", "TypeScript", "Radix UI", "Shadcn UI", "Cyberpunk Design"],
+    tags: ["E-Commerce", "Next.js", "Tailwind CSS"],
     image: "/kixkart.png",
     demoLink: "https://www.kixkart.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/kixkart",
