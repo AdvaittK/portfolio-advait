@@ -7,6 +7,7 @@ import { Button } from './button'
 import { ExternalLink, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import { useIsMobile } from "@/hooks/use-mobile"
 
 interface Project {
   id: string
@@ -31,6 +32,8 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
   const containerRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
   const isDark = theme === 'dark'
+  // Add mobile detection for performance optimization
+  const isMobile = useIsMobile()
 
   const goToNext = () => {
     setDirection(1)
@@ -63,7 +66,44 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
 
   // Calculate positions for each project card
   const getCardVariants = (index: number) => {
-    const positions = {
+    // Simplified animation for mobile devices
+    const mobilePositions = {
+      center: { 
+        x: 0, 
+        scale: 1, 
+        zIndex: 5, 
+        opacity: 1,
+        rotateY: 0, 
+        transition: { type: "tween", duration: 0.3 }
+      },
+      left: { 
+        x: "-50%", 
+        scale: 0.85, 
+        zIndex: 4, 
+        opacity: 0.7,
+        rotateY: 10, 
+        transition: { type: "tween", duration: 0.3 }
+      },
+      right: { 
+        x: "50%", 
+        scale: 0.85, 
+        zIndex: 4, 
+        opacity: 0.7,
+        rotateY: -10, 
+        transition: { type: "tween", duration: 0.3 }
+      },
+      hidden: { 
+        x: direction > 0 ? "100%" : "-100%", 
+        scale: 0.8, 
+        zIndex: 1, 
+        opacity: 0,
+        rotateY: direction > 0 ? -20 : 20, 
+        transition: { type: "tween", duration: 0.3 }
+      },
+    }
+
+    // Full spring animations for desktop
+    const desktopPositions = {
       center: { 
         x: 0, 
         scale: 1, 
@@ -98,6 +138,8 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
       },
     }
 
+    const positions = isMobile ? mobilePositions : desktopPositions
+
     if (index === currentIndex) {
       return positions.center
     } else if (index === getPrevIndex(currentIndex)) {
@@ -117,14 +159,13 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
     >
       <div className="relative h-[500px]">
         <AnimatePresence initial={false}>
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project, index) => (            <motion.div
               key={project.id}
               className="absolute top-0 left-0 right-0 w-full max-w-2xl mx-auto"
               initial="hidden"
               animate={getCardVariants(index)}
               exit="hidden"
-              style={{ transformStyle: "preserve-3d" }}
+              style={{ transformStyle: isMobile ? "flat" : "preserve-3d" }} 
               onClick={() => index === currentIndex && onSelect(project)}
             >
               <div 
@@ -224,16 +265,22 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
       {/* Navigation Arrows */}
       <motion.button
         onClick={() => goToPrev()}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-24 z-50 p-4 rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group"
+        whileHover={{ scale: isMobile ? 1.05 : 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: isMobile ? 0.2 : 0.3 }}
+        className={`absolute left-0 top-1/2 -translate-y-1/2 ${isMobile ? '-translate-x-16' : '-translate-x-24'} z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
       >
-        <ChevronLeft className="w-7 h-7 text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors" />
+        <ChevronLeft className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
       </motion.button>
       
       <motion.button
         onClick={() => goToNext()}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-24 z-50 p-4 rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group"
+        whileHover={{ scale: isMobile ? 1.05 : 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: isMobile ? 0.2 : 0.3 }}
+        className={`absolute right-0 top-1/2 -translate-y-1/2 ${isMobile ? 'translate-x-16' : 'translate-x-24'} z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
       >
-        <ChevronRight className="w-7 h-7 text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors" />
+        <ChevronRight className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
       </motion.button>
 
       {/* CTA Button */}

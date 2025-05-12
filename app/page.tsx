@@ -17,6 +17,7 @@ import { ServicesSection } from "@/components/ui/services-section"
 import { NextStepsSection } from "@/components/ui/next-steps-section"
 import { LetsWorkTogetherSection } from "@/components/ui/lets-work-together-section"
 import { SkillsServicesMarquee } from "@/components/ui/skills-services-marquee"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 // Featured projects data
 const featuredProjects = [
@@ -79,6 +80,7 @@ const featuredProjects = [
 export default function HomePage() {
   const [isMounted, setIsMounted] = useState(false)
   const pageTransitionRef = useRef<HTMLDivElement>(null)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     setIsMounted(true)
@@ -94,7 +96,7 @@ export default function HomePage() {
             scale: 0.98
           },
           {
-            duration: 1.2,
+            duration: isMobile ? 0.7 : 1.2,
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
@@ -107,14 +109,22 @@ export default function HomePage() {
 
       return () => ctx.revert()
     }
-  }, [])
+  }, [isMobile])
+
+  const getTransitionDuration = () => {
+    return isMobile ? 0.2 : 0.5
+  }
+
+  const getAnimationDelay = (desktop: number) => {
+    return isMobile ? desktop * 0.3 : desktop
+  }
 
   return (
     <motion.div
       ref={pageTransitionRef}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: isMobile ? 0.2 : 0.5, ease: "easeOut" }}
       className={cn(
         "min-h-screen bg-transparent text-foreground transition-colors duration-300",
       )}
@@ -124,50 +134,62 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
         className="min-h-[90vh] flex flex-col justify-center items-center relative px-4 xs:px-6 py-12 xs:py-16 overflow-hidden"
       >
-        {/* Background gradients with enhanced effects */}
+        {/* Background gradients with enhanced effects - disabled or simplified on mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
-            animate={{
-              x: [0, 10, -5, 0],
-              y: [0, -5, 10, 0],
-              scale: [1, 1.02, 0.98, 1],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-          <motion.div 
-            className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30"
-            animate={{
-              x: [0, -10, 5, 0],
-              y: [0, 10, -8, 0],
-              scale: [1, 0.98, 1.02, 1],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30"
-            animate={{
-              x: [0, 8, -8, 0],
-              y: [0, -8, 4, 0],
-              scale: [1, 1.03, 0.97, 1],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
+          {!isMobile ? (
+            // Full animations on desktop
+            <>
+              <motion.div 
+                className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
+                animate={{
+                  x: [0, 10, -5, 0],
+                  y: [0, -5, 10, 0],
+                  scale: [1, 1.02, 0.98, 1],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div 
+                className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30"
+                animate={{
+                  x: [0, -10, 5, 0],
+                  y: [0, 10, -8, 0],
+                  scale: [1, 0.98, 1.02, 1],
+                }}
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div 
+                className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30"
+                animate={{
+                  x: [0, 8, -8, 0],
+                  y: [0, -8, 4, 0],
+                  scale: [1, 1.03, 0.97, 1],
+                }}
+                transition={{
+                  duration: 18,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+            </>
+          ) : (
+            // Static gradients on mobile - no animations
+            <>
+              <div className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30" />
+              <div className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30" />
+              <div className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30" />
+            </>
+          )}
         </div>
 
         <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-center">
@@ -175,7 +197,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.4) }}
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
@@ -186,7 +208,7 @@ export default function HomePage() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
                 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2"
               >
                 Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
@@ -195,7 +217,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
+                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.8) }}
                 className="text-lg xs:text-xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
               >
                 <Typewriter
@@ -223,8 +245,8 @@ export default function HomePage() {
                     ],
                     autoStart: true,
                     loop: true,
-                    delay: 50,
-                    deleteSpeed: 30,
+                    delay: isMobile ? 30 : 50,
+                    deleteSpeed: isMobile ? 15 : 30,
                   }}
                 />
               </motion.div>
@@ -232,7 +254,7 @@ export default function HomePage() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.0 }}
+                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(1.0) }}
                 className="text-sm xs:text-base md:text-lg text-muted-foreground max-w-lg mt-2"
               >
                 Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
@@ -241,7 +263,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
+                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(1.2) }}
                 className="flex flex-col xs:flex-row gap-3 xs:gap-4 pt-2"
               >
                 <Link href="/projects" className="w-full xs:w-auto">
@@ -265,7 +287,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.4 }}
+                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(1.4) }}
                 className="flex gap-4 pt-4"
               >
                 {[
@@ -279,7 +301,7 @@ export default function HomePage() {
                     href={social.link}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 1 + (index * 0.1) }}
+                    transition={{ duration: isMobile ? 0.2 : 0.4, delay: isMobile ? (0.5 + (index * 0.05)) : (1 + (index * 0.1)) }}
                     className="p-3 rounded-full bg-secondary/80 hover:bg-secondary transition-colors"
                     aria-label={social.label}
                     whileHover={{ scale: 1.1 }}
@@ -292,11 +314,11 @@ export default function HomePage() {
             </div>
           </motion.div>
           
-          {/* Enhanced Skills Radar Browser */}
+          {/* Enhanced Skills Radar Browser - only shown on desktop */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
             className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
           >
             <SkillsRadarBrowser 
@@ -310,95 +332,104 @@ export default function HomePage() {
               ]}
             />
             
-            {/* Interactive floating elements around the browser */}
+            {/* Interactive floating elements - only animated on desktop */}
             <div className="absolute inset-0 pointer-events-none">
-              <motion.div
-                className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                animate={{ 
-                  y: [0, -15, 0],
-                  rotate: [0, 15, 0, -15, 0]
-                }}
-                transition={{ 
-                  duration: 6, 
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                <SiReact className="w-8 h-8 text-blue-500" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                animate={{ 
-                  y: [0, 10, 0],
-                  x: [0, 10, 0, -10, 0],
-                  rotate: [0, 10, 0]
-                }}
-                transition={{ 
-                  duration: 7, 
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                <SiTypescript className="w-6 h-6 text-blue-600" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                animate={{ 
-                  x: [0, 10, 0],
-                  rotate: 360
-                }}
-                transition={{ 
-                  duration: 10, 
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-                <SiTailwindcss className="w-5 h-5 text-cyan-500" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                animate={{ 
-                  y: [0, -10, 0, 10, 0],
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                <SiNextdotjs className="w-5 h-5" />
-              </motion.div>
+              {!isMobile && (
+                <>
+                  <motion.div
+                    className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotate: [0, 15, 0, -15, 0]
+                    }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity,
+                      repeatType: "reverse"
+                    }}
+                  >
+                    <SiReact className="w-8 h-8 text-blue-500" />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                    animate={{ 
+                      y: [0, 10, 0],
+                      x: [0, 10, 0, -10, 0],
+                      rotate: [0, 10, 0]
+                    }}
+                    transition={{ 
+                      duration: 7, 
+                      repeat: Infinity,
+                      repeatType: "reverse"
+                    }}
+                  >
+                    <SiTypescript className="w-6 h-6 text-blue-600" />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                    animate={{ 
+                      x: [0, 10, 0],
+                      rotate: 360
+                    }}
+                    transition={{ 
+                      duration: 10, 
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  >
+                    <SiTailwindcss className="w-5 h-5 text-cyan-500" />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                    animate={{ 
+                      y: [0, -10, 0, 10, 0],
+                    }}
+                    transition={{ 
+                      duration: 5, 
+                      repeat: Infinity,
+                      repeatType: "reverse"
+                    }}
+                  >
+                    <SiNextdotjs className="w-5 h-5" />
+                  </motion.div>
+                </>
+              )}
             </div>
           </motion.div>
         </div>
       </motion.section>
       <SkillsServicesMarquee />
-      {/* Featured Projects Section */}
+
+      {/* Featured Projects Section - simplified animations for mobile */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: isMobile ? 0.2 : 0.3, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
         className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
-        {/* Background gradients */}
+        {/* Background gradients - static on mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
-            animate={{
-              x: [0, 10, -5, 0],
-              y: [0, -5, 10, 0],
-              scale: [1, 1.02, 0.98, 1],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
+          {!isMobile ? (
+            <motion.div 
+              className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
+              animate={{
+                x: [0, 10, -5, 0],
+                y: [0, -5, 10, 0],
+                scale: [1, 1.02, 0.98, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            />
+          ) : (
+            <div className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30" />
+          )}
         </div>
 
         <div className="max-w-7xl mx-auto">
@@ -407,7 +438,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: isMobile ? 0.2 : 0.3 }}
             className="text-center mb-12 xs:mb-16"
           >
             <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
@@ -426,7 +457,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.2, delay: 0.1 }}
+            transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1 }}
             className="relative"
           >
             <ProjectCarousel3D 
@@ -437,12 +468,12 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* Services Section */}
+      {/* Services Section - simplified for mobile */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
       >
         <ServicesSection />
       </motion.div>
@@ -450,7 +481,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
       >
         <NextStepsSection />
       </motion.div>
@@ -458,7 +489,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: isMobile ? 0.15 : 0.2, delay: isMobile ? 0.05 : 0.1, ease: "easeOut" }}
       >
         <LetsWorkTogetherSection />
       </motion.div>
