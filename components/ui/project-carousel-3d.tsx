@@ -63,7 +63,6 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
   // Get the indices for the cards to display (previous, current, next)
   const getPrevIndex = (index: number) => (index - 1 + projects.length) % projects.length
   const getNextIndex = (index: number) => (index + 1) % projects.length
-
   // Calculate positions for each project card
   const getCardVariants = (index: number) => {
     // Simplified animation for mobile devices
@@ -77,27 +76,27 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
         transition: { type: "tween", duration: 0.3 }
       },
       left: { 
-        x: "-50%", 
-        scale: 0.85, 
+        x: "-35%", 
+        scale: 0.75, 
         zIndex: 4, 
-        opacity: 0.7,
-        rotateY: 10, 
+        opacity: 0.5,
+        rotateY: 5, 
         transition: { type: "tween", duration: 0.3 }
       },
       right: { 
-        x: "50%", 
-        scale: 0.85, 
+        x: "35%", 
+        scale: 0.75, 
         zIndex: 4, 
-        opacity: 0.7,
-        rotateY: -10, 
+        opacity: 0.5,
+        rotateY: -5, 
         transition: { type: "tween", duration: 0.3 }
       },
       hidden: { 
         x: direction > 0 ? "100%" : "-100%", 
-        scale: 0.8, 
+        scale: 0.7, 
         zIndex: 1, 
         opacity: 0,
-        rotateY: direction > 0 ? -20 : 20, 
+        rotateY: direction > 0 ? -10 : 10, 
         transition: { type: "tween", duration: 0.3 }
       },
     }
@@ -150,18 +149,17 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
       return positions.hidden
     }
   }
-
   return (
     <div 
       ref={containerRef} 
       className="w-full h-full relative py-10"
       style={{ perspective: "1200px" }}
     >
-      <div className="relative h-[500px]">
+      <div className="relative h-[400px] sm:h-[450px] md:h-[500px]">
         <AnimatePresence initial={false}>
           {projects.map((project, index) => (            <motion.div
               key={project.id}
-              className="absolute top-0 left-0 right-0 w-full max-w-2xl mx-auto"
+              className="absolute top-0 left-0 right-0 w-[90%] sm:w-[85%] md:w-full max-w-2xl mx-auto"
               initial="hidden"
               animate={getCardVariants(index)}
               exit="hidden"
@@ -260,37 +258,26 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
-
-      {/* Navigation Arrows */}
-      <motion.button
+      </div>      {/* Navigation Arrows */}
+      <button
         onClick={() => goToPrev()}
-        whileHover={{ scale: isMobile ? 1.05 : 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: isMobile ? 0.2 : 0.3 }}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 ${isMobile ? '-translate-x-16' : '-translate-x-24'} z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
+        className={`absolute left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
       >
         <ChevronLeft className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
-      </motion.button>
+      </button>
       
-      <motion.button
+      <button
         onClick={() => goToNext()}
-        whileHover={{ scale: isMobile ? 1.05 : 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: isMobile ? 0.2 : 0.3 }}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 ${isMobile ? 'translate-x-16' : 'translate-x-24'} z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
+        className={`absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
       >
         <ChevronRight className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
-      </motion.button>
-
-      {/* CTA Button */}
-      <div className="text-center mt-48 relative z-20">
+      </button>{/* CTA Button */}      <div className="text-center mt-32 sm:mt-40 md:mt-48 relative z-20">
         <Link href="/projects">
           <Button
-            className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 group"
+            className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm sm:text-base font-semibold transition-all duration-200 group"
           >
             View All Projects
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </Link>
       </div>

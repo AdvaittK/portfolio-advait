@@ -427,7 +427,7 @@ export default function HomePage() {
           </div>
 
           {/* Projects Carousel - no animations */}
-          <div className="relative">
+          <div className="relative px-1 sm:px-4 md:px-6">
             <ProjectCarousel3D 
               projects={featuredProjects}
               onSelect={(project) => window.open(project.demoLink, '_blank')}
