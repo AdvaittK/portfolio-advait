@@ -5,6 +5,7 @@ import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check, 
 import { PageContainer } from "@/components/layout/page-container"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import { Price } from "@/components/ui/price"
 
 const services = [
   {
@@ -384,17 +385,13 @@ export default function ServicesPage() {
               <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="w-full flex flex-col items-center relative overflow-visible">
-                  <div className="flex items-center justify-center gap-1 relative z-10">
-                    <motion.span 
-                      className="text-3xl font-bold relative bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-100"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <span className="text-base align-top mr-0.5">₹</span>9999
-                    </motion.span>
-                    <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Price inr={9999} usd={299} />
+                  </motion.div>
                   <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
                     A professional online presence for individuals or small businesses
@@ -487,17 +484,13 @@ export default function ServicesPage() {
               <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="w-full flex flex-col items-center relative overflow-visible">
-                  <div className="flex items-center justify-center gap-1 relative z-10">
-                    <motion.span 
-                      className="text-3xl font-bold relative bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-100"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <span className="text-base align-top mr-0.5">₹</span>24999
-                    </motion.span>
-                    <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Price inr={24999} usd={549} />
+                  </motion.div>
                   <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
                     A more comprehensive website for established businesses
@@ -568,17 +561,13 @@ export default function ServicesPage() {
               <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="w-full flex flex-col items-center relative overflow-visible">
-                  <div className="flex items-center justify-center gap-1 relative z-10">
-                    <motion.span 
-                      className="text-3xl font-bold relative bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-100"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <span className="text-base align-top mr-0.5">₹</span>35999
-                    </motion.span>
-                    <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Price inr={35999} usd={899} />
+                  </motion.div>
                   <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
                     A fully-featured website with additional functionality
@@ -674,8 +663,7 @@ export default function ServicesPage() {
                   Technical Maintenance Package
                 </h3>
                 <div className="mb-6">
-                  <span className="text-3xl font-bold">₹999</span>
-                  <span className="text-zinc-600 dark:text-zinc-400"> onwards</span>
+                  <Price inr={999} usd={59} />
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
                   Available only for websites with backend functionality
