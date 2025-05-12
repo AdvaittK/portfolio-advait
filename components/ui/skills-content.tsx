@@ -54,8 +54,8 @@ const skillCategories = [
       { name: "Node.js", percentage: 85, icon: Box, description: "Server-side JavaScript runtime" },
       { name: "Express.js", percentage: 85, icon: Network, description: "Web application framework for Node.js" },
       { name: "MongoDB", percentage: 85, icon: DatabaseIcon, description: "NoSQL database management" },
-      { name: "PostgreSQL", percentage: 75, icon: Database, description: "Relational database management" },
-      { name: "Python", percentage: 70, icon: TerminalSquare, description: "General-purpose programming and automation" },
+      { name: "PostgreSQL", percentage: 80, icon: Database, description: "Relational database management" },
+      { name: "Python", percentage: 92, icon: TerminalSquare, description: "General-purpose programming and automation" },
     ]
   },
   {
@@ -63,9 +63,9 @@ const skillCategories = [
     icon: Settings,
     skills: [
       { name: "Git", percentage: 85, icon: GitPullRequest, description: "Version control and collaboration" },
-      { name: "Docker", percentage: 70, icon: Container, description: "Containerization and deployment" },
-      { name: "AWS", percentage: 75, icon: CloudIcon, description: "Cloud services and infrastructure" },
-      { name: "Azure", percentage: 70, icon: Cloud, description: "Microsoft cloud platform" },
+      { name: "Docker", percentage: 80, icon: Container, description: "Containerization and deployment" },
+      { name: "AWS", percentage: 95, icon: CloudIcon, description: "Cloud services and infrastructure" },
+      { name: "Azure", percentage: 95, icon: Cloud, description: "Microsoft cloud platform" },
       { name: "Firebase", percentage: 80, icon: Flame, description: "Backend-as-a-Service platform" },
       { name: "Postman/Axios", percentage: 85, icon: FileJson, description: "API testing and development" },
     ]
@@ -74,7 +74,7 @@ const skillCategories = [
     name: "Additional Skills",
     icon: Brain,
     skills: [
-      { name: "SEO", percentage: 75, icon: Search, description: "Search engine optimization and analytics" },
+      { name: "SEO", percentage: 80, icon: Search, description: "Search engine optimization and analytics" },
       { name: "Problem Solving", percentage: 90, icon: Brain, description: "Analytical thinking and solution design" },
     ]
   }

@@ -100,16 +100,16 @@ export const SkillsRadarBrowser = ({
   const frontendSkills = [
     { name: "React", level: 90, color: "from-blue-400 to-blue-600" },
     { name: "Next.js", level: 95, color: "from-purple-400 to-purple-600" },
-    { name: "TypeScript", level: 80, color: "from-cyan-400 to-cyan-600" },
+    { name: "TypeScript", level: 85, color: "from-cyan-400 to-cyan-600" },
     { name: "Tailwind", level: 90, color: "from-teal-400 to-teal-600" }
   ]
 
   const backendSkills = [
     { name: "Node.js", level: 90, color: "from-green-400 to-green-600" },
     { name: "Express", level: 80, color: "from-yellow-400 to-yellow-600" },
-    { name: "MongoDB", level: 75, color: "from-emerald-400 to-emerald-600" },
-    { name: "PostgreSQL", level: 75, color: "from-blue-500 to-blue-700" },
-    { name: "Docker", level: 75, color: "from-sky-400 to-sky-600" }
+    { name: "MongoDB", level: 80, color: "from-emerald-400 to-emerald-600" },
+    { name: "PostgreSQL", level: 80, color: "from-blue-500 to-blue-700" },
+    { name: "Docker", level: 80, color: "from-sky-400 to-sky-600" }
   ]
 
   const frontendCode = `// React Component with TypeScript
