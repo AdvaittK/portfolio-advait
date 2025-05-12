@@ -107,23 +107,62 @@ export default function CustomCursor() {
     }
   }, [])
 
-  // Detect mouse movement globally - this will run even on "mobile" devices
+  // Detect mouse movement globally - but only set if it's a genuine mouse (not touch event)
   useEffect(() => {
     if (!mounted) return;
     
+    let hasTouch = false;
+    let hasMouse = false;
+    
+    // Detect touch first
+    const detectTouch = () => {
+      hasTouch = true;
+      // Remove mouse detection if touch happens first
+      document.removeEventListener('mousemove', detectMouseMovement);
+    };
+    
+    // Only set mouseDetected if we have mouse movement and no touch events fired
     const detectMouseMovement = (e: MouseEvent) => {
-      if (!mouseDetected) {
+      // If touch hasn't been detected yet, this is likely a real mouse
+      if (!hasTouch) {
+        hasMouse = true;
         setMouseDetected(true);
-        setIsMobile(false); // Override mobile detection when mouse is used
+        setIsMobile(false); // Override mobile detection when genuine mouse is used
       }
     };
     
+    document.addEventListener('touchstart', detectTouch, { once: true });
     document.addEventListener('mousemove', detectMouseMovement, { once: true });
     
+    // Cleanup function
     return () => {
+      document.removeEventListener('touchstart', detectTouch);
       document.removeEventListener('mousemove', detectMouseMovement);
     };
-  }, [mounted, mouseDetected]);
+  }, [mounted]);
+
+  // Add a separate effect to detect touch events and disable cursor
+  useEffect(() => {
+    if (!mounted) return;
+    
+    // Handler for first touch - disables custom cursor
+    const handleFirstTouch = () => {
+      // If we detect a touch event, this is likely a touch device, disable cursor
+      setMouseDetected(false);
+      setIsMobile(true);
+      
+      // Remove the custom cursor classes
+      document.body.classList.remove("custom-cursor-enabled");
+      document.documentElement.style.removeProperty('--cursor-trail-opacity');
+    };
+    
+    // Add event listener for touch start
+    document.addEventListener('touchstart', handleFirstTouch, { once: true });
+    
+    return () => {
+      document.removeEventListener('touchstart', handleFirstTouch);
+    };
+  }, [mounted]);
 
   useEffect(() => {
     // Ensure we only run this effect on the client side
@@ -143,9 +182,12 @@ export default function CustomCursor() {
     
     let lastTime = 0
     const onMouseMove = (e: MouseEvent) => {
-      // Set mouseDetected to true when mouse movement is detected
+      // Simple approach: if we receive mouse events and touch hasn't been used yet,
+      // consider it a genuine mouse
+      
+      // Only update mouseDetected if not already set
       if (!mouseDetected) {
-        setMouseDetected(true)
+        setMouseDetected(true);
       }
       
       const currentTime = performance.now()
@@ -230,10 +272,16 @@ export default function CustomCursor() {
     }
   }, [mounted, mouseX, mouseY, isMobile, forceEnable, mouseDetected])
 
+  // Check for touch support directly when deciding to render
+  const isTouchOnly = 'ontouchstart' in window && !mouseDetected;
+  
   // Show cursor if:
   // 1. Component is mounted AND
-  // 2. (Mouse is detected OR force enabled OR not a mobile device)
-  if (!mounted || (!mouseDetected && isMobile && !forceEnable)) return null;
+  // 2. EITHER:
+  //    a) Mouse has been detected OR
+  //    b) Force enabled OR
+  //    c) Not a mobile/touch-only device
+  if (!mounted || (isTouchOnly && isMobile && !forceEnable) || (!mouseDetected && isMobile && !forceEnable)) return null;
   
   return (
     <>
