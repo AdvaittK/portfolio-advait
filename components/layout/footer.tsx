@@ -57,7 +57,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Quick Links</h3>
             <ul className="space-y-3">
@@ -93,7 +93,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Services</h3>
             <ul className="space-y-3">
@@ -123,7 +123,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Contact</h3>
             <ul className="space-y-4">
@@ -207,7 +207,7 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           <div className="text-sm text-zinc-500">
             © {new Date().getFullYear()} Advait. All rights reserved.

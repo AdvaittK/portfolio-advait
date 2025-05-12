@@ -179,7 +179,7 @@ export function SkillsContent() {
           className="mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <motion.h2
             className="text-3xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
@@ -198,7 +198,7 @@ export function SkillsContent() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              transition={{ duration: 0.3, delay: categoryIndex * 0.1 }}
             >
               <div className="flex items-center gap-3 mb-6">
                 <category.icon className="w-6 h-6 text-zinc-600 dark:text-zinc-400" />

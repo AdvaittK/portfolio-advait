@@ -272,7 +272,7 @@ export default function HomePage() {
                   { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
                   { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", link: "#" },
                   { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "#" },
-                  { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:hello@advait.com" }
+                  { icon: <Mail className="w-5 h-5" />, label: "Email", link: "advaitt.dev@gmail.com" }
                 ].map((social, index) => (
                   <motion.a
                     key={social.label}
@@ -381,7 +381,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
         className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
         {/* Background gradients */}
@@ -407,7 +407,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             className="text-center mb-12 xs:mb-16"
           >
             <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
@@ -426,7 +426,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="relative"
           >
             <ProjectCarousel3D 
@@ -442,7 +442,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+        transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
       >
         <ServicesSection />
       </motion.div>
@@ -450,7 +450,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
       >
         <NextStepsSection />
       </motion.div>
@@ -458,7 +458,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.2, delay: 0.1, ease: "easeOut" }}
       >
         <LetsWorkTogetherSection />
       </motion.div>

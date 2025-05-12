@@ -30,7 +30,7 @@ export const GlassCard = ({
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
         "relative w-full h-full rounded-2xl overflow-hidden",
         "backdrop-blur-xl bg-white/10 dark:bg-zinc-900/10",
@@ -49,7 +49,7 @@ export const GlassCard = ({
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
             className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400"
           >
             {name}
@@ -58,7 +58,7 @@ export const GlassCard = ({
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-xl text-zinc-600 dark:text-zinc-400"
           >
             {title}
@@ -69,7 +69,7 @@ export const GlassCard = ({
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.15 }}
           className="mt-4 text-zinc-600 dark:text-zinc-400"
         >
           {description}
@@ -79,7 +79,7 @@ export const GlassCard = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
           className="flex gap-4 mt-6"
         >
           {socialLinks.github && (
@@ -134,7 +134,7 @@ export const GlassCard = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
           className="flex flex-wrap gap-4 mt-auto pt-6"
         >
           <Link href="/projects">
