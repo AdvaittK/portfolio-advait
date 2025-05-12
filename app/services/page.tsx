@@ -197,6 +197,7 @@ const featureVariants = {
 
 const essentialFeatures = [
   "Custom-coded responsive website",
+  "Up to 5 pages",
   "Modern, minimalist design",
   "Mobile-first approach",
   "Basic SEO optimization",
@@ -208,6 +209,7 @@ const essentialFeatures = [
 
 const enhancedFeatures = [
   "All Essential features included",
+  "Up to 10 pages",
   "Advanced animations & interactions",
   "Custom content management system",
   "Blog/news section with admin panel",
@@ -389,7 +391,7 @@ export default function ServicesPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-base align-top mr-0.5">$</span>299
+                      <span className="text-base align-top mr-0.5">₹</span>9999
                     </motion.span>
                     <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
@@ -492,7 +494,7 @@ export default function ServicesPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-base align-top mr-0.5">$</span>549
+                      <span className="text-base align-top mr-0.5">₹</span>24999
                     </motion.span>
                     <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
@@ -573,7 +575,7 @@ export default function ServicesPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <span className="text-base align-top mr-0.5">$</span>899
+                      <span className="text-base align-top mr-0.5">₹</span>35999
                     </motion.span>
                     <span className="text-base font-normal text-zinc-600 dark:text-zinc-400 ml-1">onwards</span>
                   </div>
@@ -672,8 +674,8 @@ export default function ServicesPage() {
                   Technical Maintenance Package
                 </h3>
                 <div className="mb-6">
-                  <span className="text-3xl font-bold">$99</span>
-                  <span className="text-zinc-600 dark:text-zinc-400">/month</span>
+                  <span className="text-3xl font-bold">₹999</span>
+                  <span className="text-zinc-600 dark:text-zinc-400"> onwards</span>
                 </div>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
                   Available only for websites with backend functionality
@@ -724,24 +726,23 @@ export default function ServicesPage() {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400">Additional Pages</span>
-                    <span className="font-semibold">$59/page</span>
+                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Additional Pages</span>
+                    
                   </li>
                   <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400">E-commerce Integration</span>
-                    <span className="font-semibold">$299</span>
+                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">E-commerce Integration</span>
+                    
                   </li>
                   <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400">Custom Animations</span>
-                    <span className="font-semibold">$199</span>
+                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Custom Animations</span>
+                    
                   </li>
                   <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400">Advanced SEO Package</span>
-                    <span className="font-semibold">$249</span>
+                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Advanced SEO Package</span>
+                    
                   </li>
                   <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400">Content Management System</span>
-                    <span className="font-semibold">$399</span>
+                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Content Management System</span>
                   </li>
                 </ul>
               </div>
