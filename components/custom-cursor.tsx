@@ -75,41 +75,45 @@ export default function CustomCursor() {
   useEffect(() => {
     setMounted(true)
     
-    // Check if device is mobile or touch device with improved desktop detection
-    const checkDevice = () => {
-      // Check for mobile user agents first (more reliable indicator)
-      const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
+    // Only run device detection code on the client side
+    if (typeof window !== 'undefined') {
+      // Check if device is mobile or touch device with improved desktop detection
+      const checkDevice = () => {
+        // Check for mobile user agents first (more reliable indicator)
+        const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+        
+        // Only consider touch capabilities on smaller screens to avoid false positives on desktop touch screens
+        const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && 
+                              window.matchMedia('(max-width: 1024px)').matches;
+        
+        // Check if screen width is typical for mobile devices
+        const isMobileWidth = window.matchMedia('(max-width: 768px)').matches;
+        
+        // If it's a large screen (like 1080p desktop), force enable the cursor regardless of touch capability
+        const isDesktopResolution = window.matchMedia('(min-width: 1200px)').matches;
+        
+        // We're considering it mobile only if it matches mobile indicators AND is not a desktop resolution
+        setIsMobile((mobileUserAgent || isTouchDevice || isMobileWidth) && !isDesktopResolution);
+      };
       
-      // Only consider touch capabilities on smaller screens to avoid false positives on desktop touch screens
-      const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && 
-                            window.matchMedia('(max-width: 1024px)').matches;
+      // Initial check
+      checkDevice();
       
-      // Check if screen width is typical for mobile devices
-      const isMobileWidth = window.matchMedia('(max-width: 768px)').matches;
+      // Add resize listener
+      window.addEventListener('resize', checkDevice);
       
-      // If it's a large screen (like 1080p desktop), force enable the cursor regardless of touch capability
-      const isDesktopResolution = window.matchMedia('(min-width: 1200px)').matches;
-      
-      // We're considering it mobile only if it matches mobile indicators AND is not a desktop resolution
-      setIsMobile((mobileUserAgent || isTouchDevice || isMobileWidth) && !isDesktopResolution);
-    }
-    
-    // Initial check
-    checkDevice()
-    
-    // Add resize listener
-    window.addEventListener('resize', checkDevice)
-    
-    return () => {
-      window.removeEventListener('resize', checkDevice)
+      return () => {
+        window.removeEventListener('resize', checkDevice);
+      };
     }
   }, [])
 
   // Detect mouse movement globally - but only set if it's a genuine mouse (not touch event)
   useEffect(() => {
-    if (!mounted) return;
+    // Skip this effect during server-side rendering
+    if (!mounted || typeof window === 'undefined' || typeof document === 'undefined') return;
     
     let hasTouch = false;
     let hasMouse = false;
@@ -143,7 +147,8 @@ export default function CustomCursor() {
 
   // Add a separate effect to detect touch events and disable cursor
   useEffect(() => {
-    if (!mounted) return;
+    // Skip this effect during server-side rendering
+    if (!mounted || typeof window === 'undefined' || typeof document === 'undefined') return;
     
     // Handler for first touch - disables custom cursor
     const handleFirstTouch = () => {
@@ -166,7 +171,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // Ensure we only run this effect on the client side
-    if (!mounted) return;
+    if (!mounted || typeof window === 'undefined' || typeof document === 'undefined') return;
     
     // Show the cursor if mouse is detected or it's not a mobile device or force enabled
     if (mouseDetected || !isMobile || forceEnable) {
@@ -272,8 +277,8 @@ export default function CustomCursor() {
     }
   }, [mounted, mouseX, mouseY, isMobile, forceEnable, mouseDetected])
 
-  // Check for touch support directly when deciding to render
-  const isTouchOnly = 'ontouchstart' in window && !mouseDetected;
+  // Check for touch support directly when deciding to render - safely with SSR
+  const isTouchOnly = typeof window !== 'undefined' ? ('ontouchstart' in window && !mouseDetected) : false;
   
   // Show cursor if:
   // 1. Component is mounted AND
