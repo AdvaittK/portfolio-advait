@@ -10,7 +10,27 @@ export default function CustomCursor() {
   const [linkHovered, setLinkHovered] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  // Add a state to track if mouse movement has been detected
+  const [mouseDetected, setMouseDetected] = useState(false)
+  // Add a debugging state that can be toggled if needed
+  const [forceEnable, setForceEnable] = useState(false)
   const { resolvedTheme } = useTheme()
+  
+  // Enable debug keybinding (Ctrl+Alt+C) to toggle cursor on problematic systems
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl+Alt+C to toggle cursor
+      if (e.ctrlKey && e.altKey && e.key === 'c') {
+        setForceEnable(prev => !prev);
+        setIsMobile(false); // Force disable mobile mode
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mounted]);
   
   // Use Framer Motion's values for smoother animation
   const mouseX = useMotionValue(0)
@@ -55,11 +75,25 @@ export default function CustomCursor() {
   useEffect(() => {
     setMounted(true)
     
-    // Check if device is mobile or touch device
+    // Check if device is mobile or touch device with improved desktop detection
     const checkDevice = () => {
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      // Check for mobile user agents first (more reliable indicator)
+      const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+      
+      // Only consider touch capabilities on smaller screens to avoid false positives on desktop touch screens
+      const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && 
+                            window.matchMedia('(max-width: 1024px)').matches;
+      
+      // Check if screen width is typical for mobile devices
       const isMobileWidth = window.matchMedia('(max-width: 768px)').matches;
-      setIsMobile(isTouchDevice || isMobileWidth);
+      
+      // If it's a large screen (like 1080p desktop), force enable the cursor regardless of touch capability
+      const isDesktopResolution = window.matchMedia('(min-width: 1200px)').matches;
+      
+      // We're considering it mobile only if it matches mobile indicators AND is not a desktop resolution
+      setIsMobile((mobileUserAgent || isTouchDevice || isMobileWidth) && !isDesktopResolution);
     }
     
     // Initial check
@@ -73,19 +107,47 @@ export default function CustomCursor() {
     }
   }, [])
 
+  // Detect mouse movement globally - this will run even on "mobile" devices
   useEffect(() => {
-    if (!mounted || isMobile) {
-      // Remove custom cursor classes when on mobile
+    if (!mounted) return;
+    
+    const detectMouseMovement = (e: MouseEvent) => {
+      if (!mouseDetected) {
+        setMouseDetected(true);
+        setIsMobile(false); // Override mobile detection when mouse is used
+      }
+    };
+    
+    document.addEventListener('mousemove', detectMouseMovement, { once: true });
+    
+    return () => {
+      document.removeEventListener('mousemove', detectMouseMovement);
+    };
+  }, [mounted, mouseDetected]);
+
+  useEffect(() => {
+    // Ensure we only run this effect on the client side
+    if (!mounted) return;
+    
+    // Show the cursor if mouse is detected or it's not a mobile device or force enabled
+    if (mouseDetected || !isMobile || forceEnable) {
+      // Force enable cursor when mouse is detected or on desktop systems
+      document.body.classList.add("custom-cursor-enabled")
+      document.documentElement.style.setProperty('--cursor-trail-opacity', '1')
+    } else {
+      // Only remove cursor if no mouse detected and on mobile
       document.body.classList.remove("custom-cursor-enabled")
       document.documentElement.style.removeProperty('--cursor-trail-opacity')
       return
     }
-
-    document.body.classList.add("custom-cursor-enabled")
-    document.documentElement.style.setProperty('--cursor-trail-opacity', '1')
     
     let lastTime = 0
     const onMouseMove = (e: MouseEvent) => {
+      // Set mouseDetected to true when mouse movement is detected
+      if (!mouseDetected) {
+        setMouseDetected(true)
+      }
+      
       const currentTime = performance.now()
       if (currentTime - lastTime >= 16) { // Cap at ~60fps
         mouseX.set(e.clientX)
@@ -166,10 +228,13 @@ export default function CustomCursor() {
       document.body.classList.remove("custom-cursor-enabled")
       document.documentElement.style.removeProperty('--cursor-trail-opacity')
     }
-  }, [mounted, mouseX, mouseY, isMobile])
+  }, [mounted, mouseX, mouseY, isMobile, forceEnable, mouseDetected])
 
-  if (!mounted || isMobile) return null;
-
+  // Show cursor if:
+  // 1. Component is mounted AND
+  // 2. (Mouse is detected OR force enabled OR not a mobile device)
+  if (!mounted || (!mouseDetected && isMobile && !forceEnable)) return null;
+  
   return (
     <>
       {/* Primary cursor dot with hardware acceleration */}
