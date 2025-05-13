@@ -214,7 +214,7 @@ export default function AboutPage() {
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">My Journey</h3>
             <div className="space-y-4 max-w-xl">
               <p className="text-muted-foreground leading-relaxed text-lg">
-               Hi, I'm Advait, a passionate developer and designer with over 3 years of experience creating beautiful, functional digital experiences. My journey began with a curiosity about how things work on the web, which led me to explore the intersection of design and development.
+              I'm Advait, a developer and designer with 3+ years of experience building clean, user-friendly websites and digital products. I enjoy working at the intersection of design and code to create interfaces that are both functional and visually clear.
               </p>
               <p className="text-muted-foreground leading-relaxed text-lg">
                 I specialize in crafting immersive, user-centered interfaces that not only look stunning but also provide seamless interactions. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
