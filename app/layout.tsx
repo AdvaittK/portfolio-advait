@@ -14,9 +14,9 @@ import { Analytics } from "@vercel/analytics/next"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Advait | Web Developer Portfolio",
-  keywords: ["Advait", "Web Developer", "Portfolio", "Frontend Developer", "UI Designer"],
-  description: "Frontend Developer & UI Designer",
+  title: "Advait | Developer Portfolio",
+  keywords: ["Advait", "Full Stack Developer", "Portfolio", "Full Stack Developer", "UI Designer"],
+  description: "Full Stack Developer & UI Designer",
   icons: {
     icon: [
       {
