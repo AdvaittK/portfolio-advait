@@ -20,6 +20,7 @@ import { SkillsServicesMarquee } from "@/components/ui/skills-services-marquee"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 // Featured projects data
+// Featured projects data
 const featuredProjects = [
   {
     id: "kixkart-ecommerce",
@@ -58,6 +59,24 @@ const featuredProjects = [
     ]
   },
   {
+    id: "symtolink-health",
+    title: "SymtoLink – Health Symptom Analysis Platform",
+    description: "AI-powered health symptom analysis platform that helps users identify potential health conditions and connect with healthcare providers.",
+    longDescription: "SymtoLink is a healthcare technology platform that combines AI algorithms with medical knowledge to help users analyze their symptoms, understand potential conditions, and find appropriate care. The platform features a user-friendly interface for symptom input, analysis reports, and healthcare provider connections.",
+    tags: ["Healthcare Tech", "AI", "Next.js", "React", "TailwindCSS"],
+    image: "/symptolink.png",
+    demoLink: "https://symtolink.advaitt.tech",
+    githubLink: "https://github.com/AdvaittK/symtolink",
+    features: [
+      "Intuitive symptom input interface",
+      "AI-powered analysis of reported symptoms",
+      "Condition probability assessments",
+      "Healthcare provider recommendations",
+      "Secure user health profiles",
+      "Responsive design for all devices"
+    ]
+  },
+  {
     id: "portfolio-website",
     title: "Advait | Web Developer Portfolio",
     description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
@@ -73,6 +92,42 @@ const featuredProjects = [
       "SEO and social sharing optimized",
       "Vercel Analytics integration",
       "Accessible and performant design"
+    ]
+  },
+  {
+    id: "truthsense-fact-checker",
+    title: "TruthSense – AI-Powered Fact Checking Platform",
+    description: "Web application that uses AI to analyze and verify claims against trusted sources, helping users identify misinformation online.",
+    longDescription: "TruthSense is an advanced fact-checking platform that leverages artificial intelligence to analyze claims against a database of trusted sources. Users can submit statements or URLs for verification, and the system provides reliability scores, source citations, and context to help combat misinformation.",
+    tags: ["AI", "NLP", "React", "Node.js", "TailwindCSS"],
+    image: "/ts.png",
+    demoLink: "https://truthsense.advaitt.tech",
+    githubLink: "https://github.com/AdvaittK/truthsense",
+    features: [
+      "Text and URL submission for fact checking",
+      "AI-powered claim extraction and verification",
+      "Source reliability scoring system",
+      "Citation links to trusted sources",
+      "User-friendly analysis reports",
+      "Responsive design for mobile and desktop"
+    ]
+  },
+  {
+    id: "json-gen-tool",
+    title: "JSON Gen – Advanced Mock Data Generator",
+    description: "Developer tool for generating custom JSON mock data with advanced schema options, templates, and API endpoint simulation.",
+    longDescription: "JSON Gen is a comprehensive developer utility designed to simplify the creation of mock data for frontend development and testing. It offers a robust schema editor, template system, and API endpoint simulation features to help developers prototype and test applications efficiently.",
+    tags: ["Developer Tool", "JSON", "React", "TypeScript", "API Mocking"],
+    image: "/jsonge.png",
+    demoLink: "https://jsongenerator.advaitt.tech",
+    githubLink: "https://github.com/AdvaittK/json-generator",
+    features: [
+      "Visual schema editor for custom JSON structures",
+      "Predefined templates for common data patterns",
+      "Advanced type and constraint options",
+      "One-click data generation with adjustable volume",
+      "Simulated API endpoint creation",
+      "Export options for various formats"
     ]
   }
 ]
