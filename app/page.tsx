@@ -85,7 +85,8 @@ export default function HomePage() {
   useEffect(() => {
     setIsMounted(true)
 
-    if (pageTransitionRef.current) {
+    // Only run GSAP animations on desktop
+    if (pageTransitionRef.current && !isMobile) {
       const ctx = gsap.context(() => {
         gsap.fromTo(
           pageTransitionRef.current,
@@ -96,7 +97,7 @@ export default function HomePage() {
             scale: 0.98
           },
           {
-            duration: isMobile ? 0.7 : 1.2,
+            duration: 1.2,
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
@@ -111,33 +112,34 @@ export default function HomePage() {
     }
   }, [isMobile])
 
+  // Simplified transitions for mobile
   const getTransitionDuration = () => {
-    return isMobile ? 0.2 : 0.5
+    return isMobile ? 0 : 0.5 // No transitions on mobile
   }
 
   const getAnimationDelay = (desktop: number) => {
-    return isMobile ? desktop * 0.3 : desktop
+    return isMobile ? 0 : desktop // No delays on mobile
   }
 
   return (
     <motion.div
       ref={pageTransitionRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: isMobile ? 0.2 : 0.5, ease: "easeOut" }}
+      initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 40 }}
+      animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }}
       className={cn(
         "min-h-screen bg-transparent text-foreground transition-colors duration-300",
       )}
     >
       {/* Hero Section */}
       <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 30 }}
+        whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
-        className="min-h-[90vh] flex flex-col justify-center items-center relative px-4 xs:px-6 py-12 xs:py-16 overflow-hidden"
+        transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
+        className="min-h-[85vh] flex flex-col justify-start pt-16 xs:pt-20 items-center relative px-4 xs:px-6 py-8 xs:py-12 overflow-hidden md:pt-72"
       >
-        {/* Background gradients with enhanced effects - disabled or simplified on mobile */}
+        {/* Background gradients - simplified for mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {!isMobile ? (
             // Full animations on desktop
@@ -183,21 +185,21 @@ export default function HomePage() {
               />
             </>
           ) : (
-            // Static gradients on mobile - no animations
+            // Static gradients for mobile
             <>
-              <div className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30" />
-              <div className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30" />
-              <div className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30" />
+              <div className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/5 via-zinc-600/5 to-zinc-700/5 dark:from-zinc-500/10 dark:via-zinc-600/10 dark:to-zinc-700/10 rounded-full filter blur-3xl opacity-20" />
+              <div className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/5 via-zinc-700/5 to-zinc-800/5 dark:from-zinc-600/10 dark:via-zinc-700/10 dark:to-zinc-800/10 rounded-full filter blur-3xl opacity-20" />
+              <div className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/5 via-zinc-800/5 to-zinc-900/5 dark:from-zinc-700/10 dark:via-zinc-800/10 dark:to-zinc-900/10 rounded-full filter blur-3xl opacity-20" />
             </>
           )}
         </div>
 
-        <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-center">
-          {/* Hero content with staggered animations */}
+        <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-start relative z-10">
+          {/* Hero content - optimized for mobile */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.4) }}
+            initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.4) }}
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
@@ -206,18 +208,18 @@ export default function HomePage() {
               </Badge>
               
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
                 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2"
               >
                 Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
               </motion.h1>
               
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.8) }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.8) }}
                 className="text-lg xs:text-xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
               >
                 <Typewriter
@@ -245,25 +247,25 @@ export default function HomePage() {
                     ],
                     autoStart: true,
                     loop: true,
-                    delay: isMobile ? 30 : 50,
-                    deleteSpeed: isMobile ? 15 : 30,
+                    delay: isMobile ? 20 : 50,
+                    deleteSpeed: isMobile ? 10 : 30,
                   }}
                 />
               </motion.div>
               
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(1.0) }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.0) }}
                 className="text-sm xs:text-base md:text-lg text-muted-foreground max-w-lg mt-2"
               >
                 Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
               </motion.p>
               
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(1.2) }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.2) }}
                 className="flex flex-col xs:flex-row gap-3 xs:gap-4 pt-2"
               >
                 <Link href="/projects" className="w-full xs:w-auto">
@@ -285,10 +287,10 @@ export default function HomePage() {
               </motion.div>
               
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(1.4) }}
-                className="flex gap-4 pt-4"
+                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.4) }}
+                className="flex justify-center xs:justify-start gap-4 pt-4"
               >
                 {[
                   { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
@@ -299,13 +301,13 @@ export default function HomePage() {
                   <motion.a
                     key={social.label}
                     href={social.link}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: isMobile ? 0.2 : 0.4, delay: isMobile ? (0.5 + (index * 0.05)) : (1 + (index * 0.1)) }}
+                    initial={isMobile ? { opacity: 1 } : { opacity: 0, x: -10 }}
+                    animate={isMobile ? { opacity: 1 } : { opacity: 1, x: 0 }}
+                    transition={isMobile ? { duration: 0 } : { duration: 0.4, delay: 1 + (index * 0.1) }}
                     className="p-3 rounded-full bg-secondary/80 hover:bg-secondary transition-colors"
                     aria-label={social.label}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={!isMobile ? { scale: 1.1 } : undefined}
+                    whileTap={!isMobile ? { scale: 0.95 } : undefined}
                   >
                     {social.icon}
                   </motion.a>
@@ -314,106 +316,103 @@ export default function HomePage() {
             </div>
           </motion.div>
           
-          {/* Enhanced Skills Radar Browser - only shown on desktop */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
-            className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
-          >
-            <SkillsRadarBrowser 
-              skills={[
-                { name: "React", value: 90 },
-                { name: "TypeScript", value: 85 },
-                { name: "UI/UX", value: 88 },
-                { name: "Node.js", value: 75 },
-                { name: "Next.js", value: 92 },
-                { name: "Tailwind", value: 95 },
-              ]}
-            />
-            
-            {/* Interactive floating elements - only animated on desktop */}
-            <div className="absolute inset-0 pointer-events-none">
-              {!isMobile && (
-                <>
-                  <motion.div
-                    className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                    animate={{ 
-                      y: [0, -15, 0],
-                      rotate: [0, 15, 0, -15, 0]
-                    }}
-                    transition={{ 
-                      duration: 6, 
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                  >
-                    <SiReact className="w-8 h-8 text-blue-500" />
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                    animate={{ 
-                      y: [0, 10, 0],
-                      x: [0, 10, 0, -10, 0],
-                      rotate: [0, 10, 0]
-                    }}
-                    transition={{ 
-                      duration: 7, 
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                  >
-                    <SiTypescript className="w-6 h-6 text-blue-600" />
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                    animate={{ 
-                      x: [0, 10, 0],
-                      rotate: 360
-                    }}
-                    transition={{ 
-                      duration: 10, 
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  >
-                    <SiTailwindcss className="w-5 h-5 text-cyan-500" />
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                    animate={{ 
-                      y: [0, -10, 0, 10, 0],
-                    }}
-                    transition={{ 
-                      duration: 5, 
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                  >
-                    <SiNextdotjs className="w-5 h-5" />
-                  </motion.div>
-                </>
-              )}
-            </div>
-          </motion.div>
+          {/* Skills Radar Browser - only shown on desktop */}
+          {!isMobile && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
+              className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
+            >
+              <SkillsRadarBrowser 
+                skills={[
+                  { name: "React", value: 90 },
+                  { name: "TypeScript", value: 85 },
+                  { name: "UI/UX", value: 88 },
+                  { name: "Node.js", value: 75 },
+                  { name: "Next.js", value: 92 },
+                  { name: "Tailwind", value: 95 },
+                ]}
+              />
+              
+              {/* Interactive floating elements - only on desktop */}
+              <div className="absolute inset-0 pointer-events-none">
+                <motion.div
+                  className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                  animate={{ 
+                    y: [0, -15, 0],
+                    rotate: [0, 15, 0, -15, 0]
+                  }}
+                  transition={{ 
+                    duration: 6, 
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <SiReact className="w-8 h-8 text-blue-500" />
+                </motion.div>
+                
+                <motion.div
+                  className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                  animate={{ 
+                    y: [0, 10, 0],
+                    x: [0, 10, 0, -10, 0],
+                    rotate: [0, 10, 0]
+                  }}
+                  transition={{ 
+                    duration: 7, 
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <SiTypescript className="w-6 h-6 text-blue-600" />
+                </motion.div>
+                
+                <motion.div
+                  className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                  animate={{ 
+                    x: [0, 10, 0],
+                    rotate: 360
+                  }}
+                  transition={{ 
+                    duration: 10, 
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  <SiTailwindcss className="w-5 h-5 text-cyan-500" />
+                </motion.div>
+                
+                <motion.div
+                  className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
+                  animate={{ 
+                    y: [0, -10, 0, 10, 0],
+                  }}
+                  transition={{ 
+                    duration: 5, 
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <SiNextdotjs className="w-5 h-5" />
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
         </div>
       </motion.section>
-      <SkillsServicesMarquee />
 
-      {/* Featured Projects Section - no animations */}
+      {/* Skills Services Marquee - enabled for all devices */}
+      <div className="relative w-full -mt-8 xs:-mt-12 md:mt-0 md:pt-8">
+        <SkillsServicesMarquee />
+      </div>
+
+      {/* Featured Projects Section - simplified for mobile */}
       <section
         className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
-        {/* Static background gradients */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30" />
-        </div>
-
         <div className="max-w-7xl mx-auto">
-          {/* Section Header - no animations */}
+          {/* Section Header - simplified for mobile */}
           <div className="text-center mb-12 xs:mb-16">
             <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
               Featured Work
@@ -426,7 +425,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Projects Carousel - no animations */}
+          {/* Projects Carousel - simplified for mobile */}
           <div className="relative px-1 sm:px-4 md:px-6">
             <ProjectCarousel3D 
               projects={featuredProjects}
@@ -436,17 +435,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section - no animations */}
+      {/* Services Section - simplified for mobile */}
       <div>
         <ServicesSection />
       </div>
       
-      {/* Next Steps Section - no animations */}
+      {/* Next Steps Section - simplified for mobile */}
       <div>
         <NextStepsSection />
       </div>
       
-      {/* Let's Work Together Section - no animations */}
+      {/* Let's Work Together Section - simplified for mobile */}
       <div>
         <LetsWorkTogetherSection />
       </div>
