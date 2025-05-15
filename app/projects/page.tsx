@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Portal from "@/components/Portal";
 import { SiNextdotjs, SiReact, SiTypescript, SiTailwindcss, SiFirebase, SiOpenai, SiFastapi, SiPytorch, SiJavascript, SiPython, SiNodedotjs, SiMongodb, SiPostgresql, SiDocker, SiVercel } from "react-icons/si";
+import { Price } from "@/components/ui/price"
 
 // Define project type
 interface Project {
@@ -574,9 +575,9 @@ export default function ProjectsPage() {
                     Showcasing sleek, high-performance designs tailored for impact
                   </p>
                 </div>
-                <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                  Starting from $299
-                </span>
+                <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                  Starting from <Price inr={9999} usd={299} suffix="" />
+                </div>
               </motion.div>
 
               <motion.div
@@ -593,9 +594,9 @@ export default function ProjectsPage() {
                     Building visually stunning, user-focused websites that elevate brands
                   </p>
                 </div>
-                <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                  Starting from $549
-                </span>
+                <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
+                  Starting from <Price inr={24999} usd={549} suffix="" />
+                </div>
               </motion.div>
             </div>
 

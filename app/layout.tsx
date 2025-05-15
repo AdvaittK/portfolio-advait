@@ -10,6 +10,7 @@ import TransitionOverlay from "@/components/transition-overlay"
 import ClientLayout from "@/components/client-layout"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
+import { CurrencyProvider } from "@/lib/currency-provider"
   
 const inter = Inter({ subsets: ["latin"] })
 
@@ -85,20 +86,22 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClientMetallicBg />
-          <div className="relative flex flex-col min-h-screen">
-            <LoadingScreen />
-            <TransitionOverlay />
-            <Header />
-            <main className="flex-grow">
-              <ClientLayout>
-                {children}
-              </ClientLayout>
-            </main>
-            <Footer />
-            <CustomCursor />
-            <Analytics />
-          </div>
+          <CurrencyProvider>
+            <ClientMetallicBg />
+            <div className="relative flex flex-col min-h-screen">
+              <LoadingScreen />
+              <TransitionOverlay />
+              <Header />
+              <main className="flex-grow">
+                <ClientLayout>
+                  {children}
+                </ClientLayout>
+              </main>
+              <Footer />
+              <CustomCursor />
+              <Analytics />
+            </div>
+          </CurrencyProvider>
         </ThemeProvider>
       </body>
     </html>

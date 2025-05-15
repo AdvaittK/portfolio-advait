@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { geolocation } from '@vercel/edge';
 
 export const config = {
-  // Match only the /services path
-  matcher: '/services',
+  // Match both services and projects paths
+  matcher: ['/services', '/projects'],
 };
 
 export function middleware(request: NextRequest) {
