@@ -167,8 +167,7 @@ export default function Footer() {
             <div className="flex gap-4 pt-4">
               {[
                 { icon: <Github className="w-5 h-5 !text-zinc-200" />, label: "GitHub", link: "https://github.com/AdvaittK" },
-                { icon: <Linkedin className="w-5 h-5 !text-zinc-200" />, label: "LinkedIn", link: "#" },
-                { icon: <Twitter className="w-5 h-5 !text-zinc-200" />, label: "Twitter", link: "#" }
+                { icon: <Twitter className="w-5 h-5 !text-zinc-200" />, label: "Twitter", link: "https://x.com/advaittt_dev" }
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
