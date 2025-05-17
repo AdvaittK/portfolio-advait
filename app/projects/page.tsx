@@ -501,14 +501,14 @@ export default function ProjectsPage() {
                     <div className="flex gap-2 mt-auto">
                       <Button
                         size="sm"
-                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400 transition-all duration-300"
+                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 text-[10px] xs:text-xs shadow-lg transition-all duration-300"
                         onClick={() => window.open(project.demoLink, '_blank')}
                       >
                         View Demo <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
                       </Button>
                       <Button
                         size="sm"
-                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400 transition-all duration-300"
+                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 text-[10px] xs:text-xs shadow-lg transition-all duration-300"
                         onClick={() => window.open(project.githubLink, '_blank')}
                       >
                         View Code <Github className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
@@ -575,8 +575,11 @@ export default function ProjectsPage() {
                     Showcasing sleek, high-performance designs tailored for impact
                   </p>
                 </div>
-                <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                  Starting from <Price inr={9999} usd={299} suffix="" />
+                <div className="flex flex-col items-end gap-1">
+                  <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">Starting from</div>
+                  <div className="flex items-baseline gap-1">
+                    <Price inr={9999} usd={299} suffix="" />
+                  </div>
                 </div>
               </motion.div>
 
@@ -594,8 +597,11 @@ export default function ProjectsPage() {
                     Building visually stunning, user-focused websites that elevate brands
                   </p>
                 </div>
-                <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-600 text-zinc-800 dark:text-zinc-100 text-sm font-semibold shadow-sm border border-zinc-200/50 dark:border-zinc-700/50">
-                  Starting from <Price inr={24999} usd={549} suffix="" />
+                <div className="flex flex-col items-end gap-1">
+                  <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">Starting from</div>
+                  <div className="flex items-baseline gap-1">
+                    <Price inr={24999} usd={549} suffix="" />
+                  </div>
                 </div>
               </motion.div>
             </div>
