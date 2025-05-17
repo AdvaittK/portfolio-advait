@@ -10,7 +10,7 @@ import Typewriter from "typewriter-effect"
 import Link from "next/link"
 import { gsap } from "gsap"
 import { GlassCard } from "@/components/ui/glass-card"
-import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma } from "react-icons/si"
+import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma, SiDiscord } from "react-icons/si"
 import { SkillsRadarBrowser } from "@/components/ui/skills-radar-browser"
 import { ProjectCarousel3D } from "@/components/ui/project-carousel-3d"
 import { ServicesSection } from "@/components/ui/services-section"
@@ -350,7 +350,8 @@ export default function HomePage() {
                 {[
                   { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
                   { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "https://x.com/advaittt_dev" },
-                  { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:advaitt.dev@gmail.com" }
+                  { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:advaitt.dev@gmail.com" },
+                  { icon: <SiDiscord className="w-5 h-5" />, label: "Discord", link: "https://discord.gg/zQ8gwDK9Zr" }
                 ].map((social, index) => (
                   <motion.a
                     key={social.label}
