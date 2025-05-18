@@ -65,7 +65,7 @@ const featuredProjects = [
     longDescription: "SymtoLink is a healthcare technology platform that combines AI algorithms with medical knowledge to help users analyze their symptoms, understand potential conditions, and find appropriate care. The platform features a user-friendly interface for symptom input, analysis reports, and healthcare provider connections.",
     tags: ["Healthcare Tech", "AI", "Next.js", "React", "TailwindCSS"],
     image: "/symptolink.png",
-    demoLink: "https://symtolink.advaitt.tech",
+    demoLink: "https://symptolink.advaitt.tech",
     githubLink: "https://github.com/AdvaittK/symtolink",
     features: [
       "Intuitive symptom input interface",
@@ -119,7 +119,7 @@ const featuredProjects = [
     longDescription: "JSON Gen is a comprehensive developer utility designed to simplify the creation of mock data for frontend development and testing. It offers a robust schema editor, template system, and API endpoint simulation features to help developers prototype and test applications efficiently.",
     tags: ["Developer Tool", "JSON", "React", "TypeScript", "API Mocking"],
     image: "/jsonge.png",
-    demoLink: "https://jsongenerator.advaitt.tech",
+    demoLink: "https://www.jsongen.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/json-generator",
     features: [
       "Visual schema editor for custom JSON structures",
