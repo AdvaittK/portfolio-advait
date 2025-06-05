@@ -390,7 +390,7 @@ export default function ServicesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <Price inr={9999} usd={299} />
+                    <Price inr={12999} usd={299} />
                   </motion.div>
                   <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
