@@ -655,41 +655,63 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+            className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full group"
           >
-            <div className="p-8 flex flex-col h-full">
-              <div className="flex-1 justify-between">
-                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-100/50 via-transparent to-zinc-200/50 dark:from-zinc-700/50 dark:via-transparent dark:to-zinc-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(0,0,0,0))]"></div>
+            
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-100/20 via-transparent to-transparent dark:from-zinc-700/20"></div>
+              <div className="mb-6 text-center relative">
+                <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                   Technical Monthly Maintenance Package
                 </h3>
-                <div className="mb-6">
-                  <Price inr={999} usd={59} />
-                </div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-                  Available only for websites with backend functionality
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                    <Check className="w-4 h-4 mr-2 text-green-500" />
-                    Regular code updates
-                  </li>
-                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                    <Check className="w-4 h-4 mr-2 text-green-500" />
-                    Security monitoring
-                  </li>
-                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                    <Check className="w-4 h-4 mr-2 text-green-500" />
-                    Database management
-                  </li>
-                  <li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                    <Check className="w-4 h-4 mr-2 text-green-500" />
-                    Booking system maintenance
-                  </li>
-                </ul>
+                <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <div className="mt-8">
-                <Link href="/contact">
-                  <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="w-full flex flex-col items-center relative overflow-visible">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Price inr={999} usd={59} />
+                  </motion.div>
+                  <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
+                    Available only for websites with backend functionality
+                  </p>
+                </div>
+              </div>
+              <div className="w-full flex flex-col items-center mt-2">
+                <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
+              </div>
+            </div>
+            
+            <div className="p-8 flex-1 flex flex-col relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-100/10 to-zinc-100/20 dark:via-zinc-800/10 dark:to-zinc-800/20"></div>
+              <ul className="space-y-3 mb-8 w-full text-left relative">
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-green-400 to-green-500 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Regular code updates</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-green-400 to-green-500 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Security monitoring</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-green-400 to-green-500 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Database management</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-green-400 to-green-500 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Booking system maintenance</span>
+                </motion.li>
+              </ul>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
+                <Link href="/contact" className="w-full">
+                  <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
                     Enquire Now
                   </Button>
                 </Link>
@@ -702,41 +724,70 @@ export default function ServicesPage() {
             variants={itemVariants}
             whileHover="hover"
             initial="initial"
-            className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
+            className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50 flex flex-col h-full group"
           >
-            <div className="p-8 flex flex-col h-full">
-              <div className="flex-1 justify-between">
-                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-100/50 via-transparent to-zinc-200/50 dark:from-zinc-700/50 dark:via-transparent dark:to-zinc-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(120,120,120,0.1),rgba(0,0,0,0))]"></div>
+            
+            <div className="p-8 pt-6 flex flex-col items-center border-b border-zinc-200/50 dark:border-zinc-700/50 bg-gradient-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/50 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-100/20 via-transparent to-transparent dark:from-zinc-700/20"></div>
+              <div className="mb-6 text-center relative">
+                <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                   Enhance Your Package
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
-                  Additional features to customize your website
-                </p>
-                <ul className="space-y-4">
-                  <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Additional Pages</span>
-                    
-                  </li>
-                  <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">E-commerce Integration</span>
-                    
-                  </li>
-                  <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Custom Animations</span>
-                    
-                  </li>
-                  <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Advanced SEO Package</span>
-                    
-                  </li>
-                  <li className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-600 dark:text-zinc-400 text-center w-full">Content Management System</span>
-                  </li>
-                </ul>
+                <div className="h-1 w-16 mx-auto bg-gradient-to-r from-zinc-800/20 to-zinc-600/20 dark:from-zinc-100/20 dark:to-zinc-400/20 rounded-full mb-4"></div>
               </div>
-              <div className="mt-8">
-                <Link href="/contact">
-                  <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200">
+              <div className="bg-gradient-to-br from-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:to-zinc-700/80 rounded-xl p-6 w-full max-w-[200px] shadow-sm border border-zinc-200/50 dark:border-zinc-700/50 relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 via-transparent to-zinc-100/20 dark:from-zinc-700/20 dark:via-transparent dark:to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="w-full flex flex-col items-center relative overflow-visible">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-center"
+                  >
+                    
+                    <Price inr={500} usd={20} />
+                  
+                  </motion.div>
+                  <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
+                    Additional features to customize your website
+                  </p>
+                </div>
+              </div>
+              <div className="w-full flex flex-col items-center mt-2">
+                <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-700 to-transparent mb-2"></div>
+              </div>
+            </div>
+            
+            <div className="p-8 flex-1 flex flex-col relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-100/10 to-zinc-100/20 dark:via-zinc-800/10 dark:to-zinc-800/20"></div>
+              <ul className="space-y-4 mb-8 w-full text-left relative">
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Additional Pages</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">E-commerce Integration</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Custom Animations</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Advanced SEO Package</span>
+                </motion.li>
+                <motion.li className="flex items-center text-sm text-zinc-600 dark:text-zinc-400 group/item">
+                  <motion.div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 mr-2 group-hover/item:scale-150 transition-transform duration-300" />
+                  <span className="group-hover/item:text-zinc-800 dark:group-hover/item:text-zinc-200 transition-colors duration-300">Content Management System</span>
+                </motion.li>
+              </ul>
+              <div className="mt-auto pt-4 border-t border-zinc-200/50 dark:border-zinc-700/50 relative">
+                <Link href="/contact" className="w-full">
+                  <Button className="w-full rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-200 hover:shadow-xl hover:scale-[1.02] group-hover:shadow-zinc-200/50 dark:group-hover:shadow-zinc-800/50">
                     Customize Your Package
                   </Button>
                 </Link>
