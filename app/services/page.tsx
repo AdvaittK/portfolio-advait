@@ -658,9 +658,9 @@ export default function ServicesPage() {
             className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
           >
             <div className="p-8 flex flex-col h-full">
-              <div className="flex-1">
+              <div className="flex-1 justify-between">
                 <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                  Technical Maintenance Package
+                  Technical Monthly Maintenance Package
                 </h3>
                 <div className="mb-6">
                   <Price inr={999} usd={59} />
@@ -705,7 +705,7 @@ export default function ServicesPage() {
             className="flex-1 relative bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200/50 dark:border-zinc-700/50"
           >
             <div className="p-8 flex flex-col h-full">
-              <div className="flex-1">
+              <div className="flex-1 justify-between">
                 <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
                   Enhance Your Package
                 </h3>
