@@ -659,7 +659,7 @@ export default function ServicesPage() {
           >
             <div className="p-8 flex flex-col h-full">
               <div className="flex-1 justify-between">
-                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-center">
                   Technical Monthly Maintenance Package
                 </h3>
                 <div className="mb-6">
@@ -706,7 +706,7 @@ export default function ServicesPage() {
           >
             <div className="p-8 flex flex-col h-full">
               <div className="flex-1 justify-between">
-                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+                <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-center">
                   Enhance Your Package
                 </h3>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
