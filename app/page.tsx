@@ -17,11 +17,29 @@ import { ServicesSection } from "@/components/ui/services-section"
 import { NextStepsSection } from "@/components/ui/next-steps-section"
 import { LetsWorkTogetherSection } from "@/components/ui/lets-work-together-section"
 import { SkillsServicesMarquee } from "@/components/ui/skills-services-marquee"
+import { TestimonialsSection } from "@/components/ui/testimonials-section"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 // Featured projects data
-// Featured projects data
 const featuredProjects = [
+  {
+    id: "dems-portfolio",
+    title: "Dem's Portfolio – Thumbnail Designer Showcase",
+    description: "A stunning portfolio website showcasing Dem's exceptional thumbnail design work, featuring a modern and creative interface that highlights their unique artistic style.",
+    longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern, minimalist design that puts the focus on the artwork while maintaining excellent user experience. It includes a dynamic gallery of thumbnail designs, case studies of successful projects, and a seamless contact system for potential clients.",
+    tags: ["Portfolio", "Design", "Thumbnails", "Creative", "UI/UX"],
+    image: "/homepage.png",
+    demoLink: "https://dems8.com",
+    githubLink: "https://github.com/AdvaittK/dem-portfolio",
+    features: [
+      "Dynamic gallery of thumbnail designs",
+      "Case studies and project breakdowns",
+      "Client testimonials and success stories",
+      "Contact and commission system",
+      "Responsive design optimized for all devices",
+      "Portfolio filtering and search functionality"
+    ]
+  },
   {
     id: "kixkart-ecommerce",
     title: "KixKart – Premium Sneakers E-Commerce Platform",
@@ -128,6 +146,24 @@ const featuredProjects = [
       "One-click data generation with adjustable volume",
       "Simulated API endpoint creation",
       "Export options for various formats"
+    ]
+  },
+  {
+    id: "royal-sarees",
+    title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
+    description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
+    longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process.",
+    tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS"],
+    image: "/royal-sarees.png",
+    demoLink: "https://royal-sarees.example.com",
+    githubLink: "https://github.com/AdvaittK/royal-sarees",
+    features: [
+      "Elegant product showcase with high-quality imagery",
+      "Advanced filtering by style, occasion, and region",
+      "Detailed product pages with size guides",
+      "Secure payment integration",
+      "Responsive design for all devices",
+      "Multi-language support for global reach"
     ]
   }
 ]
@@ -493,6 +529,7 @@ export default function HomePage() {
       {/* Services Section - simplified for mobile */}
       <div>
         <ServicesSection />
+        <TestimonialsSection />
       </div>
       
       {/* Next Steps Section - simplified for mobile */}
