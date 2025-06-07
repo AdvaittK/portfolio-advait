@@ -37,6 +37,7 @@ interface Project {
   category?: string;
   technologies?: string[];
   year?: number;
+  showSourceCode?: boolean;
 }
 
 export default function ProjectsPage() {
@@ -53,12 +54,13 @@ export default function ProjectsPage() {
     {
       id: "dems-portfolio",
       title: "Dem's Portfolio – Thumbnail Designer Showcase",
-      description: "A stunning portfolio website showcasing Dem's exceptional thumbnail design work, featuring a modern and creative interface that highlights their unique artistic style.",
-      longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern, minimalist design that puts the focus on the artwork while maintaining excellent user experience. It includes a dynamic gallery of thumbnail designs, case studies of successful projects, and a seamless contact system for potential clients. The portfolio demonstrates Dem's expertise in creating eye-catching thumbnails that drive engagement and click-through rates.",
+      description: "A stunning portfolio website showcasing Dem's exceptional thumbnail design work, featuring a modern and creative interface that highlights his unique artistic style.",
+      longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern and minimalist design.",
       tags: ["Portfolio", "Design", "Thumbnails", "Creative", "UI/UX", "Showcase"],
       image: "/homepage.png",
       demoLink: "https://dems8.com",
       githubLink: "https://github.com/AdvaittK/dem-portfolio",
+      showSourceCode: false,
       features: [
         "Dynamic gallery of thumbnail designs",
         "Case studies and project breakdowns",
@@ -68,7 +70,7 @@ export default function ProjectsPage() {
         "Portfolio filtering and search functionality"
       ],
       category: "Portfolio Website",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion","Shadcn UI"],
       year: 2025
     },
     {
@@ -80,6 +82,7 @@ export default function ProjectsPage() {
       image: "/homepage.jpg",
       demoLink: "https://royalsarees.advaitt.tech/",
       githubLink: "https://github.com/AdvaittK/saree-ecommerce",
+      showSourceCode: false,
       features: [
         "Elegant product showcase with high-quality imagery",
         "Advanced filtering by style, occasion, and region",
@@ -89,8 +92,8 @@ export default function ProjectsPage() {
         "Multi-language support for global reach"
       ],
       category: "E-Commerce Platform",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Stripe", "i18n"],
-      year: 2024
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "ShipRocket"],
+      year: 2025
     },
     {
       id: "pulseboard-dashboard",
@@ -388,7 +391,7 @@ export default function ProjectsPage() {
               >
                 <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" /> Live Demo
               </Button>
-              {project.githubLink && (
+              {project.showSourceCode !== false && (
                 <Button
                   className={`flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base ${isMobile ? 'py-1.5 px-3' : 'py-2'} sm:py-3`}
                   onClick={() => window.open(project.githubLink, '_blank')}
@@ -548,13 +551,15 @@ export default function ProjectsPage() {
                       >
                         View Demo <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
                       </Button>
-                      <Button
-                        size="sm"
-                        className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 text-[10px] xs:text-xs shadow-lg transition-all duration-300"
-                        onClick={() => window.open(project.githubLink, '_blank')}
-                      >
-                        View Code <Github className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
-                      </Button>
+                      {project.showSourceCode !== false && (
+                        <Button
+                          size="sm"
+                          className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 text-[10px] xs:text-xs shadow-lg transition-all duration-300"
+                          onClick={() => window.open(project.githubLink, '_blank')}
+                        >
+                          View Code <Github className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>

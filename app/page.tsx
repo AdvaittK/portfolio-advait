@@ -154,9 +154,9 @@ const featuredProjects = [
     description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
     longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process.",
     tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS"],
-    image: "/royal-sarees.png",
-    demoLink: "https://royal-sarees.example.com",
-    githubLink: "https://github.com/AdvaittK/royal-sarees",
+    image: "/homepage.jpg",
+    demoLink: "https://royalsarees.advaitt.tech/",
+    githubLink: "https://github.com/AdvaittK/saree-ecommerce",
     features: [
       "Elegant product showcase with high-quality imagery",
       "Advanced filtering by style, occasion, and region",

@@ -24,12 +24,7 @@ const testimonials = [
 export function TestimonialsSection() {
   return (
     <section className="py-32 relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-zinc-500/20 dark:via-zinc-400/20 to-transparent" />
-        <div className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-4/5 h-px bg-gradient-to-r from-transparent via-zinc-500/10 dark:via-zinc-400/10 to-transparent" />
-      </div>
-
+      {/* Remove background elements */}
       <div className="container mx-auto px-4 sm:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,19 +39,20 @@ export function TestimonialsSection() {
             <span className="h-[1px] w-10 bg-gradient-to-r from-zinc-600/60 to-zinc-400/60 dark:from-zinc-300/60 dark:to-zinc-500/60"></span>
           </div>
 
-          <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-300 leading-tight">
+          <h2
+            className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-300 leading-tight"
+          >
             What My Clients Say
           </h2>
 
-          <div className="relative">
-            <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-3">
-              Hear what some of my clients have to say about their experience working with me
-            </p>
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-48 h-[2px] bg-gradient-to-r from-transparent via-zinc-400/60 to-transparent dark:via-zinc-500/60"></div>
-          </div>
+          <p
+            className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-6"
+          >
+            Hear what some of my clients have to say about their experience working with me
+          </p>
 
-          <div className="mt-8">
-            <div className="h-[3px] w-24 mx-auto bg-gradient-to-r from-zinc-300/60 via-zinc-500/80 to-zinc-300/60 dark:from-zinc-600/60 dark:via-zinc-400/80 dark:to-zinc-600/60 rounded-full"></div>
+          <div className="flex justify-center">
+            <div className="h-[3px] w-24 bg-gradient-to-r from-zinc-300/60 via-zinc-500/80 to-zinc-300/60 dark:from-zinc-600/60 dark:via-zinc-400/80 dark:to-zinc-600/60 rounded-full"></div>
           </div>
         </motion.div>
 
@@ -73,30 +69,31 @@ export function TestimonialsSection() {
               <div className="relative backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-sm dark:hover:shadow-zinc-900/10 h-full flex flex-col">
                 {/* Enhanced gradient background */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-zinc-50/95 via-zinc-100/95 to-zinc-50/95 dark:from-zinc-800/95 dark:via-zinc-900/95 dark:to-zinc-800/95"
+                  className="absolute inset-0 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80"
                   initial={{ opacity: 0.9 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.2 }}
                 />
 
-                {/* Animated border gradient */}
-                <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-br from-zinc-200/50 via-zinc-300/50 to-zinc-200/50 dark:from-zinc-700/50 dark:via-zinc-600/50 dark:to-zinc-700/50">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-zinc-50/95 via-zinc-100/95 to-zinc-50/95 dark:from-zinc-800/95 dark:via-zinc-900/95 dark:to-zinc-800/95" />
+                {/* Border and shadow effects */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 dark:from-white/10 dark:to-black/10" />
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                  <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
+                  <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
                 </div>
-
-                {/* Subtle metallic effect */}
-                <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.1),rgba(255,255,255,0),rgba(255,255,255,0.05))] dark:bg-[linear-gradient(120deg,rgba(255,255,255,0.05),rgba(255,255,255,0),rgba(255,255,255,0.02))]" />
 
                 <div className="p-8 relative z-10 flex flex-col h-full">
                   {/* Enhanced quote icon with gradient */}
                   <div className="mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-900 dark:from-zinc-600 dark:to-zinc-800 p-2.5 shadow-md">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-2.5 shadow-md">
                       <Quote className="w-full h-full text-zinc-100" />
                     </div>
                   </div>
 
                   {/* Testimonial content with enhanced typography */}
-                  <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed mb-8 flex-grow font-medium">
+                  <p className="text-zinc-700 dark:text-zinc-400 text-lg leading-relaxed mb-8 flex-grow font-medium">
                     {testimonial.content}
                   </p>
 
@@ -113,10 +110,10 @@ export function TestimonialsSection() {
                           />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                          <h4 className="font-semibold text-zinc-800 dark:text-zinc-100">
                             {testimonial.name}
                           </h4>
-                          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                          <p className="text-sm text-zinc-600 dark:text-zinc-400">
                             {testimonial.role}
                           </p>
                         </div>
@@ -130,7 +127,7 @@ export function TestimonialsSection() {
                       className="block"
                     >
                       <Button
-                        className="w-full rounded-full px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+                        className="w-full rounded-full px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
                       >
                         View Project
                         <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
