@@ -625,7 +625,7 @@ export default function ProjectsPage() {
                 <div className="flex flex-col items-end gap-1">
                   <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">Starting from</div>
                   <div className="flex items-baseline gap-1">
-                    <Price inr={9999} usd={299} suffix="" />
+                    <Price inr={12999} usd={299} suffix="" />
                   </div>
                 </div>
               </motion.div>
