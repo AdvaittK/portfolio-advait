@@ -59,6 +59,24 @@ const featuredProjects = [
     ]
   },
   {
+    id: "cardhint",
+    title: "CardHint – Smart Credit Card Comparison Platform",
+    description: "A smart platform for comparing credit cards and maximizing rewards, built with Next.js, Tailwind, and advanced UI components.",
+    longDescription: "CardHint is a modern web application designed to help users compare credit cards and find the best options for their needs. It features a user-friendly interface, advanced filtering options, and detailed information on various credit cards.",
+    tags: ["Finance", "Next.js", "Tailwind CSS"],
+    image: "/cardh.png",
+    demoLink: "https://www.cardhint.com/",
+    githubLink: "https://github.com/AdvaittK/cardhint",
+    features: [
+      "Smart credit card recommendations powered by expert insights",
+        "Advanced filtering based on rewards, fees, and user goals",
+        "Secure and privacy-focused platform architecture",
+        "Responsive design optimized for all devices",
+        "User-friendly interface with clean, modern UI elements",
+        "Regularly updated database with the latest card offers"
+    ]
+  },
+  {
     id: "kixkart-ecommerce",
     title: "KixKart – Premium Sneakers E-Commerce Platform",
     description: "Cyberpunk-inspired e-commerce platform specializing in premium sneakers and streetwear, built with Next.js, Tailwind, and advanced UI components.",

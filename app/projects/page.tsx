@@ -96,6 +96,28 @@ export default function ProjectsPage() {
       year: 2025
     },
     {
+      id: "cardhint",
+      title: "CardHint – Smart Credit Card Comparison Platform",
+      description: "Trusted companion for maximizing credit card rewards and making informed financial decisions.",
+      longDescription: "CardHint is a smart financial platform designed to simplify credit card discovery and comparison for Indian consumers. The website features a clean, intuitive interface that helps users evaluate credit cards based on rewards, fees, and financial goals. Built with modern web technologies, the platform includes advanced filtering, expert-curated content, and a secure, performance-optimized structure. CardHint empowers users to make confident financial decisions while navigating a clutter-free, user-first experience.",
+      tags: ["Upgrade","Community", "Finance","Next.js", "React", "TypeScript"],
+      image: "/cardh.png",
+      demoLink: "https://cardhint.com/",
+      githubLink: "https://github.com/AdvaittK/cardhint",
+      showSourceCode: false,
+      features: [
+        "Smart credit card recommendations powered by expert insights",
+        "Advanced filtering based on rewards, fees, and user goals",
+        "Secure and privacy-focused platform architecture",
+        "Responsive design optimized for all devices",
+        "User-friendly interface with clean, modern UI elements",
+        "Regularly updated database with the latest card offers",
+      ],
+      category: "Web Application / Gaming",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn"],
+      year: 2024
+    },
+    {
       id: "pulseboard-dashboard",
       title: "PulseBoard – Interactive Dashboard Frontend Showcase",
       description: "A modern, responsive dashboard UI with interactive charts, subscription flows, and a mock backend for demo purposes. Showcasing frontend design, state management, and UI component patterns.",
