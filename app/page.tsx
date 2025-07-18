@@ -23,6 +23,24 @@ import { useIsMobile } from "@/hooks/use-mobile"
 // Featured projects data
 const featuredProjects = [
   {
+    id: "vitira-website",
+    title: "VITIRA – Business Website Transformation",
+    description: "A modern, high-performance business website for VITIRA, designed to elevate their digital presence and showcase their services.",
+    longDescription: "VITIRA's new website was transformed to deliver a clean, professional, and engaging experience for their clients. The project focused on clear service presentation, fast performance, and a visually appealing interface that aligns with VITIRA's brand values.",
+    tags: ["Business", "Website", "Transformation", "UI/UX", "Next.js"],
+    image: "/vitira.png",
+    demoLink: "https://www.vitira.in/",
+    githubLink: "",
+    features: [
+      "Modern, responsive business website",
+      "Clear service and value proposition presentation",
+      "Fast performance and SEO optimization",
+      "Brand-aligned visual design",
+      "Contact and inquiry system",
+      "Mobile-first experience"
+    ]
+  },
+  {
     id: "dems-portfolio",
     title: "Dem's Portfolio – Thumbnail Designer Showcase",
     description: "A stunning portfolio website showcasing Dem's exceptional thumbnail design work, featuring a modern and creative interface that highlights their unique artistic style.",

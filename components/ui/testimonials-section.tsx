@@ -3,8 +3,23 @@ import { Quote, ArrowRight, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./button"
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselPrevious,
+	CarouselNext,
+} from "./carousel"
 
 const testimonials = [
+	{
+		name: "Pranjal Garg",
+		role: "Founder at VITIRA",
+		image: "/pranjal.jpg",
+		content:
+			"Advait did a great job transforming our website at VITIRA. He delivered exactly what we needed.",
+		projectLink: "https://www.vitira.in/",
+	},
 	{
 		name: "Dem",
 		role: "Professional Thumbnail Designer",
@@ -14,14 +29,6 @@ const testimonials = [
 		projectLink: "https://www.dems8.com/",
 	},
 	{
-		name: "Lalith Kumar",
-		role: "Owner, Royal Sarees",
-		image: "/royal.png",
-		content:
-			"Advait did a fantastic job with our Royal Sarees website. He understood exactly what we needed and delivered a clean, elegant design that really showcases our brand. Super easy to work with and very professional throughout.",
-		projectLink: "https://royalsarees.advaitt.tech/",
-	},
-	{
 		name: "Sahil Kohli",
 		role: "Owner, CardHint",
 		image: "/cardhint.png",
@@ -29,12 +36,19 @@ const testimonials = [
 			"Working with Advait on the makeover of CardHint.com was a fantastic experience. He brought fresh design ideas, improved the site's performance, and delivered everything on time with attention to detail. The upgrade has made a huge difference in both usability and visual appeal.",
 		projectLink: "https://cardhint.com/",
 	},
+	{
+		name: "Lalith Kumar",
+		role: "Owner, Royal Sarees",
+		image: "/royal.png",
+		content:
+			"Advait did a fantastic job with our Royal Sarees website. He understood exactly what we needed and delivered a clean, elegant design that really showcases our brand. Super easy to work with and very professional throughout.",
+		projectLink: "https://royalsarees.advaitt.tech/",
+	},
 ]
 
 export function TestimonialsSection() {
 	return (
 		<section className="py-20 md:py-32 relative overflow-hidden">
-			{/* Remove background elements */}
 			<div className="container mx-auto px-4 sm:px-6 relative">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -65,88 +79,62 @@ export function TestimonialsSection() {
 					</div>
 				</motion.div>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-					{testimonials.map((testimonial, index) => (
-						<motion.div
-							key={index}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: index * 0.2 }}
-							viewport={{ once: true }}
-							className="group relative h-full"
-						>
-							<div className="relative backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-sm dark:hover:shadow-zinc-900/10 h-full flex flex-col">
-								{/* Enhanced gradient background */}
-								<motion.div
-									className="absolute inset-0 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80"
-									initial={{ opacity: 0.9 }}
-									whileHover={{ opacity: 1 }}
-									transition={{ duration: 0.2 }}
-								/>
-
-								{/* Border and shadow effects */}
-								<div className="absolute inset-0 pointer-events-none">
-									<div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 dark:from-white/10 dark:to-black/10" />
-									<div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-									<div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-									<div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-									<div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-200/80 dark:via-zinc-700/80 to-transparent" />
-								</div>
-
-								<div className="p-6 relative z-10 flex flex-col h-full">
-									{/* Enhanced quote icon with gradient */}
-									<div className="mb-4">
-										<div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-2 shadow-md">
-											<Quote className="w-full h-full text-zinc-100" />
-										</div>
-									</div>
-
-									{/* Testimonial content with enhanced typography */}
-									<p className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed mb-6 flex-grow font-medium">
-										{testimonial.content}
-									</p>
-
-									{/* Author info and button with enhanced layout */}
-									<div className="mt-auto">
-										<div className="flex items-center justify-between mb-4">
-											<div className="flex items-center">
-												<div className="relative w-10 h-10 rounded-lg overflow-hidden mr-3 ring-2 ring-zinc-200/50 dark:ring-zinc-700/50">
-													<Image
-														src={testimonial.image}
-														alt={testimonial.name}
-														fill
-														className="object-cover"
-													/>
-												</div>
-												<div>
-													<h4 className="font-semibold text-zinc-800 dark:text-zinc-100 text-sm">
-														{testimonial.name}
-													</h4>
-													<p className="text-xs text-zinc-600 dark:text-zinc-400">
-														{testimonial.role}
-													</p>
-												</div>
+				<div className="relative max-w-7xl mx-auto">
+					<Carousel opts={{ align: "start", slidesToScroll: 1, loop: false }} className="w-full">
+						<CarouselPrevious />
+						<CarouselNext />
+						<CarouselContent className="px-4">
+							{testimonials.map((testimonial, index) => (
+								<CarouselItem key={index} className="flex md:basis-1/3 basis-full px-2">
+									<div className="flex flex-col h-full w-full min-h-[420px] max-h-[420px] bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6">
+										<div className="mb-4">
+											<div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-2 shadow-md">
+												<Quote className="w-full h-full text-zinc-100" />
 											</div>
 										</div>
-
-										<a
-											href={testimonial.projectLink}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="block"
-										>
-											<Button
-												className="w-full rounded-full px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-xs font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+										<p className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed mb-6 flex-grow font-medium line-clamp-5">
+											{testimonial.content}
+										</p>
+										<div className="mt-auto">
+											<div className="flex items-center justify-between mb-4">
+												<div className="flex items-center">
+													<div className="relative w-10 h-10 rounded-lg overflow-hidden mr-3 ring-2 ring-zinc-200/50 dark:ring-zinc-700/50">
+														<Image
+															src={testimonial.image}
+															alt={testimonial.name}
+															fill
+															className="object-cover"
+														/>
+													</div>
+													<div>
+														<h4 className="font-semibold text-zinc-800 dark:text-zinc-100 text-sm">
+															{testimonial.name}
+														</h4>
+														<p className="text-xs text-zinc-600 dark:text-zinc-400">
+															{testimonial.role}
+														</p>
+													</div>
+												</div>
+											</div>
+											<a
+												href={testimonial.projectLink}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="block"
 											>
-												View Project
-												<ExternalLink className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
-											</Button>
-										</a>
+												<Button
+													className="w-full rounded-full px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-xs font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+												>
+													View Project
+													<ExternalLink className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
+												</Button>
+											</a>
+										</div>
 									</div>
-								</div>
-							</div>
-						</motion.div>
-					))}
+								</CarouselItem>
+							))}
+						</CarouselContent>
+					</Carousel>
 				</div>
 			</div>
 		</section>
