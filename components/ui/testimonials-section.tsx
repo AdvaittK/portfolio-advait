@@ -33,7 +33,7 @@ const testimonials = [
 		role: "Founder, UVOKA",
 		image: "/sri.webp",
 		content:
-			"Advait has done a great job at building our website. He has revamped our whole website from scratch and his delivery is seamless. Would definitely recommend him for all your Website and web development needs.",
+			"Advait has done a great job at building our website. He has revamped our whole website from scratch and his delivery is seamless. Would definitely recommend him for all your Web development needs.",
 		projectLink: "https://uvoka.in",
 	},
 	{
@@ -56,7 +56,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
 	return (
-		<section className="py-20 md:py-32 relative overflow-hidden">
+		<section className="py-16 md:py-24 relative overflow-hidden">
 			<div className="container mx-auto px-4 sm:px-6 relative">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

@@ -59,7 +59,7 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       {/* Subtle background elements - removed corner glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-zinc-500/20 dark:via-zinc-400/20 to-transparent" />

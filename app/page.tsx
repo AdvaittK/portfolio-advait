@@ -580,19 +580,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section - simplified for mobile */}
-      <div>
+      {/* Services Section - reduced spacing */}
+      <div className="-mt-8 md:-mt-12">
         <ServicesSection />
+      </div>
+      
+      {/* Testimonials Section - reduced spacing */}
+      <div className="-mt-8 md:-mt-12">
         <TestimonialsSection />
       </div>
       
-      {/* Next Steps Section - simplified for mobile */}
-      <div>
+      {/* Next Steps Section - reduced spacing */}
+      <div className="-mt-8 md:-mt-12">
         <NextStepsSection />
       </div>
       
-      {/* Let's Work Together Section - simplified for mobile */}
-      <div>
+      {/* Let's Work Together Section - reduced spacing */}
+      <div className="-mt-8 md:-mt-12">
         <LetsWorkTogetherSection />
       </div>
     </motion.div>

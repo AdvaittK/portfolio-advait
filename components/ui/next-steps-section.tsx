@@ -26,7 +26,7 @@ const steps = [
 export function NextStepsSection() {
   return (
     <section
-      className="max-w-5xl mx-auto mt-10 mb-32 px-4"
+      className="max-w-5xl mx-auto mt-10 mb-16 px-4"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
         Next Steps

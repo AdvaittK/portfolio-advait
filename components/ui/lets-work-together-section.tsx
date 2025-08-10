@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export function LetsWorkTogetherSection() {
   return (
     <section
-      className="w-full flex justify-center items-center py-12 xs:py-16 sm:py-20 md:py-24 px-4 xs:px-6 bg-transparent"
+      className="w-full flex justify-center items-center py-8 xs:py-12 sm:py-16 md:py-20 px-4 xs:px-6 bg-transparent"
     >
       <div className="w-full max-w-3xl p-6 xs:p-8 sm:p-10 md:p-14 flex flex-col items-center text-center space-y-6 xs:space-y-8">
         <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
