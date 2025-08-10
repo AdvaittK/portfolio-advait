@@ -14,7 +14,7 @@ import {
 const testimonials = [
 	{
 		name: "Pranjal Garg",
-		role: "Founder at VITIRA",
+		role: "Founder, VITIRA",
 		image: "/pranjal.jpg",
 		content:
 			"Advait did a great job transforming our website at VITIRA. He delivered exactly what we needed.",
@@ -27,6 +27,14 @@ const testimonials = [
 		content:
 			"Advait did an amazing job creating my website! He's super passionate about his work and delivered exactly what I wanted. Communication was quick and friendly, and the entire process was faster than expected. I'm totally happy with the result... highly recommended!",
 		projectLink: "https://www.dems8.com/",
+	},
+	{
+		name: "Srihita Vanguri",
+		role: "Founder, UVOKA",
+		image: "/sri.webp",
+		content:
+			"Advait has done a great job at building our website. He has revamped our whole website from scratch and his delivery is seamless. Would definitely recommend him for all your Website and web development needs.",
+		projectLink: "https://uvoka.in",
 	},
 	{
 		name: "Sahil Kohli",

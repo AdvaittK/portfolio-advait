@@ -96,28 +96,6 @@ export default function ProjectsPage() {
       year: 2025
     },
     {
-      id: "royal-sarees",
-      title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
-      description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
-      longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process. The platform celebrates Indian craftsmanship while making it accessible to a global audience.",
-      tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS", "Indian Fashion"],
-      image: "/homepage.jpg",
-      demoLink: "https://royalsarees.advaitt.tech/",
-      githubLink: "https://github.com/AdvaittK/saree-ecommerce",
-      showSourceCode: false,
-      features: [
-        "Elegant product showcase with high-quality imagery",
-        "Advanced filtering by style, occasion, and region",
-        "Detailed product pages with size guides",
-        "Secure payment integration",
-        "Responsive design for all devices",
-        "Multi-language support for global reach"
-      ],
-      category: "E-Commerce Platform",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "ShipRocket"],
-      year: 2025
-    },
-    {
       id: "cardhint",
       title: "CardHint – Smart Credit Card Comparison Platform",
       description: "Trusted companion for maximizing credit card rewards and making informed financial decisions.",
@@ -138,6 +116,50 @@ export default function ProjectsPage() {
       category: "Web Application / Gaming",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn"],
       year: 2024
+    },
+    {
+      id: "uvoka-website",
+      title: "UVOKA – LinkedIn Personal Branding Agency Website",
+      description: "A modern, responsive website for UVOKA, a LinkedIn personal branding agency. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion for smooth animations and interactions.",
+      longDescription: "UVOKA's website is a comprehensive platform showcasing their LinkedIn personal branding services. The website features a modern design with smooth animations, clear service presentation, client testimonials, and a professional portfolio that reflects their expertise in personal branding. Built with cutting-edge technologies for optimal performance and user experience.",
+      tags: ["Business", "Website", "Personal Branding", "LinkedIn", "Next.js", "Agency"],
+      image: "/uvoka.png",
+      demoLink: "https://uvoka.in",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Modern, responsive agency website",
+        "Smooth animations and interactions",
+        "Service showcase and pricing packages",
+        "Client testimonials and success stories",
+        "Professional portfolio presentation",
+        "Contact and inquiry system"
+      ],
+      category: "Business Website",
+      technologies: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      year: 2025
+    },
+    {
+      id: "royal-sarees",
+      title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
+      description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
+      longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process. The platform celebrates Indian craftsmanship while making it accessible to a global audience.",
+      tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS", "Indian Fashion"],
+      image: "/homepage.jpg",
+      demoLink: "https://royalsarees.advaitt.tech/",
+      githubLink: "https://github.com/AdvaittK/saree-ecommerce",
+      showSourceCode: false,
+      features: [
+        "Elegant product showcase with high-quality imagery",
+        "Advanced filtering by style, occasion, and region",
+        "Detailed product pages with size guides",
+        "Secure payment integration",
+        "Responsive design for all devices",
+        "Multi-language support for global reach"
+      ],
+      category: "E-Commerce Platform",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "ShipRocket"],
+      year: 2025
     },
     {
       id: "pulseboard-dashboard",

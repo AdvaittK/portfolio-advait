@@ -59,6 +59,24 @@ const featuredProjects = [
     ]
   },
   {
+    id: "uvoka-website",
+    title: "UVOKA – LinkedIn Personal Branding Agency Website",
+    description: "A modern, responsive website for UVOKA, a LinkedIn personal branding agency. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion for smooth animations and interactions.",
+    longDescription: "UVOKA's website is a comprehensive platform showcasing their LinkedIn personal branding services. The website features a modern design with smooth animations, clear service presentation, client testimonials, and a professional portfolio that reflects their expertise in personal branding. Built with cutting-edge technologies for optimal performance and user experience.",
+    tags: ["Business", "Website", "Personal Branding", "LinkedIn", "Next.js", "Agency"],
+    image: "/uvoka.png",
+    demoLink: "https://uvoka.in",
+    githubLink: "",
+    features: [
+      "Modern, responsive agency website",
+      "Smooth animations and interactions",
+      "Service showcase and pricing packages",
+      "Client testimonials and success stories",
+      "Professional portfolio presentation",
+      "Contact and inquiry system"
+    ]
+  },
+  {
     id: "royal-sarees",
     title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
     description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
