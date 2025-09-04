@@ -13,6 +13,14 @@ import {
 
 const testimonials = [
 	{
+    	name: "Management at Oriental Air & Ship Services",
+    	role: "",
+    	image: "/fav.png",
+    	content:
+    		"Advait did an amazing job creating Oriental’s website! He really captured the professionalism and trust we’ve built over 40 years in logistics. The site is modern, easy to navigate, and perfectly showcases our services. Communication was smooth and quick",
+    	projectLink: "#",
+  	},
+	{
 		name: "Pranjal Garg",
 		role: "Founder, VITIRA",
 		image: "/pranjal.jpg",
@@ -52,6 +60,7 @@ const testimonials = [
 			"Advait did a fantastic job with our Royal Sarees website. He understood exactly what we needed and delivered a clean, elegant design that really showcases our brand. Super easy to work with and very professional throughout.",
 		projectLink: "https://royalsarees.advaitt.tech/",
 	},
+	
 ]
 
 export function TestimonialsSection() {

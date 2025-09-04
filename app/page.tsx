@@ -23,6 +23,22 @@ import { useIsMobile } from "@/hooks/use-mobile"
 // Featured projects data
 const featuredProjects = [
   {
+    id: "oriental-air-ship-services",
+    title: "Oriental Air & Ship Services – Import Clearing & Forwarding",
+    description: "Oriental’s new website was designed to provide a clean, professional, and user-friendly experience for clients and partners.",
+    longDescription: "Oriental’s new website was designed to provide a clean, professional, and user-friendly experience for clients and partners. The focus was on showcasing their wide range of logistics services with clarity, ensuring smooth navigation, and creating a visually appealing platform that reflects Oriental’s 40+ years of trust and excellence in the industry.",
+    tags: ["Logistics", "Import Export", "Clearing & Forwarding", "Business", "Website"],
+    image: "/homepageo.png",
+    demoLink: "https://www.orientalimited.com/",
+    githubLink: "",
+    features: [
+      "Service showcase for import clearing & forwarding",
+      "Focus on PSU and Government clientele",
+      "Trust- and legacy-driven brand narrative",
+      "Modern, responsive, and accessible UI"
+    ]
+  },
+  {
     id: "vitira-website",
     title: "VITIRA – Business Website Transformation",
     description: "A modern, high-performance business website for VITIRA, designed to elevate their digital presence and showcase their services.",

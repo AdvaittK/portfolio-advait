@@ -1,20 +1,29 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 export default function Portal({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
   const elRef = useRef<HTMLDivElement | null>(null);
 
-  if (!elRef.current) {
+  if (!elRef.current && typeof window !== "undefined") {
     elRef.current = document.createElement("div");
   }
 
   useEffect(() => {
+    setMounted(true);
     const modalRoot = document.body;
-    modalRoot.appendChild(elRef.current!);
+    const el = elRef.current;
+    
+    if (el) {
+      modalRoot.appendChild(el);
+    }
+    
     return () => {
-      modalRoot.removeChild(elRef.current!);
+      if (el) {
+        modalRoot.removeChild(el);
+      }
     };
   }, []);
 
-  return createPortal(children, elRef.current);
+  return mounted && elRef.current ? createPortal(children, elRef.current) : null;
 } 

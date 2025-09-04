@@ -71,7 +71,27 @@ export default function ProjectsPage() {
       ],
       category: "Business Website",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
-      year: 2024
+      year: 2025
+    },
+    {
+      id: "oriental-air-ship-services",
+      title: "Oriental Air & Ship Services – Import Clearing & Forwarding",
+      description: "Oriental’s new website was designed to provide a clean, professional, and user-friendly experience for clients and partners.",
+      longDescription: "Oriental’s new website was designed to provide a clean, professional, and user-friendly experience for clients and partners. The focus was on showcasing their wide range of logistics services with clarity, ensuring smooth navigation, and creating a visually appealing platform that reflects Oriental’s 40+ years of trust and excellence in the industry.",
+      tags: ["Logistics", "Import Export", "Clearing & Forwarding", "Business", "Website"],
+      image: "/homepageo.png",
+      demoLink: "https://www.orientalimited.com/",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Service showcase for import clearing & forwarding",
+        "Focus on PSU and Government clientele",
+        "Trust- and legacy-driven brand narrative",
+        "Modern, responsive, and accessible UI"
+      ],
+      category: "Business Website",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
+      year: 2025
     },
     {
       id: "dems-portfolio",
@@ -329,9 +349,17 @@ export default function ProjectsPage() {
   const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => void }) => {
     // Lock background scroll when modal is open
     useEffect(() => {
-      const originalOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
+      // Store original overflow value
+      const originalOverflow = window.getComputedStyle(document.body).overflow;
+      // Apply hidden overflow with a small delay to prevent flicker
+      const timer = setTimeout(() => {
+        document.body.style.overflow = 'hidden';
+      }, 10);
+      
       return () => {
+        // Clear the timeout if component unmounts before timeout completes
+        clearTimeout(timer);
+        // Restore original overflow
         document.body.style.overflow = originalOverflow;
       };
     }, []);
@@ -365,16 +393,25 @@ export default function ProjectsPage() {
       return <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />;
     };
 
-    return (      <motion.div
+    return (
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
         className={`fixed inset-0 z-[100] flex items-center justify-center ${isMobile ? 'p-1' : 'p-2'} sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto overflow-x-hidden`}
         onClick={onClose}
-      >          <motion.div
+      >
+        <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 30,
+            duration: 0.3
+          }}
           className={`relative ${isMobile ? 'w-[94%]' : 'w-[95%]'} xs:w-[90%] sm:w-full max-w-3xl my-4 bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-zinc-200/50 dark:border-zinc-700/50 overflow-hidden`}
           onClick={e => e.stopPropagation()}
           style={{ maxHeight: isMobile ? '85vh' : '90vh' }}
@@ -741,7 +778,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </PageContainer>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {selectedProject && (
           <Portal>
             <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
