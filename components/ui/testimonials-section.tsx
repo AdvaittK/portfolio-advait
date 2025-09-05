@@ -18,7 +18,7 @@ const testimonials = [
     	image: "/fav.png",
     	content:
     		"Advait did an amazing job creating Oriental’s website! He really captured the professionalism and trust we’ve built over 40 years in logistics. The site is modern, easy to navigate, and perfectly showcases our services. Communication was smooth and quick",
-    	projectLink: "#",
+    	projectLink: "https://www.orientalimited.com/",
   	},
 	{
 		name: "Pranjal Garg",
