@@ -13,11 +13,19 @@ import {
 
 const testimonials = [
 	{
+		name: "Sizz",
+		role: "Owner, Sizzle Studios",
+		image: "/sizz.webp",
+		content:
+			"Advait made my agency's website look way better than I thought it could. Super chill to work with, no unnecessary jargon, just solid results.",
+		projectLink: "https://www.sizzlestudio.in/",
+	},
+	{
     	name: "Management at Oriental Air & Ship Services",
     	role: "",
     	image: "/fav.png",
     	content:
-    		"Advait did an amazing job creating Oriental’s website! He really captured the professionalism and trust we’ve built over 40 years in logistics. The site is modern, easy to navigate, and perfectly showcases our services. Communication was smooth and quick",
+    		"Advait did an amazing job creating Oriental's website! He really captured the professionalism and trust we've built over 40 years in logistics. The site is modern, easy to navigate, and perfectly showcases our services. Communication was smooth and quick",
     	projectLink: "https://www.orientalimited.com/",
   	},
 	{

@@ -52,6 +52,28 @@ export default function ProjectsPage() {
   // Define projects array
   const projects: Project[] = [
     {
+      id: "sizzle-studios",
+      title: "Sizzle Studios – Creative Portfolio Website",
+      description: "A modern, responsive portfolio website for Sizzle Studios, showcasing their creative work and services with an elegant, professional design.",
+      longDescription: "Sizzle Studios' portfolio website is a beautifully crafted showcase of their creative services and portfolio work. The website features a modern, clean design that highlights their artistic capabilities while providing an excellent user experience. Built with responsive design principles, it ensures optimal viewing across all devices and platforms.",
+      tags: ["Portfolio", "Creative", "Design", "Website", "UI/UX"],
+      image: "/sizzle.png",
+      demoLink: "https://www.sizzlestudio.in/",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Modern, responsive portfolio design",
+        "Creative work showcase and gallery",
+        "Service presentation and offerings",
+        "Professional contact and inquiry system",
+        "Optimized for all devices and platforms",
+        "Clean, elegant user interface"
+      ],
+      category: "Portfolio Website",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"],
+      year: 2025
+    },
+    {
       id: "vitira-website",
       title: "VITIRA – Business Website Transformation",
       description: "A modern, high-performance business website for VITIRA, designed to elevate their digital presence and showcase their services.",

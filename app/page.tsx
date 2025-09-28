@@ -23,10 +23,28 @@ import { useIsMobile } from "@/hooks/use-mobile"
 // Featured projects data
 const featuredProjects = [
   {
+    id: "sizzle-studios",
+    title: "Sizzle Studios – Creative Portfolio Website",
+    description: "A modern, responsive portfolio website for Sizzle Studios, showcasing their creative work and services with an elegant, professional design.",
+    longDescription: "Sizzle Studios' portfolio website is a beautifully crafted showcase of their creative services and portfolio work. The website features a modern, clean design that highlights their artistic capabilities while providing an excellent user experience. Built with responsive design principles, it ensures optimal viewing across all devices and platforms.",
+    tags: ["Portfolio", "Creative", "Design", "Website", "UI/UX"],
+    image: "/sizzle.png",
+    demoLink: "https://www.sizzlestudio.in/",
+    githubLink: "",
+    features: [
+      "Modern, responsive portfolio design",
+      "Creative work showcase and gallery",
+      "Service presentation and offerings",
+      "Professional contact and inquiry system",
+      "Optimized for all devices and platforms",
+      "Clean, elegant user interface"
+    ]
+  },
+  {
     id: "oriental-air-ship-services",
     title: "Oriental Air & Ship Services – Import Clearing & Forwarding",
-    description: "Oriental’s new website was designed to provide a clean, professional, and user-friendly experience for clients and partners.",
-    longDescription: "Oriental’s new website was designed to provide a clean, professional, and user-friendly experience for clients and partners. The focus was on showcasing their wide range of logistics services with clarity, ensuring smooth navigation, and creating a visually appealing platform that reflects Oriental’s 40+ years of trust and excellence in the industry.",
+    description: "Oriental's new website was designed to provide a clean, professional, and user-friendly experience for clients and partners.",
+    longDescription: "Oriental's new website was designed to provide a clean, professional, and user-friendly experience for clients and partners. The focus was on showcasing their wide range of logistics services with clarity, ensuring smooth navigation, and creating a visually appealing platform that reflects Oriental's 40+ years of trust and excellence in the industry.",
     tags: ["Logistics", "Import Export", "Clearing & Forwarding", "Business", "Website"],
     image: "/homepageo.png",
     demoLink: "https://www.orientalimited.com/",
