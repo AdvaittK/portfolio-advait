@@ -140,6 +140,7 @@ const Carousel = React.forwardRef<
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
+          data-embla-carousel
           {...props}
         >
           {children}
@@ -214,6 +215,7 @@ const CarouselPrevious = React.forwardRef<
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
+      data-embla-carousel-prev
       {...props}
     >
       <ArrowLeft className="h-4 w-4" />
@@ -243,6 +245,7 @@ const CarouselNext = React.forwardRef<
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
+      data-embla-carousel-next
       {...props}
     >
       <ArrowRight className="h-4 w-4" />

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Quote, ArrowRight, ExternalLink } from "lucide-react"
+import { Quote, ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./button"
@@ -9,7 +9,16 @@ import {
 	CarouselItem,
 	CarouselPrevious,
 	CarouselNext,
+	type CarouselApi,
 } from "./carousel"
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "./dialog"
+import { useState, useEffect } from "react"
 
 const testimonials = [
 	{
@@ -72,6 +81,130 @@ const testimonials = [
 ]
 
 export function TestimonialsSection() {
+	const [desktopApi, setDesktopApi] = useState<CarouselApi>()
+	const [mobileApi, setMobileApi] = useState<CarouselApi>()
+	const [desktopCurrent, setDesktopCurrent] = useState(0)
+	const [mobileCurrent, setMobileCurrent] = useState(0)
+	const [desktopCount, setDesktopCount] = useState(0)
+	const [mobileCount, setMobileCount] = useState(0)
+
+	useEffect(() => {
+		if (!desktopApi) return
+
+		setDesktopCount(desktopApi.scrollSnapList().length)
+		setDesktopCurrent(desktopApi.selectedScrollSnap())
+
+		desktopApi.on("select", () => {
+			setDesktopCurrent(desktopApi.selectedScrollSnap())
+		})
+	}, [desktopApi])
+
+	useEffect(() => {
+		if (!mobileApi) return
+
+		setMobileCount(mobileApi.scrollSnapList().length)
+		setMobileCurrent(mobileApi.selectedScrollSnap())
+
+		mobileApi.on("select", () => {
+			setMobileCurrent(mobileApi.selectedScrollSnap())
+		})
+	}, [mobileApi])
+
+	const TestimonialCard = ({ testimonial, index }: { testimonial: typeof testimonials[0], index: number }) => (
+		<Dialog>
+			<DialogTrigger asChild>
+				<div className="flex flex-col h-full w-full min-h-[420px] max-h-[420px] bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6 cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-zinc-900/10 dark:hover:shadow-zinc-100/10 hover:scale-[1.02]">
+					<div className="mb-4">
+						<div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-2 shadow-md">
+							<Quote className="w-full h-full text-zinc-100" />
+						</div>
+					</div>
+					<p className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed mb-6 flex-grow font-medium line-clamp-5">
+						{testimonial.content}
+					</p>
+					<div className="mt-auto">
+						<div className="flex items-center justify-between mb-4">
+							<div className="flex items-center">
+								<div className="relative w-10 h-10 rounded-lg overflow-hidden mr-3 ring-2 ring-zinc-200/50 dark:ring-zinc-700/50">
+									<Image
+										src={testimonial.image}
+										alt={testimonial.name}
+										fill
+										className="object-cover"
+									/>
+								</div>
+								<div>
+									<h4 className="font-semibold text-zinc-800 dark:text-zinc-100 text-sm">
+										{testimonial.name}
+									</h4>
+									<p className="text-xs text-zinc-600 dark:text-zinc-400">
+										{testimonial.role}
+									</p>
+								</div>
+							</div>
+						</div>
+						<Button
+							className="w-full rounded-full px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-xs font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+							onClick={(e) => {
+								e.stopPropagation()
+								window.open(testimonial.projectLink, '_blank', 'noopener,noreferrer')
+							}}
+						>
+							View Project
+							<ExternalLink className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
+						</Button>
+					</div>
+				</div>
+			</DialogTrigger>
+			<DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+				<DialogHeader>
+					<DialogTitle className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+						{testimonial.name}
+					</DialogTitle>
+				</DialogHeader>
+				<div className="space-y-6">
+					<div className="flex items-center space-x-4">
+						<div className="relative w-16 h-16 rounded-lg overflow-hidden ring-2 ring-zinc-200/50 dark:ring-zinc-700/50">
+							<Image
+								src={testimonial.image}
+								alt={testimonial.name}
+								fill
+								className="object-cover"
+							/>
+						</div>
+						<div>
+							<h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+								{testimonial.name}
+							</h3>
+							<p className="text-sm text-zinc-600 dark:text-zinc-400">
+								{testimonial.role}
+							</p>
+						</div>
+					</div>
+					<div className="bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 rounded-xl p-6">
+						<div className="flex items-start space-x-3">
+							<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-1.5 shadow-md flex-shrink-0">
+								<Quote className="w-full h-full text-zinc-100" />
+							</div>
+							<p className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed font-medium">
+								{testimonial.content}
+							</p>
+						</div>
+					</div>
+					<div className="flex justify-center">
+						<Button
+							className="rounded-full px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+							onClick={() => window.open(testimonial.projectLink, '_blank', 'noopener,noreferrer')}
+						>
+							View Project
+							<ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+						</Button>
+					</div>
+				</div>
+			</DialogContent>
+		</Dialog>
+	)
+
 	return (
 		<section className="py-16 md:py-24 relative overflow-hidden">
 			<div className="container mx-auto px-4 sm:px-6 relative">
@@ -105,61 +238,97 @@ export function TestimonialsSection() {
 				</motion.div>
 
 				<div className="relative max-w-7xl mx-auto">
-					<Carousel opts={{ align: "start", slidesToScroll: 1, loop: false }} className="w-full">
-						<CarouselPrevious />
-						<CarouselNext />
-						<CarouselContent className="px-4">
-							{testimonials.map((testimonial, index) => (
-								<CarouselItem key={index} className="flex md:basis-1/3 basis-full px-2">
-									<div className="flex flex-col h-full w-full min-h-[420px] max-h-[420px] bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6">
-										<div className="mb-4">
-											<div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-2 shadow-md">
-												<Quote className="w-full h-full text-zinc-100" />
-											</div>
-										</div>
-										<p className="text-zinc-700 dark:text-zinc-400 text-base leading-relaxed mb-6 flex-grow font-medium line-clamp-5">
-											{testimonial.content}
-										</p>
-										<div className="mt-auto">
-											<div className="flex items-center justify-between mb-4">
-												<div className="flex items-center">
-													<div className="relative w-10 h-10 rounded-lg overflow-hidden mr-3 ring-2 ring-zinc-200/50 dark:ring-zinc-700/50">
-														<Image
-															src={testimonial.image}
-															alt={testimonial.name}
-															fill
-															className="object-cover"
-														/>
-													</div>
-													<div>
-														<h4 className="font-semibold text-zinc-800 dark:text-zinc-100 text-sm">
-															{testimonial.name}
-														</h4>
-														<p className="text-xs text-zinc-600 dark:text-zinc-400">
-															{testimonial.role}
-														</p>
-													</div>
-												</div>
-											</div>
-											<a
-												href={testimonial.projectLink}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="block"
-											>
-												<Button
-													className="w-full rounded-full px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-xs font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
-												>
-													View Project
-													<ExternalLink className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
-												</Button>
-											</a>
-										</div>
-									</div>
-								</CarouselItem>
-							))}
-						</CarouselContent>
-					</Carousel>
+					{/* Desktop Carousel */}
+					<div className="hidden md:block">
+						<div className="overflow-hidden w-full">
+							<Carousel 
+								setApi={setDesktopApi}
+								opts={{ 
+									align: "start", 
+									slidesToScroll: 1, 
+									loop: false,
+									dragFree: true,
+									containScroll: "trimSnaps"
+								}} 
+								className="w-full"
+							>
+								<CarouselContent className="-ml-2">
+									{testimonials.map((testimonial, index) => (
+										<CarouselItem key={index} className="pl-2 basis-1/3 min-w-0 flex-shrink-0">
+											<TestimonialCard testimonial={testimonial} index={index} />
+										</CarouselItem>
+									))}
+								</CarouselContent>
+							</Carousel>
+						</div>
+						{/* Desktop Navigation Arrows */}
+						<div className="flex justify-center mt-8 space-x-4">
+							<Button
+								variant="outline"
+								size="icon"
+								className="h-12 w-12 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+								disabled={desktopCurrent === 0}
+								onClick={() => desktopApi?.scrollPrev()}
+							>
+								<ChevronLeft className="h-5 w-5" />
+							</Button>
+							<Button
+								variant="outline"
+								size="icon"
+								className="h-12 w-12 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+								disabled={desktopCurrent === desktopCount - 1}
+								onClick={() => desktopApi?.scrollNext()}
+							>
+								<ChevronRight className="h-5 w-5" />
+							</Button>
+						</div>
+					</div>
+
+					{/* Mobile Carousel */}
+					<div className="md:hidden">
+						<div className="overflow-hidden w-full">
+							<Carousel 
+								setApi={setMobileApi}
+								opts={{ 
+									align: "start", 
+									slidesToScroll: 1, 
+									loop: false,
+									dragFree: true,
+									containScroll: "trimSnaps"
+								}} 
+								className="w-full"
+							>
+								<CarouselContent className="-ml-2">
+									{testimonials.map((testimonial, index) => (
+										<CarouselItem key={index} className="pl-2 basis-full min-w-0 flex-shrink-0">
+											<TestimonialCard testimonial={testimonial} index={index} />
+										</CarouselItem>
+									))}
+								</CarouselContent>
+							</Carousel>
+						</div>
+						{/* Mobile Navigation Arrows */}
+						<div className="flex justify-center mt-6 space-x-4">
+							<Button
+								variant="outline"
+								size="icon"
+								className="h-10 w-10 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+								disabled={mobileCurrent === 0}
+								onClick={() => mobileApi?.scrollPrev()}
+							>
+								<ChevronLeft className="h-4 w-4" />
+							</Button>
+							<Button
+								variant="outline"
+								size="icon"
+								className="h-10 w-10 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+								disabled={mobileCurrent === mobileCount - 1}
+								onClick={() => mobileApi?.scrollNext()}
+							>
+								<ChevronRight className="h-4 w-4" />
+							</Button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
