@@ -113,7 +113,7 @@ export function TestimonialsSection() {
 	const TestimonialCard = ({ testimonial, index }: { testimonial: typeof testimonials[0], index: number }) => (
 		<Dialog>
 			<DialogTrigger asChild>
-				<div className="flex flex-col h-full w-full min-h-[420px] max-h-[420px] bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6 cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-zinc-900/10 dark:hover:shadow-zinc-100/10 hover:scale-[1.02]">
+				<div className="flex flex-col h-full w-full min-h-[420px] max-h-[420px] bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 dark:border-zinc-700/50 p-6 cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-zinc-900/10 dark:hover:shadow-zinc-100/10">
 					<div className="mb-4">
 						<div className="w-10 h-10 rounded-lg bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-2 shadow-md">
 							<Quote className="w-full h-full text-zinc-100" />
