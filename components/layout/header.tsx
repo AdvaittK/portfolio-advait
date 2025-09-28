@@ -78,7 +78,7 @@ export default function Header() {
       <AnimatePresence mode="wait">
         <motion.nav 
           key={pathname}
-          className="fixed top-2 sm:top-3 md:top-4 left-0 right-0 z-[9990] px-4 sm:px-6 md:px-8"
+          className="fixed top-6 sm:top-3 md:top-4 left-0 right-0 z-[9990] px-4 sm:px-6 md:px-8"
           initial={{ 
             y: -100, 
             opacity: 0,

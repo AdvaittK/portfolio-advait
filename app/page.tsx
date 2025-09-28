@@ -382,7 +382,7 @@ export default function HomePage() {
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
-              <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border text-sm xs:text-base">
+              <Badge className="px-4 py-2 bg-secondary text-secondary-foreground border-border text-base xs:text-lg">
                 Full Stack Developer & UI Designer
               </Badge>
               
@@ -390,7 +390,7 @@ export default function HomePage() {
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
-                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2"
+                className="text-5xl xs:text-6xl sm:text-6xl md:text-7xl font-bold mb-2"
               >
                 Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
               </motion.h1>
@@ -399,7 +399,7 @@ export default function HomePage() {
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.8) }}
-                className="text-lg xs:text-xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
+                className="text-xl xs:text-2xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
               >
                 <Typewriter
                   options={{
@@ -436,7 +436,7 @@ export default function HomePage() {
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.0) }}
-                className="text-sm xs:text-base md:text-lg text-muted-foreground max-w-lg mt-2"
+                className="text-base xs:text-lg md:text-lg text-muted-foreground max-w-lg mt-2"
               >
                 Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
               </motion.p>
@@ -449,7 +449,7 @@ export default function HomePage() {
               >
                 <Link href="/projects" className="w-full xs:w-auto">
                   <Button
-                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-base xs:text-lg"
+                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-6 xs:py-6 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-lg xs:text-lg"
                   >
                     Explore My Work
                   </Button>
@@ -458,7 +458,7 @@ export default function HomePage() {
                 <Link href="/contact" className="w-full xs:w-auto">
                   <Button
                     variant="outline"
-                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 border-border hover:bg-secondary font-medium text-base xs:text-lg"
+                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-6 xs:py-6 border-border hover:bg-secondary font-medium text-lg xs:text-lg"
                   >
                     Contact Me
                   </Button>
@@ -582,7 +582,7 @@ export default function HomePage() {
       </motion.section>
 
       {/* Skills Services Marquee - enabled for all devices */}
-      <div className="relative w-full -mt-8 xs:-mt-12 md:mt-0 md:pt-8">
+      <div className="relative w-full -top-16 xs:-top-20 md:top-0 md:pt-8">
         <SkillsServicesMarquee />
       </div>
 

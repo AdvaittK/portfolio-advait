@@ -258,21 +258,26 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>      {/* Navigation Arrows */}
-      <button
-        onClick={() => goToPrev()}
-        className={`absolute left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
-      >
-        <ChevronLeft className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
-      </button>
+      </div>
       
-      <button
-        onClick={() => goToNext()}
-        className={`absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-50 ${isMobile ? 'p-3' : 'p-4'} rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors duration-200 group`}
-      >
-        <ChevronRight className={`${isMobile ? 'w-5 h-5' : 'w-7 h-7'} text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors`} />
-    </button>{/* CTA Button */}      
-      <div className="text-center mt-40 sm:mt-44 md:mt-48 relative z-20">
+      {/* Navigation Arrows - Below carousel like testimonials */}
+      <div className="flex justify-center mt-48 space-x-4 relative z-50">
+        <button
+          onClick={() => goToPrev()}
+          className={`${isMobile ? 'h-10 w-10' : 'h-12 w-12'} rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 flex items-center justify-center bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm shadow-xl`}
+        >
+          <ChevronLeft className={`${isMobile ? 'h-4 w-4' : 'h-5 w-5'} text-zinc-700 dark:text-zinc-300`} />
+        </button>
+        <button
+          onClick={() => goToNext()}
+          className={`${isMobile ? 'h-10 w-10' : 'h-12 w-12'} rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 flex items-center justify-center bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm shadow-xl`}
+        >
+          <ChevronRight className={`${isMobile ? 'h-4 w-4' : 'h-5 w-5'} text-zinc-700 dark:text-zinc-300`} />
+        </button>
+      </div>
+      
+      {/* CTA Button */}      
+      <div className="text-center mt-12 relative z-20">
         <Link href="/projects">
           <Button
             className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm sm:text-base font-semibold transition-all duration-200 group"
