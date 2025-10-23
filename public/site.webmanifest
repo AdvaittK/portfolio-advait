@@ -1,19 +1,28 @@
 {
-  "name": "Advait Portfolio",
-  "short_name": "Advait",
+  "name": "Advait - Full Stack Developer",
+  "short_name": "Advait Dev",
+  "description": "Full Stack Developer specializing in React, Node.js, MERN Stack - Hire for web app development, SaaS MVPs, and custom solutions",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/favicon-48.png",
       "sizes": "48x48",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "theme_color": "#2d2d2d",
   "background_color": "#2d2d2d",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
 }

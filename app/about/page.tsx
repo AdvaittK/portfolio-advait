@@ -1,6 +1,29 @@
 "use client"
 
+import type { Metadata } from "next"
 import { motion } from "framer-motion"
+
+export const metadata: Metadata = {
+  title: "About Advait | Full Stack Developer in Pune - React, Node.js Expert",
+  description: "Learn about Advait, a certified full stack developer in Pune, India with 3+ years of experience in React, Node.js, MERN stack development. IT Specialist certified in HTML5, Databases, and AI. Available for freelance and remote projects.",
+  keywords: [
+    "Advait",
+    "about full stack developer",
+    "web developer Pune",
+    "React developer India",
+    "Node.js developer Pune",
+    "MERN stack developer India",
+    "IT specialist certification",
+    "freelance developer India",
+    "remote developer Pune"
+  ],
+  openGraph: {
+    title: "About Advait | Full Stack Developer in Pune",
+    description: "Learn about Advait, a certified full stack developer specializing in React, Node.js, and modern web technologies",
+    images: [{ url: "/advait.png", width: 800, height: 800, alt: "Advait" }],
+  },
+}
+
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { PageContainer } from "@/components/layout/page-container"

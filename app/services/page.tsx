@@ -1,6 +1,33 @@
 "use client"
 
+import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
+
+export const metadata: Metadata = {
+  title: "Web Development Services | Full Stack Developer for Hire - Affordable Pricing",
+  description: "Professional web development services by Advait. Full stack development, React & Node.js expertise, custom web applications, SaaS MVPs, e-commerce solutions. Affordable pricing starting at ₹12,999. Freelance and remote services available for startups and businesses.",
+  keywords: [
+    "web development services",
+    "full stack developer for hire",
+    "affordable web developer",
+    "React development services",
+    "Node.js development services",
+    "custom web application development",
+    "SaaS MVP development",
+    "e-commerce development",
+    "startup web developer",
+    "freelance web services India",
+    "web developer pricing",
+    "hire web developer contract",
+    "remote web development services"
+  ],
+  openGraph: {
+    title: "Professional Web Development Services | Affordable Full Stack Developer",
+    description: "Expert web development services - Full stack, React, Node.js. Custom applications, SaaS MVPs, e-commerce. Starting at ₹12,999",
+    images: [{ url: "/new_homepage.png", width: 1200, height: 630 }],
+  },
+}
+
 import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check, HelpCircle } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
 import { motion, AnimatePresence } from "framer-motion"

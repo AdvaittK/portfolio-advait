@@ -1,0 +1,31 @@
+# robots.txt for https://www.advaitt.tech
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.advaitt.tech/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 0
+
+# Allow specific search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
