@@ -1,30 +1,6 @@
 "use client"
 
-import type { Metadata } from "next"
 import { useState } from "react"
-
-export const metadata: Metadata = {
-  title: "Contact | Hire Full Stack Developer - Get Free Quote for Your Project",
-  description: "Get in touch with Advait to discuss your web development project. Hire an experienced full stack developer for React, Node.js, MERN stack development. Available for freelance, contract, and remote work. Based in Pune, India. Free consultation and project quote.",
-  keywords: [
-    "hire full stack developer",
-    "contact web developer",
-    "get project quote",
-    "freelance developer contact",
-    "hire React developer",
-    "hire Node.js developer",
-    "web development consultation",
-    "full stack developer Pune contact",
-    "remote developer India",
-    "web developer for hire India",
-    "startup developer contact"
-  ],
-  openGraph: {
-    title: "Contact | Hire Full Stack Developer - Free Project Quote",
-    description: "Get in touch to discuss your web development project. Expert React & Node.js developer available for hire",
-    images: [{ url: "/new_homepage.png", width: 1200, height: 630 }],
-  },
-}
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
