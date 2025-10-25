@@ -213,8 +213,6 @@ const enhancedFeatures = [
   "All Essential features included",
   "Up to 10 pages",
   "Advanced animations & interactions",
-  "Custom content management system",
-  "Blog/news section with admin panel",
   "Team/staff profiles & testimonials",
   "Advanced SEO & analytics setup",
   "Google Maps & social media integration",
@@ -226,9 +224,11 @@ const premiumFeatures = [
   "Custom booking/appointment system",
   "Advanced user authentication",
   "Document management system",
+  "Custom content management system",
   "Interactive image/video gallery",
   "Multi-language support",
   "Advanced form builder & validation",
+  "Blog/news section with admin panel",
   "4-5 weeks delivery"
 ];
 
@@ -567,7 +567,7 @@ export default function ServicesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <Price inr={35999} usd={899} />
+                    <Price inr={35999} usd={1500} />
                   </motion.div>
                   <div className="h-0.5 w-12 bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-600 to-transparent my-2"></div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-[180px]">
