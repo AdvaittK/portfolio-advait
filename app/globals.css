@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+ * Premium Font Setup - Framer-Inspired Typography
+ * Primary/Headings: DM Sans Variable (local font, bold and distinctive)
+ * Secondary/Body: Geist Sans (Vercel's premium font, clean and readable)
+ * 
+ * Usage:
+ * - font-body / font-sans: Geist Sans (applied by default to body)
+ * - font-heading: DM Sans Variable (applied to all h1-h6 by default)
+ * 
+ * DM Sans Variable supports:
+ * - Weight: 100-1000 (use font-[100] to font-[900])
+ * - Optical sizing: automatic
+ * - Italic variant: available
+ */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -78,18 +93,27 @@
     }
   }
   
-  /* Responsive typography */
+  /* Responsive typography with DM Sans Variable for headings */
   h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold;
   }
   h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold;
   }
   h3 {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-heading font-semibold;
+  }
+  h4 {
+    @apply font-heading font-semibold;
+  }
+  h5 {
+    @apply font-heading font-medium;
+  }
+  h6 {
+    @apply font-heading font-medium;
   }
   p {
-    @apply text-sm sm:text-base;
+    @apply text-sm sm:text-base font-body;
   }
   
   /* Only make specific elements transparent by default instead of all divs */
@@ -227,10 +251,10 @@ body * {
   display: inline-block;
 }
 
-/* Add Montserrat font for preloader if needed */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+/* Use DM Sans for preloader - premium variable font */
 .font-montserrat {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 700;
 }
 
 @keyframes shine {

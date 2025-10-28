@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/layout/header"
@@ -12,7 +13,24 @@ import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
   
-const inter = Inter({ subsets: ["latin"] })
+// DM Sans Variable - Primary font for headings (from local files)
+const dmSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/DMSans-VariableFont_opsz,wght.ttf",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf",
+      style: "italic",
+    },
+  ],
+  variable: "--font-dm-sans",
+  display: "swap",
+})
+
+// Geist Sans - Secondary font for body text (Vercel's premium font)
+// Already provides --font-geist-sans variable
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.advaitt.tech'),
@@ -370,7 +388,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} min-h-screen bg-transparent antialiased`}>
+      <body className={`${dmSans.variable} ${GeistSans.variable} font-body min-h-screen bg-transparent antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
