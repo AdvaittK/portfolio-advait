@@ -35,10 +35,10 @@ const dmSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.advaitt.tech'),
   title: {
-    default: "Advait | Full Stack Developer for Hire - React, Node.js, MERN Stack | Pune, India",
-    template: "%s | Advait   - Full Stack Developer"
+    default: "Advait | Developer Portfolio",
+    template: "%s | Advait"
   },
-  description: "Hire Advait, an expert full stack developer in Pune, India. Specializing in React, Node.js, MERN stack development, custom web applications, SaaS MVPs, and startup solutions. Affordable freelance web developer offering remote services for e-commerce, agency websites, and business platforms.",
+  description: "Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.",
   keywords: [
     // Core Services
     "full stack developer for hire",
@@ -145,9 +145,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.advaitt.tech/',
-    siteName: 'Advait - Full Stack Developer',
-    title: 'Advait | Full Stack Developer for Hire - React, Node.js, MERN Stack | Pune, India',
-    description: 'Hire Advait, an expert full stack developer in Pune, India. Specializing in React, Node.js, MERN stack development, custom web applications, SaaS MVPs, and startup solutions.',
+    siteName: 'Advait | Developer Portfolio',
+    title: 'Advait | Developer Portfolio',
+    description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
     images: [
       {
         url: 'https://www.advaitt.tech/new_homepage.png',
@@ -159,8 +159,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Advait | Full Stack Developer for Hire - React, Node.js, MERN Stack',
-    description: 'Hire Advait, an expert full stack developer in Pune, India. Specializing in React, Node.js, MERN stack development, custom web applications, and startup solutions.',
+    title: 'Advait | Developer Portfolio',
+    description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
     images: ['https://www.advaitt.tech/new_homepage.png'],
     creator: '@advaittt_dev',
   },
