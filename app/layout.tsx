@@ -12,6 +12,8 @@ import ClientLayout from "@/components/client-layout"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
+import LocomotiveScrollProvider from "@/components/locomotive-scroll-provider"
+import AOSProvider from "@/components/aos-provider"
   
 // DM Sans Variable - Primary font for headings (from local files)
 const dmSans = localFont({
@@ -397,19 +399,23 @@ export default function RootLayout({
         >
           <CurrencyProvider>
             <ClientMetallicBg />
-            <div className="relative flex flex-col min-h-screen">
-              <LoadingScreen />
-              <TransitionOverlay />
-              <Header />
-              <main className="flex-grow">
-                <ClientLayout>
-                  {children}
-                </ClientLayout>
-              </main>
-              <Footer />
-              <CustomCursor />
-              <Analytics />
-            </div>
+            <CustomCursor />
+            <AOSProvider>
+              <LocomotiveScrollProvider>
+                <div className="relative flex flex-col min-h-screen">
+                  <LoadingScreen />
+                  <TransitionOverlay />
+                  <Header />
+                  <main className="flex-grow">
+                    <ClientLayout>
+                      {children}
+                    </ClientLayout>
+                  </main>
+                  <Footer />
+                  <Analytics />
+                </div>
+              </LocomotiveScrollProvider>
+            </AOSProvider>
           </CurrencyProvider>
         </ThemeProvider>
       </body>

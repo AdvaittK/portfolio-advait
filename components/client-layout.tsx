@@ -1,14 +1,15 @@
 "use client"
 
-import { AnimatePresence } from "framer-motion"
-import PageTransition from "./page-transition"
+import UnfoldingTransition from "./unfolding-transition"
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
   const [isLoading, setIsLoading] = useState(true)
   const [showContent, setShowContent] = useState(false)
 
@@ -24,7 +25,7 @@ export default function ClientLayout({
     // Wait for loading screen and transition to complete
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1200) // Reduced from 1800ms to 1200ms
+    }, 1200)
 
     return () => {
       window.removeEventListener('transitionComplete', handleTransitionComplete)
@@ -32,17 +33,22 @@ export default function ClientLayout({
     }
   }, [])
 
+  // Dispatch route change event for Locomotive Scroll and AOS
+  useEffect(() => {
+    if (!isLoading) {
+      window.dispatchEvent(new CustomEvent('routeChange'))
+    }
+  }, [pathname, isLoading])
+
   if (isLoading) {
     return null
   }
 
   return (
-    <AnimatePresence mode="wait">
-      <PageTransition>
-        <div className={`w-full transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
-          {children}
-        </div>
-      </PageTransition>
-    </AnimatePresence>
+    <UnfoldingTransition>
+      <div className={`w-full transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
+        {children}
+      </div>
+    </UnfoldingTransition>
   )
 }

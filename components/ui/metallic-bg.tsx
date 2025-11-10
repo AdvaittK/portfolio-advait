@@ -620,10 +620,23 @@ const MetallicBackground = ({ theme = 'dark' }: MetallicBackgroundProps) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       className="fixed inset-0 -z-10"
+      style={{
+        willChange: 'opacity',
+        isolation: 'isolate',
+        // Ensure background is not affected by Locomotive Scroll transforms
+        backfaceVisibility: 'hidden',
+        perspective: '1000px',
+      }}
     >
       <canvas
         ref={canvasRef}
         className="w-full h-full"
+        style={{
+          display: 'block',
+          // Hardware acceleration for smooth rendering
+          transform: 'translateZ(0)',
+          willChange: 'contents',
+        }}
       />
     </motion.div>
   )

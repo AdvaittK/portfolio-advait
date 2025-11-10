@@ -197,6 +197,8 @@ export default function CustomCursor() {
       
       const currentTime = performance.now()
       if (currentTime - lastTime >= 16) { // Cap at ~60fps
+        // Use clientX/clientY which are relative to viewport (correct for fixed positioning)
+        // These work correctly even with Locomotive Scroll's transforms
         mouseX.set(e.clientX)
         mouseY.set(e.clientY)
         lastTime = currentTime
@@ -256,20 +258,21 @@ export default function CustomCursor() {
       }
     }
 
-    document.addEventListener("mousemove", onMouseMove)
-    document.addEventListener("mouseenter", onMouseEnter)
-    document.addEventListener("mouseleave", onMouseLeave)
-    document.addEventListener("mousedown", onMouseDown)
-    document.addEventListener("mouseup", onMouseUp)
+    // Use window instead of document to ensure events are captured regardless of scroll container
+    window.addEventListener("mousemove", onMouseMove, { passive: true })
+    window.addEventListener("mouseenter", onMouseEnter, { passive: true })
+    window.addEventListener("mouseleave", onMouseLeave, { passive: true })
+    window.addEventListener("mousedown", onMouseDown, { passive: true })
+    window.addEventListener("mouseup", onMouseUp, { passive: true })
     
     const cleanupHoverEvents = handleLinkHoverEvents()
 
     return () => {
-      document.removeEventListener("mousemove", onMouseMove)
-      document.removeEventListener("mouseenter", onMouseEnter)
-      document.removeEventListener("mouseleave", onMouseLeave)
-      document.removeEventListener("mousedown", onMouseDown)
-      document.removeEventListener("mouseup", onMouseUp)
+      window.removeEventListener("mousemove", onMouseMove)
+      window.removeEventListener("mouseenter", onMouseEnter)
+      window.removeEventListener("mouseleave", onMouseLeave)
+      window.removeEventListener("mousedown", onMouseDown)
+      window.removeEventListener("mouseup", onMouseUp)
       cleanupHoverEvents()
       
       document.body.classList.remove("custom-cursor-enabled")
@@ -301,6 +304,7 @@ export default function CustomCursor() {
           scale: linkHovered ? 1.5 : clicked ? 0.8 : 1,
           backgroundColor: resolvedTheme === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.9)',
           backdropFilter: 'blur(4px)',
+          willChange: 'transform',
         }}
       />
       
@@ -315,6 +319,7 @@ export default function CustomCursor() {
           scale: clicked ? 0.9 : 1,
           border: `2px solid ${resolvedTheme === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)'}`,
           backdropFilter: 'blur(1px)',
+          willChange: 'transform',
         }}
       />
     </>
