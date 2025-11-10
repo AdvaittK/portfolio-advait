@@ -6,8 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import CustomCursor from "@/components/custom-cursor"
-import LoadingScreen from "@/components/loading-screen"
-import TransitionOverlay from "@/components/transition-overlay"
 import ClientLayout from "@/components/client-layout"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
@@ -403,8 +401,6 @@ export default function RootLayout({
             <AOSProvider>
               <LocomotiveScrollProvider>
                 <div className="relative flex flex-col min-h-screen">
-                  <LoadingScreen />
-                  <TransitionOverlay />
                   <Header />
                   <main className="flex-grow">
                     <ClientLayout>

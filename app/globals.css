@@ -266,7 +266,7 @@ body * {
   }
 }
 
-/* Locomotive Scroll Styles */
+/* Locomotive Scroll Styles - Premium Framer-like Smooth Scrolling */
 html.has-scroll-smooth {
   overflow: hidden;
 }
@@ -284,6 +284,10 @@ html.has-scroll-dragging {
 
 .has-scroll-smooth [data-scroll-container] {
   min-height: 100vh;
+  /* Premium smooth scrolling optimizations */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
 }
 
 [data-scroll-direction="horizontal"] [data-scroll-container] {

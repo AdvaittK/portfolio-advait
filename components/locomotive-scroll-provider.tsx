@@ -24,23 +24,28 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
     import('locomotive-scroll').then((LocomotiveScroll) => {
       if (!scrollRef.current) return
 
-      // Initialize Locomotive Scroll
+      // Initialize Locomotive Scroll with premium Framer-like settings
       locomotiveScrollRef.current = new LocomotiveScroll.default({
         el: scrollRef.current,
         smooth: true,
         smoothMobile: false, // Disable on mobile for better performance
-        multiplier: 1,
+        multiplier: 1.3, // Faster scroll speed for premium feel (Framer-like)
         class: 'is-revealed',
         scrollbarContainer: undefined,
         resetNativeScroll: true,
-        lerp: 0.1,
+        lerp: 0.075, // Lower lerp = smoother, more responsive (Framer-like smoothness)
         smartphone: {
           smooth: false,
         },
         tablet: {
           smooth: false,
         },
+        // Additional premium settings for ultra-smooth scrolling
+        reloadOnContextChange: true,
       })
+
+      // Expose scroll instance globally for scroll-to-top functionality
+      ;(window as any).locomotiveScrollInstance = locomotiveScrollRef.current
 
       // Update on resize with debounce
       let resizeTimer: NodeJS.Timeout

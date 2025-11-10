@@ -32,25 +32,17 @@ export default function TransitionOverlay() {
     return positions
   }
 
-  // Listen for preloader completion
+  // Trigger transition immediately on mount (no loading screen)
   useEffect(() => {
-    const handlePreloaderComplete = () => {
-      if (overlayRef.current) {
-        // Show overlay immediately when preloader triggers
-        gsap.set(overlayRef.current, {
-          display: 'flex',
-          opacity: 1,
-          clipPath: "inset(0 100% 0 0)"
-        })
-      }
-      setShouldAnimate(true)
+    if (overlayRef.current) {
+      // Show overlay immediately
+      gsap.set(overlayRef.current, {
+        display: 'flex',
+        opacity: 1,
+        clipPath: "inset(0 100% 0 0)"
+      })
     }
-
-    window.addEventListener('preloaderComplete', handlePreloaderComplete)
-
-    return () => {
-      window.removeEventListener('preloaderComplete', handlePreloaderComplete)
-    }
+    setShouldAnimate(true)
   }, [])
 
   // Use GSAP for a more sophisticated transition effect
