@@ -1,6 +1,5 @@
 "use client"
 
-import UnfoldingTransition from "./unfolding-transition"
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
@@ -16,9 +15,5 @@ export default function ClientLayout({
     window.dispatchEvent(new CustomEvent('routeChange'))
   }, [pathname])
 
-  return (
-    <UnfoldingTransition>
-      {children}
-    </UnfoldingTransition>
-  )
+  return <>{children}</>
 }
