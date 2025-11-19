@@ -9,6 +9,7 @@ import CustomCursor from "@/components/custom-cursor"
 import ClientLayout from "@/components/client-layout"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
 import LocomotiveScrollProvider from "@/components/locomotive-scroll-provider"
 import AOSProvider from "@/components/aos-provider"
@@ -409,6 +410,7 @@ export default function RootLayout({
                   </main>
                   <Footer />
                   <Analytics />
+                  <SpeedInsights />
                 </div>
               </LocomotiveScrollProvider>
             </AOSProvider>
