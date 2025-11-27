@@ -20,7 +20,16 @@ import {
 } from "./dialog"
 import { useState, useEffect } from "react"
 
+// Shweta moved to top per request (order reflects recency/priority)
 const testimonials = [
+	{
+		name: "Shweta Mishra",
+		role: "Quantum Manifestation Coach",
+		image: "/shweta.webp",
+		content:
+			"The website looks perfect and came out beautifully. I’m really happy with the result. Thank you!",
+		projectLink: "https://www.shwetamishra.in/",
+	},
 	{
 		name: "Sizz",
 		role: "Owner, Sizzle Studios",
@@ -77,7 +86,6 @@ const testimonials = [
 			"Advait did a fantastic job with our Royal Sarees website. He understood exactly what we needed and delivered a clean, elegant design that really showcases our brand. Super easy to work with and very professional throughout.",
 		projectLink: "https://royalsarees.advaitt.tech/",
 	},
-	
 ]
 
 export function TestimonialsSection() {
@@ -145,7 +153,9 @@ export function TestimonialsSection() {
 						</div>
 						<Button
 							className="w-full rounded-full px-4 py-2 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-xs font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+							disabled={!testimonial.projectLink}
 							onClick={(e) => {
+								if (!testimonial.projectLink) return
 								e.stopPropagation()
 								window.open(testimonial.projectLink, '_blank', 'noopener,noreferrer')
 							}}
@@ -194,7 +204,11 @@ export function TestimonialsSection() {
 					<div className="flex justify-center">
 						<Button
 							className="rounded-full px-6 py-3 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
-							onClick={() => window.open(testimonial.projectLink, '_blank', 'noopener,noreferrer')}
+							disabled={!testimonial.projectLink}
+							onClick={() => {
+								if (!testimonial.projectLink) return
+								window.open(testimonial.projectLink, '_blank', 'noopener,noreferrer')
+							}}
 						>
 							View Project
 							<ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

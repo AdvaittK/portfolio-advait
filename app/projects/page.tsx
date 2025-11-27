@@ -49,8 +49,30 @@ export default function ProjectsPage() {
   // Use mobile detection hook
   const isMobile = useIsMobile();
 
-  // Define projects array
+  // Define projects array (Shweta Mishra added first per request)
   const projects: Project[] = [
+    {
+      id: "shweta-mishra-quantum-manifestation",
+      title: "Shweta Mishra – Quantum Manifestation Coach Website",
+      description: "A polished coaching website highlighting credibility, clarity of message, and client transformation.",
+      longDescription: "A bespoke website for Quantum Manifestation Coach Shweta Mishra crafted to communicate her brand values and transformation outcomes. The build focuses on trust-building visuals, concise copy structure, responsive performance, and an uplifting aesthetic. Intentional layout decisions support future expansion (blog/resources) while keeping current navigation lean and focused on conversion.",
+      tags: ["Coaching", "Personal Brand", "Wellness", "UI/UX", "Website"],
+      image: "/shweta.png",
+      demoLink: "https://www.shwetamishra.in/",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Personal brand positioning section",
+        "Mobile-first responsive layout",
+        "Clear CTAs for engagement",
+        "Optimized structure for future content",
+        "Accessible typography & color contrast",
+        "Lightweight, performant delivery"
+      ],
+      category: "Personal Brand Website",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      year: 2025
+    },
     {
       id: "sizzle-studios",
       title: "Sizzle Studios – Creative Portfolio Website",
@@ -386,10 +408,8 @@ export default function ProjectsPage() {
       };
     }, []);
 
-    // Shorten description if too long
-    const shortDescription = project.longDescription.length > 220
-      ? project.longDescription.slice(0, 210) + '...'
-      : project.longDescription;
+    // Show full description in modal
+    const shortDescription = project.longDescription;
 
     // Show only first 4 features
     const featuresToShow = project.features.slice(0, 4);

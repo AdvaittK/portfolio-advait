@@ -20,8 +20,26 @@ import { SkillsServicesMarquee } from "@/components/ui/skills-services-marquee"
 import { TestimonialsSection } from "@/components/ui/testimonials-section"
 import { useIsMobile } from "@/hooks/use-mobile"
 
-// Featured projects data
+// Featured projects data (Shweta Mishra added first per request)
 const featuredProjects = [
+  {
+    id: "shweta-mishra-quantum-manifestation",
+    title: "Shweta Mishra – Quantum Manifestation Coach Website",
+    description: "A clean, uplifting coaching website for Shweta Mishra, focused on clarity, credibility, and conversion.",
+    longDescription: "A bespoke website for Quantum Manifestation Coach Shweta Mishra designed to highlight her coaching philosophy, credibility, and client transformation. Emphasis was placed on trust-building elements, accessible structure, responsive performance, and an aesthetic that balances professionalism with warmth. The site is optimized for clarity of messaging and delivers a polished experience across devices.",
+    tags: ["Coaching", "Personal Brand", "Wellness", "Website", "UI/UX"],
+    image: "/shweta.png",
+    demoLink: "https://www.shwetamishra.in/",
+    githubLink: "",
+    features: [
+      "Personal brand presentation and positioning",
+      "Responsive, mobile-first layout",
+      "Clear calls to action for engagement",
+      "Performance & accessibility optimizations",
+      "Calming, trust-focused visual styling",
+      "Scalable structure for future resources"
+    ]
+  },
   {
     id: "sizzle-studios",
     title: "Sizzle Studios – Creative Portfolio Website",
