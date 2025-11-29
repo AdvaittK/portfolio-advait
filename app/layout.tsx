@@ -13,6 +13,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
 import LocomotiveScrollProvider from "@/components/locomotive-scroll-provider"
 import AOSProvider from "@/components/aos-provider"
+import ServiceWorkerRegister from "@/components/service-worker-register"
   
 // DM Sans Variable - Primary font for headings (from local files)
 const dmSans = localFont({
@@ -217,6 +218,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Minimal Critical CSS for above-the-fold hero stability */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          /* Reserve space for hero section to avoid CLS */
+          .hero-critical { min-height: 85vh; }
+          @media (min-width: 768px) { .hero-critical { min-height: 72vh; } }
+          /* Basic gradient placeholders */
+          .skeleton-gradient { position: relative; border-radius: 16px; overflow: hidden; }
+          .skeleton-gradient::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(200,200,200,0.3), rgba(220,220,220,0.5), rgba(200,200,200,0.3)); animation: pulse 1.6s ease-in-out infinite; }
+          @keyframes pulse { 0% { transform: translateX(-30%); } 50% { transform: translateX(30%); } 100% { transform: translateX(-30%); } }
+        `}} />
         {/* Font Preload for Performance */}
         <link
           rel="preload"
@@ -421,6 +432,7 @@ export default function RootLayout({
           <CurrencyProvider>
             <ClientMetallicBg />
             <CustomCursor />
+            <ServiceWorkerRegister />
             <AOSProvider>
               <LocomotiveScrollProvider>
                 <div className="relative flex flex-col min-h-screen">

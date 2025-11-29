@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, useEffect, useRef } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -11,11 +11,20 @@ interface SmoothScrollProviderProps {
 
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const lenisRef = useRef<Lenis | null>(null)
+  const [isDesktop, setIsDesktop] = useState(false)
 
-  // Initialize Lenis smooth scrolling
+  // Initialize Lenis smooth scrolling only on desktop
   useEffect(() => {
+    // Determine device on mount
+    setIsDesktop(typeof window !== 'undefined' ? window.innerWidth > 1024 : false)
+  }, [])
+
+  useEffect(() => {
+    // Skip initialization on mobile/tablet to reduce initial JS and potential conflicts
+    if (!isDesktop) return
+
     gsap.registerPlugin(ScrollTrigger)
-    
+
     // Optimized settings for high-performance, natural feeling scrolling
     lenisRef.current = new Lenis({
       duration: 0.6, // Faster response time for snappier scrolling
@@ -105,7 +114,7 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
         lenisRef.current.destroy();
       }
     }
-  }, [])
+  }, [isDesktop])
 
   return <>{children}</>
 }

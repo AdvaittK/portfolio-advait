@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, useEffect } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -9,7 +9,15 @@ interface AOSProviderProps {
 }
 
 export default function AOSProvider({ children }: AOSProviderProps) {
+  const [isDesktop, setIsDesktop] = useState(false)
+
   useEffect(() => {
+    // Only initialize AOS on desktop for better mobile performance
+    const checkDesktop = window.innerWidth > 1024
+    setIsDesktop(checkDesktop)
+    
+    if (!checkDesktop) return // Skip AOS on mobile/tablet
+
     AOS.init({
       duration: 800,
       easing: 'ease-in-out-cubic',
@@ -38,7 +46,9 @@ export default function AOSProvider({ children }: AOSProviderProps) {
 
     return () => {
       window.removeEventListener('routeChange', handleRouteChange)
-      AOS.refreshHard()
+      if (isDesktop) {
+        AOS.refreshHard()
+      }
     }
   }, [])
 

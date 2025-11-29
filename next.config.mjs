@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  // Turbopack root: ensure correct workspace root selection
+  turbopack: {
+    root: '.',
   },
   typescript: {
     ignoreBuildErrors: true,

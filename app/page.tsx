@@ -22,19 +22,42 @@ const SkillsRadarBrowser = dynamic(() => import("@/components/ui/skills-radar-br
 
 const ProjectCarousel3D = dynamic(() => import("@/components/ui/project-carousel-3d").then(mod => ({ default: mod.ProjectCarousel3D })), {
   ssr: false,
-  loading: () => <div className="w-full h-64 flex items-center justify-center"><div className="animate-pulse text-muted-foreground">Loading projects...</div></div>
+  loading: () => (
+    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+    </div>
+  )
 })
 
 const ServicesSection = dynamic(() => import("@/components/ui/services-section").then(mod => ({ default: mod.ServicesSection })), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+    </div>
+  )
 })
 
 const NextStepsSection = dynamic(() => import("@/components/ui/next-steps-section").then(mod => ({ default: mod.NextStepsSection })), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+    </div>
+  )
 })
 
 const LetsWorkTogetherSection = dynamic(() => import("@/components/ui/lets-work-together-section").then(mod => ({ default: mod.LetsWorkTogetherSection })), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+    </div>
+  )
 })
 
 const SkillsServicesMarquee = dynamic(() => import("@/components/ui/skills-services-marquee").then(mod => ({ default: mod.SkillsServicesMarquee })), {
@@ -42,7 +65,13 @@ const SkillsServicesMarquee = dynamic(() => import("@/components/ui/skills-servi
 })
 
 const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-section").then(mod => ({ default: mod.TestimonialsSection })), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+    </div>
+  )
 })
 
 // Featured projects data (Shweta Mishra added first per request)
@@ -307,7 +336,7 @@ export default function HomePage() {
   useEffect(() => {
     setIsMounted(true)
 
-    // Only run GSAP animations on desktop
+    // Skip GSAP entirely on mobile for better LCP performance
     if (pageTransitionRef.current && !isMobile) {
       const ctx = gsap.context(() => {
         gsap.fromTo(
@@ -469,8 +498,8 @@ export default function HomePage() {
                     ],
                     autoStart: true,
                     loop: true,
-                    delay: isMobile ? 20 : 50,
-                    deleteSpeed: isMobile ? 10 : 30,
+                    delay: isMobile ? 30 : 50,
+                    deleteSpeed: isMobile ? 15 : 30,
                   }}
                 />
               </motion.div>

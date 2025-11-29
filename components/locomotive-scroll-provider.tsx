@@ -10,17 +10,21 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
   const scrollRef = useRef<HTMLDivElement>(null)
   const locomotiveScrollRef = useRef<any>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
+    // Only initialize on desktop to improve mobile LCP
+    setIsDesktop(window.innerWidth > 1024)
   }, [])
 
   useEffect(() => {
-    if (!isMounted || !scrollRef.current || typeof window === 'undefined') return
+    // Skip Locomotive Scroll entirely on mobile/tablet for better performance
+    if (!isMounted || !scrollRef.current || typeof window === 'undefined' || !isDesktop) return
 
     let cleanup: (() => void) | null = null
 
-    // Dynamically import Locomotive Scroll only on client side
+    // Dynamically import Locomotive Scroll only on desktop
     import('locomotive-scroll').then((LocomotiveScroll) => {
       if (!scrollRef.current) return
 
@@ -82,7 +86,7 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
     return () => {
       if (cleanup) cleanup()
     }
-  }, [isMounted])
+  }, [isMounted, isDesktop])
 
   return (
     <div ref={scrollRef} data-scroll-container>
