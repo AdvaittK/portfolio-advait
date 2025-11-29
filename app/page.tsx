@@ -11,14 +11,39 @@ import Link from "next/link"
 import { gsap } from "gsap"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma, SiDiscord } from "react-icons/si"
-import { SkillsRadarBrowser } from "@/components/ui/skills-radar-browser"
-import { ProjectCarousel3D } from "@/components/ui/project-carousel-3d"
-import { ServicesSection } from "@/components/ui/services-section"
-import { NextStepsSection } from "@/components/ui/next-steps-section"
-import { LetsWorkTogetherSection } from "@/components/ui/lets-work-together-section"
-import { SkillsServicesMarquee } from "@/components/ui/skills-services-marquee"
-import { TestimonialsSection } from "@/components/ui/testimonials-section"
 import { useIsMobile } from "@/hooks/use-mobile"
+import dynamic from "next/dynamic"
+
+// Lazy load heavy components for better performance
+const SkillsRadarBrowser = dynamic(() => import("@/components/ui/skills-radar-browser").then(mod => ({ default: mod.SkillsRadarBrowser })), {
+  ssr: false,
+  loading: () => <div className="w-full h-full flex items-center justify-center"><div className="animate-pulse text-muted-foreground">Loading...</div></div>
+})
+
+const ProjectCarousel3D = dynamic(() => import("@/components/ui/project-carousel-3d").then(mod => ({ default: mod.ProjectCarousel3D })), {
+  ssr: false,
+  loading: () => <div className="w-full h-64 flex items-center justify-center"><div className="animate-pulse text-muted-foreground">Loading projects...</div></div>
+})
+
+const ServicesSection = dynamic(() => import("@/components/ui/services-section").then(mod => ({ default: mod.ServicesSection })), {
+  ssr: false
+})
+
+const NextStepsSection = dynamic(() => import("@/components/ui/next-steps-section").then(mod => ({ default: mod.NextStepsSection })), {
+  ssr: false
+})
+
+const LetsWorkTogetherSection = dynamic(() => import("@/components/ui/lets-work-together-section").then(mod => ({ default: mod.LetsWorkTogetherSection })), {
+  ssr: false
+})
+
+const SkillsServicesMarquee = dynamic(() => import("@/components/ui/skills-services-marquee").then(mod => ({ default: mod.SkillsServicesMarquee })), {
+  ssr: false
+})
+
+const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-section").then(mod => ({ default: mod.TestimonialsSection })), {
+  ssr: false
+})
 
 // Featured projects data (Shweta Mishra added first per request)
 const featuredProjects = [

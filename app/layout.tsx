@@ -217,6 +217,28 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Font Preload for Performance */}
+        <link
+          rel="preload"
+          href="/fonts/DMSans-VariableFont_opsz,wght.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        
+        {/* DNS Prefetch and Preconnect for External Resources */}
+        <link rel="dns-prefetch" href="https://vercel.live" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        <link rel="preconnect" href="https://vercel.live" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" crossOrigin="anonymous" />
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Pune" />
