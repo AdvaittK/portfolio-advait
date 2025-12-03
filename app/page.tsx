@@ -2,7 +2,8 @@
 
 import { useRef, useState, useEffect } from "react"
 import { motion, transform } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail, ArrowRight } from "lucide-react"
+import XIcon from "@/components/ui/x-icon"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -546,7 +547,7 @@ export default function HomePage() {
               >
                 {[
                   { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
-                  { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "https://x.com/advaittt_dev" },
+                  { icon: <XIcon className="w-5 h-5" />, label: "X", link: "https://x.com/advaittt_dev" },
                   { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:advaitt.dev@gmail.com" },
                   { icon: <SiDiscord className="w-5 h-5" />, label: "Discord", link: "https://discord.gg/zQ8gwDK9Zr" }
                 ].map((social, index) => (

@@ -3,7 +3,8 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Code2, Layout, Server, LineChart, Shield, Database, Award, Briefcase, GraduationCap, Heart, ExternalLink, Github, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react"
+import { Code2, Layout, Server, LineChart, Shield, Database, Award, Briefcase, GraduationCap, Heart, ExternalLink, Github, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import XIcon from "./ui/x-icon"
 import { SiDiscord } from "react-icons/si"
 
 const containerVariants = {
@@ -224,7 +225,7 @@ export function AboutContent() {
           <div className="flex gap-4 pt-4">
             {[
               { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
-              { icon: <Twitter className="w-5 h-5" />, label: "Twitter", link: "https://x.com/advaittt_dev" },
+              { icon: <XIcon className="w-5 h-5" />, label: "X", link: "https://x.com/advaittt_dev" },
               { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:advaitt.dev@gmail.com" },
               { icon: <SiDiscord className="w-5 h-5" />, label: "Discord", link: "https://discord.gg/zQ8gwDK9Zr" }
             ].map((social, index) => (

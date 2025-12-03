@@ -14,7 +14,7 @@ interface GlassCardProps {
   socialLinks: {
     github?: string
     linkedin?: string
-    twitter?: string
+      twitter?: string
     email?: string
   }
 }
@@ -128,7 +128,7 @@ export const GlassCard = ({
               <Mail className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
             </motion.a>
           )}
-        </motion.div>
+                      <XIcon className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
 
         {/* CTA Buttons */}
         <motion.div
