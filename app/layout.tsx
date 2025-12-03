@@ -11,7 +11,6 @@ import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
-import LocomotiveScrollProvider from "@/components/locomotive-scroll-provider"
 import AOSProvider from "@/components/aos-provider"
 import ServiceWorkerRegister from "@/components/service-worker-register"
   
@@ -434,19 +433,17 @@ export default function RootLayout({
             <CustomCursor />
             <ServiceWorkerRegister />
             <AOSProvider>
-              <LocomotiveScrollProvider>
-                <div className="relative flex flex-col min-h-screen">
-                  <Header />
-                  <main className="flex-grow">
-                    <ClientLayout>
-                      {children}
-                    </ClientLayout>
-                  </main>
-                  <Footer />
-                  <Analytics />
-                  <SpeedInsights />
-                </div>
-              </LocomotiveScrollProvider>
+              <div className="relative flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  <ClientLayout>
+                    {children}
+                  </ClientLayout>
+                </main>
+                <Footer />
+                <Analytics />
+                <SpeedInsights />
+              </div>
             </AOSProvider>
           </CurrencyProvider>
         </ThemeProvider>

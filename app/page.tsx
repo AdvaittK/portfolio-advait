@@ -384,6 +384,7 @@ export default function HomePage() {
     >
       {/* Hero Section */}
       <motion.section
+        data-scroll-section
         initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 30 }}
         whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -654,12 +655,13 @@ export default function HomePage() {
       </motion.section>
 
       {/* Skills Services Marquee - enabled for all devices */}
-      <div className="relative w-full -top-16 xs:-top-20 md:top-0 md:pt-8">
+      <div className="relative w-full md:pt-8" data-scroll-section>
         <SkillsServicesMarquee />
       </div>
 
       {/* Featured Projects Section - simplified for mobile */}
       <section
+        data-scroll-section
         className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
@@ -686,23 +688,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section - reduced spacing */}
-      <div className="-mt-8 md:-mt-12">
+      {/* Services Section - normalized spacing */}
+      <div className="mt-0" data-scroll-section>
         <ServicesSection />
       </div>
       
-      {/* Testimonials Section - reduced spacing */}
-      <div className="-mt-8 md:-mt-12">
+      {/* Testimonials Section - normalized spacing */}
+      <div className="mt-0" data-scroll-section>
         <TestimonialsSection />
       </div>
       
-      {/* Next Steps Section - reduced spacing */}
-      <div className="-mt-8 md:-mt-12">
+      {/* Next Steps Section - normalized spacing */}
+      <div className="mt-0" data-scroll-section>
         <NextStepsSection />
       </div>
       
-      {/* Let's Work Together Section - reduced spacing */}
-      <div className="-mt-8 md:-mt-12">
+      {/* Let's Work Together Section - normalized spacing */}
+      <div className="mt-0" data-scroll-section>
         <LetsWorkTogetherSection />
       </div>
     </motion.div>
