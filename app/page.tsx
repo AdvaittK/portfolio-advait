@@ -392,61 +392,6 @@ export default function HomePage() {
         transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
         className="min-h-[85vh] flex flex-col justify-start pt-16 xs:pt-20 items-center relative px-4 xs:px-6 py-8 xs:py-12 overflow-hidden md:pt-72"
       >
-        {/* Background gradients - simplified for mobile */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {!isMobile ? (
-            // Full animations on desktop
-            <>
-              <motion.div 
-                className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/10 via-zinc-600/10 to-zinc-700/10 dark:from-zinc-500/20 dark:via-zinc-600/20 dark:to-zinc-700/20 rounded-full filter blur-3xl opacity-30"
-                animate={{
-                  x: [0, 10, -5, 0],
-                  y: [0, -5, 10, 0],
-                  scale: [1, 1.02, 0.98, 1],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div 
-                className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/10 via-zinc-700/10 to-zinc-800/10 dark:from-zinc-600/20 dark:via-zinc-700/20 dark:to-zinc-800/20 rounded-full filter blur-3xl opacity-30"
-                animate={{
-                  x: [0, -10, 5, 0],
-                  y: [0, 10, -8, 0],
-                  scale: [1, 0.98, 1.02, 1],
-                }}
-                transition={{
-                  duration: 15,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div 
-                className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/10 via-zinc-800/10 to-zinc-900/10 dark:from-zinc-700/20 dark:via-zinc-800/20 dark:to-zinc-900/20 rounded-full filter blur-3xl opacity-30"
-                animate={{
-                  x: [0, 8, -8, 0],
-                  y: [0, -8, 4, 0],
-                  scale: [1, 1.03, 0.97, 1],
-                }}
-                transition={{
-                  duration: 18,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            </>
-          ) : (
-            // Static gradients for mobile
-            <>
-              <div className="absolute top-1/4 left-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-500/5 via-zinc-600/5 to-zinc-700/5 dark:from-zinc-500/10 dark:via-zinc-600/10 dark:to-zinc-700/10 rounded-full filter blur-3xl opacity-20" />
-              <div className="absolute top-1/3 right-1/4 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-600/5 via-zinc-700/5 to-zinc-800/5 dark:from-zinc-600/10 dark:via-zinc-700/10 dark:to-zinc-800/10 rounded-full filter blur-3xl opacity-20" />
-              <div className="absolute bottom-1/4 right-1/3 w-64 xs:w-80 sm:w-96 h-64 xs:h-80 sm:h-96 bg-gradient-to-br from-zinc-700/5 via-zinc-800/5 to-zinc-900/5 dark:from-zinc-700/10 dark:via-zinc-800/10 dark:to-zinc-900/10 rounded-full filter blur-3xl opacity-20" />
-            </>
-          )}
-        </div>
-
         <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-start relative z-10">
           {/* Hero content - optimized for mobile */}
           <motion.div

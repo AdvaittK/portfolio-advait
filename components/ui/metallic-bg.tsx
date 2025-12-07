@@ -1,645 +1,392 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef, useEffect, CSSProperties } from 'react';
 
-interface MetallicBackgroundProps {
-  theme?: string
+class Grad {
+  x: number;
+  y: number;
+  z: number;
+  constructor(x: number, y: number, z: number) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+  dot2(x: number, y: number): number {
+    return this.x * x + this.y * y;
+  }
 }
 
-interface Particle {
-  x: number
-  y: number
-  size: number
-  speedX: number
-  speedY: number
-  opacity: number
-  color: string
-  blur: number
+class Noise {
+  grad3: Grad[];
+  p: number[];
+  perm: number[];
+  gradP: Grad[];
+
+  constructor(seed = 0) {
+    this.grad3 = [
+      new Grad(1, 1, 0),
+      new Grad(-1, 1, 0),
+      new Grad(1, -1, 0),
+      new Grad(-1, -1, 0),
+      new Grad(1, 0, 1),
+      new Grad(-1, 0, 1),
+      new Grad(1, 0, -1),
+      new Grad(-1, 0, -1),
+      new Grad(0, 1, 1),
+      new Grad(0, -1, 1),
+      new Grad(0, 1, -1),
+      new Grad(0, -1, -1)
+    ];
+    this.p = [
+      151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240,
+      21, 10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33, 88,
+      237, 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175, 74, 165, 71, 134, 139, 48, 27, 166, 77, 146, 158, 231, 83,
+      111, 229, 122, 60, 211, 133, 230, 220, 105, 92, 41, 55, 46, 245, 40, 244, 102, 143, 54, 65, 25, 63, 161, 1, 216,
+      80, 73, 209, 76, 132, 187, 208, 89, 18, 169, 200, 196, 135, 130, 116, 188, 159, 86, 164, 100, 109, 198, 173, 186,
+      3, 64, 52, 217, 226, 250, 124, 123, 5, 202, 38, 147, 118, 126, 255, 82, 85, 212, 207, 206, 59, 227, 47, 16, 58,
+      17, 182, 189, 28, 42, 223, 183, 170, 213, 119, 248, 152, 2, 44, 154, 163, 70, 221, 153, 101, 155, 167, 43, 172, 9,
+      129, 22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178, 185, 112, 104, 218, 246, 97, 228, 251, 34, 242, 193,
+      238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 157,
+      184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128,
+      195, 78, 66, 215, 61, 156, 180
+    ];
+    this.perm = new Array(512);
+    this.gradP = new Array(512);
+    this.seed(seed);
+  }
+  seed(seed: number) {
+    if (seed > 0 && seed < 1) seed *= 65536;
+    seed = Math.floor(seed);
+    if (seed < 256) seed |= seed << 8;
+    for (let i = 0; i < 256; i++) {
+      let v = i & 1 ? this.p[i] ^ (seed & 255) : this.p[i] ^ ((seed >> 8) & 255);
+      this.perm[i] = this.perm[i + 256] = v;
+      this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12];
+    }
+  }
+  fade(t: number): number {
+    return t * t * t * (t * (t * 6 - 15) + 10);
+  }
+  lerp(a: number, b: number, t: number): number {
+    return (1 - t) * a + t * b;
+  }
+  perlin2(x: number, y: number): number {
+    let X = Math.floor(x),
+      Y = Math.floor(y);
+    x -= X;
+    y -= Y;
+    X &= 255;
+    Y &= 255;
+    const n00 = this.gradP[X + this.perm[Y]].dot2(x, y);
+    const n01 = this.gradP[X + this.perm[Y + 1]].dot2(x, y - 1);
+    const n10 = this.gradP[X + 1 + this.perm[Y]].dot2(x - 1, y);
+    const n11 = this.gradP[X + 1 + this.perm[Y + 1]].dot2(x - 1, y - 1);
+    const u = this.fade(x);
+    return this.lerp(this.lerp(n00, n10, u), this.lerp(n01, n11, u), this.fade(y));
+  }
 }
 
-interface CodeElement {
-  x: number
-  y: number
-  content: string
-  size: number
-  opacity: number
-  color: string
-  velocityX: number
-  velocityY: number
+interface Point {
+  x: number;
+  y: number;
+  wave: { x: number; y: number };
+  cursor: { x: number; y: number; vx: number; vy: number };
 }
 
-interface WebDevIcon {
-  x: number
-  y: number
-  type: string
-  size: number
-  opacity: number
-  rotation: number
-  rotationSpeed: number
+interface Mouse {
+  x: number;
+  y: number;
+  lx: number;
+  ly: number;
+  sx: number;
+  sy: number;
+  v: number;
+  vs: number;
+  a: number;
+  set: boolean;
 }
 
-const MetallicBackground = ({ theme = 'dark' }: MetallicBackgroundProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0, active: false })
-  const [lastMoveTime, setLastMoveTime] = useState(Date.now())
-  const [currentTheme, setCurrentTheme] = useState(theme)
+interface Config {
+  lineColor: string;
+  waveSpeedX: number;
+  waveSpeedY: number;
+  waveAmpX: number;
+  waveAmpY: number;
+  friction: number;
+  tension: number;
+  maxCursorMove: number;
+  xGap: number;
+  yGap: number;
+}
 
-  // Update current theme when theme prop changes
+interface WavesProps {
+  lineColor?: string;
+  backgroundColor?: string;
+  waveSpeedX?: number;
+  waveSpeedY?: number;
+  waveAmpX?: number;
+  waveAmpY?: number;
+  xGap?: number;
+  yGap?: number;
+  friction?: number;
+  tension?: number;
+  maxCursorMove?: number;
+  style?: CSSProperties;
+  className?: string;
+}
+
+const Waves: React.FC<WavesProps> = ({
+  lineColor = 'rgba(255, 255, 255, 0.1)',
+  backgroundColor = 'transparent',
+  waveSpeedX = 0.0125,
+  waveSpeedY = 0.005,
+  waveAmpX = 32,
+  waveAmpY = 16,
+  xGap = 10,
+  yGap = 32,
+  friction = 0.925,
+  tension = 0.005,
+  maxCursorMove = 100,
+  style = {},
+  className = ''
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const boundingRef = useRef<{
+    width: number;
+    height: number;
+    left: number;
+    top: number;
+  }>({
+    width: 0,
+    height: 0,
+    left: 0,
+    top: 0
+  });
+  const noiseRef = useRef(new Noise(Math.random()));
+  const linesRef = useRef<Point[][]>([]);
+  const mouseRef = useRef<Mouse>({
+    x: -10,
+    y: 0,
+    lx: 0,
+    ly: 0,
+    sx: 0,
+    sy: 0,
+    v: 0,
+    vs: 0,
+    a: 0,
+    set: false
+  });
+
+  const configRef = useRef<Config>({
+    lineColor,
+    waveSpeedX,
+    waveSpeedY,
+    waveAmpX,
+    waveAmpY,
+    friction,
+    tension,
+    maxCursorMove,
+    xGap,
+    yGap
+  });
+
+  const frameIdRef = useRef<number | null>(null);
+
   useEffect(() => {
-    setCurrentTheme(theme)
-  }, [theme])
+    configRef.current = {
+      lineColor,
+      waveSpeedX,
+      waveSpeedY,
+      waveAmpX,
+      waveAmpY,
+      friction,
+      tension,
+      maxCursorMove,
+      xGap,
+      yGap
+    };
+  }, [lineColor, waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove, xGap, yGap]);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+    ctxRef.current = canvas.getContext('2d');
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    // Handle resize
-    const handleResize = () => {
-      if (!canvas) return
-      
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      setDimensions({ width: window.innerWidth, height: window.innerHeight })
-    }
-    
-    handleResize()
-    window.addEventListener('resize', handleResize)
-
-    // Handle mouse movement
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ 
-        x: e.clientX, 
-        y: e.clientY,
-        active: true
-      })
-      setLastMoveTime(Date.now())
+    function setSize() {
+      if (!container || !canvas) return;
+      const rect = container.getBoundingClientRect();
+      boundingRef.current = {
+        width: rect.width,
+        height: rect.height,
+        left: rect.left,
+        top: rect.top
+      };
+      canvas.width = rect.width;
+      canvas.height = rect.height;
     }
 
-    // Handle mouse leave
-    const handleMouseLeave = () => {
-      setMousePos(prev => ({ ...prev, active: false }))
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    canvas.addEventListener('mouseleave', handleMouseLeave)
-
-    // Set theme-based colors
-    const isLightTheme = currentTheme === 'light'
-    
-    // Color configurations based on theme
-    const colors = {
-      background: isLightTheme ? 'rgb(250, 250, 252)' : 'rgb(10, 10, 12)',
-      vignette: {
-        start: isLightTheme ? 'rgba(240, 240, 245, 0)' : 'rgba(18, 18, 22, 0)',
-        middle: isLightTheme ? 'rgba(235, 235, 240, 0.2)' : 'rgba(8, 8, 10, 0.2)',
-        end: isLightTheme ? 'rgba(225, 225, 230, 0.4)' : 'rgba(0, 0, 0, 0.4)',
-      },
-      particles: isLightTheme 
-        ? [
-            'rgba(100, 100, 120, 0.5)',    // Dark blue/gray
-            'rgba(120, 120, 140, 0.45)',   // Medium blue/gray
-            'rgba(140, 140, 160, 0.4)',    // Light blue/gray
-            'rgba(160, 160, 180, 0.35)',   // Very light blue/gray
-            'rgba(180, 180, 200, 0.3)',    // Lightest blue/gray
-          ]
-        : [
-            'rgba(180, 180, 190, 0.4)',    // Light silver
-            'rgba(130, 130, 140, 0.35)',   // Mid silver
-            'rgba(100, 100, 110, 0.3)',    // Darker silver
-            'rgba(80, 80, 90, 0.25)',      // Grey
-            'rgba(40, 40, 50, 0.2)',       // Dark grey
-          ],
-      gradients: {
-        start: isLightTheme ? 'rgba(160, 160, 180, 0.1)' : 'rgba(60, 60, 70, 0.07)',
-        middle: isLightTheme ? 'rgba(140, 140, 160, 0.08)' : 'rgba(40, 40, 50, 0.056)',
-        end: isLightTheme ? 'rgba(120, 120, 140, 0.05)' : 'rgba(25, 25, 30, 0.035)',
-        outer: isLightTheme ? 'rgba(100, 100, 120, 0)' : 'rgba(10, 10, 15, 0)',
-      },
-      codeElements: isLightTheme 
-        ? (opacity: number) => `rgba(60, 60, 80, ${opacity})` 
-        : (opacity: number) => `rgba(180, 180, 200, ${opacity})`,
-      webDevIcons: isLightTheme
-        ? (opacity: number) => `rgba(70, 70, 90, ${opacity})`
-        : (opacity: number) => `rgba(170, 170, 190, ${opacity})`,
-      binaryRain: isLightTheme
-        ? (opacity: number) => `rgba(50, 50, 70, ${opacity})`
-        : (opacity: number) => `rgba(170, 170, 190, ${opacity})`,
-      mouseEffect: isLightTheme 
-        ? {
-            start: 'rgba(100, 110, 140, 0.06)',
-            middle: 'rgba(80, 90, 120, 0.04)',
-            end: 'rgba(60, 70, 100, 0)'
-          }
-        : {
-            start: 'rgba(100, 110, 140, 0.08)',
-            middle: 'rgba(80, 90, 120, 0.05)',
-            end: 'rgba(60, 70, 100, 0)'
-          }
-    }
-
-    // Create particles
-    const particleCount = 120
-    const particles: Particle[] = []
-    
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2.5 + 0.5, // Smaller particles
-        speedX: (Math.random() - 0.5) * 0.2, // Slower movement
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.3 + 0.1, // Lower opacity
-        color: colors.particles[Math.floor(Math.random() * colors.particles.length)],
-        blur: Math.random() * 2 + 0.5
-      })
-    }
-
-    // Create code elements (binary, brackets, etc.)
-    // Increase the number of binary code elements
-    const codeElementCount = 80 // Increased from 40
-    const codeElements: CodeElement[] = []
-    
-    const webDevSymbols = [
-      '01', '10', '00', '11',                 // Binary
-      '01', '10', '00', '11',                 // Adding more binary to increase their frequency
-      '01', '10', '00', '11',                 // Adding even more binary
-      '<>', '</>', '{', '}', '()', '[]',      // Brackets
-      ';', '=', '=>', '!=', '&&', '||',       // Operators
-      'const', 'let', 'var', 'function',      // JS Keywords
-      'div', 'img', 'nav', 'span', 'main',    // HTML tags
-    ]
-    
-    for (let i = 0; i < codeElementCount; i++) {
-      // Increase base opacity for better visibility
-      const baseOpacity = Math.random() * 0.3 + 0.15 // Increased from 0.15 + 0.05
-      codeElements.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        content: webDevSymbols[Math.floor(Math.random() * webDevSymbols.length)],
-        size: Math.random() * 14 + 8, // Slightly larger (was 12 + 6)
-        opacity: baseOpacity,
-        color: colors.codeElements(baseOpacity),
-        velocityX: (Math.random() - 0.5) * 0.3,
-        velocityY: (Math.random() - 0.5) * 0.3
-      })
-    }
-    
-    // Create web dev icons
-    const webDevIconsCount = 15
-    const webDevIcons: WebDevIcon[] = []
-    
-    const iconTypes = [
-      'HTML', 'CSS', 'JS', 'TS', 'REACT', 
-      'VUE', 'NODE', 'NEXT', 'API', 'SQL'
-    ]
-    
-    for (let i = 0; i < webDevIconsCount; i++) {
-      const baseOpacity = Math.random() * 0.2 + 0.1 // Increased from 0.15 + 0.05
-      webDevIcons.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        type: iconTypes[Math.floor(Math.random() * iconTypes.length)],
-        size: Math.random() * 20 + 14, // Larger (was 18 + 12)
-        opacity: baseOpacity,
-        rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * 0.01
-      })
-    }
-    
-    // Create subtle gradient areas
-    const gradientAreaCount = 5
-    const gradientAreas: { 
-      x: number; 
-      y: number; 
-      radius: number; 
-      opacity: number;
-      speed: { x: number; y: number };
-    }[] = []
-    
-    for (let i = 0; i < gradientAreaCount; i++) {
-      gradientAreas.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 350 + 200,
-        opacity: Math.random() * 0.07 + 0.03, // Very subtle
-        speed: { 
-          x: (Math.random() - 0.5) * 0.1, 
-          y: (Math.random() - 0.5) * 0.1 
+    function setLines() {
+      const { width, height } = boundingRef.current;
+      linesRef.current = [];
+      const oWidth = width + 200,
+        oHeight = height + 30;
+      const { xGap, yGap } = configRef.current;
+      const totalLines = Math.ceil(oWidth / xGap);
+      const totalPoints = Math.ceil(oHeight / yGap);
+      const xStart = (width - xGap * totalLines) / 2;
+      const yStart = (height - yGap * totalPoints) / 2;
+      for (let i = 0; i <= totalLines; i++) {
+        const pts: Point[] = [];
+        for (let j = 0; j <= totalPoints; j++) {
+          pts.push({
+            x: xStart + xGap * i,
+            y: yStart + yGap * j,
+            wave: { x: 0, y: 0 },
+            cursor: { x: 0, y: 0, vx: 0, vy: 0 }
+          });
         }
-      })
-    }
-    
-    // Track active binary rain columns for persistence
-    const binaryRainColumns: {
-      x: number,
-      progress: number,
-      length: number,
-      speed: number,
-      chars: string[]
-    }[] = [];
-    
-    // Create initial binary rain columns (more of them)
-    for (let i = 0; i < 10; i++) {
-      const columnWidth = 20;
-      const columns = Math.floor(canvas.width / columnWidth);
-      const x = Math.floor(Math.random() * columns) * columnWidth;
-      const length = Math.random() * (canvas.height / 2) + (canvas.height / 4);
-      const chars: string[] = [];
-      
-      // Generate binary characters for this column
-      const charCount = Math.ceil(length / 20);
-      for (let j = 0; j < charCount; j++) {
-        chars.push(Math.random() > 0.5 ? '1' : '0');
+        linesRef.current.push(pts);
       }
-      
-      binaryRainColumns.push({
-        x,
-        progress: 0,
-        length,
-        speed: Math.random() * 1 + 0.5,
-        chars
+    }
+
+    function movePoints(time: number) {
+      const lines = linesRef.current;
+      const mouse = mouseRef.current;
+      const noise = noiseRef.current;
+      const { waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove } = configRef.current;
+      lines.forEach(pts => {
+        pts.forEach(p => {
+          const move = noise.perlin2((p.x + time * waveSpeedX) * 0.002, (p.y + time * waveSpeedY) * 0.0015) * 12;
+          p.wave.x = Math.cos(move) * waveAmpX;
+          p.wave.y = Math.sin(move) * waveAmpY;
+
+          const dx = p.x - mouse.sx,
+            dy = p.y - mouse.sy;
+          const dist = Math.hypot(dx, dy);
+          const l = Math.max(175, mouse.vs);
+          if (dist < l) {
+            const s = 1 - dist / l;
+            const f = Math.cos(dist * 0.001) * s;
+            p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00065;
+            p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00065;
+          }
+
+          p.cursor.vx += (0 - p.cursor.x) * tension;
+          p.cursor.vy += (0 - p.cursor.y) * tension;
+          p.cursor.vx *= friction;
+          p.cursor.vy *= friction;
+          p.cursor.x += p.cursor.vx * 2;
+          p.cursor.y += p.cursor.vy * 2;
+          p.cursor.x = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.x));
+          p.cursor.y = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.y));
+        });
       });
     }
 
-    // Animation loop
-    let animationFrameId: number
-    const render = () => {
-      if (!ctx || !canvas) return
+    function moved(point: Point, withCursor = true): { x: number; y: number } {
+      const x = point.x + point.wave.x + (withCursor ? point.cursor.x : 0);
+      const y = point.y + point.wave.y + (withCursor ? point.cursor.y : 0);
+      return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
+    }
 
-      // Draw background
-      ctx.fillStyle = colors.background
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
-      // Subtle vignette effect
-      const vignette = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 2, 0,
-        canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 1.5
-      )
-      vignette.addColorStop(0, colors.vignette.start)
-      vignette.addColorStop(0.7, colors.vignette.middle)
-      vignette.addColorStop(1, colors.vignette.end)
-      
-      ctx.fillStyle = vignette
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
-      // Check if mouse has been inactive for 2 seconds
-      const isMouseActive = mousePos.active && (Date.now() - lastMoveTime < 2000)
-      
-      // Draw mouse interaction effect when active
-      if (isMouseActive) {
-        const mouseRadius = 200
-        const mouseGradient = ctx.createRadialGradient(
-          mousePos.x, mousePos.y, 0,
-          mousePos.x, mousePos.y, mouseRadius
-        )
-        mouseGradient.addColorStop(0, colors.mouseEffect.start)
-        mouseGradient.addColorStop(0.5, colors.mouseEffect.middle)
-        mouseGradient.addColorStop(1, colors.mouseEffect.end)
-        
-        ctx.fillStyle = mouseGradient
-        ctx.beginPath()
-        ctx.arc(mousePos.x, mousePos.y, mouseRadius, 0, Math.PI * 2)
-        ctx.fill()
-      }
-      
-      // Draw subtle gradient areas
-      gradientAreas.forEach(area => {
-        // Move gradient areas slowly
-        area.x += area.speed.x
-        area.y += area.speed.y
-        
-        // Wrap around canvas
-        if (area.x > canvas.width + area.radius) area.x = -area.radius
-        if (area.x < -area.radius) area.x = canvas.width + area.radius
-        if (area.y > canvas.height + area.radius) area.y = -area.radius
-        if (area.y < -area.radius) area.y = canvas.height + area.radius
-        
-        // Create soft gradient
-        const gradient = ctx.createRadialGradient(
-          area.x, area.y, 0,
-          area.x, area.y, area.radius
-        )
-        
-        // Apply theme-based gradients
-        gradient.addColorStop(0, colors.gradients.start)
-        gradient.addColorStop(0.3, colors.gradients.middle)
-        gradient.addColorStop(0.7, colors.gradients.end)
-        gradient.addColorStop(1, colors.gradients.outer)
-        
-        ctx.fillStyle = gradient
-        ctx.beginPath()
-        ctx.arc(area.x, area.y, area.radius, 0, Math.PI * 2)
-        ctx.fill()
-      })
-      
-      // Add subtle noise texture for metallic effect
-      for (let i = 0; i < 1000; i++) {
-        const x = Math.random() * canvas.width
-        const y = Math.random() * canvas.height
-        const opacity = Math.random() * (isLightTheme ? 0.02 : 0.015)
-        ctx.fillStyle = `rgba(${isLightTheme ? '20, 20, 40' : '255, 255, 255'}, ${opacity})`
-        ctx.fillRect(x, y, 1, 1)
-      }
-
-      // Draw binary rain effect (more visible and persistent)
-      // Process all active binary rain columns
-      for (let i = 0; i < binaryRainColumns.length; i++) {
-        const column = binaryRainColumns[i];
-        column.progress += column.speed;
-        
-        // Restart the column if it's gone past its length
-        if (column.progress > column.length + canvas.height) {
-          column.progress = 0;
-          
-          // Optionally change position
-          if (Math.random() > 0.7) {
-            const columnWidth = 20;
-            const columns = Math.floor(canvas.width / columnWidth);
-            column.x = Math.floor(Math.random() * columns) * columnWidth;
-          }
-          
-          // Generate new binary sequence
-          column.chars = [];
-          const charCount = Math.ceil(column.length / 20);
-          for (let j = 0; j < charCount; j++) {
-            column.chars.push(Math.random() > 0.5 ? '1' : '0');
-          }
-        }
-        
-        // Draw the binary characters in this column
-        ctx.font = 'bold 16px monospace';
-        ctx.textAlign = 'center';
-        
-        const visibleLength = Math.min(column.progress, column.length);
-        for (let j = 0; j < column.chars.length; j++) {
-          const y = column.progress - (j * 20);
-          
-          // Only draw if in visible range
-          if (y >= 0 && y <= canvas.height) {
-            const distanceFromTop = y;
-            const distanceFromBottom = column.length - y;
-            const fadeDistance = 100;
-            
-            // Fade in at top, fade out at bottom
-            let alpha = 0.3; // Base alpha (higher than before)
-            
-            if (distanceFromTop < fadeDistance) {
-              alpha *= (distanceFromTop / fadeDistance);
-            } else if (distanceFromBottom < fadeDistance) {
-              alpha *= (distanceFromBottom / fadeDistance);
-            }
-            
-            ctx.fillStyle = colors.binaryRain(alpha);
-            ctx.fillText(column.chars[j], column.x, y);
-          }
-        }
-      }
-      
-      // Occasionally add new binary rain columns
-      if (Math.random() > 0.99 && binaryRainColumns.length < 15) {
-        const columnWidth = 20;
-        const columns = Math.floor(canvas.width / columnWidth);
-        const x = Math.floor(Math.random() * columns) * columnWidth;
-        const length = Math.random() * (canvas.height / 2) + (canvas.height / 4);
-        const chars: string[] = [];
-        
-        const charCount = Math.ceil(length / 20);
-        for (let j = 0; j < charCount; j++) {
-          chars.push(Math.random() > 0.5 ? '1' : '0');
-        }
-        
-        binaryRainColumns.push({
-          x,
-          progress: 0,
-          length,
-          speed: Math.random() * 1 + 0.5,
-          chars
+    function drawLines() {
+      const { width, height } = boundingRef.current;
+      const ctx = ctxRef.current;
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      ctx.beginPath();
+      ctx.strokeStyle = configRef.current.lineColor;
+      linesRef.current.forEach(points => {
+        let p1 = moved(points[0], false);
+        ctx.moveTo(p1.x, p1.y);
+        points.forEach((p, idx) => {
+          const isLast = idx === points.length - 1;
+          p1 = moved(p, !isLast);
+          const p2 = moved(points[idx + 1] || points[points.length - 1], !isLast);
+          ctx.lineTo(p1.x, p1.y);
+          if (isLast) ctx.moveTo(p2.x, p2.y);
         });
-      }
-      
-      // Draw code elements
-      codeElements.forEach(element => {
-        // Update position
-        element.x += element.velocityX
-        element.y += element.velocityY
-        
-        // Wrap around edges
-        if (element.x > canvas.width) element.x = 0
-        if (element.x < 0) element.x = canvas.width
-        if (element.y > canvas.height) element.y = 0
-        if (element.y < 0) element.y = canvas.height
-        
-        // Mouse interaction
-        if (isMouseActive) {
-          const dx = mousePos.x - element.x
-          const dy = mousePos.y - element.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          const maxDistance = 150
-          
-          if (distance < maxDistance) {
-            // Push code away from mouse
-            const force = (1 - distance / maxDistance) * 0.8
-            element.velocityX -= (dx / distance) * force
-            element.velocityY -= (dy / distance) * force
-            
-            // Limit velocity
-            const maxVel = 2
-            const vel = Math.sqrt(element.velocityX * element.velocityX + element.velocityY * element.velocityY)
-            if (vel > maxVel) {
-              element.velocityX = (element.velocityX / vel) * maxVel
-              element.velocityY = (element.velocityY / vel) * maxVel
-            }
-            
-            // Temporarily increase opacity
-            ctx.font = `bold ${element.size}px monospace` // Added bold
-            ctx.fillStyle = colors.codeElements(element.opacity * 4) // Increased multiplier
-            ctx.fillText(element.content, element.x, element.y)
-          } else {
-            // Normal rendering
-            ctx.font = `${element.size}px monospace`
-            ctx.fillStyle = colors.codeElements(element.opacity)
-            ctx.fillText(element.content, element.x, element.y)
-          }
-        } else {
-          // Normal rendering
-          ctx.font = `${element.size}px monospace`
-          ctx.fillStyle = colors.codeElements(element.opacity)
-          ctx.fillText(element.content, element.x, element.y)
-        }
-        
-        // Apply friction to velocity
-        element.velocityX *= 0.98
-        element.velocityY *= 0.98
-        
-        // Apply minimum velocity
-        const minVel = 0.2
-        const vel = Math.sqrt(element.velocityX * element.velocityX + element.velocityY * element.velocityY)
-        if (vel < minVel && Math.random() > 0.95) {
-          const angle = Math.random() * Math.PI * 2
-          element.velocityX = Math.cos(angle) * minVel
-          element.velocityY = Math.sin(angle) * minVel
-        }
-      })
-      
-      // Draw web dev icons
-      webDevIcons.forEach(icon => {
-        // Update rotation
-        icon.rotation += icon.rotationSpeed
-        
-        // Random slow movement
-        if (Math.random() > 0.98) {
-          icon.x += (Math.random() - 0.5) * 1
-          icon.y += (Math.random() - 0.5) * 1
-        }
-        
-        // Mouse interaction
-        if (isMouseActive) {
-          const dx = mousePos.x - icon.x
-          const dy = mousePos.y - icon.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          const maxDistance = 200
-          
-          if (distance < maxDistance) {
-            // Move slightly toward mouse
-            const force = (1 - distance / maxDistance) * 0.5
-            icon.x += (dx / distance) * force
-            icon.y += (dy / distance) * force
-            
-            // Temporarily increase opacity and size
-            ctx.save()
-            ctx.translate(icon.x, icon.y)
-            ctx.rotate(icon.rotation)
-            ctx.font = `bold ${icon.size * 1.2}px sans-serif`
-            ctx.textAlign = 'center'
-            ctx.fillStyle = colors.webDevIcons(icon.opacity * 5) // Increased multiplier
-            ctx.fillText(icon.type, 0, 0)
-            ctx.restore()
-          } else {
-            // Normal rendering
-            ctx.save()
-            ctx.translate(icon.x, icon.y)
-            ctx.rotate(icon.rotation)
-            ctx.font = `bold ${icon.size}px sans-serif`
-            ctx.textAlign = 'center'
-            ctx.fillStyle = colors.webDevIcons(icon.opacity)
-            ctx.fillText(icon.type, 0, 0)
-            ctx.restore()
-          }
-        } else {
-          // Normal rendering
-          ctx.save()
-          ctx.translate(icon.x, icon.y)
-          ctx.rotate(icon.rotation)
-          ctx.font = `bold ${icon.size}px sans-serif`
-          ctx.textAlign = 'center'
-          ctx.fillStyle = colors.webDevIcons(icon.opacity)
-          ctx.fillText(icon.type, 0, 0)
-          ctx.restore()
-        }
-        
-        // Keep within bounds
-        if (icon.x > canvas.width + 50) icon.x = -50
-        if (icon.x < -50) icon.x = canvas.width + 50
-        if (icon.y > canvas.height + 50) icon.y = -50
-        if (icon.y < -50) icon.y = canvas.height + 50
-      })
+      });
+      ctx.stroke();
+    }
 
-      // Update and draw particles (floating metallic dust effect)
-      particles.forEach(particle => {
-        particle.x += particle.speedX
-        particle.y += particle.speedY
-        
-        // Mouse interaction for particles
-        if (isMouseActive) {
-          const dx = mousePos.x - particle.x
-          const dy = mousePos.y - particle.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          const maxDistance = 100
-          
-          if (distance < maxDistance) {
-            // Push particles away
-            const force = (1 - distance / maxDistance) * 0.2
-            particle.x -= (dx / distance) * force
-            particle.y -= (dy / distance) * force
-            
-            // Draw with increased brightness
-            ctx.shadowColor = particle.color.replace(/[\d\.]+\)$/g, '0.6)')
-            ctx.shadowBlur = particle.blur * 2
-            ctx.fillStyle = particle.color.replace(/[\d\.]+\)$/g, '0.8)')
-            ctx.beginPath()
-            ctx.arc(particle.x, particle.y, particle.size * 1.5, 0, Math.PI * 2)
-            ctx.fill()
-          } else {
-            // Normal rendering
-            ctx.shadowColor = particle.color
-            ctx.shadowBlur = particle.blur
-            ctx.fillStyle = particle.color
-            ctx.beginPath()
-            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-            ctx.fill()
-          }
-        } else {
-          // Normal rendering
-          ctx.shadowColor = particle.color
-          ctx.shadowBlur = particle.blur
-          ctx.fillStyle = particle.color
-          ctx.beginPath()
-          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-          ctx.fill()
-        }
-        
-        // Wrap particles around screen
-        if (particle.x > canvas.width) particle.x = 0
-        if (particle.x < 0) particle.x = canvas.width
-        if (particle.y > canvas.height) particle.y = 0
-        if (particle.y < 0) particle.y = canvas.height
-      })
-      
-      animationFrameId = window.requestAnimationFrame(render)
+    function tick(t: number) {
+      if (!container) return;
+      const mouse = mouseRef.current;
+      mouse.sx += (mouse.x - mouse.sx) * 0.1;
+      mouse.sy += (mouse.y - mouse.sy) * 0.1;
+      const dx = mouse.x - mouse.lx,
+        dy = mouse.y - mouse.ly;
+      const d = Math.hypot(dx, dy);
+      mouse.v = d;
+      mouse.vs += (d - mouse.vs) * 0.1;
+      mouse.vs = Math.min(100, mouse.vs);
+      mouse.lx = mouse.x;
+      mouse.ly = mouse.y;
+      mouse.a = Math.atan2(dy, dx);
+
+      movePoints(t);
+      drawLines();
+      frameIdRef.current = requestAnimationFrame(tick);
     }
-    
-    render()
-    
-    // Cleanup
+
+    function onResize() {
+      setSize();
+      setLines();
+    }
+    function onMouseMove(e: MouseEvent) {
+      updateMouse(e.clientX, e.clientY);
+    }
+    function onTouchMove(e: TouchEvent) {
+      const touch = e.touches[0];
+      updateMouse(touch.clientX, touch.clientY);
+    }
+    function updateMouse(x: number, y: number) {
+      const mouse = mouseRef.current;
+      const b = boundingRef.current;
+      mouse.x = x - b.left;
+      mouse.y = y - b.top;
+      if (!mouse.set) {
+        mouse.sx = mouse.x;
+        mouse.sy = mouse.y;
+        mouse.lx = mouse.x;
+        mouse.ly = mouse.y;
+        mouse.set = true;
+      }
+    }
+
+    setSize();
+    setLines();
+    frameIdRef.current = requestAnimationFrame(tick);
+    window.addEventListener('resize', onResize);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+
     return () => {
-      window.cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('mousemove', handleMouseMove)
-      canvas.removeEventListener('mouseleave', handleMouseLeave)
-    }
-  }, [currentTheme])
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchmove', onTouchMove);
+      if (frameIdRef.current !== null) {
+        cancelAnimationFrame(frameIdRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      className="fixed inset-0 -z-10"
+    <div
+      ref={containerRef}
       style={{
-        willChange: 'opacity',
-        isolation: 'isolate',
-        // Ensure background is not affected by Locomotive Scroll transforms
-        backfaceVisibility: 'hidden',
-        perspective: '1000px',
+        backgroundColor,
+        ...style
       }}
+      className={`fixed inset-0 w-full h-full overflow-hidden ${className}`}
     >
-      <canvas
-        ref={canvasRef}
-        className="w-full h-full"
-        style={{
-          display: 'block',
-          // Hardware acceleration for smooth rendering
-          transform: 'translateZ(0)',
-          willChange: 'contents',
-        }}
-      />
-    </motion.div>
-  )
-}
+      <canvas ref={canvasRef} className="block w-full h-full" />
+    </div>
+  );
+};
 
-export default MetallicBackground
+export default Waves;
