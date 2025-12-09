@@ -166,7 +166,7 @@ export default function ProjectsPage() {
       longDescription: "CardHint is a smart financial platform designed to simplify credit card discovery and comparison for Indian consumers. The website features a clean, intuitive interface that helps users evaluate credit cards based on rewards, fees, and financial goals. Built with modern web technologies, the platform includes advanced filtering, expert-curated content, and a secure, performance-optimized structure. CardHint empowers users to make confident financial decisions while navigating a clutter-free, user-first experience.",
       tags: ["Upgrade","Community", "Finance","Next.js", "React", "TypeScript"],
       image: "/assets/projects/cardhint-app.webp",
-      demoLink: "https://cardhint.com/",
+      demoLink: "https://cardhint.advaitt.tech/",
       githubLink: "https://github.com/AdvaittK/cardhint",
       showSourceCode: false,
       features: [
