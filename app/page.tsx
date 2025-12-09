@@ -83,7 +83,7 @@ const featuredProjects = [
     description: "A clean, uplifting coaching website for Shweta Mishra, focused on clarity, credibility, and conversion.",
     longDescription: "A bespoke website for Quantum Manifestation Coach Shweta Mishra designed to highlight her coaching philosophy, credibility, and client transformation. Emphasis was placed on trust-building elements, accessible structure, responsive performance, and an aesthetic that balances professionalism with warmth. The site is optimized for clarity of messaging and delivers a polished experience across devices.",
     tags: ["Coaching", "Personal Brand", "Wellness", "Website", "UI/UX"],
-    image: "/shweta.png",
+    image: "/assets/projects/shweta-site.webp",
     demoLink: "https://www.shwetamishra.in/",
     githubLink: "",
     features: [
@@ -101,7 +101,7 @@ const featuredProjects = [
     description: "A modern, responsive portfolio website for Sizzle Studios, showcasing their creative work and services with an elegant, professional design.",
     longDescription: "Sizzle Studios' portfolio website is a beautifully crafted showcase of their creative services and portfolio work. The website features a modern, clean design that highlights their artistic capabilities while providing an excellent user experience. Built with responsive design principles, it ensures optimal viewing across all devices and platforms.",
     tags: ["Portfolio", "Creative", "Design", "Website", "UI/UX"],
-    image: "/sizzle.png",
+    image: "/assets/projects/sizzle-site.webp",
     demoLink: "https://www.sizzlestudio.in/",
     githubLink: "",
     features: [
@@ -119,7 +119,7 @@ const featuredProjects = [
     description: "Oriental's new website was designed to provide a clean, professional, and user-friendly experience for clients and partners.",
     longDescription: "Oriental's new website was designed to provide a clean, professional, and user-friendly experience for clients and partners. The focus was on showcasing their wide range of logistics services with clarity, ensuring smooth navigation, and creating a visually appealing platform that reflects Oriental's 40+ years of trust and excellence in the industry.",
     tags: ["Logistics", "Import Export", "Clearing & Forwarding", "Business", "Website"],
-    image: "/homepageo.png",
+    image: "/assets/projects/oriental-home.webp",
     demoLink: "https://www.orientalimited.com/",
     githubLink: "",
     features: [
@@ -135,7 +135,7 @@ const featuredProjects = [
     description: "A modern, high-performance business website for VITIRA, designed to elevate their digital presence and showcase their services.",
     longDescription: "VITIRA's new website was transformed to deliver a clean, professional, and engaging experience for their clients. The project focused on clear service presentation, fast performance, and a visually appealing interface that aligns with VITIRA's brand values.",
     tags: ["Business", "Website", "Transformation", "UI/UX", "Next.js"],
-    image: "/vitira.png",
+    image: "/assets/projects/vitira.webp",
     demoLink: "https://www.vitira.in/",
     githubLink: "",
     features: [
@@ -153,7 +153,7 @@ const featuredProjects = [
     description: "A stunning portfolio website showcasing Dem's exceptional thumbnail design work, featuring a modern and creative interface that highlights their unique artistic style.",
     longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern, minimalist design that puts the focus on the artwork while maintaining excellent user experience. It includes a dynamic gallery of thumbnail designs, case studies of successful projects, and a seamless contact system for potential clients.",
     tags: ["Portfolio", "Design", "Thumbnails", "Creative", "UI/UX"],
-    image: "/homepage.png",
+    image: "/assets/projects/dem-portfolio.webp",
     demoLink: "https://dems8.com",
     githubLink: "https://github.com/AdvaittK/dem-portfolio",
     features: [
@@ -171,7 +171,7 @@ const featuredProjects = [
     description: "A modern, responsive website for UVOKA, a LinkedIn personal branding agency. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion for smooth animations and interactions.",
     longDescription: "UVOKA's website is a comprehensive platform showcasing their LinkedIn personal branding services. The website features a modern design with smooth animations, clear service presentation, client testimonials, and a professional portfolio that reflects their expertise in personal branding. Built with cutting-edge technologies for optimal performance and user experience.",
     tags: ["Business", "Website", "Personal Branding", "LinkedIn", "Next.js", "Agency"],
-    image: "/uvoka.png",
+    image: "/assets/projects/uvoka.webp",
     demoLink: "https://uvoka.in",
     githubLink: "",
     features: [
@@ -189,7 +189,7 @@ const featuredProjects = [
     description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
     longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process.",
     tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS"],
-    image: "/homepage.jpg",
+    image: "/assets/projects/royal-sarees.webp",
     demoLink: "https://royalsarees.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/saree-ecommerce",
     features: [
@@ -207,7 +207,7 @@ const featuredProjects = [
     description: "A smart platform for comparing credit cards and maximizing rewards, built with Next.js, Tailwind, and advanced UI components.",
     longDescription: "CardHint is a modern web application designed to help users compare credit cards and find the best options for their needs. It features a user-friendly interface, advanced filtering options, and detailed information on various credit cards.",
     tags: ["Finance", "Next.js", "Tailwind CSS"],
-    image: "/cardh.png",
+    image: "/assets/projects/cardhint-app.webp",
     demoLink: "https://www.cardhint.com/",
     githubLink: "https://github.com/AdvaittK/cardhint",
     features: [
@@ -225,7 +225,7 @@ const featuredProjects = [
     description: "Cyberpunk-inspired e-commerce platform specializing in premium sneakers and streetwear, built with Next.js, Tailwind, and advanced UI components.",
     longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories.",
     tags: ["E-Commerce", "Next.js", "Tailwind CSS"],
-    image: "/kixkart.png",
+    image: "/assets/projects/kixkart.webp",
     demoLink: "https://www.kixkart.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/kixkart",
     features: [
@@ -243,7 +243,7 @@ const featuredProjects = [
     description: "A modern, responsive dashboard UI with interactive charts, subscription flows, and a mock backend for demo purposes. Showcasing frontend design, state management, and UI component patterns.",
     longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
-    image: "/pulseboard.png",
+    image: "/assets/projects/pulseboard.webp",
     demoLink: "https://www.pulseboard.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/pulse-board-main",
     features: [
@@ -261,7 +261,7 @@ const featuredProjects = [
     description: "AI-powered health symptom analysis platform that helps users identify potential health conditions and connect with healthcare providers.",
     longDescription: "SymtoLink is a healthcare technology platform that combines AI algorithms with medical knowledge to help users analyze their symptoms, understand potential conditions, and find appropriate care. The platform features a user-friendly interface for symptom input, analysis reports, and healthcare provider connections.",
     tags: ["Healthcare Tech", "AI", "Next.js", "React", "TailwindCSS"],
-    image: "/symptolink.png",
+    image: "/assets/projects/symptolink.webp",
     demoLink: "https://symptolink.advaitt.tech",
     githubLink: "https://github.com/AdvaittK/symtolink",
     features: [
@@ -297,7 +297,7 @@ const featuredProjects = [
     description: "Web application that uses AI to analyze and verify claims against trusted sources, helping users identify misinformation online.",
     longDescription: "TruthSense is an advanced fact-checking platform that leverages artificial intelligence to analyze claims against a database of trusted sources. Users can submit statements or URLs for verification, and the system provides reliability scores, source citations, and context to help combat misinformation.",
     tags: ["AI", "NLP", "React", "Node.js", "TailwindCSS"],
-    image: "/ts.png",
+    image: "/assets/projects/truthsense.webp",
     demoLink: "https://truthsense.advaitt.tech",
     githubLink: "https://github.com/AdvaittK/truthsense",
     features: [
@@ -315,7 +315,7 @@ const featuredProjects = [
     description: "Developer tool for generating custom JSON mock data with advanced schema options, templates, and API endpoint simulation.",
     longDescription: "JSON Gen is a comprehensive developer utility designed to simplify the creation of mock data for frontend development and testing. It offers a robust schema editor, template system, and API endpoint simulation features to help developers prototype and test applications efficiently.",
     tags: ["Developer Tool", "JSON", "React", "TypeScript", "API Mocking"],
-    image: "/jsonge.png",
+    image: "/assets/projects/jsonge.webp",
     demoLink: "https://www.jsongen.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/json-generator",
     features: [

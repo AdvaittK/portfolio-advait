@@ -264,7 +264,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "Advait - Full Stack Developer",
-              "image": "https://www.advaitt.tech/advait.png",
+              "image": "https://www.advaitt.tech/assets/people/advait.webp",
               "url": "https://www.advaitt.tech",
               "telephone": "+919975556093",
               "email": "advaitt.dev@gmail.com",
@@ -309,7 +309,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Advait",
               "url": "https://www.advaitt.tech",
-              "image": "https://www.advaitt.tech/advait.png",
+              "image": "https://www.advaitt.tech/assets/people/advait.webp",
               "sameAs": [
                 "https://github.com/AdvaittK",
                 "https://x.com/advaittt_dev",

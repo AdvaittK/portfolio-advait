@@ -93,7 +93,7 @@ const certifications = [
       "Web Accessibility"
     ],
     icon: Code2,
-    badgeImage: "/html.png",
+    badgeImage: "/assets/skills/html.webp",
     credlyLink: "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview"
   },
   {
@@ -110,7 +110,7 @@ const certifications = [
       "Transaction Management"
     ],
     icon: Database,
-    badgeImage: "/database.png",
+    badgeImage: "/assets/skills/database.webp",
     credlyLink: "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview"
   },
   {
@@ -127,7 +127,7 @@ const certifications = [
       "Computer Vision"
     ],
     icon: LineChart,
-    badgeImage: "/ai.png",
+    badgeImage: "/assets/skills/ai.webp",
     credlyLink: "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview"
   }
 ]
@@ -201,7 +201,7 @@ export default function AboutPage() {
           >
             <div className="relative w-[200px] h-[200px] md:w-[400px] md:h-[400px] mb-6">
               <img
-                src="/advait.png"
+                src="/assets/people/advait.webp"
                 alt="Profile"
                 className="w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full object-cover object-[20%] border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105 mx-auto"
               />
