@@ -1,9 +1,13 @@
+"use client"
+
 import { Code2, Layout, Server, LineChart, Shield, Database } from "lucide-react"
 import { Button } from "./button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react"
+import { getCookie } from "cookies-next"
 
 // Enhanced services with additional information for the improved UI
 const services = [
@@ -58,6 +62,13 @@ const services = [
 ]
 
 export function ServicesSection() {
+  const [isIndia, setIsIndia] = useState(false)
+
+  useEffect(() => {
+    const currency = getCookie('currency')
+    setIsIndia(currency === 'INR')
+  }, [])
+
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Subtle background elements - removed corner glows */}
@@ -211,25 +222,27 @@ export function ServicesSection() {
         </div>
 
         {/* Enhanced button section with improved spacing and subtle decoration */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center mt-24 relative"
-        >
-          {/* Subtle divider above button */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-zinc-300/50 dark:via-zinc-600/50 to-transparent"></div>
-          
-          <Link href="/services">
-            <Button
-              className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
-            >
-              Explore All Services
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-        </motion.div>
+        {!isIndia && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-24 relative"
+          >
+            {/* Subtle divider above button */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-zinc-300/50 dark:via-zinc-600/50 to-transparent"></div>
+            
+            <Link href="/services">
+              <Button
+                className="rounded-full px-8 py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold transition-all duration-300 group hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-100/5"
+              >
+                Explore All Services
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   )

@@ -5,8 +5,15 @@ export const config = {
   matcher: ['/services', '/projects'],
 };
 
-export default function proxy(request: NextRequest) {
+export default function middleware(request: NextRequest) {
   const { country } = geolocation(request);
+  const pathname = request.nextUrl.pathname;
+
+  // Block access to services page for users in India
+  if (pathname === '/services' && country === 'IN') {
+    return new NextResponse(null, { status: 404 });
+  }
+
   const response = NextResponse.next();
 
   if (country === 'IN') {
@@ -23,3 +30,4 @@ export default function proxy(request: NextRequest) {
 
   return response;
 }
+

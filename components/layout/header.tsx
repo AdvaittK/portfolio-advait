@@ -8,6 +8,7 @@ import LogoMark from "@/components/ui/logo-mark"
 import Link from "next/link"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
+import { getCookie } from "cookies-next"
 
 export default function Header() {
   const { theme, setTheme } = useTheme()
@@ -16,6 +17,7 @@ export default function Header() {
   const pathname = usePathname()
   const [prevPath, setPrevPath] = useState(pathname)
   const { scrollY } = useScroll()
+  const [isIndia, setIsIndia] = useState(false)
 
   // Transform scroll position to opacity and blur values
   const headerOpacity = useTransform(scrollY, [0, 100], [0.92, 0.97])
@@ -44,6 +46,12 @@ export default function Header() {
   // Only show theme toggle after mounting to prevent hydration mismatch
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  // Check if user is from India based on currency cookie
+  useEffect(() => {
+    const currency = getCookie('currency')
+    setIsIndia(currency === 'INR')
   }, [])
 
   // Update background color after mount to prevent hydration mismatch
@@ -143,7 +151,7 @@ export default function Header() {
                     { name: "Services", href: "/services" },
                     { name: "Skills", href: "/skills" },
                     { name: "Contact", href: "/contact" }
-                  ].map((item, index) => (
+                  ].filter(item => !(item.name === "Services" && isIndia)).map((item, index) => (
                     <motion.li 
                       key={item.name}
                       initial={{ opacity: 0, y: -10 }}
@@ -252,7 +260,7 @@ export default function Header() {
                   { name: "Services", href: "/services" },
                   { name: "Skills", href: "/skills" },
                   { name: "Contact", href: "/contact" }
-                ].map((item, index) => (
+                ].filter(item => !(item.name === "Services" && isIndia)).map((item, index) => (
                   <motion.li 
                     key={item.name} 
                     className="w-full"
