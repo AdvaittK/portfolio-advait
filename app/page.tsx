@@ -208,7 +208,7 @@ const featuredProjects = [
     longDescription: "CardHint is a modern web application designed to help users compare credit cards and find the best options for their needs. It features a user-friendly interface, advanced filtering options, and detailed information on various credit cards.",
     tags: ["Finance", "Next.js", "Tailwind CSS"],
     image: "/assets/projects/cardhint-app.webp",
-    demoLink: "https://www.cardhint.com/",
+    demoLink: "https://cardhint.advaitt.tech/",
     githubLink: "https://github.com/AdvaittK/cardhint",
     features: [
       "Smart credit card recommendations powered by expert insights",

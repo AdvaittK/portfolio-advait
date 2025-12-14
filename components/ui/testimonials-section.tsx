@@ -76,7 +76,7 @@ const testimonials = [
 		image: "/assets/clients/cardhint.webp",
 		content:
 			"Working with Advait on the makeover of CardHint.com was a fantastic experience. He brought fresh design ideas, improved the site's performance, and delivered everything on time with attention to detail. The upgrade has made a huge difference in both usability and visual appeal.",
-		projectLink: "https://cardhint.com/",
+		projectLink: "https://cardhint.advaitt.tech/",
 	},
 	{
 		name: "Lalith Kumar",
