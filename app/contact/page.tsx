@@ -236,17 +236,6 @@ export default function ContactPage() {
                     </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 p-3 shadow-lg">
-                    <MapPin className="w-full h-full text-zinc-100" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">Location</h4>
-                    <p className="text-muted-foreground">
-                      Pune, Maharashtra, India
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
 

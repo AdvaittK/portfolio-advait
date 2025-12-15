@@ -259,12 +259,6 @@ export function AboutContent() {
                 +91 9975556093
               </a>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-muted-foreground" />
-              <span className="text-muted-foreground">
-                Pune, Maharashtra, India
-              </span>
-            </div>
           </div>
           
           <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto pt-2 md:pt-4 justify-center md:justify-start">

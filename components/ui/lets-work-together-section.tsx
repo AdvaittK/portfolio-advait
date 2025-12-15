@@ -41,17 +41,6 @@ export function LetsWorkTogetherSection() {
             </div>
           </div>
 
-          <div className="flex flex-col xs:flex-row items-center gap-3 xs:gap-4 p-4 xs:p-5 rounded-xl bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50">
-            <span className="flex items-center justify-center w-10 xs:w-12 h-10 xs:h-12 rounded-full bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-300 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900">
-              <MapPin className="w-5 xs:w-6 h-5 xs:h-6 text-zinc-700 dark:text-zinc-200" />
-            </span>
-            <div className="flex flex-col items-center xs:items-start">
-              <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500 mb-0.5">Location</span>
-              <span className="font-semibold text-zinc-800 dark:text-zinc-100 text-sm xs:text-base tracking-tight">
-                Pune, MH
-              </span>
-            </div>
-          </div>
         </div>
 
         <Link href="/contact" className="flex justify-center w-full mt-4 xs:mt-6">

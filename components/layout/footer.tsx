@@ -219,16 +219,6 @@ export default function Footer() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="flex items-start space-x-3"
-              >
-                <MapPin className="w-5 h-5 text-zinc-500 mt-0.5" />
-                <span className="text-sm text-zinc-400">Pune, Maharashtra, India</span>
-              </motion.li>
-              <motion.li 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="flex items-start space-x-3"
               >
