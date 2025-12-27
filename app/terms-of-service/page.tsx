@@ -58,7 +58,10 @@ export default function TermsOfServicePage() {
             </p>
             <ul className="list-disc pl-6 text-zinc-600 dark:text-zinc-400 space-y-2">
               <li>Payment terms are as specified in the project proposal</li>
-              <li>Project timelines are estimates and may vary</li>
+              <li>Project timelines are estimates and are dependent on timely client feedback, approvals, and content delivery</li>
+              <li>Clients are responsible for providing all required materials (including but not limited to text, images, videos, testimonials, and other assets) within the agreed timeline</li>
+              <li>Delays in providing required content or feedback may result in the project being paused or rescheduled based on availability</li>
+              <li>Prolonged delays caused by the client may incur a delay or holding fee to account for reserved time and resources</li>
               <li>Client approval is required for major design and development decisions</li>
               <li>Revisions are limited to the scope defined in the project agreement</li>
             </ul>
