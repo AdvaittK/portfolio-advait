@@ -41,15 +41,7 @@ const ServicesSection = dynamic(() => import("@/components/ui/services-section")
   )
 })
 
-const NextStepsSection = dynamic(() => import("@/components/ui/next-steps-section").then(mod => ({ default: mod.NextStepsSection })), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
-    </div>
-  )
-})
+
 
 const LetsWorkTogetherSection = dynamic(() => import("@/components/ui/lets-work-together-section").then(mod => ({ default: mod.LetsWorkTogetherSection })), {
   ssr: false,
@@ -212,11 +204,11 @@ const featuredProjects = [
     githubLink: "https://github.com/AdvaittK/cardhint",
     features: [
       "Smart credit card recommendations powered by expert insights",
-        "Advanced filtering based on rewards, fees, and user goals",
-        "Secure and privacy-focused platform architecture",
-        "Responsive design optimized for all devices",
-        "User-friendly interface with clean, modern UI elements",
-        "Regularly updated database with the latest card offers"
+      "Advanced filtering based on rewards, fees, and user goals",
+      "Secure and privacy-focused platform architecture",
+      "Responsive design optimized for all devices",
+      "User-friendly interface with clean, modern UI elements",
+      "Regularly updated database with the latest card offers"
     ]
   },
   {
@@ -342,7 +334,7 @@ export default function HomePage() {
       const ctx = gsap.context(() => {
         gsap.fromTo(
           pageTransitionRef.current,
-          { 
+          {
             autoAlpha: 0,
             y: 20,
             filter: "blur(10px)",
@@ -404,7 +396,7 @@ export default function HomePage() {
               <Badge className="px-4 py-2 bg-secondary text-secondary-foreground border-border text-base xs:text-lg">
                 Full Stack Developer & UI Designer
               </Badge>
-              
+
               <motion.h1
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -413,7 +405,7 @@ export default function HomePage() {
               >
                 Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
               </motion.h1>
-              
+
               <motion.div
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -450,7 +442,7 @@ export default function HomePage() {
                   }}
                 />
               </motion.div>
-              
+
               <motion.p
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -459,7 +451,7 @@ export default function HomePage() {
               >
                 Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
               </motion.p>
-              
+
               <motion.div
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -473,7 +465,7 @@ export default function HomePage() {
                     Explore My Work
                   </Button>
                 </Link>
-                
+
                 <Link href="/contact" className="w-full xs:w-auto">
                   <Button
                     variant="outline"
@@ -483,7 +475,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </motion.div>
-              
+
               <motion.div
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -513,16 +505,16 @@ export default function HomePage() {
               </motion.div>
             </div>
           </motion.div>
-          
+
           {/* Skills Radar Browser - only shown on desktop */}
           {!isMobile && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
               className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
             >
-              <SkillsRadarBrowser 
+              <SkillsRadarBrowser
                 skills={[
                   { name: "React", value: 90 },
                   { name: "TypeScript", value: 85 },
@@ -532,62 +524,62 @@ export default function HomePage() {
                   { name: "Tailwind", value: 95 },
                 ]}
               />
-              
+
               {/* Interactive floating elements - only on desktop */}
               <div className="absolute inset-0 pointer-events-none">
                 <motion.div
                   className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{ 
+                  animate={{
                     y: [0, -15, 0],
                     rotate: [0, 15, 0, -15, 0]
                   }}
-                  transition={{ 
-                    duration: 6, 
+                  transition={{
+                    duration: 6,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
                 >
                   <SiReact className="w-8 h-8 text-blue-500" />
                 </motion.div>
-                
+
                 <motion.div
                   className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{ 
+                  animate={{
                     y: [0, 10, 0],
                     x: [0, 10, 0, -10, 0],
                     rotate: [0, 10, 0]
                   }}
-                  transition={{ 
-                    duration: 7, 
+                  transition={{
+                    duration: 7,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
                 >
                   <SiTypescript className="w-6 h-6 text-blue-600" />
                 </motion.div>
-                
+
                 <motion.div
                   className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{ 
+                  animate={{
                     x: [0, 10, 0],
                     rotate: 360
                   }}
-                  transition={{ 
-                    duration: 10, 
+                  transition={{
+                    duration: 10,
                     repeat: Infinity,
                     ease: "linear"
                   }}
                 >
                   <SiTailwindcss className="w-5 h-5 text-cyan-500" />
                 </motion.div>
-                
+
                 <motion.div
                   className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{ 
+                  animate={{
                     y: [0, -10, 0, 10, 0],
                   }}
-                  transition={{ 
-                    duration: 5, 
+                  transition={{
+                    duration: 5,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
@@ -626,7 +618,7 @@ export default function HomePage() {
 
           {/* Projects Carousel - simplified for mobile */}
           <div className="relative px-1 sm:px-4 md:px-6">
-            <ProjectCarousel3D 
+            <ProjectCarousel3D
               projects={featuredProjects}
               onSelect={(project) => window.open(project.demoLink, '_blank')}
             />
@@ -638,17 +630,14 @@ export default function HomePage() {
       <div className="mt-0" data-scroll-section>
         <ServicesSection />
       </div>
-      
+
       {/* Testimonials Section - normalized spacing */}
       <div className="mt-0" data-scroll-section>
         <TestimonialsSection />
       </div>
-      
-      {/* Next Steps Section - normalized spacing */}
-      <div className="mt-0" data-scroll-section>
-        <NextStepsSection />
-      </div>
-      
+
+
+
       {/* Let's Work Together Section - normalized spacing */}
       <div className="mt-0" data-scroll-section>
         <LetsWorkTogetherSection />

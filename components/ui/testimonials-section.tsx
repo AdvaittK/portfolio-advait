@@ -39,13 +39,13 @@ const testimonials = [
 		projectLink: "https://www.sizzlestudio.in/",
 	},
 	{
-	    	name: "Management at Oriental Air & Ship Services",
-	    	role: "",
-	    	image: "/assets/clients/oriental.webp",
-	    	content:
-	    		"Advait did an amazing job creating Oriental's website! He really captured the professionalism and trust we've built over 40 years in logistics. The site is modern, easy to navigate, and perfectly showcases our services. Communication was smooth and quick",
-	    	projectLink: "https://www.orientalimited.com/",
-	  	},
+		name: "Management at Oriental Air & Ship Services",
+		role: "",
+		image: "/assets/clients/oriental.webp",
+		content:
+			"Advait did an amazing job creating Oriental's website! He really captured the professionalism and trust we've built over 40 years in logistics. The site is modern, easy to navigate, and perfectly showcases our services. Communication was smooth and quick",
+		projectLink: "https://www.orientalimited.com/",
+	},
 	{
 		name: "Pranjal Garg",
 		role: "Founder, VITIRA",
@@ -222,7 +222,7 @@ export function TestimonialsSection() {
 	)
 
 	return (
-		<section className="py-16 md:py-24 relative overflow-hidden">
+		<section className="pt-16 pb-4 md:pt-24 md:pb-8 relative overflow-hidden">
 			<div className="container mx-auto px-4 sm:px-6 relative">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -257,15 +257,15 @@ export function TestimonialsSection() {
 					{/* Desktop Carousel */}
 					<div className="hidden md:block">
 						<div className="overflow-hidden w-full">
-							<Carousel 
+							<Carousel
 								setApi={setDesktopApi}
-								opts={{ 
-									align: "start", 
-									slidesToScroll: 1, 
+								opts={{
+									align: "start",
+									slidesToScroll: 1,
 									loop: false,
 									dragFree: true,
 									containScroll: "trimSnaps"
-								}} 
+								}}
 								className="w-full"
 							>
 								<CarouselContent className="-ml-2">
@@ -303,15 +303,15 @@ export function TestimonialsSection() {
 					{/* Mobile Carousel */}
 					<div className="md:hidden">
 						<div className="overflow-hidden w-full">
-							<Carousel 
+							<Carousel
 								setApi={setMobileApi}
-								opts={{ 
-									align: "start", 
-									slidesToScroll: 1, 
+								opts={{
+									align: "start",
+									slidesToScroll: 1,
 									loop: false,
 									dragFree: true,
 									containScroll: "trimSnaps"
-								}} 
+								}}
 								className="w-full"
 							>
 								<CarouselContent className="-ml-2">
