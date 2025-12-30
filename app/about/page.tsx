@@ -199,11 +199,11 @@ export default function AboutPage() {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="flex flex-col items-center justify-center"
           >
-            <div className="relative w-[200px] h-[200px] md:w-[400px] md:h-[400px] mb-6">
+            <div className="relative w-[200px] h-[200px] md:w-[400px] md:h-[400px] mb-6 group">
               <img
-                src="/assets/people/advait.webp"
-                alt="Profile"
-                className="w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full object-cover object-[20%] border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105 mx-auto"
+                src="/assets/people/advait.jpg"
+                alt="Advait Profile"
+                className="w-full h-full rounded-full object-cover object-top md:object-[center_top] border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-700/20 to-zinc-400/10 dark:from-zinc-700/30 dark:to-zinc-400/10 z-10 group-hover:opacity-75 transition-opacity duration-300 pointer-events-none" />
             </div>
