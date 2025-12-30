@@ -222,7 +222,7 @@ export function TestimonialsSection() {
 	)
 
 	return (
-		<section className="pt-16 pb-4 md:pt-24 md:pb-8 relative overflow-hidden">
+		<section className="pt-8 xs:pt-12 sm:pt-16 pb-2 xs:pb-4 relative overflow-hidden">
 			<div className="container mx-auto px-4 sm:px-6 relative">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

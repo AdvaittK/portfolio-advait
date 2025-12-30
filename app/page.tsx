@@ -600,7 +600,7 @@ export default function HomePage() {
       {/* Featured Projects Section - simplified for mobile */}
       <section
         data-scroll-section
-        className="min-h-screen py-12 xs:py-16 sm:py-20 px-4 xs:px-6 relative overflow-hidden"
+        className="min-h-screen py-8 xs:py-12 sm:py-16 px-4 xs:px-6 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           {/* Section Header - simplified for mobile */}
