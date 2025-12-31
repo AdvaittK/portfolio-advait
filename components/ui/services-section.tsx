@@ -50,14 +50,37 @@ const services = [
 ]
 
 function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
+  const [isMounted, setIsMounted] = useState(false)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
+
+  // Wait for mount to prevent hydration flickering
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect()
     mouseX.set(clientX - left)
     mouseY.set(clientY - top)
   }
+
+  // Pre-compute the motion template to prevent re-renders
+  const spotlightBackground = useMotionTemplate`
+    radial-gradient(
+      650px circle at ${mouseX}px ${mouseY}px,
+      rgba(255,255,255,0.06),
+      transparent 80%
+    )
+  `
+
+  const spotlightBackgroundLight = useMotionTemplate`
+    radial-gradient(
+      650px circle at ${mouseX}px ${mouseY}px,
+      rgba(0,0,0,0.04),
+      transparent 80%
+    )
+  `
 
   return (
     <motion.div
@@ -66,31 +89,28 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
       className={cn(
-        "group relative rounded-2xl overflow-hidden border transition-all duration-300",
+        "group relative rounded-2xl overflow-hidden border",
         "bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm",
         "border-zinc-200/50 dark:border-zinc-700/50",
         "shadow-lg hover:shadow-xl hover:shadow-zinc-900/10 dark:hover:shadow-zinc-100/10",
+        "will-change-transform",
         service.className
       )}
       onMouseMove={handleMouseMove}
     >
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              var(--spotlight-color),
-              transparent 80%
-            )
-          `,
-        }}
-      // Setup CSS variables for transparency in light/dark mode
-      // Light mode: slightly darker spotlight (black/10)
-      // Dark mode: slightly lighter spotlight (white/10)
-      >
-        <div className="w-full h-full bg-transparent [--spotlight-color:rgba(0,0,0,0.05)] dark:[--spotlight-color:rgba(255,255,255,0.05)]" />
-      </motion.div>
+      {/* Spotlight effect - only render after mount to prevent flicker */}
+      {isMounted && (
+        <>
+          <motion.div
+            className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:block hidden"
+            style={{ background: spotlightBackground }}
+          />
+          <motion.div
+            className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:hidden block"
+            style={{ background: spotlightBackgroundLight }}
+          />
+        </>
+      )}
 
       <div className="relative h-full p-8 flex flex-col justify-between z-10">
         <div className="mb-0">

@@ -13,7 +13,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
 import AOSProvider from "@/components/aos-provider"
 import ServiceWorkerRegister from "@/components/service-worker-register"
-  
+import SmoothScrollProvider from "@/components/smooth-scroll-provider"
+
 // DM Sans Variable - Primary font for headings (from local files)
 const dmSans = localFont({
   src: [
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     "freelance web developer India",
     "full stack developer India",
     "web app development freelancer",
-    
+
     // Technology Stack
     "React developer for hire",
     "Node.js developer for hire",
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     "backend developer Node.js freelancer",
     "Next.js developer",
     "TypeScript developer",
-    
+
     // Specializations
     "custom web application development freelancer",
     "full stack developer for startups",
@@ -75,7 +76,7 @@ export const metadata: Metadata = {
     "web development for startups",
     "hire developer for startup",
     "remote dev for SaaS startup",
-    
+
     // Industry Solutions
     "e-commerce web app developer freelancer",
     "agency web developer freelancer",
@@ -83,7 +84,7 @@ export const metadata: Metadata = {
     "part-time web developer for hire",
     "affordable full stack developer",
     "freelance full stack developer affordable",
-    
+
     // Technical Services
     "web app performance optimization developer",
     "page speed optimization React developer",
@@ -91,7 +92,7 @@ export const metadata: Metadata = {
     "API integration freelance developer",
     "bug fixing full stack developer for hire",
     "hire web developer contract",
-    
+
     // Location-Based
     "hire full stack freelancer remote",
     "freelance full stack developer India",
@@ -106,13 +107,13 @@ export const metadata: Metadata = {
     "full stack developer Pune",
     "hire web developer Pune",
     "remote full stack developer India",
-    
+
     // Personal Branding
     "Advait Kandalgaonkar",
     "Advait developer",
     "Advait web developer",
     "Advait full stack",
-    
+
     // Additional Technical Skills
     "MongoDB developer",
     "PostgreSQL developer",
@@ -218,7 +219,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Minimal Critical CSS for above-the-fold hero stability */}
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           /* Reserve space for hero section to avoid CLS */
           .hero-critical { min-height: 85vh; }
           @media (min-width: 768px) { .hero-critical { min-height: 72vh; } }
@@ -242,20 +244,20 @@ export default function RootLayout({
           type="font/ttf"
           crossOrigin="anonymous"
         />
-        
+
         {/* DNS Prefetch and Preconnect for External Resources */}
         <link rel="dns-prefetch" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
         <link rel="preconnect" href="https://vercel.live" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://vitals.vercel-insights.com" crossOrigin="anonymous" />
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Pune" />
         <meta name="geo.position" content="18.5204;73.8567" />
         <meta name="ICBM" content="18.5204, 73.8567" />
         <link rel="canonical" href="https://www.advaitt.tech/" />
-        
+
         {/* Structured Data - Organization */}
         <script
           type="application/ld+json"
@@ -299,7 +301,7 @@ export default function RootLayout({
             })
           }}
         />
-        
+
         {/* Structured Data - Person */}
         <script
           type="application/ld+json"
@@ -351,7 +353,7 @@ export default function RootLayout({
             })
           }}
         />
-        
+
         {/* Structured Data - WebSite */}
         <script
           type="application/ld+json"
@@ -370,7 +372,7 @@ export default function RootLayout({
             })
           }}
         />
-        
+
         {/* Structured Data - Service */}
         <script
           type="application/ld+json"
@@ -429,22 +431,24 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CurrencyProvider>
-            <ClientMetallicBg />
-            <CustomCursor />
-            <ServiceWorkerRegister />
-            <AOSProvider>
-              <div className="relative flex flex-col min-h-screen">
-                <Header />
-                <main className="flex-grow">
-                  <ClientLayout>
-                    {children}
-                  </ClientLayout>
-                </main>
-                <Footer />
-                <Analytics />
-                <SpeedInsights />
-              </div>
-            </AOSProvider>
+            <SmoothScrollProvider>
+              <ClientMetallicBg />
+              <CustomCursor />
+              <ServiceWorkerRegister />
+              <AOSProvider>
+                <div className="relative flex flex-col min-h-screen">
+                  <Header />
+                  <main className="flex-grow">
+                    <ClientLayout>
+                      {children}
+                    </ClientLayout>
+                  </main>
+                  <Footer />
+                  <Analytics />
+                  <SpeedInsights />
+                </div>
+              </AOSProvider>
+            </SmoothScrollProvider>
           </CurrencyProvider>
         </ThemeProvider>
       </body>
