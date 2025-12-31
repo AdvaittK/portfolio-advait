@@ -7,7 +7,9 @@ import XIcon from "@/components/ui/x-icon"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import Typewriter from "typewriter-effect"
+import { TextRotate } from "@/components/ui/text-rotate"
+import { ShimmerBadge } from "@/components/ui/shimmer-badge"
+import { MagneticButton } from "@/components/ui/magnetic-button"
 import Link from "next/link"
 import { gsap } from "gsap"
 import { GlassCard } from "@/components/ui/glass-card"
@@ -393,9 +395,7 @@ export default function HomePage() {
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
-              <Badge className="px-4 py-2 bg-secondary text-secondary-foreground border-border text-base xs:text-lg">
-                Full Stack Developer & UI Designer
-              </Badge>
+              <ShimmerBadge text="Full Stack Developer & UI Designer" />
 
               <motion.h1
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
@@ -410,36 +410,31 @@ export default function HomePage() {
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.8) }}
-                className="text-xl xs:text-2xl md:text-2xl text-muted-foreground min-h-[2.5rem]"
+                className="text-xl xs:text-2xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center"
               >
-                <Typewriter
-                  options={{
-                    strings: [
-                      'I build elegant user interfaces',
-                      'I create seamless experiences',
-                      'I design digital products',
-                      'I solve complex problems',
-                      'I craft responsive interfaces',
-                      'I bring ideas to life in code',
-                      'I engineer user-centric solutions',
-                      'I build fast, accessible websites',
-                      'I transform pixels into performance',
-                      'I design with purpose and precision',
-                      'I develop scalable web apps',
-                      'I blend creativity with functionality',
-                      'I optimize for speed and impact',
-                      'I write clean, modern code',
-                      'I turn challenges into code',
-                      'I connect brands with users',
-                      'I create on the edge of technology',
-                      'I code with clarity and intent',
-                      'I shape the future of the web'
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    delay: isMobile ? 30 : 50,
-                    deleteSpeed: isMobile ? 15 : 30,
-                  }}
+                <TextRotate
+                  texts={[
+                    'I build elegant user interfaces',
+                    'I create seamless experiences',
+                    'I design digital products',
+                    'I solve complex problems',
+                    'I craft responsive interfaces',
+                    'I bring ideas to life in code',
+                    'I engineer user-centric solutions',
+                    'I build fast, accessible websites',
+                    'I transform pixels into performance',
+                    'I design with purpose and precision',
+                    'I develop scalable web apps',
+                    'I blend creativity with functionality',
+                    'I optimize for speed and impact',
+                    'I write clean, modern code',
+                    'I turn challenges into code',
+                    'I connect brands with users',
+                    'I create on the edge of technology',
+                    'I code with clarity and intent',
+                    'I shape the future of the web'
+                  ]}
+                  rotationInterval={3000}
                 />
               </motion.div>
 
@@ -459,20 +454,19 @@ export default function HomePage() {
                 className="flex flex-col xs:flex-row gap-3 xs:gap-4 pt-2"
               >
                 <Link href="/projects" className="w-full xs:w-auto">
-                  <Button
-                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-6 xs:py-6 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-lg xs:text-lg"
+                  <MagneticButton
+                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-lg xs:text-lg"
                   >
                     Explore My Work
-                  </Button>
+                  </MagneticButton>
                 </Link>
 
                 <Link href="/contact" className="w-full xs:w-auto">
-                  <Button
-                    variant="outline"
-                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-6 xs:py-6 border-border hover:bg-secondary font-medium text-lg xs:text-lg"
+                  <MagneticButton
+                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 border border-border bg-background hover:bg-secondary font-medium text-lg xs:text-lg"
                   >
                     Contact Me
-                  </Button>
+                  </MagneticButton>
                 </Link>
               </motion.div>
 
