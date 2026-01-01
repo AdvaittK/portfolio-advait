@@ -14,7 +14,7 @@ interface GlassCardProps {
   socialLinks: {
     github?: string
     linkedin?: string
-      twitter?: string
+    twitter?: string
     email?: string
   }
 }
@@ -41,12 +41,12 @@ export const GlassCard = ({
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-pink-500/20" />
-      
+
       {/* Content */}
       <div className="relative p-8 flex flex-col h-full">
         {/* Header */}
         <div className="space-y-4">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
@@ -54,7 +54,7 @@ export const GlassCard = ({
           >
             {name}
           </motion.h2>
-          
+
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export const GlassCard = ({
               <Mail className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
             </motion.a>
           )}
-                      <XIcon className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
@@ -145,7 +145,7 @@ export const GlassCard = ({
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
-          
+
           <Link href="/contact">
             <Button
               variant="outline"

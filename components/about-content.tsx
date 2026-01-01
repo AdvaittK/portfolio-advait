@@ -24,7 +24,7 @@ const itemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 200,
       damping: 20
     }
@@ -135,7 +135,7 @@ export function AboutContent() {
     <div className="min-h-screen relative bg-transparent">
       {/* Background gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-zinc-500/5 via-zinc-600/5 to-zinc-700/5 dark:from-zinc-500/10 dark:via-zinc-600/10 dark:to-zinc-700/10 rounded-full filter blur-3xl opacity-30"
           animate={{
             x: [0, 10, -5, 0],
@@ -148,7 +148,7 @@ export function AboutContent() {
             repeatType: "reverse",
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-zinc-600/5 via-zinc-700/5 to-zinc-800/5 dark:from-zinc-600/10 dark:via-zinc-700/10 dark:to-zinc-800/10 rounded-full filter blur-3xl opacity-30"
           animate={{
             x: [0, -10, 5, 0],
@@ -214,7 +214,7 @@ export function AboutContent() {
           <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">My Journey</h3>
           <div className="space-y-4 max-w-xl">
             <p className="text-muted-foreground leading-relaxed text-lg">
-            I'm Advait, a developer and designer with 3+ years of experience building clean, user-friendly websites and digital products. I enjoy working at the intersection of design and code to create interfaces that are both functional and visually clear.
+              I'm Advait, a developer and designer with 3+ years of experience building clean, user-friendly websites and digital products. I enjoy working at the intersection of design and code to create interfaces that are both functional and visually clear.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
               I specialize in crafting immersive, user-centered interfaces that not only look stunning but also provide seamless interactions. My approach combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.
@@ -260,7 +260,7 @@ export function AboutContent() {
               </a>
             </div>
           </div>
-          
+
           <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto pt-2 md:pt-4 justify-center md:justify-start">
             <Link href="/contact" className="flex-1 md:flex-initial">
               <Button
@@ -378,7 +378,7 @@ export function AboutContent() {
               </div>
 
               <div className="mt-6 flex justify-center">
-                <Link 
+                <Link
                   href={cert.credlyLink}
                   target="_blank"
                   rel="noopener noreferrer"
