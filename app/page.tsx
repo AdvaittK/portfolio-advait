@@ -620,10 +620,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section - normalized spacing */}
-      <div className="mt-0" data-scroll-section>
-        <ServicesSection />
-      </div>
+
 
       {/* Testimonials Section - normalized spacing */}
       <div className="mt-0" data-scroll-section>

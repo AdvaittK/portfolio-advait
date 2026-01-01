@@ -9,8 +9,8 @@ export default function middleware(request: NextRequest) {
   const { country } = geolocation(request);
   const pathname = request.nextUrl.pathname;
 
-  // Block access to services page for users in India
-  if (pathname === '/services' && country === 'IN') {
+  // Block access to services page for all users
+  if (pathname === '/services') {
     return new NextResponse(null, { status: 404 });
   }
 

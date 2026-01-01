@@ -270,13 +270,7 @@ export function AboutContent() {
                 Get in Touch
               </Button>
             </Link>
-            <Link href="/services" className="flex-1 md:flex-initial">
-              <Button
-                className="rounded-full px-6 py-5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold w-full md:w-auto"
-              >
-                View Services
-              </Button>
-            </Link>
+
           </div>
         </motion.div>
       </div>
