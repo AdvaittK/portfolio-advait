@@ -72,6 +72,60 @@ const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-s
 // Featured projects data (Shweta Mishra added first per request)
 const featuredProjects = [
   {
+    id: "cult-of-content-agency",
+    title: "Cult of Content – Content-Led Growth Agency",
+    description: "A content-led growth agency helping D2C brands, coaches, and creators grow through organic content marketing.",
+    longDescription: "Cult of Content is a specialized content-led growth agency dedicated to helping D2C brands, coaches, and creators achieve rapid growth through strategic organic content marketing. The agency builds repeatable systems for ideas that hook, storytelling that builds authority, and content that converts into leads and sales. With a focus on sustainable growth and authentic engagement, Cult of Content partners with ambitious entrepreneurs to establish market authority and scale their influence.",
+    tags: ["Agency", "Content Marketing", "Growth", "Digital Marketing", "D2C"],
+    image: "/assets/projects/coc.webp",
+    demoLink: "https://www.cultofcontent.agency/",
+    githubLink: "",
+    features: [
+      "Content-first growth strategies",
+      "Organic reach and authority building",
+      "Conversion-optimized content systems",
+      "Brand positioning and messaging",
+      "Audience engagement and retention",
+      "Sustainable long-term growth"
+    ]
+  },
+  {
+    id: "cult-of-content-guitars",
+    title: "Cult of Content – Guitar Retail Specialists",
+    description: "A specialized content agency built exclusively for guitar stores, music retailers, and instrument brands.",
+    longDescription: "Cult of Content's guitar division is a specialized content agency built exclusively for guitar stores, music retailers, and instrument brands. The agency creates retention-first content systems that drive growth, build trust, and establish brands as authorities in the music retail space. By understanding the unique needs of music retailers and their passionate audience, Cult of Content delivers content strategies that drive both online engagement and in-store foot traffic.",
+    tags: ["Agency", "Content Marketing", "Music Retail", "Guitar", "E-Commerce"],
+    image: "/assets/projects/gcoc.webp",
+    demoLink: "https://guitar.cultofcontent.agency/",
+    githubLink: "",
+    features: [
+      "Specialized music retail strategies",
+      "Community building and engagement",
+      "Retention-first content systems",
+      "Multi-channel promotion",
+      "Audience growth and loyalty",
+      "Music industry expertise"
+    ]
+  },
+  {
+    id: "integrated-media-agency",
+    title: "Integrated Media Agency – Personal Brand Growth",
+    description: "Scale and grow personal brands through strategic marketing, conversion-focused funnels, and integrated media strategies.",
+    longDescription: "Integrated Media Agency specializes in scaling and accelerating the growth of personal brands through comprehensive marketing strategies, conversion-optimized funnels, and integrated media campaigns. By combining content strategy, funnel optimization, and multi-channel marketing, they help entrepreneurs and thought leaders build influential personal brands that drive business results and establish lasting market authority.",
+    tags: ["Agency", "Personal Branding", "Marketing", "Growth", "Digital Marketing"],
+    image: "/assets/projects/imga.webp",
+    demoLink: "https://www.integratedmedia.agency/",
+    githubLink: "",
+    features: [
+      "Personal brand strategy and positioning",
+      "Conversion funnel optimization",
+      "Multi-channel marketing campaigns",
+      "Audience growth and scaling",
+      "Authority and thought leadership",
+      "Integrated media approach"
+    ]
+  },
+  {
     id: "shweta-mishra-quantum-manifestation",
     title: "Shweta Mishra – Quantum Manifestation Coach Website",
     description: "A clean, uplifting coaching website for Shweta Mishra, focused on clarity, credibility, and conversion.",
