@@ -49,8 +49,30 @@ export default function ProjectsPage() {
   // Use mobile detection hook
   const isMobile = useIsMobile();
 
-  // Define projects array (Shweta Mishra added first per request)
+  // Define projects array (Asoka Ferrocast added first per request)
   const projects: Project[] = [
+    {
+      id: "asoka-ferrocast",
+      title: "Asoka Ferrocast – Steel Pipes Distribution",
+      description: "A trusted corporate website for a steel pipes distributor, built to communicate reliability, technical expertise, and infrastructure-focused support.",
+      longDescription: "With over four decades of industry expertise, Asoka Ferrocast is a trusted name in the distribution of a comprehensive range of high-quality steel pipes. The website was designed to reflect that legacy through clear positioning, strong credibility cues, and a polished presentation of their industrial capabilities. It also highlights their commitment to supporting India’s rapid infrastructure growth with dependable solutions for diverse industrial needs.",
+      tags: ["Industrial", "Steel Pipes", "Distribution", "Corporate Website", "Infrastructure"],
+      image: "/assets/projects/aoka.png",
+      demoLink: "https://www.asokaferrocast.com/",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Legacy-driven brand storytelling",
+        "Clear positioning for industrial buyers",
+        "Trust-focused corporate presentation",
+        "Responsive, modern website structure",
+        "Infrastructure and supply capability messaging",
+        "Clean visual hierarchy for easy navigation"
+      ],
+      category: "Business Website",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      year: 2025
+    },
     {
       id: "cult-of-content-agency",
       title: "Cult of Content – Content-Led Growth Agency",

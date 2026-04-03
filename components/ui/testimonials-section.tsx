@@ -20,8 +20,24 @@ import {
 } from "./dialog"
 import { useState, useEffect } from "react"
 
-// Shweta moved to top per request (order reflects recency/priority)
+// New testimonials added first per request (order reflects recency/priority)
 const testimonials = [
+	{
+		name: "Management Team, Asoka Ferrocast",
+		role: "Asoka Ferrocast",
+		image: "/assets/clients/asokaimg.png",
+		content:
+			"The website feels clean, professional, and true to our brand. It makes our work easy to understand and gives us a strong online presence.",
+		projectLink: "https://www.asokaferrocast.com/",
+	},
+	{
+		name: "Pulak Pathak",
+		role: "Founder, Cult of Content",
+		image: "/assets/clients/pulak.png",
+		content:
+			"Advait kept it simple and polished for both Cult of Content sites. The process was smooth, and the final result feels right for our brand.",
+		projectLink: "https://www.cultofcontent.agency/",
+	},
 	{
 		name: "Shweta Mishra",
 		role: "Quantum Manifestation Coach",

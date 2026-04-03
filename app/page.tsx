@@ -69,8 +69,26 @@ const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-s
   )
 })
 
-// Featured projects data (Shweta Mishra added first per request)
+// Featured projects data (Asoka Ferrocast added first per request)
 const featuredProjects = [
+  {
+    id: "asoka-ferrocast",
+    title: "Asoka Ferrocast – Steel Pipes Distribution",
+    description: "A trusted corporate website for a steel pipes distributor, built to communicate reliability, technical expertise, and infrastructure-focused support.",
+    longDescription: "With over four decades of industry expertise, Asoka Ferrocast is a trusted name in the distribution of a comprehensive range of high-quality steel pipes. The website was designed to reflect that legacy through clear positioning, strong credibility cues, and a polished presentation of their industrial capabilities. It also highlights their commitment to supporting India’s rapid infrastructure growth with dependable solutions for diverse industrial needs.",
+    tags: ["Industrial", "Steel Pipes", "Distribution", "Corporate Website", "Infrastructure"],
+    image: "/assets/projects/aoka.png",
+    demoLink: "https://www.asokaferrocast.com/",
+    githubLink: "",
+    features: [
+      "Legacy-driven brand storytelling",
+      "Clear positioning for industrial buyers",
+      "Trust-focused corporate presentation",
+      "Responsive, modern website structure",
+      "Infrastructure and supply capability messaging",
+      "Clean visual hierarchy for easy navigation"
+    ]
+  },
   {
     id: "cult-of-content-agency",
     title: "Cult of Content – Content-Led Growth Agency",
