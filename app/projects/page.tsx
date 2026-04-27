@@ -646,7 +646,8 @@ export default function ProjectsPage() {
                 className={`flex-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base ${isMobile ? 'py-1.5 px-3' : 'py-2'} sm:py-3`}
                 onClick={() => window.open(project.demoLink, '_blank')}
               >
-                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" /> Live Demo
+                <Globe className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" />{" "}
+                {project.showSourceCode === false ? "View Website" : "Live Demo"}
               </Button>
               {project.showSourceCode !== false && (
                 <Button
@@ -806,7 +807,8 @@ export default function ProjectsPage() {
                         className="flex-1 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 text-[10px] xs:text-xs shadow-lg transition-all duration-300"
                         onClick={() => window.open(project.demoLink, '_blank')}
                       >
-                        View Demo <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
+                        {project.showSourceCode === false ? "View Website" : "View Demo"}{" "}
+                        <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 ml-1" />
                       </Button>
                       {project.showSourceCode !== false && (
                         <Button

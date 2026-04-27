@@ -18,6 +18,7 @@ interface Project {
   demoLink: string;
   githubLink: string;
   features: string[];
+  showSourceCode?: boolean;
 }
 
 interface ProjectCarouselModalProps {
@@ -128,22 +129,26 @@ export function ProjectCarouselModal({ open, onOpenChange, project }: ProjectCar
               )}
               onClick={() => window.open(project.demoLink, '_blank')}
             >
-              View Demo <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 ml-1 xs:ml-1.5 sm:ml-2" />
+              {project.showSourceCode === false ? "View Website" : "View Demo"}{" "}
+              <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 ml-1 xs:ml-1.5 sm:ml-2" />
             </Button>
-            <Button
-              size="sm" 
-              className={cn(
-                "flex-1 rounded-full px-2 xs:px-3 sm:px-6 py-1 xs:py-1.5 sm:py-2",
-                "bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600",
-                "text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs sm:text-sm md:text-base",
-                "shadow-lg border border-zinc-200/50 dark:border-zinc-700/50",
-                "hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400",
-                "transition-all duration-300 font-semibold"
-              )}
-              onClick={() => window.open(project.githubLink, '_blank')}
-            >
-              View Code <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 ml-1 xs:ml-1.5 sm:ml-2" />
-            </Button>
+            {project.showSourceCode !== false && project.githubLink ? (
+              <Button
+                size="sm" 
+                className={cn(
+                  "flex-1 rounded-full px-2 xs:px-3 sm:px-6 py-1 xs:py-1.5 sm:py-2",
+                  "bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-300 dark:from-zinc-600 dark:via-zinc-500 dark:to-zinc-600",
+                  "text-zinc-800 dark:text-zinc-100 text-[10px] xs:text-xs sm:text-sm md:text-base",
+                  "shadow-lg border border-zinc-200/50 dark:border-zinc-700/50",
+                  "hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 hover:dark:from-zinc-700 hover:dark:to-zinc-400",
+                  "transition-all duration-300 font-semibold"
+                )}
+                onClick={() => window.open(project.githubLink, '_blank')}
+              >
+                View Code{" "}
+                <ExternalLink className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 ml-1 xs:ml-1.5 sm:ml-2" />
+              </Button>
+            ) : null}
           </div>
         </div>
       </DialogContent>

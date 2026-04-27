@@ -20,6 +20,7 @@ interface Project {
   demoLink: string
   githubLink: string
   features: string[]
+  showSourceCode?: boolean
 }
 
 interface ProjectCarousel3DProps {
@@ -247,7 +248,10 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
                         onSelect(project);
                       }}
                     >
-                      View Demo <ExternalLink className="w-4 h-4 ml-2" />
+                      {project.showSourceCode === false || !project.githubLink
+                        ? "View Website"
+                        : "View Demo"}{" "}
+                      <ExternalLink className="w-4 h-4 ml-2" />
                     </Button>
                   )}
                 </div>
