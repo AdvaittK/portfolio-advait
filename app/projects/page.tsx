@@ -49,8 +49,32 @@ export default function ProjectsPage() {
   // Use mobile detection hook
   const isMobile = useIsMobile();
 
-  // Define projects array (Asoka Ferrocast added first per request)
+  // Define projects array (Crevo Studio added first per request)
   const projects: Project[] = [
+    {
+      id: "crevo-studio",
+      title: "Crevo Studio – Thumbnail + Title Agency",
+      description:
+        "A premium, conversion-focused website for Crevo Studio — a thumbnail + title packaging agency engineered for clicks and fast delivery.",
+      longDescription:
+        "Crevo Studio is a specialized thumbnail packaging agency that helps creators and brands drive higher CTR by pairing bold, mobile-first thumbnails with hook-based title strategy. The website was built to feel sharp and premium, clearly communicate the offer, and guide visitors toward booking a call or claiming an audit.",
+      tags: ["Agency", "Thumbnails", "Landing Page", "Conversion", "Brand"],
+      image: "/assets/projects/crevio.png",
+      demoLink: "https://www.crevostudio.in/",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Premium, scroll-stopping visual direction",
+        "Conversion-first layout with clear CTAs",
+        "Fast, responsive performance across devices",
+        "Proof and credibility sections (results + creators)",
+        "Clean information hierarchy for pricing & FAQs",
+        "Share-friendly metadata and social preview setup",
+      ],
+      category: "Agency Website",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      year: 2026,
+    },
     {
       id: "asoka-ferrocast",
       title: "Asoka Ferrocast – Steel Pipes Distribution",

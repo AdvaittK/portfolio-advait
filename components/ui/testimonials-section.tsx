@@ -23,6 +23,14 @@ import { useState, useEffect } from "react"
 // New testimonials added first per request (order reflects recency/priority)
 const testimonials = [
 	{
+		name: "Kashyap Dwivedi",
+		role: "Owner, Crevo Studio",
+		image: "/assets/clients/kd.png",
+		content:
+			"Advait nailed the premium look we wanted and built a site that clearly sells the offer. The flow is clean, the details are sharp, and it feels engineered for conversions.",
+		projectLink: "https://www.crevostudio.in/",
+	},
+	{
 		name: "Management Team, Asoka Ferrocast",
 		role: "Asoka Ferrocast",
 		image: "/assets/clients/asokaimg.png",
@@ -238,14 +246,14 @@ export function TestimonialsSection() {
 	)
 
 	return (
-		<section className="pt-8 xs:pt-12 sm:pt-16 pb-2 xs:pb-4 relative overflow-hidden">
+		<section className="pt-2 xs:pt-4 sm:pt-6 pb-2 xs:pb-4 relative overflow-hidden">
 			<div className="container mx-auto px-4 sm:px-6 relative">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 					viewport={{ once: true }}
-					className="text-center mb-24"
+					className="text-center mb-12 sm:mb-14"
 				>
 					<div className="flex items-center justify-center mb-3">
 						<span className="h-[1px] w-10 bg-gradient-to-r from-zinc-400/60 to-zinc-600/60 dark:from-zinc-500/60 dark:to-zinc-300/60"></span>

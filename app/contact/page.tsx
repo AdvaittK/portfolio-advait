@@ -53,8 +53,8 @@ export default function ContactPage() {
   }
 
   return (
-    <PageContainer>
-      <div className="min-h-screen relative bg-transparent">
+    <PageContainer className="min-h-fit pb-12 md:pb-16">
+      <div className="relative bg-transparent">
         {/* Background gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div 
@@ -92,7 +92,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="text-center mb-24"
+          className="text-center mb-12 md:mb-16"
         >
           <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400"
@@ -113,7 +113,7 @@ export default function ContactPage() {
         </motion.div>
 
         {/* Contact Form and Info */}
-        <div className="grid md:grid-cols-2 gap-16 mb-32 max-w-6xl mx-auto px-6 items-start">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto px-6 items-start">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -207,7 +207,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2, delay: 0.1 }}
-            className="flex flex-col justify-center space-y-8"
+            className="flex flex-col space-y-8"
           >
             <div className="bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-zinc-200/50 dark:border-zinc-700/50">
               <h3 className="text-2xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">

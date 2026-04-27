@@ -69,8 +69,28 @@ const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-s
   )
 })
 
-// Featured projects data (Asoka Ferrocast added first per request)
+// Featured projects data (Crevo Studio added first per request)
 const featuredProjects = [
+  {
+    id: "crevo-studio",
+    title: "Crevo Studio – Thumbnail + Title Agency",
+    description:
+      "A premium, conversion-focused website for Crevo Studio — a thumbnail + title packaging agency engineered for clicks and fast delivery.",
+    longDescription:
+      "Crevo Studio is a specialized thumbnail packaging agency that helps creators and brands drive higher CTR by pairing bold, mobile-first thumbnails with hook-based title strategy. The website was built to feel sharp and premium, clearly communicate the offer, and guide visitors toward booking a call or claiming an audit.",
+    tags: ["Agency", "Thumbnails", "Landing Page", "Conversion", "Brand"],
+    image: "/assets/projects/crevio.png",
+    demoLink: "https://www.crevostudio.in/",
+    githubLink: "",
+    features: [
+      "Premium, scroll-stopping visual direction",
+      "Conversion-first layout with clear CTAs",
+      "Fast, responsive performance across devices",
+      "Proof and credibility sections (results + creators)",
+      "Clean information hierarchy for pricing & FAQs",
+      "Share-friendly metadata and social preview setup",
+    ],
+  },
   {
     id: "asoka-ferrocast",
     title: "Asoka Ferrocast – Steel Pipes Distribution",
@@ -666,11 +686,11 @@ export default function HomePage() {
       {/* Featured Projects Section - simplified for mobile */}
       <section
         data-scroll-section
-        className="min-h-screen py-8 xs:py-12 sm:py-16 px-4 xs:px-6 relative overflow-hidden"
+        className="py-8 xs:py-10 sm:py-12 px-4 xs:px-6 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           {/* Section Header - simplified for mobile */}
-          <div className="text-center mb-12 xs:mb-16">
+          <div className="text-center mb-8 xs:mb-10 sm:mb-12">
             <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
               Featured Work
             </Badge>
