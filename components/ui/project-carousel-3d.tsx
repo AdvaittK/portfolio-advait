@@ -269,7 +269,7 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
       </div>
       
       {/* Navigation Arrows - Below carousel like testimonials */}
-      <div className="flex justify-center mt-48 space-x-4 relative z-50">
+      <div className="flex justify-center mt-10 sm:mt-14 md:mt-20 space-x-4 relative z-50">
         <button
           onClick={() => goToPrev()}
           className={`${isMobile ? 'h-10 w-10' : 'h-12 w-12'} rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 flex items-center justify-center bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm shadow-xl`}
@@ -285,7 +285,7 @@ export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps
       </div>
       
       {/* CTA Button */}      
-      <div className="text-center mt-12 relative z-20">
+      <div className="text-center mt-8 sm:mt-10 relative z-20">
         <Link href="/projects">
           <Button
             className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm sm:text-base font-semibold transition-all duration-200 group"

@@ -476,7 +476,7 @@ export default function HomePage() {
         whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
-        className="min-h-[85vh] flex flex-col justify-start pt-16 xs:pt-20 items-center relative px-4 xs:px-6 py-8 xs:py-12 overflow-hidden md:pt-72"
+        className="min-h-fit flex flex-col justify-start pt-28 xs:pt-28 sm:pt-24 items-center relative px-4 xs:px-6 pb-0 overflow-hidden md:pt-72"
       >
         <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-start relative z-10">
           {/* Hero content - optimized for mobile */}
@@ -676,17 +676,17 @@ export default function HomePage() {
             </motion.div>
           )}
         </div>
-      </motion.section>
 
-      {/* Skills Services Marquee - enabled for all devices */}
-      <div className="relative w-full md:pt-8" data-scroll-section>
-        <SkillsServicesMarquee />
-      </div>
+        {/* Skills Services Marquee - directly under hero content */}
+        <div className="w-full mt-6 xs:mt-7 mb-4 xs:mb-5 sm:mt-3 sm:mb-2">
+          <SkillsServicesMarquee />
+        </div>
+      </motion.section>
 
       {/* Featured Projects Section - simplified for mobile */}
       <section
         data-scroll-section
-        className="py-8 xs:py-10 sm:py-12 px-4 xs:px-6 relative overflow-hidden"
+        className="pt-2 pb-8 xs:pb-10 sm:pb-12 px-4 xs:px-6 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           {/* Section Header - simplified for mobile */}
