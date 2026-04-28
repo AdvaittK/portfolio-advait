@@ -15,70 +15,109 @@ interface SmoothScrollProviderProps {
 
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const lenisRef = useRef<Lenis | null>(null)
-  const rafRef = useRef<number | null>(null)
   const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null)
 
   useEffect(() => {
     // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger)
 
-    // Framer-level smooth scrolling settings
-    // These settings create a premium, buttery-smooth experience
-    const lenis = new Lenis({
-      // Duration controls how long the scroll animation takes
-      // Higher = smoother but more delayed feel (1.2 is Framer-like)
-      duration: 1.2,
+    const mobileQuery = window.matchMedia('(max-width: 767px)')
 
-      // Custom easing for natural deceleration - exponential ease out
-      // This creates that signature Framer "momentum" feel
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    const raf = (time: number) => {
+      lenisRef.current?.raf(time * 1000)
+    }
 
-      // Scroll direction
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+    const destroyLenis = () => {
+      const lenis = lenisRef.current
 
-      // Enable smooth wheel scrolling
-      smoothWheel: true,
+      if (!lenis) {
+        return
+      }
 
-      // Wheel multiplier - controls scroll speed per wheel tick
-      // Lower = smoother, slower; Higher = faster, snappier
-      wheelMultiplier: 0.8,
+      gsap.ticker.remove(raf)
+      lenis.destroy()
+      lenisRef.current = null
+      setLenisInstance(null)
 
-      // Touch multiplier for mobile devices
-      touchMultiplier: 1.5,
+      // @ts-ignore
+      delete window.lenis
+    }
 
-      // Disable infinite scrolling
-      infinite: false,
+    const createLenis = () => {
+      if (lenisRef.current || mobileQuery.matches) {
+        return
+      }
 
-      // Lerp (linear interpolation) for ultra-smooth updates
-      // Lower = smoother but more delayed (0.1 is very smooth)
-      lerp: 0.08,
-    })
+      // Framer-level smooth scrolling settings
+      // These settings create a premium, buttery-smooth experience
+      const lenis = new Lenis({
+        // Duration controls how long the scroll animation takes
+        // Higher = smoother but more delayed feel (1.2 is Framer-like)
+        duration: 1.2,
 
-    lenisRef.current = lenis
-    setLenisInstance(lenis)
+        // Custom easing for natural deceleration - exponential ease out
+        // This creates that signature Framer "momentum" feel
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 
-    // Expose lenis globally for debugging and external access
-    // @ts-ignore
-    window.lenis = lenis
+        // Scroll direction
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
 
-    // Use GSAP ticker for optimal animation frame timing
-    // This syncs Lenis with GSAP's optimized RAF loop
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
+        // Enable smooth wheel scrolling
+        smoothWheel: true,
 
-    // Disable GSAP ticker lag smoothing for more responsive scrolling
-    gsap.ticker.lagSmoothing(0)
+        // Wheel multiplier - controls scroll speed per wheel tick
+        // Lower = smoother, slower; Higher = faster, snappier
+        wheelMultiplier: 0.8,
 
-    // Connect Lenis scroll events to ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update)
+        // Touch multiplier for mobile devices
+        touchMultiplier: 1.5,
 
-    // Refresh ScrollTrigger after Lenis is ready
-    ScrollTrigger.refresh()
+        // Disable infinite scrolling
+        infinite: false,
+
+        // Lerp (linear interpolation) for ultra-smooth updates
+        // Lower = smoother but more delayed (0.1 is very smooth)
+        lerp: 0.08,
+      })
+
+      lenisRef.current = lenis
+      setLenisInstance(lenis)
+
+      // Expose lenis globally for debugging and external access
+      // @ts-ignore
+      window.lenis = lenis
+
+      // Use GSAP ticker for optimal animation frame timing
+      // This syncs Lenis with GSAP's optimized RAF loop
+      gsap.ticker.add(raf)
+
+      // Disable GSAP ticker lag smoothing for more responsive scrolling
+      gsap.ticker.lagSmoothing(0)
+
+      // Connect Lenis scroll events to ScrollTrigger
+      lenis.on('scroll', ScrollTrigger.update)
+
+      // Refresh ScrollTrigger after Lenis is ready
+      ScrollTrigger.refresh()
+    }
+
+    const handleMediaChange = () => {
+      if (mobileQuery.matches) {
+        destroyLenis()
+      } else {
+        createLenis()
+      }
+    }
+
+    createLenis()
 
     // Handle anchor link clicks for smooth scrolling to sections
     const handleAnchorClick = (e: MouseEvent) => {
+      if (!lenisRef.current) {
+        return
+      }
+
       const target = e.target as HTMLElement
       const anchor = target.closest('a[href^="#"]')
 
@@ -89,7 +128,7 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
           const targetElement = document.querySelector(href)
 
           if (targetElement) {
-            lenis.scrollTo(targetElement as HTMLElement, {
+            lenisRef.current.scrollTo(targetElement as HTMLElement, {
               offset: -80, // Account for fixed header
               duration: 1.5, // Smooth scroll duration
               easing: (t: number) => 1 - Math.pow(1 - t, 4), // Ease out quart
@@ -103,13 +142,17 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
 
     // Handle keyboard navigation for accessibility
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lenisRef.current) {
+        return
+      }
+
       // Alt+S to toggle smooth scrolling (for users who prefer native)
       if (e.altKey && e.key === 's') {
-        if (lenis.isStopped) {
-          lenis.start()
+        if (lenisRef.current.isStopped) {
+          lenisRef.current.start()
           console.log('Smooth scrolling: enabled')
         } else {
-          lenis.stop()
+          lenisRef.current.stop()
           console.log('Smooth scrolling: disabled')
         }
       }
@@ -119,25 +162,27 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
 
     // Handle page visibility for performance
     const handleVisibilityChange = () => {
+      if (!lenisRef.current) {
+        return
+      }
+
       if (document.hidden) {
-        lenis.stop()
+        lenisRef.current.stop()
       } else {
-        lenis.start()
+        lenisRef.current.start()
       }
     }
 
+    mobileQuery.addEventListener('change', handleMediaChange)
     document.addEventListener('visibilitychange', handleVisibilityChange)
 
     // Cleanup
     return () => {
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000)
-      })
+      mobileQuery.removeEventListener('change', handleMediaChange)
       document.removeEventListener('click', handleAnchorClick)
       window.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
-      lenis.destroy()
-      lenisRef.current = null
+      destroyLenis()
     }
   }, [])
 
