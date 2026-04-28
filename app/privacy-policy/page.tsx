@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="text-zinc-600 dark:text-zinc-400 mb-6">
-            Last updated: {new Date().toLocaleDateString()}
+            Last updated: November 12, 2022
           </p>
 
           <section className="mb-8">

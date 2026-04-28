@@ -1,14 +1,17 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Badge } from './badge'
 import { Button } from './button'
 import { ExternalLink, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
-import { useTheme } from 'next-themes'
 import Link from 'next/link'
-import { useIsMobile } from "@/hooks/use-mobile"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "./carousel"
 
 interface Project {
   id: string
@@ -29,267 +32,216 @@ interface ProjectCarousel3DProps {
 }
 
 export function ProjectCarousel3D({ projects, onSelect }: ProjectCarousel3DProps) {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
-  const isDark = theme === 'dark'
-  // Add mobile detection for performance optimization
-  const isMobile = useIsMobile()
-
-  const goToNext = () => {
-    setDirection(1)
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length)
-  }
-
-  const goToPrev = () => {
-    setDirection(-1)
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length)
-  }
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "ArrowRight") {
-      goToNext()
-    } else if (e.key === "ArrowLeft") {
-      goToPrev()
-    }
-  }
+  const [desktopApi, setDesktopApi] = useState<CarouselApi>()
+  const [mobileApi, setMobileApi] = useState<CarouselApi>()
+  const [desktopCurrent, setDesktopCurrent] = useState(0)
+  const [mobileCurrent, setMobileCurrent] = useState(0)
+  const [desktopCount, setDesktopCount] = useState(0)
+  const [mobileCount, setMobileCount] = useState(0)
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown)
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [])
+    if (!desktopApi) return
+    setDesktopCount(desktopApi.scrollSnapList().length)
+    setDesktopCurrent(desktopApi.selectedScrollSnap())
+    desktopApi.on("select", () => {
+      setDesktopCurrent(desktopApi.selectedScrollSnap())
+    })
+  }, [desktopApi])
 
-  // Get the indices for the cards to display (previous, current, next)
-  const getPrevIndex = (index: number) => (index - 1 + projects.length) % projects.length
-  const getNextIndex = (index: number) => (index + 1) % projects.length
-  // Calculate positions for each project card
-  const getCardVariants = (index: number) => {
-    // Simplified animation for mobile devices
-    const mobilePositions = {
-      center: { 
-        x: 0, 
-        scale: 1, 
-        zIndex: 5, 
-        opacity: 1,
-        rotateY: 0, 
-        transition: { type: "tween", duration: 0.3 }
-      },
-      left: { 
-        x: "-35%", 
-        scale: 0.75, 
-        zIndex: 4, 
-        opacity: 0.5,
-        rotateY: 5, 
-        transition: { type: "tween", duration: 0.3 }
-      },
-      right: { 
-        x: "35%", 
-        scale: 0.75, 
-        zIndex: 4, 
-        opacity: 0.5,
-        rotateY: -5, 
-        transition: { type: "tween", duration: 0.3 }
-      },
-      hidden: { 
-        x: direction > 0 ? "100%" : "-100%", 
-        scale: 0.7, 
-        zIndex: 1, 
-        opacity: 0,
-        rotateY: direction > 0 ? -10 : 10, 
-        transition: { type: "tween", duration: 0.3 }
-      },
-    }
+  useEffect(() => {
+    if (!mobileApi) return
+    setMobileCount(mobileApi.scrollSnapList().length)
+    setMobileCurrent(mobileApi.selectedScrollSnap())
+    mobileApi.on("select", () => {
+      setMobileCurrent(mobileApi.selectedScrollSnap())
+    })
+  }, [mobileApi])
 
-    // Full spring animations for desktop
-    const desktopPositions = {
-      center: { 
-        x: 0, 
-        scale: 1, 
-        zIndex: 5, 
-        opacity: 1,
-        rotateY: 0, 
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-      },
-      left: { 
-        x: "-55%", 
-        scale: 0.85, 
-        zIndex: 4, 
-        opacity: 0.7,
-        rotateY: 15, 
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-      },
-      right: { 
-        x: "55%", 
-        scale: 0.85, 
-        zIndex: 4, 
-        opacity: 0.7,
-        rotateY: -15, 
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-      },
-      hidden: { 
-        x: direction > 0 ? "100%" : "-100%", 
-        scale: 0.8, 
-        zIndex: 1, 
-        opacity: 0,
-        rotateY: direction > 0 ? -30 : 30, 
-        transition: { type: "spring", stiffness: 300, damping: 20 }
-      },
-    }
-
-    const positions = isMobile ? mobilePositions : desktopPositions
-
-    if (index === currentIndex) {
-      return positions.center
-    } else if (index === getPrevIndex(currentIndex)) {
-      return positions.left
-    } else if (index === getNextIndex(currentIndex)) {
-      return positions.right
-    } else {
-      return positions.hidden
-    }
-  }
-  return (
-    <div 
-      ref={containerRef} 
-      className="w-full h-full relative py-10"
-      style={{ perspective: "1200px" }}
+  const ProjectCard = ({ project }: { project: Project }) => (
+    <div
+      onClick={() => onSelect(project)}
+      className="group flex flex-col h-full w-full bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-800 dark:to-zinc-900 rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-200/50 dark:ring-zinc-700/50 cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
     >
-      <div className="relative h-[400px] sm:h-[450px] md:h-[500px]">
-        <AnimatePresence initial={false}>
-          {projects.map((project, index) => (            <motion.div
-              key={project.id}
-              className="absolute top-0 left-0 right-0 w-[90%] sm:w-[85%] md:w-full max-w-2xl mx-auto"
-              initial="hidden"
-              animate={getCardVariants(index)}
-              exit="hidden"
-              style={{ transformStyle: isMobile ? "flat" : "preserve-3d" }} 
-              onClick={() => index === currentIndex && onSelect(project)}
+      {/* Image with 16:9 aspect ratio */}
+      <div className="relative w-full pt-[56.25%] overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="absolute inset-0 w-full h-full object-cover"
+          sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 30vw"
+        />
+        {/* Hover overlay with View Project CTA */}
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 dark:bg-zinc-900/95 text-zinc-900 dark:text-zinc-100 text-sm font-semibold shadow-lg backdrop-blur-sm scale-95 group-hover:scale-100 transition-transform duration-300">
+            View Project
+            <ExternalLink className="w-4 h-4" />
+          </span>
+        </div>
+      </div>
+
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="space-y-3">
+          <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 line-clamp-1">
+            {project.title}
+          </h3>
+          <p className="text-zinc-600 dark:text-zinc-300 text-sm line-clamp-2">
+            {project.description}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2 my-4">
+          {project.tags.slice(0, 3).map((tag) => (
+            <Badge
+              key={tag}
+              variant="outline"
+              className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 border-zinc-200/50 dark:border-zinc-700/50 px-2 py-0.5 text-xs"
             >
-              <div 
-                className={`relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-800 dark:to-zinc-900 rounded-2xl overflow-hidden shadow-lg cursor-pointer h-full
-                  ${index === currentIndex ? 
-                    'shadow-xl ring-1 ring-zinc-200/50 dark:ring-zinc-700/50' : 
-                    'shadow-md hover:shadow-lg'}`}
-              >
-                {/* Image container with 16:9 aspect ratio */}
-                <div className="relative w-full pt-[56.25%] overflow-hidden">
-                  {/* Image overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-zinc-900/90 dark:to-zinc-950/90 z-10" />
-                  
-                  {/* Project image */}
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    priority={index === currentIndex}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 90vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 700px"
-                  />
-
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 
-                    ${index === currentIndex ? 'group-hover:opacity-100' : ''} transition-opacity duration-300 z-20" />
-                </div>
-
-                <div className="p-6 relative">
-                  {/* Title and description */}
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-                      {project.title}
-                    </h3>
-                    <p className="text-zinc-600 dark:text-zinc-300 text-sm line-clamp-2">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 my-4">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="outline"
-                        className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 border-zinc-200/50 dark:border-zinc-700/50 px-2 py-0.5 text-xs"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <Badge 
-                        variant="outline" 
-                        className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 border-zinc-200/50 dark:border-zinc-700/50 px-2 py-0.5 text-xs"
-                      >
-                        +{project.tags.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
-
-                  {/* Features list */}
-                  {index === currentIndex && (
-                    <div className="space-y-2 mb-4">
-                      {project.features.slice(0, 2).map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
-                          <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 mr-2" />
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* View Details button */}
-                  {index === currentIndex && (
-                    <Button
-                      size="sm"
-                      className="w-full mt-2 bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 transition-all duration-200"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSelect(project);
-                      }}
-                    >
-                      {project.showSourceCode === false || !project.githubLink
-                        ? "View Website"
-                        : "View Demo"}{" "}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
-                  )}
-                </div>
-
-                {/* Metallic border effect */}
-                <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 dark:from-white/5 dark:to-black/5" />
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/50 dark:via-zinc-700/50 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200/50 dark:via-zinc-700/50 to-transparent" />
-                </div>
-              </div>
-            </motion.div>
+              {tag}
+            </Badge>
           ))}
-        </AnimatePresence>
-      </div>
-      
-      {/* Navigation Arrows - Below carousel like testimonials */}
-      <div className="flex justify-center mt-10 sm:mt-14 md:mt-20 space-x-4 relative z-50">
-        <button
-          onClick={() => goToPrev()}
-          className={`${isMobile ? 'h-10 w-10' : 'h-12 w-12'} rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 flex items-center justify-center bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm shadow-xl`}
+          {project.tags.length > 3 && (
+            <Badge
+              variant="outline"
+              className="bg-zinc-100/50 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 border-zinc-200/50 dark:border-zinc-700/50 px-2 py-0.5 text-xs"
+            >
+              +{project.tags.length - 3} more
+            </Badge>
+          )}
+        </div>
+
+        <div className="space-y-2 mb-4">
+          {project.features.slice(0, 2).map((feature, idx) => (
+            <div key={idx} className="flex items-center text-sm text-zinc-600 dark:text-zinc-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 mr-2 flex-shrink-0" />
+              <span className="line-clamp-1">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        <Button
+          size="sm"
+          className="w-full mt-auto bg-gradient-to-r from-zinc-800 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800 hover:from-zinc-700 hover:to-zinc-600 dark:hover:from-zinc-600 dark:hover:to-zinc-700 text-zinc-100 border-0 transition-all duration-200"
+          onClick={(e) => {
+            e.stopPropagation()
+            onSelect(project)
+          }}
         >
-          <ChevronLeft className={`${isMobile ? 'h-4 w-4' : 'h-5 w-5'} text-zinc-700 dark:text-zinc-300`} />
-        </button>
-        <button
-          onClick={() => goToNext()}
-          className={`${isMobile ? 'h-10 w-10' : 'h-12 w-12'} rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300 flex items-center justify-center bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm shadow-xl`}
-        >
-          <ChevronRight className={`${isMobile ? 'h-4 w-4' : 'h-5 w-5'} text-zinc-700 dark:text-zinc-300`} />
-        </button>
+          {project.showSourceCode === false || !project.githubLink
+            ? "View Website"
+            : "View Demo"}{" "}
+          <ExternalLink className="w-4 h-4 ml-2" />
+        </Button>
       </div>
-      
-      {/* CTA Button */}      
-      <div className="text-center mt-8 sm:mt-10 relative z-20">
+    </div>
+  )
+
+  return (
+    <div className="w-full relative py-6">
+      <div className="relative max-w-7xl mx-auto">
+        {/* Desktop Carousel - 3 cards visible */}
+        <div className="hidden md:block">
+          <div className="overflow-hidden w-full">
+            <Carousel
+              setApi={setDesktopApi}
+              opts={{
+                align: "start",
+                slidesToScroll: 1,
+                loop: false,
+                dragFree: true,
+                containScroll: "trimSnaps",
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {projects.map((project) => (
+                  <CarouselItem
+                    key={project.id}
+                    className="pl-4 basis-1/3 min-w-0 flex-shrink-0"
+                  >
+                    <ProjectCard project={project} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+          {/* Desktop Navigation Arrows */}
+          <div className="flex justify-center mt-8 space-x-4">
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-12 w-12 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+              disabled={desktopCurrent === 0}
+              onClick={() => desktopApi?.scrollPrev()}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-12 w-12 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+              disabled={desktopCurrent === desktopCount - 1}
+              onClick={() => desktopApi?.scrollNext()}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Carousel - 1 card visible */}
+        <div className="md:hidden">
+          <div className="overflow-hidden w-full">
+            <Carousel
+              setApi={setMobileApi}
+              opts={{
+                align: "start",
+                slidesToScroll: 1,
+                loop: false,
+                dragFree: true,
+                containScroll: "trimSnaps",
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2">
+                {projects.map((project) => (
+                  <CarouselItem
+                    key={project.id}
+                    className="pl-2 basis-full min-w-0 flex-shrink-0"
+                  >
+                    <ProjectCard project={project} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+          {/* Mobile Navigation Arrows */}
+          <div className="flex justify-center mt-6 space-x-4">
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-10 w-10 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+              disabled={mobileCurrent === 0}
+              onClick={() => mobileApi?.scrollPrev()}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-10 w-10 rounded-full border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-300"
+              disabled={mobileCurrent === mobileCount - 1}
+              onClick={() => mobileApi?.scrollNext()}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Button */}
+      <div className="text-center mt-10 sm:mt-12">
         <Link href="/projects">
-          <Button
-            className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm sm:text-base font-semibold transition-all duration-200 group"
-          >
+          <Button className="rounded-full px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm sm:text-base font-semibold transition-all duration-200 group">
             View All Projects
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>

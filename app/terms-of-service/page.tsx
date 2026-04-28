@@ -28,7 +28,7 @@ export default function TermsOfServicePage() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="text-zinc-600 dark:text-zinc-400 mb-6">
-            Last updated: {new Date().toLocaleDateString()}
+            Last updated: November 12, 2022
           </p>
 
           <section className="mb-8">
@@ -68,7 +68,24 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">4. Intellectual Property</h2>
+            <h2 className="text-xl font-semibold mb-4">4. Pricing and Price Adjustments</h2>
+            <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+              Pricing adjustments will be made on an annual basis as follows:
+            </p>
+            <ul className="list-disc pl-6 text-zinc-600 dark:text-zinc-400 space-y-2 mb-4">
+              <li>Pricing may increase or adjust based on the supply and demand of resources required to deliver services</li>
+              <li>Annual price review and adjustments occur in March each year</li>
+              <li>Last date for current prices: March 31st</li>
+              <li>New adjusted prices become effective: April 1st</li>
+              <li>This price adjustment cycle occurs every year</li>
+            </ul>
+            <p className="text-zinc-600 dark:text-zinc-400">
+              Clients will be notified of any price changes at least 30 days in advance. Existing service agreements will be subject to updated pricing upon renewal.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">5. Intellectual Property</h2>
             <p className="text-zinc-600 dark:text-zinc-400 mb-4">
               Upon final payment:
             </p>
@@ -80,21 +97,21 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">5. Limitation of Liability</h2>
+            <h2 className="text-xl font-semibold mb-4">6. Limitation of Liability</h2>
             <p className="text-zinc-600 dark:text-zinc-400 mb-4">
               We are not liable for any indirect, incidental, or consequential damages arising from the use of our services.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">6. Changes to Terms</h2>
+            <h2 className="text-xl font-semibold mb-4">7. Changes to Terms</h2>
             <p className="text-zinc-600 dark:text-zinc-400 mb-4">
               We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to the website.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">7. Contact Information</h2>
+            <h2 className="text-xl font-semibold mb-4">8. Contact Information</h2>
             <p className="text-zinc-600 dark:text-zinc-400 mb-4">
               For any questions regarding these Terms of Service, please contact us at:
             </p>
