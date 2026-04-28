@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button"
 import { Price } from "@/components/ui/price"
 import { PageContainer } from "@/components/layout/page-container"
 import { ShimmerBadge } from "@/components/ui/shimmer-badge"
+import { CostEstimator } from "@/components/ui/cost-estimator"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -424,6 +425,9 @@ export default function PricingPage() {
               )
             })}
           </motion.div>
+
+          {/* Website cost estimator */}
+          <CostEstimator ctaHref="/contact" />
 
           {/* Trust strip */}
           <motion.div
