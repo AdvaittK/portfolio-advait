@@ -36,26 +36,30 @@ const ESTIMATOR_CONFIG: {
   rangeSpread: number
   roundTo: Money
 } = {
+  // Calibrated against the Starter (₹9,999) and Pro (₹19,999 onwards) tiers.
+  // Portfolio 1 page  → ~₹9,000–11,000 (Starter)
+  // Business 8–9 pgs + animations + CMS + SEO → ~₹17,000–21,000 (Pro)
+  // Business 10–12 pgs + animations + SEO + Advanced UI/UX → ~₹19,000–25,000
   basePrices: {
-    portfolio: { inr: 15000, usd: 189 },
-    business: { inr: 25000, usd: 319 },
-    ecommerce: { inr: 55000, usd: 699 },
-    customApp: { inr: 90000, usd: 1149 },
+    portfolio: { inr: 10000, usd: 189 },
+    business: { inr: 14000, usd: 279 },
+    ecommerce: { inr: 25000, usd: 549 },
+    customApp: { inr: 50000, usd: 1099 },
   },
   perPageAfter: 5,
-  perPagePrice: { inr: 2000, usd: 25 },
+  perPagePrice: { inr: 500, usd: 19 },
   features: {
-    animations: { inr: 5000, usd: 63 },
-    cms: { inr: 6000, usd: 76 },
-    seo: { inr: 4000, usd: 50 },
-    payments: { inr: 8000, usd: 101 },
-    advancedUx: { inr: 10000, usd: 126 },
+    animations: { inr: 1500, usd: 39 },
+    cms: { inr: 2000, usd: 59 },
+    seo: { inr: 1000, usd: 25 },
+    payments: { inr: 3000, usd: 99 },
+    advancedUx: { inr: 2000, usd: 59 },
   },
   timelineMultiplier: {
     standard: 1,
     fastTrack: 1.25,
   },
-  rangeSpread: 0.15,
+  rangeSpread: 0.12,
   roundTo: { inr: 1000, usd: 10 },
 }
 
