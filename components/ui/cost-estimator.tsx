@@ -19,7 +19,7 @@ import { useCurrency } from "@/lib/currency-provider"
 import { cn } from "@/lib/utils"
 
 /* =====================================================================
- * Tweak everything from here — base prices, per-page cost, feature costs,
+ * Tweak everything from here: base prices, per-page cost, feature costs,
  * timeline multiplier and the spread of the displayed range.
  * ===================================================================== */
 type WebsiteType = "portfolio" | "business" | "ecommerce" | "customApp"

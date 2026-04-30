@@ -1,12 +1,10 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
+import Waves from "./metallic-bg"
 
-// Import Waves with SSR disabled for better performance
-const Waves = dynamic(() => import("./metallic-bg"), { ssr: false })
-
+/** Static import avoids Turbopack HMR issues with `dynamic()` on this module. Waves still mounts only after `mounted` is true. */
 export default function ClientMetallicBg() {
   const { theme, systemTheme } = useTheme()
   const [mounted, setMounted] = useState(false)

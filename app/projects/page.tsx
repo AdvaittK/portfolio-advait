@@ -55,7 +55,7 @@ export default function ProjectsPage() {
       id: "crevo-studio",
       title: "Crevo Studio – Thumbnail + Title Agency",
       description:
-        "A premium, conversion-focused website for Crevo Studio — a thumbnail + title packaging agency engineered for clicks and fast delivery.",
+        "A premium, conversion-focused website for Crevo Studio: a thumbnail + title packaging agency engineered for clicks and fast delivery.",
       longDescription:
         "Crevo Studio is a specialized thumbnail packaging agency that helps creators and brands drive higher CTR by pairing bold, mobile-first thumbnails with hook-based title strategy. The website was built to feel sharp and premium, clearly communicate the offer, and guide visitors toward booking a call or claiming an audit.",
       tags: ["Agency", "Thumbnails", "Landing Page", "Conversion", "Brand"],
@@ -406,7 +406,7 @@ export default function ProjectsPage() {
       id: "json-generator",
       title: "JSON Generator – Smart JSON Generator & Editor",
       description: "AI-powered tool for creating, editing, and visualizing JSON files with ease. Supports code, visual, and intelligent AI editing modes.",
-      longDescription: "JSONAI is a powerful, user-friendly platform designed to simplify JSON file creation and editing. Whether you're a developer crafting complex structures or a beginner learning JSON, JSONAI adapts to your needs. It features three interactive modes—code editor for hands-on coding, visual mode for drag-and-drop structure building, and an AI-powered assistant that can generate or modify JSON using natural language prompts. The intuitive interface, real-time preview, and error highlighting make JSONAI a versatile tool for building APIs, configuration files, and structured data.",
+      longDescription: "JSONAI is a powerful, user-friendly platform designed to simplify JSON file creation and editing. Whether you're a developer crafting complex structures or a beginner learning JSON, JSONAI adapts to your needs. It features three interactive modes: a code editor for hands-on coding, visual mode for drag-and-drop structure building, and an AI-powered assistant that can generate or modify JSON using natural language prompts. The intuitive interface, real-time preview, and error highlighting make JSONAI a versatile tool for building APIs, configuration files, and structured data.",
       tags: ["React", "JavaScript", "AI", "JSON", "TailwindCSS"],
       image: "/assets/projects/jsonge.webp",
       demoLink: "https://www.jsongen.advaitt.tech/",

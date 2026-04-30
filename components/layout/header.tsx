@@ -75,7 +75,7 @@ export default function Header() {
 
   // Determine animation direction based on path change
   const getAnimationDirection = () => {
-    const paths = ["/", "/about", "/projects", "/skills", "/contact"]
+    const paths = ["/", "/about", "/projects", "/skills", "/blog", "/contact"]
     const currentIndex = paths.indexOf(pathname)
     const prevIndex = paths.indexOf(prevPath)
     return currentIndex > prevIndex ? 1 : -1
@@ -149,6 +149,7 @@ export default function Header() {
                     { name: "About", href: "/about" },
                     { name: "Projects", href: "/projects" },
                     { name: "Skills", href: "/skills" },
+                    { name: "Blog", href: "/blog" },
                     { name: "Contact", href: "/contact" }
                   ].map((item, index) => (
                     <motion.li
@@ -257,6 +258,7 @@ export default function Header() {
                   { name: "About", href: "/about" },
                   { name: "Projects", href: "/projects" },
                   { name: "Skills", href: "/skills" },
+                  { name: "Blog", href: "/blog" },
                   { name: "Contact", href: "/contact" }
                 ].map((item, index) => (
                   <motion.li

@@ -256,7 +256,6 @@ export default function RootLayout({
         <meta name="geo.placename" content="Pune" />
         <meta name="geo.position" content="18.5204;73.8567" />
         <meta name="ICBM" content="18.5204, 73.8567" />
-        <link rel="canonical" href="https://www.advaitt.tech/" />
 
         {/* Structured Data - Organization */}
         <script
@@ -424,12 +423,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${dmSans.variable} ${GeistSans.variable} font-body min-h-screen bg-transparent antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <CurrencyProvider>
             <SmoothScrollProvider>
               <ClientMetallicBg />

@@ -1,429 +1,59 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
-import { motion, transform } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Mail, ArrowRight } from "lucide-react"
+import { useRef, useEffect } from "react"
+import { motion } from "framer-motion"
+import { Github, Mail } from "lucide-react"
 import XIcon from "@/components/ui/x-icon"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { TextRotate } from "@/components/ui/text-rotate"
 import { ShimmerBadge } from "@/components/ui/shimmer-badge"
-import { MagneticButton } from "@/components/ui/magnetic-button"
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { gsap } from "gsap"
-import { GlassCard } from "@/components/ui/glass-card"
-import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma, SiDiscord } from "react-icons/si"
+import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiDiscord } from "react-icons/si"
 import { useIsMobile } from "@/hooks/use-mobile"
 import dynamic from "next/dynamic"
+import { HomePortfolioStrip } from "@/components/ui/home-portfolio-strip"
+import { HomeWhoIWorkWith } from "@/components/ui/home-who-i-work-with"
+import { HomeFeaturedCaseStudies } from "@/components/ui/home-featured-case-studies"
+import { HomeProcess } from "@/components/ui/home-process"
+import { HomeFaq } from "@/components/ui/home-faq"
 
-// Lazy load heavy components for better performance
-const SkillsRadarBrowser = dynamic(() => import("@/components/ui/skills-radar-browser").then(mod => ({ default: mod.SkillsRadarBrowser })), {
-  ssr: false,
-  loading: () => <div className="w-full h-full flex items-center justify-center"><div className="animate-pulse text-muted-foreground">Loading...</div></div>
-})
-
-const ProjectCarousel3D = dynamic(() => import("@/components/ui/project-carousel-3d").then(mod => ({ default: mod.ProjectCarousel3D })), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
-    </div>
-  )
-})
-
-const ServicesSection = dynamic(() => import("@/components/ui/services-section").then(mod => ({ default: mod.ServicesSection })), {
+const SkillsRadarBrowser = dynamic(() => import("@/components/ui/skills-radar-browser").then((mod) => ({ default: mod.SkillsRadarBrowser })), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="animate-pulse text-muted-foreground">Loading...</div>
     </div>
-  )
+  ),
 })
 
-
-
-const LetsWorkTogetherSection = dynamic(() => import("@/components/ui/lets-work-together-section").then(mod => ({ default: mod.LetsWorkTogetherSection })), {
+const LetsWorkTogetherSection = dynamic(() => import("@/components/ui/lets-work-together-section").then((mod) => ({ default: mod.LetsWorkTogetherSection })), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+    <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden relative">
       <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
     </div>
-  )
+  ),
 })
 
-const SkillsServicesMarquee = dynamic(() => import("@/components/ui/skills-services-marquee").then(mod => ({ default: mod.SkillsServicesMarquee })), {
-  ssr: false
+const SkillsServicesMarquee = dynamic(() => import("@/components/ui/skills-services-marquee").then((mod) => ({ default: mod.SkillsServicesMarquee })), {
+  ssr: false,
 })
 
-const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-section").then(mod => ({ default: mod.TestimonialsSection })), {
+const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-section").then((mod) => ({ default: mod.TestimonialsSection })), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden relative">
+    <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden relative">
       <div className="absolute inset-0 bg-gradient-to-r from-zinc-200/60 to-zinc-300/60 dark:from-zinc-800/40 dark:to-zinc-700/40 animate-pulse" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
     </div>
-  )
+  ),
 })
-
-// Featured projects data (Crevo Studio added first per request)
-const featuredProjects = [
-  {
-    id: "crevo-studio",
-    title: "Crevo Studio – Thumbnail + Title Agency",
-    description:
-      "A premium, conversion-focused website for Crevo Studio — a thumbnail + title packaging agency engineered for clicks and fast delivery.",
-    longDescription:
-      "Crevo Studio is a specialized thumbnail packaging agency that helps creators and brands drive higher CTR by pairing bold, mobile-first thumbnails with hook-based title strategy. The website was built to feel sharp and premium, clearly communicate the offer, and guide visitors toward booking a call or claiming an audit.",
-    tags: ["Agency", "Thumbnails", "Landing Page", "Conversion", "Brand"],
-    image: "/assets/projects/crevio.png",
-    demoLink: "https://www.crevostudio.in/",
-    githubLink: "",
-    features: [
-      "Premium, scroll-stopping visual direction",
-      "Conversion-first layout with clear CTAs",
-      "Fast, responsive performance across devices",
-      "Proof and credibility sections (results + creators)",
-      "Clean information hierarchy for pricing & FAQs",
-      "Share-friendly metadata and social preview setup",
-    ],
-  },
-  {
-    id: "asoka-ferrocast",
-    title: "Asoka Ferrocast – Steel Pipes Distribution",
-    description: "A trusted corporate website for a steel pipes distributor, built to communicate reliability, technical expertise, and infrastructure-focused support.",
-    longDescription: "With over four decades of industry expertise, Asoka Ferrocast is a trusted name in the distribution of a comprehensive range of high-quality steel pipes. The website was designed to reflect that legacy through clear positioning, strong credibility cues, and a polished presentation of their industrial capabilities. It also highlights their commitment to supporting India’s rapid infrastructure growth with dependable solutions for diverse industrial needs.",
-    tags: ["Industrial", "Steel Pipes", "Distribution", "Corporate Website", "Infrastructure"],
-    image: "/assets/projects/aoka.png",
-    demoLink: "https://www.asokaferrocast.com/",
-    githubLink: "",
-    features: [
-      "Legacy-driven brand storytelling",
-      "Clear positioning for industrial buyers",
-      "Trust-focused corporate presentation",
-      "Responsive, modern website structure",
-      "Infrastructure and supply capability messaging",
-      "Clean visual hierarchy for easy navigation"
-    ]
-  },
-  {
-    id: "cult-of-content-agency",
-    title: "Cult of Content – Content-Led Growth Agency",
-    description: "A content-led growth agency helping D2C brands, coaches, and creators grow through organic content marketing.",
-    longDescription: "Cult of Content is a specialized content-led growth agency dedicated to helping D2C brands, coaches, and creators achieve rapid growth through strategic organic content marketing. The agency builds repeatable systems for ideas that hook, storytelling that builds authority, and content that converts into leads and sales. With a focus on sustainable growth and authentic engagement, Cult of Content partners with ambitious entrepreneurs to establish market authority and scale their influence.",
-    tags: ["Agency", "Content Marketing", "Growth", "Digital Marketing", "D2C"],
-    image: "/assets/projects/coc.webp",
-    demoLink: "https://www.cultofcontent.agency/",
-    githubLink: "",
-    features: [
-      "Content-first growth strategies",
-      "Organic reach and authority building",
-      "Conversion-optimized content systems",
-      "Brand positioning and messaging",
-      "Audience engagement and retention",
-      "Sustainable long-term growth"
-    ]
-  },
-  {
-    id: "cult-of-content-guitars",
-    title: "Cult of Content – Guitar Retail Specialists",
-    description: "A specialized content agency built exclusively for guitar stores, music retailers, and instrument brands.",
-    longDescription: "Cult of Content's guitar division is a specialized content agency built exclusively for guitar stores, music retailers, and instrument brands. The agency creates retention-first content systems that drive growth, build trust, and establish brands as authorities in the music retail space. By understanding the unique needs of music retailers and their passionate audience, Cult of Content delivers content strategies that drive both online engagement and in-store foot traffic.",
-    tags: ["Agency", "Content Marketing", "Music Retail", "Guitar", "E-Commerce"],
-    image: "/assets/projects/gcoc.webp",
-    demoLink: "https://guitar.cultofcontent.agency/",
-    githubLink: "",
-    features: [
-      "Specialized music retail strategies",
-      "Community building and engagement",
-      "Retention-first content systems",
-      "Multi-channel promotion",
-      "Audience growth and loyalty",
-      "Music industry expertise"
-    ]
-  },
-  {
-    id: "integrated-media-agency",
-    title: "Integrated Media Agency – Personal Brand Growth",
-    description: "Scale and grow personal brands through strategic marketing, conversion-focused funnels, and integrated media strategies.",
-    longDescription: "Integrated Media Agency specializes in scaling and accelerating the growth of personal brands through comprehensive marketing strategies, conversion-optimized funnels, and integrated media campaigns. By combining content strategy, funnel optimization, and multi-channel marketing, they help entrepreneurs and thought leaders build influential personal brands that drive business results and establish lasting market authority.",
-    tags: ["Agency", "Personal Branding", "Marketing", "Growth", "Digital Marketing"],
-    image: "/assets/projects/imga.webp",
-    demoLink: "https://www.integratedmedia.agency/",
-    githubLink: "",
-    features: [
-      "Personal brand strategy and positioning",
-      "Conversion funnel optimization",
-      "Multi-channel marketing campaigns",
-      "Audience growth and scaling",
-      "Authority and thought leadership",
-      "Integrated media approach"
-    ]
-  },
-  {
-    id: "shweta-mishra-quantum-manifestation",
-    title: "Shweta Mishra – Quantum Manifestation Coach Website",
-    description: "A clean, uplifting coaching website for Shweta Mishra, focused on clarity, credibility, and conversion.",
-    longDescription: "A bespoke website for Quantum Manifestation Coach Shweta Mishra designed to highlight her coaching philosophy, credibility, and client transformation. Emphasis was placed on trust-building elements, accessible structure, responsive performance, and an aesthetic that balances professionalism with warmth. The site is optimized for clarity of messaging and delivers a polished experience across devices.",
-    tags: ["Coaching", "Personal Brand", "Wellness", "Website", "UI/UX"],
-    image: "/assets/projects/shweta-site.webp",
-    demoLink: "https://www.shwetamishra.in/",
-    githubLink: "",
-    features: [
-      "Personal brand presentation and positioning",
-      "Responsive, mobile-first layout",
-      "Clear calls to action for engagement",
-      "Performance & accessibility optimizations",
-      "Calming, trust-focused visual styling",
-      "Scalable structure for future resources"
-    ]
-  },
-  {
-    id: "sizzle-studios",
-    title: "Sizzle Studios – Creative Portfolio Website",
-    description: "A modern, responsive portfolio website for Sizzle Studios, showcasing their creative work and services with an elegant, professional design.",
-    longDescription: "Sizzle Studios' portfolio website is a beautifully crafted showcase of their creative services and portfolio work. The website features a modern, clean design that highlights their artistic capabilities while providing an excellent user experience. Built with responsive design principles, it ensures optimal viewing across all devices and platforms.",
-    tags: ["Portfolio", "Creative", "Design", "Website", "UI/UX"],
-    image: "/assets/projects/sizzle-site.webp",
-    demoLink: "https://www.sizzlestudio.in/",
-    githubLink: "",
-    features: [
-      "Modern, responsive portfolio design",
-      "Creative work showcase and gallery",
-      "Service presentation and offerings",
-      "Professional contact and inquiry system",
-      "Optimized for all devices and platforms",
-      "Clean, elegant user interface"
-    ]
-  },
-  {
-    id: "oriental-air-ship-services",
-    title: "Oriental Air & Ship Services – Import Clearing & Forwarding",
-    description: "Oriental's new website was designed to provide a clean, professional, and user-friendly experience for clients and partners.",
-    longDescription: "Oriental's new website was designed to provide a clean, professional, and user-friendly experience for clients and partners. The focus was on showcasing their wide range of logistics services with clarity, ensuring smooth navigation, and creating a visually appealing platform that reflects Oriental's 40+ years of trust and excellence in the industry.",
-    tags: ["Logistics", "Import Export", "Clearing & Forwarding", "Business", "Website"],
-    image: "/assets/projects/oriental-home.webp",
-    demoLink: "https://www.orientalimited.com/",
-    githubLink: "",
-    features: [
-      "Service showcase for import clearing & forwarding",
-      "Focus on PSU and Government clientele",
-      "Trust- and legacy-driven brand narrative",
-      "Modern, responsive, and accessible UI"
-    ]
-  },
-  {
-    id: "vitira-website",
-    title: "VITIRA – Business Website Transformation",
-    description: "A modern, high-performance business website for VITIRA, designed to elevate their digital presence and showcase their services.",
-    longDescription: "VITIRA's new website was transformed to deliver a clean, professional, and engaging experience for their clients. The project focused on clear service presentation, fast performance, and a visually appealing interface that aligns with VITIRA's brand values.",
-    tags: ["Business", "Website", "Transformation", "UI/UX", "Next.js"],
-    image: "/assets/projects/vitira.webp",
-    demoLink: "https://www.vitira.in/",
-    githubLink: "",
-    features: [
-      "Modern, responsive business website",
-      "Clear service and value proposition presentation",
-      "Fast performance and SEO optimization",
-      "Brand-aligned visual design",
-      "Contact and inquiry system",
-      "Mobile-first experience"
-    ]
-  },
-  {
-    id: "dems-portfolio",
-    title: "Dem's Portfolio – Thumbnail Designer Showcase",
-    description: "A stunning portfolio website showcasing Dem's exceptional thumbnail design work, featuring a modern and creative interface that highlights their unique artistic style.",
-    longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern, minimalist design that puts the focus on the artwork while maintaining excellent user experience. It includes a dynamic gallery of thumbnail designs, case studies of successful projects, and a seamless contact system for potential clients.",
-    tags: ["Portfolio", "Design", "Thumbnails", "Creative", "UI/UX"],
-    image: "/assets/projects/dem-portfolio.webp",
-    demoLink: "https://dems8.com",
-    githubLink: "https://github.com/AdvaittK/dem-portfolio",
-    features: [
-      "Dynamic gallery of thumbnail designs",
-      "Case studies and project breakdowns",
-      "Client testimonials and success stories",
-      "Contact and commission system",
-      "Responsive design optimized for all devices",
-      "Portfolio filtering and search functionality"
-    ]
-  },
-  {
-    id: "uvoka-website",
-    title: "UVOKA – LinkedIn Personal Branding Agency Website",
-    description: "A modern, responsive website for UVOKA, a LinkedIn personal branding agency. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion for smooth animations and interactions.",
-    longDescription: "UVOKA's website is a comprehensive platform showcasing their LinkedIn personal branding services. The website features a modern design with smooth animations, clear service presentation, client testimonials, and a professional portfolio that reflects their expertise in personal branding. Built with cutting-edge technologies for optimal performance and user experience.",
-    tags: ["Business", "Website", "Personal Branding", "LinkedIn", "Next.js", "Agency"],
-    image: "/assets/projects/uvoka.webp",
-    demoLink: "https://uvoka.in",
-    githubLink: "",
-    features: [
-      "Modern, responsive agency website",
-      "Smooth animations and interactions",
-      "Service showcase and pricing packages",
-      "Client testimonials and success stories",
-      "Professional portfolio presentation",
-      "Contact and inquiry system"
-    ]
-  },
-  {
-    id: "royal-sarees",
-    title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
-    description: "A luxurious e-commerce platform specializing in premium Indian ethnic wear, featuring an elegant design that showcases traditional craftsmanship and modern fashion.",
-    longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process.",
-    tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS"],
-    image: "/assets/projects/royal-sarees.webp",
-    demoLink: "https://royalsarees.advaitt.tech/",
-    githubLink: "https://github.com/AdvaittK/saree-ecommerce",
-    features: [
-      "Elegant product showcase with high-quality imagery",
-      "Advanced filtering by style, occasion, and region",
-      "Detailed product pages with size guides",
-      "Secure payment integration",
-      "Responsive design for all devices",
-      "Multi-language support for global reach"
-    ]
-  },
-  {
-    id: "cardhint",
-    title: "CardHint – Smart Credit Card Comparison Platform",
-    description: "A smart platform for comparing credit cards and maximizing rewards, built with Next.js, Tailwind, and advanced UI components.",
-    longDescription: "CardHint is a modern web application designed to help users compare credit cards and find the best options for their needs. It features a user-friendly interface, advanced filtering options, and detailed information on various credit cards.",
-    tags: ["Finance", "Next.js", "Tailwind CSS"],
-    image: "/assets/projects/cardhint-app.webp",
-    demoLink: "https://cardhint.advaitt.tech/",
-    githubLink: "https://github.com/AdvaittK/cardhint",
-    features: [
-      "Smart credit card recommendations powered by expert insights",
-      "Advanced filtering based on rewards, fees, and user goals",
-      "Secure and privacy-focused platform architecture",
-      "Responsive design optimized for all devices",
-      "User-friendly interface with clean, modern UI elements",
-      "Regularly updated database with the latest card offers"
-    ]
-  },
-  {
-    id: "kixkart-ecommerce",
-    title: "KixKart – Premium Sneakers E-Commerce Platform",
-    description: "Cyberpunk-inspired e-commerce platform specializing in premium sneakers and streetwear, built with Next.js, Tailwind, and advanced UI components.",
-    longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories.",
-    tags: ["E-Commerce", "Next.js", "Tailwind CSS"],
-    image: "/assets/projects/kixkart.webp",
-    demoLink: "https://www.kixkart.advaitt.tech/",
-    githubLink: "https://github.com/AdvaittK/kixkart",
-    features: [
-      "Fully responsive e-commerce UI with shopping cart and wishlist",
-      "Theme toggle for dark/light mode",
-      "Browse by product categories",
-      "Product pages with rich descriptions and visuals",
-      "User authentication & account management",
-      "Cyberpunk-inspired UI with smooth animations"
-    ]
-  },
-  {
-    id: "pulseboard-dashboard",
-    title: "PulseBoard – Interactive Dashboard Frontend Showcase",
-    description: "A modern, responsive dashboard UI with interactive charts, subscription flows, and a mock backend for demo purposes. Showcasing frontend design, state management, and UI component patterns.",
-    longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components.",
-    tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
-    image: "/assets/projects/pulseboard.webp",
-    demoLink: "https://www.pulseboard.advaitt.tech/",
-    githubLink: "https://github.com/AdvaittK/pulse-board-main",
-    features: [
-      "Responsive dashboard layouts with modern UI/UX",
-      "Dynamic charts powered by mock data",
-      "Theme switcher (dark/light mode)",
-      "Subscription and pricing management UI",
-      "Intuitive sidebar navigation",
-      "Mock API layer simulating backend interaction"
-    ]
-  },
-  {
-    id: "symtolink-health",
-    title: "SymtoLink – Health Symptom Analysis Platform",
-    description: "AI-powered health symptom analysis platform that helps users identify potential health conditions and connect with healthcare providers.",
-    longDescription: "SymtoLink is a healthcare technology platform that combines AI algorithms with medical knowledge to help users analyze their symptoms, understand potential conditions, and find appropriate care. The platform features a user-friendly interface for symptom input, analysis reports, and healthcare provider connections.",
-    tags: ["Healthcare Tech", "AI", "Next.js", "React", "TailwindCSS"],
-    image: "/assets/projects/symptolink.webp",
-    demoLink: "https://symptolink.advaitt.tech",
-    githubLink: "https://github.com/AdvaittK/symtolink",
-    features: [
-      "Intuitive symptom input interface",
-      "AI-powered analysis of reported symptoms",
-      "Condition probability assessments",
-      "Healthcare provider recommendations",
-      "Secure user health profiles",
-      "Responsive design for all devices"
-    ]
-  },
-  {
-    id: "portfolio-website",
-    title: "Advait | Web Developer Portfolio",
-    description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
-    longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form.",
-    tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
-    image: "/new_homepage.png",
-    demoLink: "https://advaitt.tech",
-    githubLink: "https://github.com/AdvaittK/portfolio-advait",
-    features: [
-      "Fully responsive, custom-designed UI",
-      "Animated page transitions and interactive elements",
-      "Dynamic projects and services sections",
-      "SEO and social sharing optimized",
-      "Vercel Analytics integration",
-      "Accessible and performant design"
-    ]
-  },
-  {
-    id: "truthsense-fact-checker",
-    title: "TruthSense – AI-Powered Fact Checking Platform",
-    description: "Web application that uses AI to analyze and verify claims against trusted sources, helping users identify misinformation online.",
-    longDescription: "TruthSense is an advanced fact-checking platform that leverages artificial intelligence to analyze claims against a database of trusted sources. Users can submit statements or URLs for verification, and the system provides reliability scores, source citations, and context to help combat misinformation.",
-    tags: ["AI", "NLP", "React", "Node.js", "TailwindCSS"],
-    image: "/assets/projects/truthsense.webp",
-    demoLink: "https://truthsense.advaitt.tech",
-    githubLink: "https://github.com/AdvaittK/truthsense",
-    features: [
-      "Text and URL submission for fact checking",
-      "AI-powered claim extraction and verification",
-      "Source reliability scoring system",
-      "Citation links to trusted sources",
-      "User-friendly analysis reports",
-      "Responsive design for mobile and desktop"
-    ]
-  },
-  {
-    id: "json-gen-tool",
-    title: "JSON Gen – Advanced Mock Data Generator",
-    description: "Developer tool for generating custom JSON mock data with advanced schema options, templates, and API endpoint simulation.",
-    longDescription: "JSON Gen is a comprehensive developer utility designed to simplify the creation of mock data for frontend development and testing. It offers a robust schema editor, template system, and API endpoint simulation features to help developers prototype and test applications efficiently.",
-    tags: ["Developer Tool", "JSON", "React", "TypeScript", "API Mocking"],
-    image: "/assets/projects/jsonge.webp",
-    demoLink: "https://www.jsongen.advaitt.tech/",
-    githubLink: "https://github.com/AdvaittK/json-generator",
-    features: [
-      "Visual schema editor for custom JSON structures",
-      "Predefined templates for common data patterns",
-      "Advanced type and constraint options",
-      "One-click data generation with adjustable volume",
-      "Simulated API endpoint creation",
-      "Export options for various formats"
-    ]
-  }
-]
 
 export default function HomePage() {
-  const [isMounted, setIsMounted] = useState(false)
   const pageTransitionRef = useRef<HTMLDivElement>(null)
   const isMobile = useIsMobile()
 
   useEffect(() => {
-    setIsMounted(true)
-
-    // Skip GSAP entirely on mobile for better LCP performance
     if (pageTransitionRef.current && !isMobile) {
       const ctx = gsap.context(() => {
         gsap.fromTo(
@@ -432,7 +62,7 @@ export default function HomePage() {
             autoAlpha: 0,
             y: 20,
             filter: "blur(10px)",
-            scale: 0.98
+            scale: 0.98,
           },
           {
             duration: 1.2,
@@ -441,7 +71,7 @@ export default function HomePage() {
             filter: "blur(0px)",
             scale: 1,
             ease: "power3.out",
-            clearProps: "all"
+            clearProps: "all",
           }
         )
       })
@@ -450,14 +80,8 @@ export default function HomePage() {
     }
   }, [isMobile])
 
-  // Simplified transitions for mobile
-  const getTransitionDuration = () => {
-    return isMobile ? 0 : 0.5 // No transitions on mobile
-  }
-
-  const getAnimationDelay = (desktop: number) => {
-    return isMobile ? 0 : desktop // No delays on mobile
-  }
+  const getTransitionDuration = () => (isMobile ? 0 : 0.5)
+  const getAnimationDelay = (desktop: number) => (isMobile ? 0 : desktop)
 
   return (
     <motion.div
@@ -465,21 +89,17 @@ export default function HomePage() {
       initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 40 }}
       animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
       transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }}
-      className={cn(
-        "min-h-screen bg-transparent text-foreground transition-colors duration-300",
-      )}
+      className={cn("min-h-screen bg-transparent text-foreground transition-colors duration-300")}
     >
-      {/* Hero Section */}
       <motion.section
         data-scroll-section
         initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 30 }}
         whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
-        className="min-h-fit flex flex-col justify-start pt-28 xs:pt-28 sm:pt-24 items-center relative px-4 xs:px-6 pb-0 overflow-hidden md:pt-72"
+        className="min-h-fit flex flex-col justify-start pt-28 xs:pt-28 sm:pt-24 items-center relative px-4 xs:px-6 pb-6 xs:pb-8 overflow-hidden md:pt-72"
       >
         <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-start relative z-10">
-          {/* Hero content - optimized for mobile */}
           <motion.div
             initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
             animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
@@ -487,99 +107,72 @@ export default function HomePage() {
             className="text-left md:col-span-2 lg:col-span-3 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
-              <ShimmerBadge text="Full Stack Developer & UI Designer" />
+              <ShimmerBadge text="Premium web experiences for serious brands" />
 
               <motion.h1
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
-                className="text-5xl xs:text-6xl sm:text-6xl md:text-7xl font-bold mb-2"
+                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2 leading-tight"
               >
-                Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">Advait</span>
+                Websites that turn clarity into{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
+                  trust, and trust into leads
+                </span>
               </motion.h1>
-
-              <motion.div
-                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
-                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
-                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.8) }}
-                className="text-xl xs:text-2xl md:text-2xl text-muted-foreground min-h-[3rem] flex items-center"
-              >
-                <TextRotate
-                  texts={[
-                    'I build elegant user interfaces',
-                    'I create seamless experiences',
-                    'I design digital products',
-                    'I solve complex problems',
-                    'I craft responsive interfaces',
-                    'I bring ideas to life in code',
-                    'I engineer user-centric solutions',
-                    'I build fast, accessible websites',
-                    'I transform pixels into performance',
-                    'I design with purpose and precision',
-                    'I develop scalable web apps',
-                    'I blend creativity with functionality',
-                    'I optimize for speed and impact',
-                    'I write clean, modern code',
-                    'I turn challenges into code',
-                    'I connect brands with users',
-                    'I create on the edge of technology',
-                    'I code with clarity and intent',
-                    'I shape the future of the web'
-                  ]}
-                  rotationInterval={3000}
-                />
-              </motion.div>
 
               <motion.p
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
-                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.0) }}
-                className="text-base xs:text-lg md:text-lg text-muted-foreground max-w-lg mt-2"
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.75) }}
+                className="text-base xs:text-lg md:text-lg text-muted-foreground max-w-lg leading-relaxed"
               >
-                Crafting immersive digital experiences that combine stunning visuals with flawless functionality. Let's create something amazing together.
+                I design and build fast, elegant frontends for agencies, founders, and established businesses, pairing conversion-minded structure with a polished
+                visual language.
               </motion.p>
 
               <motion.div
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
-                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.2) }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.9) }}
                 className="flex flex-col xs:flex-row gap-3 xs:gap-4 pt-2"
               >
-                <Link href="/projects" className="w-full xs:w-auto">
-                  <MagneticButton
-                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-lg xs:text-lg"
-                  >
-                    Explore My Work
-                  </MagneticButton>
-                </Link>
+                <Button
+                  asChild
+                  className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 h-auto text-lg xs:text-lg font-medium"
+                >
+                  <Link href="/appointment">Book a strategy call</Link>
+                </Button>
 
-                <Link href="/contact" className="w-full xs:w-auto">
-                  <MagneticButton
-                    className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 border border-border bg-background hover:bg-secondary font-medium text-lg xs:text-lg"
-                  >
-                    Contact Me
-                  </MagneticButton>
-                </Link>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 h-auto text-lg xs:text-lg font-medium border-border bg-background hover:bg-secondary hover:text-foreground"
+                >
+                  <Link href="#case-studies" className="scroll-smooth">
+                    View case studies
+                  </Link>
+                </Button>
               </motion.div>
 
               <motion.div
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
-                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.4) }}
+                transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(1.05) }}
                 className="flex justify-center xs:justify-start gap-4 pt-4"
               >
                 {[
                   { icon: <Github className="w-5 h-5" />, label: "GitHub", link: "https://github.com/AdvaittK" },
                   { icon: <XIcon className="w-5 h-5" />, label: "X", link: "https://x.com/advaittt_dev" },
                   { icon: <Mail className="w-5 h-5" />, label: "Email", link: "mailto:advaitt.dev@gmail.com" },
-                  { icon: <SiDiscord className="w-5 h-5" />, label: "Discord", link: "https://discord.gg/zQ8gwDK9Zr" }
+                  { icon: <SiDiscord className="w-5 h-5" />, label: "Discord", link: "https://discord.gg/zQ8gwDK9Zr" },
                 ].map((social, index) => (
                   <motion.a
                     key={social.label}
                     href={social.link}
                     initial={isMobile ? { opacity: 1 } : { opacity: 0, x: -10 }}
                     animate={isMobile ? { opacity: 1 } : { opacity: 1, x: 0 }}
-                    transition={isMobile ? { duration: 0 } : { duration: 0.4, delay: 1 + (index * 0.1) }}
+                    transition={isMobile ? { duration: 0 } : { duration: 0.4, delay: 0.95 + index * 0.1 }}
                     className="p-3 rounded-full bg-secondary/80 hover:bg-secondary transition-colors"
                     aria-label={social.label}
                     whileHover={!isMobile ? { scale: 1.1 } : undefined}
@@ -592,7 +185,6 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Skills Radar Browser - only shown on desktop */}
           {!isMobile && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -610,55 +202,50 @@ export default function HomePage() {
                   { name: "Tailwind", value: 95 },
                 ]}
               />
-
-              {/* Interactive floating elements - only on desktop */}
               <div className="absolute inset-0 pointer-events-none">
                 <motion.div
                   className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
                   animate={{
                     y: [0, -15, 0],
-                    rotate: [0, 15, 0, -15, 0]
+                    rotate: [0, 15, 0, -15, 0],
                   }}
                   transition={{
                     duration: 6,
                     repeat: Infinity,
-                    repeatType: "reverse"
+                    repeatType: "reverse",
                   }}
                 >
                   <SiReact className="w-8 h-8 text-blue-500" />
                 </motion.div>
-
                 <motion.div
                   className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
                   animate={{
                     y: [0, 10, 0],
                     x: [0, 10, 0, -10, 0],
-                    rotate: [0, 10, 0]
+                    rotate: [0, 10, 0],
                   }}
                   transition={{
                     duration: 7,
                     repeat: Infinity,
-                    repeatType: "reverse"
+                    repeatType: "reverse",
                   }}
                 >
                   <SiTypescript className="w-6 h-6 text-blue-600" />
                 </motion.div>
-
                 <motion.div
                   className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
                   animate={{
                     x: [0, 10, 0],
-                    rotate: 360
+                    rotate: 360,
                   }}
                   transition={{
                     duration: 10,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "linear",
                   }}
                 >
                   <SiTailwindcss className="w-5 h-5 text-cyan-500" />
                 </motion.div>
-
                 <motion.div
                   className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
                   animate={{
@@ -667,7 +254,7 @@ export default function HomePage() {
                   transition={{
                     duration: 5,
                     repeat: Infinity,
-                    repeatType: "reverse"
+                    repeatType: "reverse",
                   }}
                 >
                   <SiNextdotjs className="w-5 h-5" />
@@ -676,52 +263,29 @@ export default function HomePage() {
             </motion.div>
           )}
         </div>
-
-        {/* Skills Services Marquee - directly under hero content */}
-        <div className="w-full mt-6 xs:mt-7 mb-4 xs:mb-5 sm:mt-3 sm:mb-2">
-          <SkillsServicesMarquee />
-        </div>
       </motion.section>
 
-      {/* Featured Projects Section - simplified for mobile */}
-      <section
-        data-scroll-section
-        className="pt-2 pb-8 xs:pb-10 sm:pb-12 px-4 xs:px-6 relative overflow-hidden"
-      >
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header - simplified for mobile */}
-          <div className="text-center mb-8 xs:mb-10 sm:mb-12">
-            <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
-              Featured Work
-            </Badge>
-            <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
-              Featured Projects
-            </h2>
-            <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-              Explore some of my recent work that showcases my expertise in building modern web applications
-            </p>
-          </div>
+      <HomePortfolioStrip />
 
-          {/* Projects Carousel - simplified for mobile */}
-          <div className="relative px-1 sm:px-4 md:px-6">
-            <ProjectCarousel3D
-              projects={featuredProjects}
-              onSelect={(project) => window.open(project.demoLink, '_blank')}
-            />
-          </div>
-        </div>
-      </section>
+      <HomeWhoIWorkWith />
 
+      <HomeFeaturedCaseStudies />
 
+      <HomeProcess />
 
-      {/* Testimonials Section - normalized spacing */}
+      <div className="w-full px-0 pt-2 pb-10" data-scroll-section>
+        <p className="text-center text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4 px-4">
+          Tools & stack I ship with
+        </p>
+        <SkillsServicesMarquee />
+      </div>
+
       <div className="mt-0" data-scroll-section>
         <TestimonialsSection />
       </div>
 
+      <HomeFaq />
 
-
-      {/* Let's Work Together Section - normalized spacing */}
       <div className="mt-0" data-scroll-section>
         <LetsWorkTogetherSection />
       </div>

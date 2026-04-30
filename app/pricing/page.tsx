@@ -109,7 +109,7 @@ const tiers: Tier[] = [
   {
     id: "custom",
     name: "Custom",
-    tagline: "Full-stack apps, dashboards & complex platforms — scoped to fit.",
+    tagline: "Full-stack apps, dashboards & complex platforms, scoped to fit.",
     bestFor: "Startups & teams shipping real products",
     inr: null,
     usd: null,
@@ -181,7 +181,7 @@ const faqs = [
   },
   {
     q: "What does the price actually include?",
-    a: "Design, frontend development, deployment setup, on-page SEO and a clean handover. Hosting and domain costs are billed separately by the provider — I'll recommend the most cost-effective options for your stack.",
+    a: "Design, frontend development, deployment setup, on-page SEO and a clean handover. Hosting and domain costs are billed separately by the provider. I'll recommend the most cost-effective options for your stack.",
   },
   {
     q: "How does the timeline work?",
@@ -197,7 +197,7 @@ const faqs = [
   },
   {
     q: "Do you offer ongoing maintenance?",
-    a: "Yes — basic post-launch fixes are free for 14 days. After that you can opt into a monthly maintenance plan for updates, monitoring and small enhancements.",
+    a: "Yes. Basic post-launch fixes are free for 14 days. After that you can opt into a monthly maintenance plan for updates, monitoring and small enhancements.",
   },
 ]
 
@@ -294,7 +294,7 @@ export default function PricingPage() {
               variants={itemVariants}
               className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed"
             >
-              Three clear tiers — from a focused online presence to a fully
+              Three clear tiers, from a focused online presence to a fully
               custom full-stack platform. Pick what fits today, scale when
               you&apos;re ready.
             </motion.p>
@@ -531,7 +531,7 @@ export default function PricingPage() {
                 </h2>
                 <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto mb-8">
                   Tell me a bit about your project and I&apos;ll send back the
-                  best-fit plan with a clear scope, timeline and quote — no
+                  best-fit plan with a clear scope, timeline and quote, with no
                   pressure, no fluff.
                 </p>
                 <Link href="/contact">

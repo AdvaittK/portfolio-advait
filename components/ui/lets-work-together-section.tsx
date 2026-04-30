@@ -1,7 +1,6 @@
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, ArrowRight } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export function LetsWorkTogetherSection() {
   return (
@@ -10,10 +9,10 @@ export function LetsWorkTogetherSection() {
     >
       <div className="w-full max-w-3xl p-6 xs:p-8 sm:p-10 md:p-14 flex flex-col items-center text-center space-y-6 xs:space-y-8">
         <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-          Let's Work Together
+          Ready for a serious build?
         </h2>
         <p className="text-sm xs:text-base md:text-lg text-zinc-500 dark:text-zinc-400 mb-4 xs:mb-6 md:mb-8 max-w-lg mx-auto leading-relaxed">
-          Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.
+          Book a strategy call to align on goals, timeline, and fit. Prefer email first? Reach out below. Either path works.
         </p>
 
         <div className="w-full space-y-4 xs:space-y-6">
@@ -43,11 +42,21 @@ export function LetsWorkTogetherSection() {
 
         </div>
 
-        <Link href="/contact" className="flex justify-center w-full mt-4 xs:mt-6">
-          <Button className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm xs:text-base font-semibold">
-            Contact Me <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </Link>
+        <div className="flex flex-col xs:flex-row justify-center w-full gap-3 mt-4 xs:mt-6">
+          <Link href="/appointment" className="flex justify-center w-full xs:w-auto">
+            <Button className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm xs:text-base font-semibold">
+              Book a strategy call <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+          <Link href="/contact" className="flex justify-center w-full xs:w-auto">
+            <Button
+              variant="outline"
+              className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 border-zinc-300 dark:border-zinc-600 text-sm xs:text-base font-semibold"
+            >
+              Contact
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
