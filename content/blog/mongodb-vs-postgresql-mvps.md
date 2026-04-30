@@ -1,7 +1,7 @@
 ---
 title: "MongoDB vs PostgreSQL for MVPs: a pragmatic 10‑minute decision"
 description: "How to choose between MongoDB and Postgres for SaaS MVPs—schema flexibility, relations, reporting, hosting, and when to plan a migration later."
-date: "2026-04-15"
+date: "2025-03-14"
 tags:
   - MongoDB
   - PostgreSQL

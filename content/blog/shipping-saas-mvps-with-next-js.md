@@ -1,7 +1,7 @@
 ---
 title: "Shipping SaaS MVPs with Next.js: how I structure early releases"
 description: "How I scope, build, and iterate on small SaaS MVPs using Next.js—routing, APIs, auth-shaped holes, and when to defer complexity."
-date: "2026-02-14"
+date: "2023-12-04"
 tags:
   - Next.js
   - SaaS

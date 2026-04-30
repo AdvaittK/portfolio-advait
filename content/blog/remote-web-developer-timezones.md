@@ -1,7 +1,7 @@
 ---
 title: "Working with a remote web developer across time zones: what actually works"
 description: "Practical async collaboration patterns for US, EU, and India teams—standards for specs, reviews, deploys, and trust that keep projects moving without hero hours."
-date: "2026-04-22"
+date: "2025-10-20"
 tags:
   - Remote work
   - Process

@@ -25,12 +25,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/skills</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.advaitt.tech/services</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -68,43 +62,43 @@
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/nextjs-developer-portfolio-seo</loc>
-    <lastmod>2026-01-08</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/shipping-saas-mvps-with-next-js</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2023-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/web-performance-web-vitals-playbook</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2024-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/hire-freelance-full-stack-developer-india</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2024-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/react-vs-nextjs-company-website</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2024-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/mongodb-vs-postgresql-mvps</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2025-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.advaitt.tech/blog/remote-web-developer-timezones</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>

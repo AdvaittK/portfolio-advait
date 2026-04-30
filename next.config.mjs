@@ -25,6 +25,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@vercel/analytics', '@vercel/speed-insights'],
   },
+  async redirects() {
+    return [
+      {
+        source: "/skills",
+        destination: "/about",
+        permanent: true,
+      },
+    ]
+  },
   // Headers for caching and security
   async headers() {
     return [

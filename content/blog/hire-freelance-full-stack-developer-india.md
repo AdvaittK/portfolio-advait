@@ -1,7 +1,7 @@
 ---
 title: "How to hire a freelance full‑stack developer in India (without guesswork)"
 description: "A practical checklist for founders and agencies: vetting MERN and Next.js freelancers, contracts, time zones, and red flags—tuned for remote India hire scenarios."
-date: "2026-04-02"
+date: "2024-07-22"
 tags:
   - Hiring
   - Freelancing

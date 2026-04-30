@@ -1,7 +1,7 @@
 ---
 title: "React vs Next.js for your company website: which should you pick?"
 description: "A founder-friendly comparison of plain React SPAs vs Next.js for marketing sites, dashboards, and SEO—when each wins and what it costs to maintain."
-date: "2026-04-08"
+date: "2024-11-07"
 tags:
   - React
   - Next.js
@@ -16,7 +16,7 @@ Founders often hear “we’ll use **React**” and don’t realize that **how**
 - **React alone (SPA)**: one JS bundle, client‑rendered routes. Great for **logged‑in apps** where SEO barely matters.
 - **Next.js**: React + routing + server capabilities + static generation when you want it. Strong for **marketing pages**, docs, and mixed public/private apps.
 
-If your homepage must rank and load fast on mobile, **Next.js is usually the default** in 2026—not because React is “bad,” but because you get **sensible defaults** for HTML, metadata, and images.
+If your homepage must rank and load fast on mobile, **Next.js is usually the default** today—not because React is “bad,” but because you get **sensible defaults** for HTML, metadata, and images.
 
 ## When a SPA is still fine
 

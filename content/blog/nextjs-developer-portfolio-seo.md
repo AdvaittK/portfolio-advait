@@ -1,8 +1,8 @@
 ---
 title: "Next.js portfolio SEO: metadata, sitemaps, and structured data"
 description: "A practical checklist for ranking a developer portfolio built with Next.js App Router—without sacrificing performance or design."
-date: "2026-01-08"
-updated: "2026-01-08"
+date: "2023-09-12"
+updated: "2024-06-18"
 tags:
   - Next.js
   - SEO

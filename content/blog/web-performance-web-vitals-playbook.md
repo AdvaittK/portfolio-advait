@@ -1,7 +1,7 @@
 ---
 title: "Web performance for small teams: a Web Vitals playbook"
 description: "How to prioritize LCP, INP, and CLS when you do not have a dedicated performance team—measurement, budgets, and the fixes that pay off."
-date: "2026-03-22"
+date: "2024-03-18"
 tags:
   - Performance
   - Web Vitals
