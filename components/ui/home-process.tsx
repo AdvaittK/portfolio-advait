@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Compass, PenLine, Code2, Rocket } from "lucide-react"
-import { useIsMobile } from "@/hooks/use-mobile"
 
 const steps = [
   {
@@ -33,8 +32,6 @@ const steps = [
 ]
 
 export function HomeProcess() {
-  const isMobile = useIsMobile()
-
   return (
     <section className="px-4 xs:px-6 py-14 xs:py-16 sm:py-20 bg-gradient-to-b from-transparent via-zinc-50/30 to-transparent dark:via-zinc-900/20" data-scroll-section>
       <div className="max-w-6xl mx-auto">
@@ -57,10 +54,10 @@ export function HomeProcess() {
             return (
               <motion.div
                 key={step.title}
-                initial={isMobile ? false : { opacity: 0, y: 12 }}
-                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={isMobile ? undefined : { duration: 0.4, delay: index * 0.05 }}
+                initial={{ opacity: 1, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px -40px 0px" }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="flex gap-4 p-5 xs:p-6 rounded-2xl bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-300 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-900 text-sm font-bold text-zinc-700 dark:text-zinc-200">

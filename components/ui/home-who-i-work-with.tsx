@@ -5,7 +5,6 @@ import Link from "next/link"
 import { ArrowRight, Building2, Mic2, Factory } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { useIsMobile } from "@/hooks/use-mobile"
 
 const segments = [
   {
@@ -29,8 +28,6 @@ const segments = [
 ]
 
 export function HomeWhoIWorkWith() {
-  const isMobile = useIsMobile()
-
   return (
     <section className="px-4 xs:px-6 py-14 xs:py-16 sm:py-20" data-scroll-section>
       <div className="max-w-6xl mx-auto">
@@ -52,10 +49,10 @@ export function HomeWhoIWorkWith() {
             return (
               <motion.div
                 key={seg.title}
-                initial={isMobile ? false : { opacity: 0, y: 16 }}
-                whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={isMobile ? undefined : { duration: 0.4, delay: index * 0.06 }}
+                initial={{ opacity: 1, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px -40px 0px" }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
                 className="rounded-2xl p-6 xs:p-7 flex flex-col h-full bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm"
               >
                 <div className="flex items-center gap-3 mb-4">
