@@ -117,7 +117,7 @@ export default function Footer() {
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-zinc-900/30 to-zinc-900/50" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-3 gap-12">
           {/* Brand Section */}
           <motion.div 
             className="space-y-6"
@@ -153,7 +153,6 @@ export default function Footer() {
                 { name: "Home", href: "/" },
                 { name: "About", href: "/about" },
                 { name: "Projects", href: "/projects" },
-                { name: "Services", href: "/services" },
                 { name: "Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" }
               ].map((item, index) => (
@@ -171,36 +170,6 @@ export default function Footer() {
                     {item.name}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-zinc-600 to-zinc-400 group-hover:w-full transition-all duration-300" />
                   </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Services */}
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
-            <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Services</h3>
-            <ul className="space-y-3">
-              {[
-                "Web Development",
-                "Frontend Development",
-                "Backend Development",
-                "UI/UX Design"
-              ].map((service, index) => (
-                <motion.li 
-                  key={service}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="text-sm text-zinc-400"
-                >
-                  {service}
                 </motion.li>
               ))}
             </ul>
