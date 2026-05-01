@@ -40,7 +40,7 @@ export function HomeProcess() {
             Process
           </Badge>
           <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
-            How we work together
+            How We Work Together
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             A calm, predictable rhythm, so you always know what happens next. Typical marketing sites ship in about{" "}

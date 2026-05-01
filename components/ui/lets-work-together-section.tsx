@@ -8,8 +8,8 @@ export function LetsWorkTogetherSection() {
       className="w-full flex justify-center items-center pt-2 xs:pt-4 pb-8 xs:pb-12 sm:pb-16 px-4 xs:px-6 bg-transparent"
     >
       <div className="w-full max-w-3xl p-6 xs:p-8 sm:p-10 md:p-14 flex flex-col items-center text-center space-y-6 xs:space-y-8">
-        <h2 className="text-2xl xs:text-3xl md:text-4xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-          Ready for a serious build?
+        <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
+          Ready For A Serious Build?
         </h2>
         <p className="text-sm xs:text-base md:text-lg text-zinc-500 dark:text-zinc-400 mb-4 xs:mb-6 md:mb-8 max-w-lg mx-auto leading-relaxed">
           Book a strategy call to align on goals, timeline, and fit. Prefer email first? Reach out below. Either path works.

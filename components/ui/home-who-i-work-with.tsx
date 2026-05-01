@@ -36,7 +36,7 @@ export function HomeWhoIWorkWith() {
             Focus
           </Badge>
           <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
-            Who I work with
+            Who I Work With
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Purpose-built web experiences for teams that care how their brand feels before a prospect ever sends a message.

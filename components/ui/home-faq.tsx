@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { useIsMobile } from "@/hooks/use-mobile"
 
 const faqItems = [
   {
@@ -32,8 +31,6 @@ const faqItems = [
 ]
 
 export function HomeFaq() {
-  const isMobile = useIsMobile()
-
   return (
     <section className="px-4 xs:px-6 py-14 xs:py-16 sm:py-20 bg-gradient-to-b from-transparent via-zinc-50/30 to-transparent dark:via-zinc-900/20" data-scroll-section>
       <div className="max-w-3xl mx-auto">
@@ -42,7 +39,7 @@ export function HomeFaq() {
             FAQ
           </Badge>
           <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
-            Before you book
+            Before You Book
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground leading-relaxed">
             Straight answers so serious projects start with aligned expectations.
@@ -50,10 +47,10 @@ export function HomeFaq() {
         </div>
 
         <motion.div
-          initial={isMobile ? false : { opacity: 0, y: 10 }}
-          whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={isMobile ? undefined : { duration: 0.4 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.12, margin: "0px 0px -40px 0px" }}
+          transition={{ duration: 0.4 }}
           className="space-y-3"
         >
           {faqItems.map((item) => (

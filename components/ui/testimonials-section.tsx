@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { Quote, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { Button } from "./button"
+import { Badge } from "./badge"
 import {
 	Carousel,
 	CarouselContent,
@@ -159,28 +160,17 @@ export function TestimonialsSection() {
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 					viewport={{ once: true }}
-					className="text-center mb-12 sm:mb-14"
+					className="text-center mb-10 xs:mb-12 sm:mb-14"
 				>
-					<div className="flex items-center justify-center mb-3">
-						<span className="h-[1px] w-10 bg-gradient-to-r from-zinc-400/60 to-zinc-600/60 dark:from-zinc-500/60 dark:to-zinc-300/60"></span>
-						<span className="px-4 text-sm font-medium tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">
-							Testimonials
-						</span>
-						<span className="h-[1px] w-10 bg-gradient-to-r from-zinc-600/60 to-zinc-400/60 dark:from-zinc-300/60 dark:to-zinc-500/60"></span>
-					</div>
-
-					<h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-300 leading-tight">
+					<Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm xs:text-base">
+						Testimonials
+					</Badge>
+					<h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
 						What My Clients Say
 					</h2>
-
-					<p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-6">
-						Hear what some of my clients have to say about their experience
-						working with me
+					<p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+						Hear what some of my clients have to say about their experience working with me.
 					</p>
-
-					<div className="flex justify-center">
-						<div className="h-[3px] w-24 bg-gradient-to-r from-zinc-300/60 via-zinc-500/80 to-zinc-300/60 dark:from-zinc-600/60 dark:via-zinc-400/80 dark:to-zinc-600/60 rounded-full"></div>
-					</div>
 				</motion.div>
 
 				<div className="relative max-w-7xl mx-auto">

@@ -348,12 +348,12 @@ export function HomeFeaturedCaseStudies() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 sm:mb-10 max-w-3xl mx-auto">
-          <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm">Case studies</Badge>
+          <Badge className="px-3 py-1.5 bg-secondary text-secondary-foreground border-border mb-4 text-sm">Case Studies</Badge>
           <h2
             id="case-studies-heading"
             className="text-3xl xs:text-4xl md:text-5xl font-bold mb-3 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400"
           >
-            Selected client work
+            Selected Client Work
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed text-pretty">
             Browse previews below. Open any case for the full story, approach, and outcomes.
