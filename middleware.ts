@@ -6,23 +6,20 @@ export const config = {
 };
 
 export default function middleware(request: NextRequest) {
-  const { country } = geolocation(request);
-  const pathname = request.nextUrl.pathname;
+  try {
+    const { country } = geolocation(request);
+    const response = NextResponse.next();
+    const currency =
+      typeof country === 'string' && country === 'IN' ? 'INR' : 'USD';
 
-  const response = NextResponse.next();
-
-  if (country === 'IN') {
-    response.cookies.set('currency', 'INR', {
+    response.cookies.set('currency', currency, {
       maxAge: 60 * 60 * 24 * 30,
       path: '/',
     });
-  } else {
-    response.cookies.set('currency', 'USD', {
-      maxAge: 60 * 60 * 24 * 30,
-      path: '/',
-    });
+
+    return response;
+  } catch {
+    return NextResponse.next();
   }
-
-  return response;
 }
 
