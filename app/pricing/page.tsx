@@ -94,7 +94,7 @@ const tiers: Tier[] = [
     icon: Layers,
     cta: { label: "Start Pro Project", href: "/contact" },
     features: [
-      "8–9 fully designed, custom pages",
+      "5-6 pages, rest are quoted separately",
       "Bespoke UI tailored to your brand identity",
       "Advanced animations & micro-interactions",
       "Blog, portfolio or services listing module",
