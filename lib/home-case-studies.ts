@@ -33,6 +33,27 @@ export const homeCaseStudies: HomeCaseStudy[] = [
     quoteAttribution: "Kashyap Dwivedi, Owner, Crevo Studio",
   },
   {
+    id: "amrita-kunal",
+    clientLabel: "Amrita Kunal",
+    headline: "A healing brand website that feels calm and converts with clarity",
+    industryTags: ["Healer Coach", "Wellness", "Personal brand"],
+    problem:
+      "Amrita needed a website that felt emotionally aligned with her healing work while still making services, credibility, and booking options easy to understand.",
+    approach: [
+      "Built a soft, premium visual system with clear section rhythm.",
+      "Framed her philosophy, offerings, and audience outcomes without heavy jargon.",
+      "Created a frictionless CTA path for enquiries and discovery sessions.",
+    ],
+    outcomes: [
+      "A clearer digital identity that reflects both warmth and professionalism.",
+      "Higher trust at first glance through stronger structure and storytelling.",
+      "Simpler visitor journeys from first scroll to contact intent.",
+    ],
+    quote:
+      "Advait understood the tone I wanted from day one - calm, grounded, and professional. He translated my work beautifully online, and now people immediately understand what I do and feel comfortable reaching out.",
+    quoteAttribution: "Amrita Kunal, Healer Coach",
+  },
+  {
     id: "asoka-ferrocast",
     clientLabel: "Asoka Ferrocast",
     headline: "Corporate credibility for industrial buyers",

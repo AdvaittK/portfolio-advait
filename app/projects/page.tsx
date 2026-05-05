@@ -76,6 +76,30 @@ export default function ProjectsPage() {
       year: 2026,
     },
     {
+      id: "amrita-kunal",
+      title: "Amrita Kunal - Healer Coach Personal Brand Website",
+      description:
+        "A serene, trust-first personal brand website for Amrita Kunal, designed to communicate her healing philosophy and guide visitors toward bookings.",
+      longDescription:
+        "Amrita Kunal's website was crafted to balance warmth and clarity so visitors quickly understand her work as a healer coach and feel confident taking the next step. The structure combines grounded storytelling, trust-building sections, and a clean conversion path for discovery calls and enquiries.",
+      tags: ["Personal Brand", "Healer Coach", "Wellness", "Coaching", "Conversion"],
+      image: "/assets/projects/ak.png",
+      demoLink: "https://www.amritakunal.com/",
+      githubLink: "",
+      showSourceCode: false,
+      features: [
+        "Calm, premium visual direction aligned with a healing brand",
+        "Clear service pathways for sessions and coaching journeys",
+        "Trust-focused sections with story, outcomes, and FAQs",
+        "High-converting consultation and contact CTA flow",
+        "Mobile-first layout for frictionless browsing",
+        "Performance and SEO-ready build for discoverability"
+      ],
+      category: "Personal Brand Website",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      year: 2026,
+    },
+    {
       id: "asoka-ferrocast",
       title: "Asoka Ferrocast – Steel Pipes Distribution",
       description: "A trusted corporate website for a steel pipes distributor, built to communicate reliability, technical expertise, and infrastructure-focused support.",

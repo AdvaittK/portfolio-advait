@@ -17,6 +17,14 @@ export const testimonials: Testimonial[] = [
     projectLink: "https://www.crevostudio.in/",
   },
   {
+    name: "Amrita Kunal",
+    role: "Healer Coach",
+    image: "/assets/clients/amrita%20(1).webp",
+    content:
+      "Advait understood the tone I wanted from day one - calm, grounded, and professional. He translated my work beautifully online, and now people immediately understand what I do and feel comfortable reaching out.",
+    projectLink: "https://www.amritakunal.com/",
+  },
+  {
     name: "Management Team, Asoka Ferrocast",
     role: "Asoka Ferrocast",
     image: "/assets/clients/asokaimg.png",
