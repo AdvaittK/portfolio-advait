@@ -272,7 +272,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories.",
     tags: ["E-Commerce", "Next.js", "Tailwind CSS"],
     image: "/assets/projects/kixkart.webp",
-    demoLink: "https://www.kixkart.advaitt.dev/",
+    demoLink: "https://kixkart.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/kixkart",
     features: [
       "Fully responsive e-commerce UI with shopping cart and wishlist",
@@ -290,7 +290,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
     image: "/assets/projects/pulseboard.webp",
-    demoLink: "https://www.pulseboard.advaitt.dev/",
+    demoLink: "https://pulseboard.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/pulse-board-main",
     features: [
       "Responsive dashboard layouts with modern UI/UX",
@@ -362,7 +362,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "JSON Gen is a comprehensive developer utility designed to simplify the creation of mock data for frontend development and testing. It offers a robust schema editor, template system, and API endpoint simulation features to help developers prototype and test applications efficiently.",
     tags: ["Developer Tool", "JSON", "React", "TypeScript", "API Mocking"],
     image: "/assets/projects/jsonge.webp",
-    demoLink: "https://www.jsongen.advaitt.dev/",
+    demoLink: "https://jsongen.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/json-generator",
     features: [
       "Visual schema editor for custom JSON structures",
