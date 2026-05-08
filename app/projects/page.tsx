@@ -389,7 +389,7 @@ export default function ProjectsPage() {
       longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form. The site is optimized for performance, accessibility, and SEO, and includes integrations such as Vercel Analytics and Open Graph meta tags for rich social sharing. Designed and developed from scratch, it reflects my design sensibility and technical skills.",
       tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel", "Portfolio"],
       image: "/new_homepage.png",
-      demoLink: "https://advaitt.dev",
+      demoLink: "https://advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/portfolio-advait",
       features: [
         "Fully responsive, custom-designed UI",

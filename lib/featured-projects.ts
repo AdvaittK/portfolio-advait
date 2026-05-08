@@ -308,7 +308,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "SymtoLink is a healthcare technology platform that combines AI algorithms with medical knowledge to help users analyze their symptoms, understand potential conditions, and find appropriate care. The platform features a user-friendly interface for symptom input, analysis reports, and healthcare provider connections.",
     tags: ["Healthcare Tech", "AI", "Next.js", "React", "TailwindCSS"],
     image: "/assets/projects/symptolink.webp",
-    demoLink: "https://symptolink.advaitt.dev",
+    demoLink: "https://symptolink.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/symtolink",
     features: [
       "Intuitive symptom input interface",
@@ -326,7 +326,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
     image: "/new_homepage.png",
-    demoLink: "https://advaitt.dev",
+    demoLink: "https://advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/portfolio-advait",
     features: [
       "Fully responsive, custom-designed UI",
@@ -344,7 +344,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "TruthSense is an advanced fact-checking platform that leverages artificial intelligence to analyze claims against a database of trusted sources. Users can submit statements or URLs for verification, and the system provides reliability scores, source citations, and context to help combat misinformation.",
     tags: ["AI", "NLP", "React", "Node.js", "TailwindCSS"],
     image: "/assets/projects/truthsense.webp",
-    demoLink: "https://truthsense.advaitt.dev",
+    demoLink: "https://truthsense.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/truthsense",
     features: [
       "Text and URL submission for fact checking",
