@@ -236,7 +236,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process.",
     tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS"],
     image: "/assets/projects/royal-sarees.webp",
-    demoLink: "https://royalsarees.advaitt.tech/",
+    demoLink: "https://royalsarees.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/saree-ecommerce",
     features: [
       "Elegant product showcase with high-quality imagery",
@@ -254,7 +254,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "CardHint is a modern web application designed to help users compare credit cards and find the best options for their needs. It features a user-friendly interface, advanced filtering options, and detailed information on various credit cards.",
     tags: ["Finance", "Next.js", "Tailwind CSS"],
     image: "/assets/projects/cardhint-app.webp",
-    demoLink: "https://cardhint.advaitt.tech/",
+    demoLink: "https://cardhint.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/cardhint",
     features: [
       "Smart credit card recommendations powered by expert insights",
@@ -272,7 +272,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories.",
     tags: ["E-Commerce", "Next.js", "Tailwind CSS"],
     image: "/assets/projects/kixkart.webp",
-    demoLink: "https://www.kixkart.advaitt.tech/",
+    demoLink: "https://www.kixkart.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/kixkart",
     features: [
       "Fully responsive e-commerce UI with shopping cart and wishlist",
@@ -290,7 +290,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
     image: "/assets/projects/pulseboard.webp",
-    demoLink: "https://www.pulseboard.advaitt.tech/",
+    demoLink: "https://www.pulseboard.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/pulse-board-main",
     features: [
       "Responsive dashboard layouts with modern UI/UX",
@@ -308,7 +308,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "SymtoLink is a healthcare technology platform that combines AI algorithms with medical knowledge to help users analyze their symptoms, understand potential conditions, and find appropriate care. The platform features a user-friendly interface for symptom input, analysis reports, and healthcare provider connections.",
     tags: ["Healthcare Tech", "AI", "Next.js", "React", "TailwindCSS"],
     image: "/assets/projects/symptolink.webp",
-    demoLink: "https://symptolink.advaitt.tech",
+    demoLink: "https://symptolink.advaitt.dev",
     githubLink: "https://github.com/AdvaittK/symtolink",
     features: [
       "Intuitive symptom input interface",
@@ -326,7 +326,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
     image: "/new_homepage.png",
-    demoLink: "https://advaitt.tech",
+    demoLink: "https://advaitt.dev",
     githubLink: "https://github.com/AdvaittK/portfolio-advait",
     features: [
       "Fully responsive, custom-designed UI",
@@ -344,7 +344,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "TruthSense is an advanced fact-checking platform that leverages artificial intelligence to analyze claims against a database of trusted sources. Users can submit statements or URLs for verification, and the system provides reliability scores, source citations, and context to help combat misinformation.",
     tags: ["AI", "NLP", "React", "Node.js", "TailwindCSS"],
     image: "/assets/projects/truthsense.webp",
-    demoLink: "https://truthsense.advaitt.tech",
+    demoLink: "https://truthsense.advaitt.dev",
     githubLink: "https://github.com/AdvaittK/truthsense",
     features: [
       "Text and URL submission for fact checking",
@@ -362,7 +362,7 @@ export const featuredProjects: FeaturedProject[] = [
     longDescription: "JSON Gen is a comprehensive developer utility designed to simplify the creation of mock data for frontend development and testing. It offers a robust schema editor, template system, and API endpoint simulation features to help developers prototype and test applications efficiently.",
     tags: ["Developer Tool", "JSON", "React", "TypeScript", "API Mocking"],
     image: "/assets/projects/jsonge.webp",
-    demoLink: "https://www.jsongen.advaitt.tech/",
+    demoLink: "https://www.jsongen.advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/json-generator",
     features: [
       "Visual schema editor for custom JSON structures",

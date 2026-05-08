@@ -1,6 +1,6 @@
 /** Safe to import from Client Components — no Node built-ins. */
 
-export const SITE_URL = "https://www.advaitt.tech"
+export const SITE_URL = "https://advaitt.dev"
 export const BLOG_AUTHOR = "Advait"
 
 export type BlogFrontmatter = {

@@ -1,103 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.advaitt.tech/</loc>
+    <loc>https://advaitt.dev/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/about</loc>
+    <loc>https://advaitt.dev/about</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/pricing</loc>
+    <loc>https://advaitt.dev/pricing</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/projects</loc>
+    <loc>https://advaitt.dev/projects</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/services</loc>
+    <loc>https://advaitt.dev/services</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/appointment</loc>
+    <loc>https://advaitt.dev/appointment</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog</loc>
+    <loc>https://advaitt.dev/blog</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/contact</loc>
+    <loc>https://advaitt.dev/contact</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/privacy-policy</loc>
+    <loc>https://advaitt.dev/privacy-policy</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/terms-of-service</loc>
+    <loc>https://advaitt.dev/terms-of-service</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/nextjs-developer-portfolio-seo</loc>
+    <loc>https://advaitt.dev/blog/nextjs-developer-portfolio-seo</loc>
     <lastmod>2024-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/shipping-saas-mvps-with-next-js</loc>
+    <loc>https://advaitt.dev/blog/shipping-saas-mvps-with-next-js</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/web-performance-web-vitals-playbook</loc>
+    <loc>https://advaitt.dev/blog/web-performance-web-vitals-playbook</loc>
     <lastmod>2024-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/hire-freelance-full-stack-developer-india</loc>
+    <loc>https://advaitt.dev/blog/hire-freelance-full-stack-developer-india</loc>
     <lastmod>2024-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/react-vs-nextjs-company-website</loc>
+    <loc>https://advaitt.dev/blog/react-vs-nextjs-company-website</loc>
     <lastmod>2024-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/mongodb-vs-postgresql-mvps</loc>
+    <loc>https://advaitt.dev/blog/mongodb-vs-postgresql-mvps</loc>
     <lastmod>2025-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://www.advaitt.tech/blog/remote-web-developer-timezones</loc>
+    <loc>https://advaitt.dev/blog/remote-web-developer-timezones</loc>
     <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

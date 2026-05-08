@@ -11,6 +11,7 @@ import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
+import { SITE_URL } from "@/lib/blog-config"
 import AOSProvider from "@/components/aos-provider"
 import ServiceWorkerRegister from "@/components/service-worker-register"
 import SmoothScrollProvider from "@/components/smooth-scroll-provider"
@@ -35,7 +36,7 @@ const dmSans = localFont({
 // Already provides --font-geist-sans variable
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.advaitt.tech'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Advait | Developer Portfolio",
     template: "%s | Advait"
@@ -126,7 +127,7 @@ export const metadata: Metadata = {
     "modern web development",
     "frontend backend developer"
   ],
-  authors: [{ name: "Advait", url: "https://www.advaitt.tech" }],
+  authors: [{ name: "Advait", url: SITE_URL }],
   creator: "Advait",
   publisher: "Advait",
   robots: {
@@ -141,18 +142,18 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.advaitt.tech"
+    canonical: SITE_URL
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.advaitt.tech/',
+    url: SITE_URL,
     siteName: 'Advait | Developer Portfolio',
     title: 'Advait | Developer Portfolio',
     description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
     images: [
       {
-        url: 'https://www.advaitt.tech/new_homepage.png',
+        url: `${SITE_URL}/new_homepage.png`,
         width: 1200,
         height: 630,
         alt: 'Advait - Full Stack Developer Portfolio',
@@ -163,7 +164,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Advait | Developer Portfolio',
     description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
-    images: ['https://www.advaitt.tech/new_homepage.png'],
+    images: [`${SITE_URL}/new_homepage.png`],
     creator: '@advaittt_dev',
   },
   icons: {
@@ -265,8 +266,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "Advait - Full Stack Developer",
-              "image": "https://www.advaitt.tech/assets/people/advait.webp",
-              "url": "https://www.advaitt.tech",
+              "image": `${SITE_URL}/assets/people/advait.webp`,
+              "url": SITE_URL,
               "telephone": "+919975556093",
               "email": "advaitt.dev@gmail.com",
               "address": {
@@ -309,8 +310,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Advait",
-              "url": "https://www.advaitt.tech",
-              "image": "https://www.advaitt.tech/assets/people/advait.webp",
+              "url": SITE_URL,
+              "image": `${SITE_URL}/assets/people/advait.webp`,
               "sameAs": [
                 "https://github.com/AdvaittK",
                 "https://x.com/advaittt_dev",
@@ -361,11 +362,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Advait - Full Stack Developer Portfolio",
-              "url": "https://www.advaitt.tech",
+              "url": SITE_URL,
               "description": "Professional portfolio of Advait, a full stack developer specializing in React, Node.js, and modern web technologies",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.advaitt.tech/projects?search={search_term_string}",
+                "target": `${SITE_URL}/projects?search={search_term_string}`,
                 "query-input": "required name=search_term_string"
               }
             })

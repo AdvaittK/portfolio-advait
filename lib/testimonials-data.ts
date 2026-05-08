@@ -93,7 +93,7 @@ export const testimonials: Testimonial[] = [
     image: "/assets/clients/cardhint.webp",
     content:
       "Working with Advait on the makeover of CardHint.com was a fantastic experience. He brought fresh design ideas, improved the site's performance, and delivered everything on time with attention to detail. The upgrade has made a huge difference in both usability and visual appeal.",
-    projectLink: "https://cardhint.advaitt.tech/",
+    projectLink: "https://cardhint.advaitt.dev/",
   },
   {
     name: "Lalith Kumar",
@@ -101,6 +101,6 @@ export const testimonials: Testimonial[] = [
     image: "/assets/clients/royal.webp",
     content:
       "Advait did a fantastic job with our Royal Sarees website. He understood exactly what we needed and delivered a clean, elegant design that really showcases our brand. Super easy to work with and very professional throughout.",
-    projectLink: "https://royalsarees.advaitt.tech/",
+    projectLink: "https://royalsarees.advaitt.dev/",
   },
 ]

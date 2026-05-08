@@ -3,6 +3,6 @@ Allow: /
 
 Disallow: /api/
 
-Sitemap: https://www.advaitt.tech/sitemap.xml
+Sitemap: https://advaitt.dev/sitemap.xml
 
-Host: www.advaitt.tech
+Host: advaitt.dev

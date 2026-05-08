@@ -302,7 +302,7 @@ export default function ProjectsPage() {
       longDescription: "CardHint is a smart financial platform designed to simplify credit card discovery and comparison for Indian consumers. The website features a clean, intuitive interface that helps users evaluate credit cards based on rewards, fees, and financial goals. Built with modern web technologies, the platform includes advanced filtering, expert-curated content, and a secure, performance-optimized structure. CardHint empowers users to make confident financial decisions while navigating a clutter-free, user-first experience.",
       tags: ["Upgrade","Community", "Finance","Next.js", "React", "TypeScript"],
       image: "/assets/projects/cardhint-app.webp",
-      demoLink: "https://cardhint.advaitt.tech/",
+      demoLink: "https://cardhint.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/cardhint",
       showSourceCode: false,
       features: [
@@ -346,7 +346,7 @@ export default function ProjectsPage() {
       longDescription: "Royal Sarees is a sophisticated e-commerce platform dedicated to showcasing premium Indian ethnic wear. The website features a rich, elegant design that highlights the intricate details of traditional Indian garments while providing a seamless shopping experience. Built with modern web technologies, it offers advanced filtering, detailed product views, and a secure checkout process. The platform celebrates Indian craftsmanship while making it accessible to a global audience.",
       tags: ["E-Commerce", "Next.js", "React", "TypeScript", "TailwindCSS", "Indian Fashion"],
       image: "/assets/projects/royal-sarees.webp",
-      demoLink: "https://royalsarees.advaitt.tech/",
+      demoLink: "https://royalsarees.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/saree-ecommerce",
       showSourceCode: false,
       features: [
@@ -368,7 +368,7 @@ export default function ProjectsPage() {
       longDescription: "PulseBoard is a sleek and responsive dashboard web application designed to demonstrate advanced frontend patterns and UI/UX principles. Built with Next.js 15, React 19, and TypeScript, it features dynamic charts, dark/light theme switching, and comprehensive UI components for dashboards, user profiles, and subscription management. Although it doesn't include real backend functionality, PulseBoard simulates API behavior using mock data and API utilities, allowing full interaction with charts, tables, and flows like login, registration, and subscription comparison. It's an ideal project for showcasing frontend skills and component-based architecture in a professional portfolio.",
       tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn", "Charts", "Mock Backend"],
       image: "/assets/projects/pulseboard.webp",
-      demoLink: "https://www.pulseboard.advaitt.tech/",
+      demoLink: "https://www.pulseboard.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/pulse-board-main",
       features: [
         "Responsive dashboard layouts with modern UI/UX",
@@ -389,7 +389,7 @@ export default function ProjectsPage() {
       longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form. The site is optimized for performance, accessibility, and SEO, and includes integrations such as Vercel Analytics and Open Graph meta tags for rich social sharing. Designed and developed from scratch, it reflects my design sensibility and technical skills.",
       tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel", "Portfolio"],
       image: "/new_homepage.png",
-      demoLink: "https://advaitt.tech",
+      demoLink: "https://advaitt.dev",
       githubLink: "https://github.com/AdvaittK/portfolio-advait",
       features: [
         "Fully responsive, custom-designed UI",
@@ -411,7 +411,7 @@ export default function ProjectsPage() {
       longDescription: "KixKart is a modern, cyberpunk-themed e-commerce web application designed for sneakerheads and streetwear enthusiasts. It offers a visually striking interface and smooth shopping experience for users browsing high-end sneakers across categories like running, basketball, lifestyle, training, and exclusive drops. Built with Next.js 15 and styled using Tailwind CSS, the platform features category-based navigation, detailed product pages, a responsive shopping cart, a wishlist system, and user account management. Its frontend leverages advanced tools like Framer Motion for animations, shadcn/ui and Radix UI for sleek components, and form validation using React Hook Form and Zod. The project also includes newsletter subscription and toast notifications, bringing the feel of a premium online store.",
       tags: ["E-Commerce", "Next.js", "Tailwind CSS", "TypeScript", "Radix UI", "Shadcn UI", "Cyberpunk Design"],
       image: "/assets/projects/kixkart.webp",
-      demoLink: "https://www.kixkart.advaitt.tech/",
+      demoLink: "https://www.kixkart.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/kixkart",
       features: [
         "Fully responsive e-commerce UI with shopping cart and wishlist",
@@ -433,7 +433,7 @@ export default function ProjectsPage() {
       longDescription: "JSONAI is a powerful, user-friendly platform designed to simplify JSON file creation and editing. Whether you're a developer crafting complex structures or a beginner learning JSON, JSONAI adapts to your needs. It features three interactive modes: a code editor for hands-on coding, visual mode for drag-and-drop structure building, and an AI-powered assistant that can generate or modify JSON using natural language prompts. The intuitive interface, real-time preview, and error highlighting make JSONAI a versatile tool for building APIs, configuration files, and structured data.",
       tags: ["React", "JavaScript", "AI", "JSON", "TailwindCSS"],
       image: "/assets/projects/jsonge.webp",
-      demoLink: "https://www.jsongen.advaitt.tech/",
+      demoLink: "https://www.jsongen.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/json-generator",
       features: [
         "Three editing modes: Code, Visual, and AI-driven",
@@ -454,7 +454,7 @@ export default function ProjectsPage() {
       longDescription: "SymptoLink is an intelligent healthcare platform that empowers users to understand their symptoms, explore possible diagnoses, locate nearby healthcare professionals, and access emergency resources. Built using Next.js, TypeScript, Firebase, and OpenAI, SymptoLink combines responsive design with real-world utility. The application features AI-powered symptom checking, secure authentication via Firebase, internationalization support, and an intuitive UI built with Shadcn components. Though primarily frontend-driven, SymptoLink integrates with Firestore and simulates backend interactions, making it a robust full-stack showcase for healthcare tech.",
       tags: ["Next.js", "React", "TypeScript", "Firebase", "OpenAI", "TailwindCSS", "Healthcare", "AI"],
       image: "/assets/projects/symptolink.webp",
-      demoLink: "https://www.symptolink.advaitt.tech/",
+      demoLink: "https://www.symptolink.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/SymptoLink",
       features: [
         "AI-powered Symptom Checker using OpenAI",
@@ -477,7 +477,7 @@ export default function ProjectsPage() {
       longDescription: "TruthSense is a cutting-edge deception detection platform that uses deep learning to analyze video inputs for signs of lying. By combining Convolutional Neural Networks (CNNs) with Long Short-Term Memory (LSTM) networks, the system evaluates both spatial and temporal features, such as facial micro-expressions, vocal stress levels, and body movements. The frontend is developed using Next.js and Tailwind CSS, providing a sleek, responsive interface, while the backend is powered by FastAPI, PyTorch, OpenCV, and Librosa for deep behavior analysis. Users can upload videos, train custom models, and view detailed feature-level breakdowns of deception indicators. Though not intended for legal or diagnostic purposes, TruthSense offers a compelling research and educational tool in behavioral analysis.",
       tags: ["AI", "CNN-LSTM", "Computer Vision", "Next.js", "FastAPI", "PyTorch", "TailwindCSS", "Lie Detection", "Audio Processing"],
       image: "/assets/projects/truthsense.webp",
-      demoLink: "https://www.truthsense.advaitt.tech/",
+      demoLink: "https://www.truthsense.advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/TruthSense",
       features: [
         "Upload and analyze videos for signs of deception",

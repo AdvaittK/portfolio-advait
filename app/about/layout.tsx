@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { SITE_URL } from "@/lib/blog-config"
 
 const mergedKeywords = [
   "Advait full stack developer",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     title: "About Advait | Full-stack expertise, stack & certifications",
     description:
       "Expert-level work across React, Node.js, MERN stack, TypeScript, databases, APIs, and modern web technologies — with the story and credentials behind it.",
-    url: "https://www.advaitt.tech/about",
+    url: `${SITE_URL}/about`,
     images: [{ url: "/new_homepage.png", width: 1200, height: 630 }],
   },
   alternates: {

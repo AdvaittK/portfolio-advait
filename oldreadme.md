@@ -13,7 +13,7 @@
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://advaitt.tech)
+[View Live Demo](https://advaitt.dev)
 
 
 ## ✨ Features
@@ -134,6 +134,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- Website: [advaitt.tech](https://advaitt.tech)
+- Website: [advaitt.dev](https://advaitt.dev)
 - Email: advaitt.dev@gmail.com
 
