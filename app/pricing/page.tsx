@@ -64,7 +64,7 @@ const tiers: Tier[] = [
     name: "Starter",
     tagline: "A polished online presence that makes the right first impression.",
     bestFor: "Solo founders, freelancers & small businesses",
-    inr: 9999,
+    inr: 11999,
     usd: 249,
     priceSuffix: "one-time",
     icon: Rocket,
