@@ -11,6 +11,7 @@ export type HomeCaseStudy = {
 }
 
 export const homeCaseStudies: HomeCaseStudy[] = [
+  // Preferred top order
   {
     id: "crevo-studio",
     clientLabel: "Crevo Studio",
@@ -33,27 +34,6 @@ export const homeCaseStudies: HomeCaseStudy[] = [
     quoteAttribution: "Kashyap Dwivedi, Owner, Crevo Studio",
   },
   {
-    id: "amrita-kunal",
-    clientLabel: "Amrita Kunal",
-    headline: "A healing brand website that feels calm and converts with clarity",
-    industryTags: ["Healer Coach", "Wellness", "Personal brand"],
-    problem:
-      "Amrita needed a website that felt emotionally aligned with her healing work while still making services, credibility, and booking options easy to understand.",
-    approach: [
-      "Built a soft, premium visual system with clear section rhythm.",
-      "Framed her philosophy, offerings, and audience outcomes without heavy jargon.",
-      "Created a frictionless CTA path for enquiries and discovery sessions.",
-    ],
-    outcomes: [
-      "A clearer digital identity that reflects both warmth and professionalism.",
-      "Higher trust at first glance through stronger structure and storytelling.",
-      "Simpler visitor journeys from first scroll to contact intent.",
-    ],
-    quote:
-      "Advait understood the tone I wanted from day one - calm, grounded, and professional. He translated my work beautifully online, and now people immediately understand what I do and feel comfortable reaching out.",
-    quoteAttribution: "Amrita Kunal, Healer Coach",
-  },
-  {
     id: "asoka-ferrocast",
     clientLabel: "Asoka Ferrocast",
     headline: "Corporate credibility for industrial buyers",
@@ -73,6 +53,76 @@ export const homeCaseStudies: HomeCaseStudy[] = [
     quote:
       "The website feels clean, professional, and true to our brand. It makes our work easy to understand and gives us a strong online presence.",
     quoteAttribution: "Management Team, Asoka Ferrocast",
+  },
+  {
+    id: "oriental-air-ship-services",
+    clientLabel: "Oriental Air & Ship Services",
+    headline: "Logistics legacy made legible online",
+    industryTags: ["Logistics", "Enterprise", "Services"],
+    problem:
+      "A 40+ year logistics brand needed a contemporary site that still felt trustworthy to government and enterprise partners.",
+    approach: [
+      "Emphasized reliability, scope of services, and ease of navigation.",
+      "Used restrained layout systems suited to formal procurement audiences.",
+      "Ensured clarity for dense service categories and contact flows.",
+    ],
+    outcomes: [
+      "Professional first touch for PSU, government, and B2B stakeholders.",
+      "Service breadth communicated without overwhelming visitors.",
+      "Responsive, accessible UI aligned with enterprise expectations.",
+    ],
+    quote:
+      "Advait did an amazing job creating Oriental's website! He really captured the professionalism and trust we've built over 40 years in logistics.",
+    quoteAttribution: "Management, Oriental Air & Ship Services",
+  },
+  {
+    id: "dems-portfolio",
+    clientLabel: "Dem",
+    headline: "Thumbnail design portfolio built to showcase craft",
+    industryTags: ["Design", "Thumbnails", "Portfolio"],
+    problem: "Needed a focused portfolio site that highlights thumbnails and case studies clearly.",
+    approach: ["Structured gallery for rapid scanning","Showcased case studies with before/after thumbnails","Simple contact/commission flow"],
+    outcomes: ["Clear spotlight on craft","Better discovery for potential clients","Streamlined commission onboarding"],
+  },
+  {
+    id: "sizzle-studios",
+    clientLabel: "Sizzle Studios",
+    headline: "Creative portfolio showcasing studio work",
+    industryTags: ["Creative", "Design", "Portfolio"],
+    problem: "Needed an elegant, image-first portfolio to present high-end creative work.",
+    approach: ["Large visual gallery","Focused case studies","Polished contact flows"],
+    outcomes: ["Stronger lead generation","Elevated brand perception","Improved client vetting via case studies"],
+  },
+  {
+    id: "vitira-website",
+    clientLabel: "VITIRA",
+    headline: "Business website transformation for clarity and performance",
+    industryTags: ["Business", "Website", "UI/UX"],
+    problem: "A business site that needed clearer messaging and faster performance.",
+    approach: ["Refined information architecture","Performance-focused build","Clear contact flows"],
+    outcomes: ["Higher engagement","Improved clarity of services","Faster page loads"],
+  },
+  // Remaining studies (preserve existing order)
+  {
+    id: "amrita-kunal",
+    clientLabel: "Amrita Kunal",
+    headline: "A healing brand website that feels calm and converts with clarity",
+    industryTags: ["Healer Coach", "Wellness", "Personal brand"],
+    problem:
+      "Amrita needed a website that felt emotionally aligned with her healing work while still making services, credibility, and booking options easy to understand.",
+    approach: [
+      "Built a soft, premium visual system with clear section rhythm.",
+      "Framed her philosophy, offerings, and audience outcomes without heavy jargon.",
+      "Created a frictionless CTA path for enquiries and discovery sessions.",
+    ],
+    outcomes: [
+      "A clearer digital identity that reflects both warmth and professionalism.",
+      "Higher trust at first glance through stronger structure and storytelling.",
+      "Simpler visitor journeys from first scroll to contact intent.",
+    ],
+    quote:
+      "Advait understood the tone I wanted from day one - calm, grounded, and professional. He translated my work beautifully online, and now people immediately understand what I do and feel comfortable reaching out.",
+    quoteAttribution: "Amrita Kunal, Healer Coach",
   },
   {
     id: "cult-of-content-agency",
@@ -134,25 +184,5 @@ export const homeCaseStudies: HomeCaseStudy[] = [
       "The website looks perfect and came out beautifully. I’m really happy with the result. Thank you!",
     quoteAttribution: "Shweta Mishra, Quantum Manifestation Coach",
   },
-  {
-    id: "oriental-air-ship-services",
-    clientLabel: "Oriental Air & Ship Services",
-    headline: "Logistics legacy made legible online",
-    industryTags: ["Logistics", "Enterprise", "Services"],
-    problem:
-      "A 40+ year logistics brand needed a contemporary site that still felt trustworthy to government and enterprise partners.",
-    approach: [
-      "Emphasized reliability, scope of services, and ease of navigation.",
-      "Used restrained layout systems suited to formal procurement audiences.",
-      "Ensured clarity for dense service categories and contact flows.",
-    ],
-    outcomes: [
-      "Professional first touch for PSU, government, and B2B stakeholders.",
-      "Service breadth communicated without overwhelming visitors.",
-      "Responsive, accessible UI aligned with enterprise expectations.",
-    ],
-    quote:
-      "Advait did an amazing job creating Oriental's website! He really captured the professionalism and trust we've built over 40 years in logistics.",
-    quoteAttribution: "Management, Oriental Air & Ship Services",
-  },
+  
 ]

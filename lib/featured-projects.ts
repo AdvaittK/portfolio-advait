@@ -10,7 +10,7 @@
   features: string[]
 }
 
-export const featuredProjects: FeaturedProject[] = [
+const _featuredProjects: FeaturedProject[] = [
   {
     id: "crevo-studio",
     title: "Crevo Studio – Thumbnail + Title Agency",
@@ -373,6 +373,21 @@ export const featuredProjects: FeaturedProject[] = [
       "Export options for various formats"
     ]
   }
+]
+
+// Preferred ordering for featured projects (moved to front)
+const _preferredOrder = [
+  "crevo-studio",
+  "asoka-ferrocast",
+  "oriental-air-ship-services",
+  "dems-portfolio",
+  "sizzle-studios",
+  "vitira-website",
+]
+
+export const featuredProjects: FeaturedProject[] = [
+  ..._preferredOrder.map((id) => _featuredProjects.find((p) => p.id === id)!).filter(Boolean),
+  ..._featuredProjects.filter((p) => !_preferredOrder.includes(p.id)),
 ]
 
 /** Matches the number of projects on /projects; keep arrays in sync when adding work. */

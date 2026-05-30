@@ -47,11 +47,26 @@ function CaseStudyHeading({
 }) {
   if (variant === "dialog") {
     return (
-      <DialogHeader className="text-left pr-7 sm:pr-8 space-y-1 sm:space-y-1.5">
-        <DialogTitle className="text-[0.9rem] sm:text-2xl font-bold tracking-tight leading-tight">{study.clientLabel}</DialogTitle>
-        <DialogDescription className="text-[11px] sm:text-base text-foreground/80 font-medium leading-snug">
-          {study.headline}
-        </DialogDescription>
+      <DialogHeader className="text-left pr-7 sm:pr-8">
+        <div className="flex items-start sm:items-center justify-between gap-4">
+          <div className="space-y-1 sm:space-y-1.5">
+            <DialogTitle className="text-[0.9rem] sm:text-2xl font-bold tracking-tight leading-tight">{study.clientLabel}</DialogTitle>
+            <DialogDescription className="text-[11px] sm:text-base text-foreground/80 font-medium leading-snug">
+              {study.headline}
+            </DialogDescription>
+          </div>
+
+          <div className="hidden sm:flex sm:flex-wrap sm:gap-2">
+            {study.industryTags.map((t) => (
+              <span
+                key={t}
+                className="text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-secondary text-secondary-foreground"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
       </DialogHeader>
     )
   }
@@ -66,9 +81,11 @@ function CaseStudyHeading({
 function CaseStudyDetailBody({
   study,
   project,
+  showQuote = true,
 }: {
   study: HomeCaseStudy
   project: NonNullable<ReturnType<typeof projectForId>>
+  showQuote?: boolean
 }) {
   return (
     <>
@@ -116,7 +133,7 @@ function CaseStudyDetailBody({
         </div>
       </div>
 
-      {study.quote ? (
+      {study.quote && showQuote ? (
         <blockquote className="rounded-lg sm:rounded-xl border-l-2 border-primary bg-muted/25 pl-2.5 pr-2 py-2 sm:pl-4 sm:pr-3 sm:py-3 text-[11px] sm:text-sm italic text-foreground/90">
           “{study.quote}”
           {study.quoteAttribution ? (
@@ -153,7 +170,7 @@ function CaseStudyModalContent({
   return (
     <>
       <CaseStudyHeading study={study} variant="dialog" />
-      <CaseStudyDetailBody study={study} project={project} />
+      <CaseStudyDetailBody study={study} project={project} showQuote={false} />
     </>
   )
 }

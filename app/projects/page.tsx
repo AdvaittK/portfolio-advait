@@ -493,17 +493,32 @@ export default function ProjectsPage() {
     },
   ]
 
+  // Preferred ordering for projects page: move these IDs to the front
+  const preferredOrderIds = [
+    "crevo-studio",
+    "asoka-ferrocast",
+    "oriental-air-ship-services",
+    "dems-portfolio",
+    "sizzle-studios",
+    "vitira-website",
+  ]
+
+  const orderedProjects: Project[] = [
+    ...preferredOrderIds.map((id) => projects.find((p) => p.id === id)!).filter(Boolean),
+    ...projects.filter((p) => !preferredOrderIds.includes(p.id)),
+  ]
+
   // All unique tags from projects for filtering
   const allTags: string[] = Array.from(
-    new Set(projects.flatMap(project => project.tags))
+    new Set(orderedProjects.flatMap(project => project.tags))
   ).sort();
 
   // Categories for filtering
   const categories = Array.from(
-    new Set(projects.map(project => project.category))
+    new Set(orderedProjects.map(project => project.category))
   ).filter(Boolean) as string[];
   
-  const filteredProjects = projects.filter(project => {
+  const filteredProjects = orderedProjects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -781,7 +796,7 @@ export default function ProjectsPage() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover"
                     />
                     {/* View Details Button - Now only on image */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
