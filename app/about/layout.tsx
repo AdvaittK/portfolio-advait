@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description:
       "Expert-level work across React, Node.js, MERN stack, TypeScript, databases, APIs, and modern web technologies — with the story and credentials behind it.",
     url: `${SITE_URL}/about`,
-    images: [{ url: "/adhomepage.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/adhomepage.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "/about",

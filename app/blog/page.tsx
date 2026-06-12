@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Blog | Advait — Next.js & full‑stack development",
     description:
       "Guides and insights on modern web development, performance, and SEO.",
-    images: [{ url: "/adhomepage.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/adhomepage.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

@@ -3,7 +3,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 const ROOT_DIR = path.join(__dirname, '..', 'public');
-const SKIP = new Set(['adhomepage.jpg']);
+const SKIP = new Set(['adhomepage.png']);
 const INPUT_EXTS = new Set(['.png', '.jpg', '.jpeg']);
 
 function isConvertible(filePath) {

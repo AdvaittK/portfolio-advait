@@ -153,7 +153,7 @@ export const metadata: Metadata = {
     description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
     images: [
       {
-        url: `${SITE_URL}/adhomepage.jpg`,
+        url: `${SITE_URL}/adhomepage.png`,
         width: 1200,
         height: 630,
         alt: 'Advait - Full Stack Developer Portfolio',
@@ -164,7 +164,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Advait | Developer Portfolio',
     description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
-    images: [`${SITE_URL}/adhomepage.jpg`],
+    images: [`${SITE_URL}/adhomepage.png`],
     creator: '@advaittt_dev',
   },
   icons: {
