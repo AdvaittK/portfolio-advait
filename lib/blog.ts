@@ -77,6 +77,6 @@ export function getCanonicalUrl(slug: string, meta?: Pick<BlogPostMeta, "canonic
 }
 
 export function getOgImageForPost(meta: Pick<BlogPostMeta, "image">): string {
-  const fallback = `${SITE_URL}/adhomepage.png`
+  const fallback = `${SITE_URL}/homepage.png`
   return parseImageToAbsolute(meta.image) ?? fallback
 }

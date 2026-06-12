@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Full Stack Developer Portfolio | React & Node.js Projects",
     description: "Explore professional web development projects - E-commerce, SaaS, business websites built with modern technologies",
-    images: [{ url: "/adhomepage.png", width: 1200, height: 630 }],
+    images: [{ url: "/homepage.png", width: 1200, height: 630 }],
   },
 }
 

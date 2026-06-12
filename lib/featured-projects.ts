@@ -325,7 +325,7 @@ const _featuredProjects: FeaturedProject[] = [
     description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
     longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
-    image: "/adhomepage.png",
+    image: "/homepage.png",
     demoLink: "https://advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/portfolio-advait",
     features: [

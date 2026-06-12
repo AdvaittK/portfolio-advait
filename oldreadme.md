@@ -1,7 +1,7 @@
 # Portfolio Website
 
 <div align="center">
-  <img src="public/adhomepage.png" alt="Project Banner" width="800px"/>
+  <img src="public/homepage.png" alt="Project Banner" width="800px"/>
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
