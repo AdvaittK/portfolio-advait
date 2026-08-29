@@ -339,6 +339,7 @@ export default function ProjectsPage() {
       technologies: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
       year: 2025
     },
+    /*
     {
       id: "royal-sarees",
       title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
@@ -382,6 +383,7 @@ export default function ProjectsPage() {
       technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Shadcn", "Chart.js", "Zustand"],
       year: 2024
     },
+    */
     {
       id: "portfolio-website",
       title: "Advait | Web Developer Portfolio",
@@ -404,6 +406,7 @@ export default function ProjectsPage() {
       technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
       year: 2024
     },
+    /*
     {
       id: "kixkart-ecommerce",
       title: "KixKart – Premium Sneakers & Streetwear E-Commerce Platform",
@@ -491,6 +494,7 @@ export default function ProjectsPage() {
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "PyTorch", "OpenCV", "Librosa", "Docker"],
       year: 2025
     },
+    */
   ]
 
   // Preferred ordering for projects page: move these IDs to the front
@@ -714,10 +718,10 @@ export default function ProjectsPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400">
-              Featured Projects
+              Selected Work
             </h2>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Explore my latest work and personal projects. Each project showcases different aspects of my skills and expertise.
+              A selection of websites, digital products, and experiences I&apos;ve designed and built for businesses, agencies, and independent brands.
             </p>
           </motion.div>
 

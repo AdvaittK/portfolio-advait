@@ -1,4 +1,4 @@
-﻿export type FeaturedProject = {
+export type FeaturedProject = {
   id: string
   title: string
   description: string
@@ -229,6 +229,7 @@ const _featuredProjects: FeaturedProject[] = [
       "Contact and inquiry system"
     ]
   },
+  /*
   {
     id: "royal-sarees",
     title: "Royal Sarees – Premium Indian Ethnic Wear E-Commerce",
@@ -247,6 +248,7 @@ const _featuredProjects: FeaturedProject[] = [
       "Multi-language support for global reach"
     ]
   },
+  */
   {
     id: "cardhint",
     title: "CardHint – Smart Credit Card Comparison Platform",
@@ -265,6 +267,7 @@ const _featuredProjects: FeaturedProject[] = [
       "Regularly updated database with the latest card offers"
     ]
   },
+  /*
   {
     id: "kixkart-ecommerce",
     title: "KixKart – Premium Sneakers E-Commerce Platform",
@@ -319,6 +322,7 @@ const _featuredProjects: FeaturedProject[] = [
       "Responsive design for all devices"
     ]
   },
+  */
   {
     id: "portfolio-website",
     title: "Advait | Web Developer Portfolio",
@@ -337,6 +341,7 @@ const _featuredProjects: FeaturedProject[] = [
       "Accessible and performant design"
     ]
   },
+  /*
   {
     id: "truthsense-fact-checker",
     title: "TruthSense – AI-Powered Fact Checking Platform",
@@ -373,6 +378,7 @@ const _featuredProjects: FeaturedProject[] = [
       "Export options for various formats"
     ]
   }
+  */
 ]
 
 // Preferred ordering for featured projects (moved to front)
