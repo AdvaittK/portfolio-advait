@@ -295,6 +295,7 @@ export default function ProjectsPage() {
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion","Shadcn UI"],
       year: 2025
     },
+    /*
     {
       id: "cardhint",
       title: "CardHint – Smart Credit Card Comparison Platform",
@@ -317,6 +318,7 @@ export default function ProjectsPage() {
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn"],
       year: 2024
     },
+    */
     {
       id: "uvoka-website",
       title: "UVOKA – LinkedIn Personal Branding Agency Website",
@@ -383,7 +385,6 @@ export default function ProjectsPage() {
       technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Shadcn", "Chart.js", "Zustand"],
       year: 2024
     },
-    */
     {
       id: "portfolio-website",
       title: "Advait | Web Developer Portfolio",

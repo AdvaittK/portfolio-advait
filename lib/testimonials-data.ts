@@ -87,6 +87,7 @@ export const testimonials: Testimonial[] = [
       "Advait has done a great job at building our website. He has revamped our whole website from scratch and his delivery is seamless. Would definitely recommend him for all your Web development needs.",
     projectLink: "https://uvoka.in",
   },
+  /*
   {
     name: "Sahil Kohli",
     role: "Owner, CardHint",
@@ -95,7 +96,6 @@ export const testimonials: Testimonial[] = [
       "Working with Advait on the makeover of CardHint.com was a fantastic experience. He brought fresh design ideas, improved the site's performance, and delivered everything on time with attention to detail. The upgrade has made a huge difference in both usability and visual appeal.",
     projectLink: "https://cardhint.advaitt.dev/",
   },
-  /*
   {
     name: "Lalith Kumar",
     role: "Owner, Royal Sarees",
