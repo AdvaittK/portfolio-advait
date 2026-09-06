@@ -11,13 +11,14 @@ import Link from "next/link"
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [mountedAt] = useState(() => Date.now())
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
+    website: "", // Honeypot trap field
   })
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,7 +30,10 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          timestamp: mountedAt,
+        }),
       })
 
       const data = await response.json()
@@ -39,7 +43,7 @@ export default function ContactPage() {
       }
 
       toast.success('Message sent successfully!')
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      setFormData({ name: "", email: "", subject: "", message: "", website: "" })
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to send message')
     } finally {
@@ -122,6 +126,32 @@ export default function ContactPage() {
             className="bg-gradient-to-br from-zinc-50/80 via-zinc-100/80 to-zinc-50/80 dark:from-zinc-800/80 dark:via-zinc-900/80 dark:to-zinc-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-zinc-200/50 dark:border-zinc-700/50"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot field - completely invisible to humans, catches automated spam bots */}
+              <div
+                style={{
+                  position: 'absolute',
+                  opacity: 0,
+                  top: '-9999px',
+                  left: '-9999px',
+                  height: 0,
+                  width: 0,
+                  zIndex: -1,
+                  overflow: 'hidden',
+                }}
+                aria-hidden="true"
+              >
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
                   Name
