@@ -14,7 +14,7 @@ export function statPlusLabel(count: number): string {
 }
 
 export const HOME_STAT_BAR_ITEMS: HomeStatBarItem[] = [
-  { value: statPlusLabel(portfolioProjectCount), label: "Projects shipped" },
-  { value: "3+", label: "Years experience" },
-  { value: statPlusLabel(testimonials.length), label: "Client stories" },
+  { value: "300K+", label: "Total impressions" },
+  { value: "+25%", label: "Avg conversion lift" },
+  { value: "15+", label: "Clients worldwide" },
 ]
