@@ -59,7 +59,7 @@ export default function ProjectsPage() {
       longDescription:
         "Crevo Studio is a specialized thumbnail packaging agency that helps creators and brands drive higher CTR by pairing bold, mobile-first thumbnails with hook-based title strategy. The website was built to feel sharp and premium, clearly communicate the offer, and guide visitors toward booking a call or claiming an audit.",
       tags: ["Agency", "Thumbnails", "Landing Page", "Conversion", "Brand"],
-      image: "/assets/projects/crevio.png",
+      image: "/assets/projects/crevio.webp",
       demoLink: "https://www.crevostudio.in/",
       githubLink: "",
       showSourceCode: false,
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
       longDescription:
         "Amrita Kunal's website was crafted to balance warmth and clarity so visitors quickly understand her work as a healer coach and feel confident taking the next step. The structure combines grounded storytelling, trust-building sections, and a clean conversion path for discovery calls and enquiries.",
       tags: ["Personal Brand", "Healer Coach", "Wellness", "Coaching", "Conversion"],
-      image: "/assets/projects/ak.png",
+      image: "/assets/projects/ak.webp",
       demoLink: "https://www.amritakunal.com/",
       githubLink: "",
       showSourceCode: false,
@@ -105,7 +105,7 @@ export default function ProjectsPage() {
       description: "A trusted corporate website for a steel pipes distributor, built to communicate reliability, technical expertise, and infrastructure-focused support.",
       longDescription: "With over four decades of industry expertise, Asoka Ferrocast is a trusted name in the distribution of a comprehensive range of high-quality steel pipes. The website was designed to reflect that legacy through clear positioning, strong credibility cues, and a polished presentation of their industrial capabilities. It also highlights their commitment to supporting India’s rapid infrastructure growth with dependable solutions for diverse industrial needs.",
       tags: ["Industrial", "Steel Pipes", "Distribution", "Corporate Website", "Infrastructure"],
-      image: "/assets/projects/aoka.png",
+      image: "/assets/projects/aoka.webp",
       demoLink: "https://www.asokaferrocast.com/",
       githubLink: "",
       showSourceCode: false,
@@ -292,7 +292,7 @@ export default function ProjectsPage() {
         "Portfolio filtering and search functionality"
       ],
       category: "Portfolio Website",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion","Shadcn UI"],
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
       year: 2025
     },
     /*
@@ -391,7 +391,7 @@ export default function ProjectsPage() {
       description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
       longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form. The site is optimized for performance, accessibility, and SEO, and includes integrations such as Vercel Analytics and Open Graph meta tags for rich social sharing. Designed and developed from scratch, it reflects my design sensibility and technical skills.",
       tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel", "Portfolio"],
-      image: "/homepage.png",
+      image: "/homepage.webp",
       demoLink: "https://advaitt.dev/",
       githubLink: "https://github.com/AdvaittK/portfolio-advait",
       features: [
@@ -522,7 +522,7 @@ export default function ProjectsPage() {
   const categories = Array.from(
     new Set(orderedProjects.map(project => project.category))
   ).filter(Boolean) as string[];
-  
+
   const filteredProjects = orderedProjects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -555,7 +555,7 @@ export default function ProjectsPage() {
       const timer = setTimeout(() => {
         document.body.style.overflow = 'hidden';
       }, 10);
-      
+
       return () => {
         // Clear the timeout if component unmounts before timeout completes
         clearTimeout(timer);
@@ -604,9 +604,9 @@ export default function ProjectsPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 300, 
+          transition={{
+            type: "spring",
+            stiffness: 300,
             damping: 30,
             duration: 0.3
           }}
@@ -726,7 +726,7 @@ export default function ProjectsPage() {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -786,15 +786,15 @@ export default function ProjectsPage() {
           {/* Project Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6">
             {filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
+              <motion.div
+                key={project.id}
                 initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 className="relative group h-full"
-                  onMouseEnter={() => setHoveredProject(project.id)}
-                  onMouseLeave={() => setHoveredProject(null)}
-                >
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
                 <div className="relative overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-gradient-to-br from-zinc-50 via-zinc-100 to-zinc-50 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                   {/* Project Image */}
                   <div className="relative aspect-video overflow-hidden">
@@ -869,7 +869,7 @@ export default function ProjectsPage() {
               </motion.div>
             ))}
           </div>
-        
+
         </div>
       </PageContainer>
       <AnimatePresence mode="wait">

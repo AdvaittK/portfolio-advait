@@ -19,7 +19,7 @@ const _featuredProjects: FeaturedProject[] = [
     longDescription:
       "Crevo Studio is a specialized thumbnail packaging agency that helps creators and brands drive higher CTR by pairing bold, mobile-first thumbnails with hook-based title strategy. The website was built to feel sharp and premium, clearly communicate the offer, and guide visitors toward booking a call or claiming an audit.",
     tags: ["Agency", "Thumbnails", "Landing Page", "Conversion", "Brand"],
-    image: "/assets/projects/crevio.png",
+    image: "/assets/projects/crevio.webp",
     demoLink: "https://www.crevostudio.in/",
     githubLink: "",
     features: [
@@ -39,7 +39,7 @@ const _featuredProjects: FeaturedProject[] = [
     longDescription:
       "Amrita Kunal's website was crafted to balance warmth and clarity so visitors quickly understand her work as a healer coach and feel confident taking the next step. The structure combines grounded storytelling, trust-building sections, and a clean conversion path for discovery calls and enquiries.",
     tags: ["Personal Brand", "Healer Coach", "Wellness", "Coaching", "Conversion"],
-    image: "/assets/projects/ak.png",
+    image: "/assets/projects/ak.webp",
     demoLink: "https://www.amritakunal.com/",
     githubLink: "",
     features: [
@@ -57,7 +57,7 @@ const _featuredProjects: FeaturedProject[] = [
     description: "A trusted corporate website for a steel pipes distributor, built to communicate reliability, technical expertise, and infrastructure-focused support.",
     longDescription: "With over four decades of industry expertise, Asoka Ferrocast is a trusted name in the distribution of a comprehensive range of high-quality steel pipes. The website was designed to reflect that legacy through clear positioning, strong credibility cues, and a polished presentation of their industrial capabilities. It also highlights their commitment to supporting India’s rapid infrastructure growth with dependable solutions for diverse industrial needs.",
     tags: ["Industrial", "Steel Pipes", "Distribution", "Corporate Website", "Infrastructure"],
-    image: "/assets/projects/aoka.png",
+    image: "/assets/projects/aoka.webp",
     demoLink: "https://www.asokaferrocast.com/",
     githubLink: "",
     features: [
@@ -326,7 +326,7 @@ const _featuredProjects: FeaturedProject[] = [
     description: "A modern, high-performance portfolio website showcasing my work, skills, and services as a frontend developer and UI designer.",
     longDescription: "This portfolio website is a fully custom, responsive web application built to highlight my expertise in frontend development, UI/UX design, and modern web technologies. It features animated transitions, a dynamic projects showcase, a services/pricing section, and a contact form.",
     tags: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Vercel"],
-    image: "/homepage.png",
+    image: "/homepage.webp",
     demoLink: "https://advaitt.dev/",
     githubLink: "https://github.com/AdvaittK/portfolio-advait",
     features: [

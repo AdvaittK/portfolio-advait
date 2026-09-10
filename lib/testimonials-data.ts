@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Kashyap Dwivedi",
     role: "Owner, Crevo Studio",
-    image: "/assets/clients/kd.png",
+    image: "/assets/clients/kd.webp",
     content:
       "Advait nailed the premium look we wanted and built a site that clearly sells the offer. The flow is clean, the details are sharp, and it feels engineered for conversions.",
     projectLink: "https://www.crevostudio.in/",
@@ -27,7 +27,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Management Team, Asoka Ferrocast",
     role: "Asoka Ferrocast",
-    image: "/assets/clients/asokaimg.png",
+    image: "/assets/clients/asokaimg.webp",
     content:
       "The website feels clean, professional, and true to our brand. It makes our work easy to understand and gives us a strong online presence.",
     projectLink: "https://www.asokaferrocast.com/",
@@ -35,7 +35,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Pulak Pathak",
     role: "Founder, Cult of Content",
-    image: "/assets/clients/pulak.png",
+    image: "/assets/clients/pulak.webp",
     content:
       "Advait kept it simple and polished for both Cult of Content sites. The process was smooth, and the final result feels right for our brand.",
     projectLink: "https://www.cultofcontent.agency/",

@@ -201,7 +201,7 @@ export default function AboutPage() {
           >
             <div className="relative w-[200px] h-[200px] md:w-[400px] md:h-[400px] mb-6 group">
               <img
-                src="/assets/people/advait.jpg"
+                src="/assets/people/advait.webp"
                 alt="Advait Profile"
                 className="w-full h-full rounded-full object-cover object-top md:object-[center_top] border-4 border-white dark:border-zinc-900 shadow-lg transition-transform duration-500 group-hover:scale-105"
               />
