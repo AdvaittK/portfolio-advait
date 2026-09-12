@@ -3,18 +3,19 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Send, Loader2 } from "lucide-react"
+import { Send, Loader2, Check } from "lucide-react"
 import { toast } from "sonner"
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [mountedAt] = useState(() => Date.now())
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
-    website: "", // Honeypot trap field
+    b_url_trap: "", // Hidden trap field for automated spam bots
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,27 +29,35 @@ export function ContactForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+          b_url_trap: formData.b_url_trap,
           timestamp: mountedAt,
         }),
       })
 
-      const data = await response.json()
+      const data = await response.json().catch(() => null)
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message')
+      if (!response.ok || !data?.success) {
+        const errorMsg = data?.error || 'Failed to send message. Please email advaitt.dev@gmail.com directly.'
+        throw new Error(errorMsg)
       }
 
-      toast.success('Message sent successfully!')
-      setFormData({ name: "", email: "", subject: "", message: "", website: "" })
+      setIsSubmitted(true)
+      toast.success('Message sent successfully! I will get back to you shortly.')
+      setFormData({ name: "", email: "", subject: "", message: "", b_url_trap: "" })
+      setTimeout(() => setIsSubmitted(false), 5000)
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Failed to send message')
+      toast.error(error instanceof Error ? error.message : 'Failed to send message. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (isSubmitted) setIsSubmitted(false)
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
@@ -72,18 +81,19 @@ export function ContactForm() {
             width: 0,
             zIndex: -1,
             overflow: 'hidden',
+            pointerEvents: 'none',
           }}
           aria-hidden="true"
         >
-          <label htmlFor="website-cf">Website</label>
+          <label htmlFor="website-cf">Leave this empty</label>
           <input
             type="text"
             id="website-cf"
-            name="website"
-            value={formData.website}
+            name="b_url_trap"
+            value={formData.b_url_trap}
             onChange={handleChange}
             tabIndex={-1}
-            autoComplete="off"
+            autoComplete="new-password"
           />
         </div>
 
@@ -149,13 +159,18 @@ export function ContactForm() {
         </div>
         <Button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isSubmitted}
           className="w-full rounded-full px-6 py-5 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-base font-semibold hover:opacity-90 transition-opacity duration-200"
         >
           {isSubmitting ? (
             <>
               <Loader2 className="w-5 h-5 mr-2 animate-spin" />
               Sending...
+            </>
+          ) : isSubmitted ? (
+            <>
+              <Check className="w-5 h-5 mr-2" />
+              Message Sent
             </>
           ) : (
             <>
