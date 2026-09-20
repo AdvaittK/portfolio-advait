@@ -112,7 +112,7 @@ const _featuredProjects: FeaturedProject[] = [
     longDescription: "Integrated Media Agency specializes in scaling and accelerating the growth of personal brands through comprehensive marketing strategies, conversion-optimized funnels, and integrated media campaigns. By combining content strategy, funnel optimization, and multi-channel marketing, they help entrepreneurs and thought leaders build influential personal brands that drive business results and establish lasting market authority.",
     tags: ["Agency", "Personal Branding", "Marketing", "Growth", "Digital Marketing"],
     image: "/assets/projects/imga.webp",
-    demoLink: "https://www.integratedmedia.agency/",
+    demoLink: "https://www.integratedmedia.online/",
     githubLink: "",
     features: [
       "Personal brand strategy and positioning",
