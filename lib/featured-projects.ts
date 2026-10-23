@@ -1,4 +1,4 @@
-export type FeaturedProject = {
+﻿export type FeaturedProject = {
   id: string
   title: string
   description: string
@@ -200,7 +200,7 @@ const _featuredProjects: FeaturedProject[] = [
     longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern, minimalist design that puts the focus on the artwork while maintaining excellent user experience. It includes a dynamic gallery of thumbnail designs, case studies of successful projects, and a seamless contact system for potential clients.",
     tags: ["Portfolio", "Design", "Thumbnails", "Creative", "UI/UX"],
     image: "/assets/projects/dem-portfolio.webp",
-    demoLink: "https://dems8.com",
+    demoLink: "http://demproductions.co/",
     githubLink: "https://github.com/AdvaittK/dem-portfolio",
     features: [
       "Dynamic gallery of thumbnail designs",

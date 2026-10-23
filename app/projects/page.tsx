@@ -280,7 +280,7 @@ export default function ProjectsPage() {
       longDescription: "Dem's Portfolio is a beautifully crafted showcase of thumbnail design work, built to highlight their creative process and artistic vision. The website features a modern and minimalist design.",
       tags: ["Portfolio", "Design", "Thumbnails", "Creative", "UI/UX", "Showcase"],
       image: "/assets/projects/dem-portfolio.webp",
-      demoLink: "https://dems8.com",
+      demoLink: "http://demproductions.co/",
       githubLink: "https://github.com/AdvaittK/dem-portfolio",
       showSourceCode: false,
       features: [

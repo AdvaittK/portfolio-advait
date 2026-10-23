@@ -77,7 +77,7 @@ export const testimonials: Testimonial[] = [
     image: "/assets/people/dem.webp",
     content:
       "Advait did an amazing job creating my website! He's super passionate about his work and delivered exactly what I wanted. Communication was quick and friendly, and the entire process was faster than expected. I'm totally happy with the result... highly recommended!",
-    projectLink: "https://www.dems8.com/",
+    projectLink: "http://demproductions.co/",
   },
   {
     name: "Srihita Vanguri",
