@@ -8,6 +8,10 @@ export type HomeCaseStudy = {
   outcomes: string[]
   quote?: string
   quoteAttribution?: string
+  category?: string
+  year?: number | string
+  role?: string
+  result?: string
 }
 
 export const homeCaseStudies: HomeCaseStudy[] = [
@@ -15,7 +19,9 @@ export const homeCaseStudies: HomeCaseStudy[] = [
   {
     id: "crevo-studio",
     clientLabel: "Crevo Studio",
-    headline: "Premium agency presence built to sell packaging work",
+    category: "Agency Website",
+    year: 2026,
+    headline: "Agency presence built to sell packaging work",
     industryTags: ["Agency", "Creator economy", "Conversion"],
     problem:
       "They needed a site that felt as sharp as their creative output, and made the offer obvious to busy creators browsing on mobile.",
@@ -25,7 +31,7 @@ export const homeCaseStudies: HomeCaseStudy[] = [
       "Structured pages for audits, FAQs, and booking without clutter.",
     ],
     outcomes: [
-      "A polished, high-trust first impression that matches a premium studio.",
+      "A polished, high-trust first impression that matches their design standards.",
       "Conversion-oriented layout with obvious paths to book or enquire.",
       "Fast, responsive experience tuned for thumb-first traffic.",
     ],
@@ -36,6 +42,8 @@ export const homeCaseStudies: HomeCaseStudy[] = [
   {
     id: "asoka-ferrocast",
     clientLabel: "Asoka Ferrocast",
+    category: "Corporate Website",
+    year: 2026,
     headline: "Corporate credibility for industrial buyers",
     industryTags: ["Industrial", "B2B", "Corporate"],
     problem:
@@ -57,6 +65,8 @@ export const homeCaseStudies: HomeCaseStudy[] = [
   {
     id: "oriental-air-ship-services",
     clientLabel: "Oriental Air & Ship Services",
+    category: "Logistics Website",
+    year: 2026,
     headline: "Logistics legacy made legible online",
     industryTags: ["Logistics", "Enterprise", "Services"],
     problem:
@@ -78,6 +88,8 @@ export const homeCaseStudies: HomeCaseStudy[] = [
   {
     id: "dems-portfolio",
     clientLabel: "Dem",
+    category: "Design Portfolio",
+    year: 2026,
     headline: "Thumbnail design portfolio built to showcase craft",
     industryTags: ["Design", "Thumbnails", "Portfolio"],
     problem: "Needed a focused portfolio site that highlights thumbnails and case studies clearly.",
@@ -87,15 +99,19 @@ export const homeCaseStudies: HomeCaseStudy[] = [
   {
     id: "sizzle-studios",
     clientLabel: "Sizzle Studios",
+    category: "Creative Portfolio",
+    year: 2026,
     headline: "Creative portfolio showcasing studio work",
     industryTags: ["Creative", "Design", "Portfolio"],
     problem: "Needed an elegant, image-first portfolio to present high-end creative work.",
     approach: ["Large visual gallery","Focused case studies","Polished contact flows"],
-    outcomes: ["Stronger lead generation","Elevated brand perception","Improved client vetting via case studies"],
+    outcomes: ["Stronger lead generation", "Stronger brand perception", "Improved client vetting via case studies"],
   },
   {
     id: "vitira-website",
     clientLabel: "VITIRA",
+    category: "Business Website",
+    year: 2026,
     headline: "Business website transformation for clarity and performance",
     industryTags: ["Business", "Website", "UI/UX"],
     problem: "A business site that needed clearer messaging and faster performance.",
@@ -111,7 +127,7 @@ export const homeCaseStudies: HomeCaseStudy[] = [
     problem:
       "Amrita needed a website that felt emotionally aligned with her healing work while still making services, credibility, and booking options easy to understand.",
     approach: [
-      "Built a soft, premium visual system with clear section rhythm.",
+      "Built a soft visual system with clear section rhythm.",
       "Framed her philosophy, offerings, and audience outcomes without heavy jargon.",
       "Created a frictionless CTA path for enquiries and discovery sessions.",
     ],
@@ -137,7 +153,7 @@ export const homeCaseStudies: HomeCaseStudy[] = [
       "Shipped performant builds that stay easy to iterate on.",
     ],
     outcomes: [
-      "Consistent premium feel across related brand properties.",
+      "Consistent feel across related brand properties.",
       "Clear messaging funnel for coaches, creators, and D2C teams.",
       "Solid technical foundation for ongoing marketing iteration.",
     ],
@@ -151,14 +167,14 @@ export const homeCaseStudies: HomeCaseStudy[] = [
     headline: "LinkedIn-first agency site with motion and clarity",
     industryTags: ["Agency", "Personal branding", "B2B services"],
     problem:
-      "A LinkedIn personal-branding agency needed a modern marketing site that felt premium and explained services fast.",
+      "A LinkedIn personal-branding agency needed a modern marketing site that explained services fast.",
     approach: [
       "Built smooth, intentional motion that supports, not distracts from, the story.",
       "Highlighted services, proof, and contact paths in a tight narrative.",
       "Kept performance and readability ahead of visual effects.",
     ],
     outcomes: [
-      "A responsive flagship site that reflects serious brand strategy work.",
+      "A responsive flagship site that reflects in-depth brand strategy work.",
       "Balanced storytelling and proof for high-intent visitors.",
       "Polished experience from first scroll to enquiry.",
     ],

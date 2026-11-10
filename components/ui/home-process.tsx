@@ -8,25 +8,25 @@ const steps = [
   {
     title: "Discover",
     description:
-      "Goals, audience, and constraints, so we’re not guessing what “good” means for your business.",
+      "A short call and a written brief covering goals, audience, pages and what's out of scope.",
     icon: Compass,
   },
   {
     title: "Design",
     description:
-      "Structure, messaging, and visual direction that feel premium on every breakpoint.",
+      "Layout and visual direction, reviewed with you before the full build.",
     icon: PenLine,
   },
   {
     title: "Build",
     description:
-      "Fast, maintainable frontends with clean UI implementation and attention to detail.",
+      "A responsive Next.js site, tested on real phones, with performance checked before launch.",
     icon: Code2,
   },
   {
-    title: "Launch & refine",
+    title: "Launch",
     description:
-      "Go-live support, polish passes, and guidance so the site keeps working after shipping.",
+      "Deployment, a short handoff doc, and post-launch support.",
     icon: Rocket,
   },
 ]
@@ -43,8 +43,7 @@ export function HomeProcess() {
             How We Work Together
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            A calm, predictable rhythm, so you always know what happens next. Typical marketing sites ship in about{" "}
-            <span className="font-medium text-foreground">3–6 weeks</span> depending on scope and feedback speed.
+            Most marketing sites take 3–6 weeks, depending on scope and how fast feedback comes back.
           </p>
         </div>
 

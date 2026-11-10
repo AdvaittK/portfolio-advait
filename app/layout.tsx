@@ -5,8 +5,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
-import CustomCursor from "@/components/custom-cursor"
 import ClientLayout from "@/components/client-layout"
+import ClientCursor from "@/components/client-cursor"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -32,101 +32,16 @@ const dmSans = localFont({
   display: "swap",
 })
 
-// Geist Sans - Secondary font for body text (Vercel's premium font)
+// Geist Sans - Secondary font for body text
 // Already provides --font-geist-sans variable
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Advait | Developer Portfolio",
+    default: "Advait | Developer for Agencies and Brands",
     template: "%s | Advait"
   },
-  description: "Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.",
-  keywords: [
-    // Core Services
-    "full stack developer for hire",
-    "full stack freelancer",
-    "freelance full stack developer",
-    "hire full stack developer India",
-    "remote full stack developer",
-    "full stack web developer for hire",
-    "web app developer for hire",
-    "freelance web developer India",
-    "full stack developer India",
-    "web app development freelancer",
-
-    // Technology Stack
-    "React developer for hire",
-    "Node.js developer for hire",
-    "MERN stack developer",
-    "React Node developer",
-    "JavaScript full stack developer",
-    "API developer for hire",
-    "frontend developer React freelancer",
-    "backend developer Node.js freelancer",
-    "Next.js developer",
-    "TypeScript developer",
-
-    // Specializations
-    "custom web application development freelancer",
-    "full stack developer for startups",
-    "startup web app developer",
-    "SaaS product developer",
-    "SaaS MVP React Node developer",
-    "MVP developer for startups",
-    "web development for startups",
-    "hire developer for startup",
-    "remote dev for SaaS startup",
-
-    // Industry Solutions
-    "e-commerce web app developer freelancer",
-    "agency web developer freelancer",
-    "hire web developer quickly",
-    "part-time web developer for hire",
-    "affordable full stack developer",
-    "freelance full stack developer affordable",
-
-    // Technical Services
-    "web app performance optimization developer",
-    "page speed optimization React developer",
-    "UI/UX developer for hire full stack",
-    "API integration freelance developer",
-    "bug fixing full stack developer for hire",
-    "hire web developer contract",
-
-    // Location-Based
-    "hire full stack freelancer remote",
-    "freelance full stack developer India",
-    "hire full stack developer quickly",
-    "React developer India",
-    "Node.js developer India",
-    "Pune full stack developer",
-    "web developer Pune",
-    "freelance web developer Pune",
-    "React developer Pune",
-    "Node.js developer Pune",
-    "full stack developer Pune",
-    "hire web developer Pune",
-    "remote full stack developer India",
-
-    // Personal Branding
-    "Advait Kandalgaonkar",
-    "Advait developer",
-    "Advait web developer",
-    "Advait full stack",
-
-    // Additional Technical Skills
-    "MongoDB developer",
-    "PostgreSQL developer",
-    "Express.js developer",
-    "REST API development",
-    "GraphQL developer",
-    "responsive web design",
-    "progressive web apps",
-    "PWA developer",
-    "modern web development",
-    "frontend backend developer"
-  ],
+  description: "I build fast, clear websites for agencies, coaches and industrial brands, working with clients worldwide.",
   authors: [{ name: "Advait", url: SITE_URL }],
   creator: "Advait",
   publisher: "Advait",
@@ -148,22 +63,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: SITE_URL,
-    siteName: 'Advait | Developer Portfolio',
-    title: 'Advait | Developer Portfolio',
-    description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
+    siteName: 'Advait | Developer for Agencies and Brands',
+    title: 'Advait | Developer for Agencies and Brands',
+    description: "I build fast, clear websites for agencies, coaches and industrial brands, working with clients worldwide.",
     images: [
       {
         url: `${SITE_URL}/homepage.webp`,
         width: 1200,
         height: 630,
-        alt: 'Advait - Full Stack Developer Portfolio',
+        alt: 'Advait - Developer for Agencies and Brands',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Advait | Developer Portfolio',
-    description: 'Crafting performant web apps, clean UIs, and delightful user experiences. Full‑stack JavaScript with React, Next.js, and Node.js.',
+    title: 'Advait | Developer for Agencies and Brands',
+    description: "I build fast, clear websites for agencies, coaches and industrial brands, working with clients worldwide.",
     images: [`${SITE_URL}/homepage.webp`],
     creator: '@advaittt_dev',
   },
@@ -218,10 +133,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <head suppressHydrationWarning>
         {/* Minimal Critical CSS for above-the-fold hero stability */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `
           /* Reserve space for hero section to avoid CLS */
           .hero-critical { min-height: 85vh; }
           @media (min-width: 768px) { .hero-critical { min-height: 72vh; } }
@@ -258,46 +175,23 @@ export default function RootLayout({
         <meta name="geo.position" content="18.5204;73.8567" />
         <meta name="ICBM" content="18.5204, 73.8567" />
 
-        {/* Structured Data - Organization */}
+        {/* Structured Data - ProfessionalService */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              "name": "Advait - Full Stack Developer",
+              "name": "Advait",
               "image": `${SITE_URL}/assets/people/advait.webp`,
               "url": SITE_URL,
-              "telephone": "+919975556093",
               "email": "advaitt.dev@gmail.com",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Pune",
-                "addressRegion": "Maharashtra",
-                "addressCountry": "IN"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 18.5204,
-                "longitude": 73.8567
-              },
               "sameAs": [
                 "https://github.com/AdvaittK",
-                "https://x.com/advaittt_dev",
-                "https://discord.gg/zQ8gwDK9Zr"
+                "https://x.com/advaittt_dev"
               ],
-              "priceRange": "$$",
-              "openingHours": "Mo-Su 00:00-24:00",
-              "description": "Professional full stack web development services specializing in React, Node.js, and MERN stack. Custom web applications, SaaS MVPs, and startup solutions.",
-              "areaServed": {
-                "@type": "GeoCircle",
-                "geoMidpoint": {
-                  "@type": "GeoCoordinates",
-                  "latitude": 18.5204,
-                  "longitude": 73.8567
-                },
-                "geoRadius": "100000"
-              }
+              "areaServed": "Worldwide",
+              "description": "I build fast, clear websites for agencies, coaches and industrial brands."
             })
           }}
         />
@@ -312,44 +206,13 @@ export default function RootLayout({
               "name": "Advait",
               "url": SITE_URL,
               "image": `${SITE_URL}/assets/people/advait.webp`,
+              "email": "advaitt.dev@gmail.com",
               "sameAs": [
                 "https://github.com/AdvaittK",
-                "https://x.com/advaittt_dev",
-                "https://discord.gg/zQ8gwDK9Zr"
+                "https://x.com/advaittt_dev"
               ],
-              "jobTitle": "Full Stack Developer",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Freelance"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Pune",
-                "addressRegion": "Maharashtra",
-                "addressCountry": "IN"
-              },
-              "email": "advaitt.dev@gmail.com",
-              "telephone": "+919975556093",
-              "knowsAbout": [
-                "React",
-                "Node.js",
-                "JavaScript",
-                "TypeScript",
-                "Next.js",
-                "MongoDB",
-                "PostgreSQL",
-                "Full Stack Development",
-                "Web Development",
-                "UI/UX Design",
-                "MERN Stack",
-                "API Development",
-                "Frontend Development",
-                "Backend Development"
-              ],
-              "alumniOf": {
-                "@type": "EducationalOrganization",
-                "name": "Certified IT Specialist"
-              }
+              "jobTitle": "Developer",
+              "areaServed": "Worldwide"
             })
           }}
         />
@@ -428,7 +291,7 @@ export default function RootLayout({
           <CurrencyProvider>
             <SmoothScrollProvider>
               <ClientMetallicBg />
-              <CustomCursor />
+              <ClientCursor />
               <ServiceWorkerRegister />
               <AOSProvider>
                 <div className="relative flex flex-col min-h-screen">

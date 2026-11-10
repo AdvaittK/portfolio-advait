@@ -10,19 +10,19 @@ const segments = [
   {
     title: "Agencies & creative studios",
     icon: Building2,
-    outcome: "Win premium retainers with a site that sells the craft, not just the stack.",
+    outcome: "Your site is part of your pitch. I build ones that show the quality of your work.",
     bullets: ["Landing + marketing sites", "Portfolio systems", "Launch support"],
   },
   {
     title: "Coaches & personal brands",
     icon: Mic2,
-    outcome: "Turn attention into booked calls with clear positioning and calm, high-trust UX.",
+    outcome: "One clear page with one obvious next step: booking a call.",
     bullets: ["Story-led layouts", "Lead paths & CTAs", "Performance + accessibility"],
   },
   {
     title: "Corporate, industrial & D2C",
     icon: Factory,
-    outcome: "Look as serious as the operation behind you, online and on mobile.",
+    outcome: "Sites for businesses that also sell offline. Clear, fast and credible on mobile.",
     bullets: ["Corporate & logistics sites", "D2C storefronts", "Ongoing refinement"],
   },
 ]
@@ -39,7 +39,7 @@ export function HomeWhoIWorkWith() {
             Who I Work With
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Purpose-built web experiences for teams that care how their brand feels before a prospect ever sends a message.
+            I work with three kinds of clients.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export function HomeWhoIWorkWith() {
                     variant="ghost"
                     className="w-full rounded-full justify-center gap-2 text-zinc-800 dark:text-zinc-100 border border-zinc-200/80 dark:border-zinc-600/80 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80"
                   >
-                    Discuss your fit <ArrowRight className="h-4 w-4" />
+                    Book a call <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
               </motion.div>

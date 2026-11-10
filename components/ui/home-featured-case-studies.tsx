@@ -38,128 +38,6 @@ function hostnameFromUrl(url: string): string {
   }
 }
 
-function CaseStudyHeading({
-  study,
-  variant,
-}: {
-  study: HomeCaseStudy
-  variant: "dialog" | "inline"
-}) {
-  if (variant === "dialog") {
-    return (
-      <DialogHeader className="text-left pr-7 sm:pr-8">
-        <div className="flex items-start sm:items-center justify-between gap-4">
-          <div className="space-y-1 sm:space-y-1.5">
-            <DialogTitle className="text-[0.9rem] sm:text-2xl font-bold tracking-tight leading-tight">{study.clientLabel}</DialogTitle>
-            <DialogDescription className="text-[11px] sm:text-base text-foreground/80 font-medium leading-snug">
-              {study.headline}
-            </DialogDescription>
-          </div>
-
-          <div className="hidden sm:flex sm:flex-wrap sm:gap-2">
-            {study.industryTags.map((t) => (
-              <span
-                key={t}
-                className="text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-secondary text-secondary-foreground"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-      </DialogHeader>
-    )
-  }
-  return (
-    <div className="text-left space-y-1 sm:space-y-1.5">
-      <h3 className="text-[0.9rem] sm:text-2xl font-bold tracking-tight leading-tight text-foreground">{study.clientLabel}</h3>
-      <p className="text-[11px] sm:text-base text-foreground/80 font-medium leading-snug">{study.headline}</p>
-    </div>
-  )
-}
-
-function CaseStudyDetailBody({
-  study,
-  project,
-  showQuote = true,
-}: {
-  study: HomeCaseStudy
-  project: NonNullable<ReturnType<typeof projectForId>>
-  showQuote?: boolean
-}) {
-  return (
-    <>
-      <div className="flex flex-wrap gap-1.5 sm:gap-2">
-        {study.industryTags.map((t) => (
-          <span
-            key={t}
-            className="text-[10px] sm:text-xs font-medium px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-secondary text-secondary-foreground"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <p className="text-[11px] sm:text-base text-muted-foreground leading-relaxed text-pretty">{study.problem}</p>
-
-      <div className="grid sm:grid-cols-2 gap-2.5 sm:gap-4">
-        <div className="rounded-lg sm:rounded-xl border border-border bg-muted/30 p-2.5 sm:p-4">
-          <h4 className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 sm:mb-3">
-            Approach
-          </h4>
-          <ul className="text-[11px] sm:text-sm text-foreground/90 space-y-1.5 sm:space-y-2.5 leading-relaxed">
-            {study.approach.map((line) => (
-              <li key={line} className="flex gap-1.5 sm:gap-2">
-                <span className="text-primary shrink-0 font-mono text-[10px] sm:text-xs mt-0.5">-</span>
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="rounded-lg sm:rounded-xl border border-border bg-muted/30 p-2.5 sm:p-4">
-          <h4 className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 sm:mb-3">
-            Outcomes
-          </h4>
-          <ul className="text-[11px] sm:text-sm text-foreground/90 space-y-1.5 sm:space-y-2.5 leading-relaxed">
-            {study.outcomes.map((line) => (
-              <li key={line} className="flex gap-1.5 sm:gap-2">
-                <span className="text-emerald-600 dark:text-emerald-400 shrink-0 text-[11px] sm:text-sm" aria-hidden>
-                  ✓
-                </span>
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {study.quote && showQuote ? (
-        <blockquote className="rounded-lg sm:rounded-xl border-l-2 border-primary bg-muted/25 pl-2.5 pr-2 py-2 sm:pl-4 sm:pr-3 sm:py-3 text-[11px] sm:text-sm italic text-foreground/90">
-          “{study.quote}”
-          {study.quoteAttribution ? (
-            <footer className="not-italic text-[10px] sm:text-xs text-muted-foreground mt-1.5 sm:mt-2 font-medium">- {study.quoteAttribution}</footer>
-          ) : null}
-        </blockquote>
-      ) : null}
-
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-0.5 sm:pt-1">
-        <Button asChild size="sm" className="rounded-full h-8 text-[11px] sm:h-10 sm:text-sm px-3 sm:px-4">
-          <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 sm:gap-2">
-            Visit live site
-            <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" aria-hidden />
-          </a>
-        </Button>
-        <Button asChild variant="outline" size="sm" className="rounded-full h-8 text-[11px] sm:h-10 sm:text-sm px-3 sm:px-4">
-          <Link href="/appointment" className="inline-flex items-center gap-1.5 sm:gap-2">
-            Plan something similar
-            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" aria-hidden />
-          </Link>
-        </Button>
-      </div>
-    </>
-  )
-}
-
 function CaseStudyModalContent({
   study,
   project,
@@ -167,11 +45,137 @@ function CaseStudyModalContent({
   study: HomeCaseStudy
   project: NonNullable<ReturnType<typeof projectForId>>
 }) {
+  const host = hostnameFromUrl(project.demoLink)
+  const meta = [study.role, study.result].filter(Boolean).join(" · ")
+
   return (
-    <>
-      <CaseStudyHeading study={study} variant="dialog" />
-      <CaseStudyDetailBody study={study} project={project} showQuote={false} />
-    </>
+    <div className="flex flex-col gap-4 text-left">
+      {/* Header Info */}
+      <DialogHeader className="space-y-2 pr-6 text-left">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {study.category && (
+            <span className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-2.5 py-0.5 text-[11px] font-semibold text-zinc-900 dark:text-zinc-100">
+              {study.category}
+            </span>
+          )}
+          {study.year && (
+            <span className="rounded-full border border-zinc-200 dark:border-zinc-800 px-2 py-0.5 text-[11px] text-muted-foreground font-mono">
+              {study.year}
+            </span>
+          )}
+          {study.industryTags.map((t) => (
+            <span
+              key={t}
+              className="rounded-full bg-zinc-100 dark:bg-zinc-800/80 px-2 py-0.5 text-[10px] text-zinc-600 dark:text-zinc-400"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div>
+          <div className="flex items-baseline justify-between gap-3 flex-wrap">
+            <DialogTitle className="text-xl sm:text-2xl font-bold tracking-tight text-foreground leading-tight">
+              {study.clientLabel}
+            </DialogTitle>
+            <a
+              href={project.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
+            >
+              <span>{host}</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+          {meta && (
+            <p className="text-xs font-medium text-muted-foreground mt-0.5">
+              {meta}
+            </p>
+          )}
+          <DialogDescription className="text-xs sm:text-sm font-normal text-muted-foreground mt-1 leading-snug">
+            {study.headline}
+          </DialogDescription>
+        </div>
+      </DialogHeader>
+
+      {/* The Challenge / Problem */}
+      <div className="rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-50 dark:bg-zinc-900/40 p-3 sm:p-3.5 space-y-1">
+        <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          The Challenge
+        </h4>
+        <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed">
+          {study.problem}
+        </p>
+      </div>
+
+      {/* Approach & Outcomes in 2 Clean Side-by-Side Cards */}
+      <div className="grid sm:grid-cols-2 gap-3">
+        <div className="rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-50 dark:bg-zinc-900/40 p-3 sm:p-3.5 space-y-2">
+          <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500" />
+            Execution & Approach
+          </h4>
+          <ul className="space-y-1.5 text-xs text-foreground/85 leading-relaxed">
+            {study.approach.map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-muted-foreground font-mono text-[10px] select-none shrink-0 mt-0.5">
+                  0{i + 1}
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-50 dark:bg-zinc-900/40 p-3 sm:p-3.5 space-y-2">
+          <h4 className="text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            Key Results
+          </h4>
+          <ul className="space-y-1.5 text-xs text-foreground/85 leading-relaxed">
+            {study.outcomes.map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-emerald-500 font-bold text-xs select-none shrink-0 mt-0.5">
+                  ✓
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Client Testimonial / Quote */}
+      {study.quote && (
+        <div className="rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-50 dark:bg-zinc-900/50 p-3 sm:p-3.5">
+          <p className="text-xs sm:text-sm italic text-foreground/90 leading-relaxed">
+            &ldquo;{study.quote}&rdquo;
+          </p>
+          {study.quoteAttribution && (
+            <p className="text-[11px] font-semibold text-muted-foreground mt-1.5">
+              — {study.quoteAttribution}
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* Action Footer */}
+      <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5 border-t border-zinc-200 dark:border-zinc-800">
+        <Button asChild size="sm" className="w-full sm:w-auto rounded-full px-5 py-2 font-semibold text-xs sm:text-sm">
+          <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
+            Visit live website
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </Button>
+        <Button asChild size="sm" variant="outline" className="w-full sm:w-auto rounded-full px-4 py-2 font-medium text-xs sm:text-sm border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900">
+          <Link href="/appointment" className="inline-flex items-center gap-1.5">
+            Book a call
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </Button>
+      </div>
+    </div>
   )
 }
 
@@ -233,26 +237,6 @@ function CaseStudySlide({
       </div>
 
       <div className="mt-4 flex w-full flex-col items-center gap-3 px-1">
-        <motion.div
-          className="flex items-center justify-center gap-1 text-muted-foreground pointer-events-none select-none"
-          aria-hidden
-        >
-          <motion.span
-            animate={{ x: reduceMotion ? 0 : [0, -5, 0] }}
-            transition={{ duration: 1.4, repeat: loop, ease: "easeInOut" }}
-            className="inline-flex opacity-70"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </motion.span>
-          <span className="text-xs font-medium tracking-wide uppercase px-2">Explore</span>
-          <motion.span
-            animate={{ x: reduceMotion ? 0 : [0, 5, 0] }}
-            transition={{ duration: 1.4, repeat: loop, ease: "easeInOut" }}
-            className="inline-flex opacity-70"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </motion.span>
-        </motion.div>
         <div className="flex w-full flex-wrap items-center justify-center gap-3">
           <Button asChild variant="outline" className="rounded-full px-5 border-zinc-300/90 dark:border-zinc-600 bg-background/80">
             <a
@@ -295,13 +279,10 @@ function CaseStudySlide({
 
       {isMobile && mobileExpanded ? (
         <div
-          className="mt-4 rounded-2xl border border-border bg-background/95 p-4 text-left shadow-md backdrop-blur-sm"
+          className="mt-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 sm:p-5 text-left shadow-lg"
           id={`case-study-expanded-${study.id}`}
         >
-          <div className="flex flex-col gap-3">
-            <CaseStudyHeading study={study} variant="inline" />
-            <CaseStudyDetailBody study={study} project={project} />
-          </div>
+          <CaseStudyModalContent study={study} project={project} />
         </div>
       ) : null}
     </div>
@@ -412,7 +393,7 @@ export function HomeFeaturedCaseStudies() {
             >
               <ChevronLeft className="h-4 w-4" />
             </motion.span>
-            Browse stories
+            Browse Studies
             <motion.span
               animate={reduceMotion ? undefined : { x: [0, 3, 0], opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.6, repeat: navLoop, ease: "easeInOut" }}
@@ -478,11 +459,9 @@ export function HomeFeaturedCaseStudies() {
             if (!open) setSelectedStudy(null)
           }}
         >
-          <DialogContent className="top-[calc(7rem+env(safe-area-inset-top,0px))] left-[50%] flex min-h-0 max-h-[calc(100dvh-7rem-env(safe-area-inset-top,0px)-1rem)] w-[min(28rem,calc(100vw-0.75rem))] translate-x-[-50%] translate-y-0 flex-col gap-2 overflow-hidden overscroll-none p-2.5 text-xs duration-150 data-[state=open]:slide-in-from-top-[0%] data-[state=closed]:slide-out-to-top-[0%] sm:top-[50%] sm:max-h-[min(82vh,720px)] sm:w-full sm:max-w-2xl sm:translate-y-[-50%] sm:gap-5 sm:overflow-hidden sm:p-6 sm:text-base rounded-2xl border-border bg-background/95 backdrop-blur-xl sm:rounded-lg">
+          <DialogContent className="max-w-2xl w-[92vw] max-h-[88vh] overflow-y-auto rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 sm:p-7 shadow-2xl focus:outline-none">
             {selectedStudy && selectedProject ? (
-              <div className="min-h-0 flex-1 overflow-hidden">
-                <CaseStudyModalContent study={selectedStudy} project={selectedProject} />
-              </div>
+              <CaseStudyModalContent study={selectedStudy} project={selectedProject} />
             ) : null}
           </DialogContent>
         </Dialog>

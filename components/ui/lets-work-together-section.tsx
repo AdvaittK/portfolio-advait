@@ -1,3 +1,5 @@
+"use client"
+
 import { Mail, Phone, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -12,7 +14,7 @@ export function LetsWorkTogetherSection() {
           Ready For A Serious Build?
         </h2>
         <p className="text-sm xs:text-base md:text-lg text-zinc-500 dark:text-zinc-400 mb-4 xs:mb-6 md:mb-8 max-w-lg mx-auto leading-relaxed">
-          Book a strategy call to align on goals, timeline, and fit. Prefer email first? Reach out below. Either path works.
+          Book a call to align on goals, timeline, and fit. Prefer email first? Reach out below. Either path works.
         </p>
 
         <div className="w-full space-y-4 xs:space-y-6">
@@ -45,7 +47,7 @@ export function LetsWorkTogetherSection() {
         <div className="flex flex-col xs:flex-row justify-center w-full gap-3 mt-4 xs:mt-6">
           <Link href="/appointment" className="flex justify-center w-full xs:w-auto">
             <Button className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-5 xs:py-6 bg-gradient-to-r from-zinc-800 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 text-white dark:text-zinc-900 shadow-lg text-sm xs:text-base font-semibold">
-              Book a strategy call <ArrowRight className="w-4 h-4 ml-2" />
+              Book a Call <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
           <Link href="/contact" className="flex justify-center w-full xs:w-auto">

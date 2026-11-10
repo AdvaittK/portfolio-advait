@@ -1,3 +1,5 @@
+"use client"
+
 import Marquee from "react-fast-marquee";
 import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma } from "react-icons/si";
 import { Code2, Layout, Server, Database, LineChart, Shield } from "lucide-react";

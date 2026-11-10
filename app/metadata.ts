@@ -1,9 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Advait | Developer Portfolio',
-  keywords: ['Advait', 'Portfolio', 'Web Developer', 'UI Designer'],
-  description: 'Crafting performant web apps, clean UIs, and delightful user experiences.',
+  title: 'Advait | Developer for Agencies and Brands',
+  description: 'I build fast, clear websites for agencies, coaches and industrial brands, working with clients worldwide.',
   generator: 'Advait',
   icons: {
     icon: [

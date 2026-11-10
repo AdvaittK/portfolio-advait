@@ -1,4 +1,4 @@
-﻿export type FeaturedProject = {
+export type FeaturedProject = {
   id: string
   title: string
   description: string
@@ -8,6 +8,10 @@
   demoLink: string
   githubLink: string
   features: string[]
+  category?: string
+  year?: number | string
+  role?: string
+  result?: string
 }
 
 const _featuredProjects: FeaturedProject[] = [

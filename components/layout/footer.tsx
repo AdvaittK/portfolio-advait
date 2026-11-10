@@ -14,7 +14,7 @@ export default function Footer() {
   const [mounted, setMounted] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const { theme, setTheme } = useTheme()
-  
+
   const { scrollYProgress } = useScroll({
     target: footerRef,
     offset: ["start end", "end end"]
@@ -52,16 +52,16 @@ export default function Footer() {
 
     // Listen to native scroll
     window.addEventListener('scroll', handleScroll, { passive: true })
-    
+
     // Listen for Locomotive Scroll events
     const scrollContainer = document.querySelector('[data-scroll-container]')
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
     }
-    
+
     // Also listen for Locomotive Scroll's custom scroll event
     window.addEventListener('locomotive-scroll', handleScroll as EventListener, { passive: true })
-    
+
     handleScroll() // Check initial state
 
     return () => {
@@ -106,7 +106,7 @@ export default function Footer() {
   }
 
   return (
-    <motion.footer 
+    <motion.footer
       ref={footerRef}
       className="relative w-full py-16 px-6 overflow-hidden bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950"
       style={{ y, opacity, scale }}
@@ -119,7 +119,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand Section */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,12 +135,12 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Crafting immersive digital experiences that combine stunning visuals with flawless functionality.
+              Developer building websites for agencies, coaches and brands, working worldwide.
             </p>
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -156,14 +156,14 @@ export default function Footer() {
                 { name: "Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" }
               ].map((item, index) => (
-                <motion.li 
+                <motion.li
                   key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                 >
-                  <Link 
+                  <Link
                     href={item.href}
                     className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors relative group"
                   >
@@ -176,7 +176,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Contact */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -185,7 +185,7 @@ export default function Footer() {
           >
             <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-br from-zinc-300 to-zinc-500">Contact</h3>
             <ul className="space-y-4">
-              <motion.li 
+              <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -197,7 +197,7 @@ export default function Footer() {
                   advaitt.dev@gmail.com
                 </a>
               </motion.li>
-              <motion.li 
+              <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -226,13 +226,13 @@ export default function Footer() {
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ 
+                  transition={{
                     type: "spring",
                     stiffness: 400,
                     damping: 17,
-                    delay: index * 0.1 
+                    delay: index * 0.1
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     rotate: 5,
                     transition: { type: "spring", stiffness: 400, damping: 10 }
@@ -250,7 +250,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <motion.div 
+        <motion.div
           className="mt-12 pt-8 border-t border-zinc-800/50 flex flex-col md:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -270,13 +270,13 @@ export default function Footer() {
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   rotate: 5,
                   transition: { type: "spring", stiffness: 400, damping: 10 }
                 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ 
+                transition={{
                   type: "spring",
                   stiffness: 400,
                   damping: 17,
@@ -314,13 +314,13 @@ export default function Footer() {
                   initial={{ opacity: 0, scale: 0, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0, y: 20 }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     y: -5,
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   }}
                   whileTap={{ scale: 0.95 }}
-                  transition={{ 
+                  transition={{
                     type: "spring",
                     stiffness: 400,
                     damping: 17

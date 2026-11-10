@@ -6,27 +6,27 @@ import { Badge } from "@/components/ui/badge"
 const faqItems = [
   {
     q: "What does a typical timeline look like?",
-    a: "Most marketing and brand sites land in roughly 3–6 weeks from kickoff to launch, depending on scope, content readiness, and how quickly feedback comes back. Larger builds or e‑commerce can run longer. We map milestones in the discovery phase.",
+    a: "Most marketing sites take 3–6 weeks from kickoff to launch. The exact timeline depends on project scope and how quickly we review revisions.",
   },
   {
     q: "What do you need from me to start?",
-    a: "Goals, audience, brand assets (or references), copy if you have it, and access to anything I need to integrate (forms, analytics, domain). If content isn’t ready yet, we can structure the site around placeholders and refine in parallel.",
+    a: "I need your project brief, brand assets, and any draft copy you have ready. If your copy is still in progress, I start with wireframe drafts while you finish it.",
   },
   {
     q: "What’s included in a website engagement?",
-    a: "Discovery, information architecture, UI design implementation, responsive build, performance-conscious delivery, launch support, and a structured handoff. Specifics depend on the proposal we agree on: no surprise scope creep without a conversation.",
+    a: "Every engagement includes custom page design, a responsive Next.js build, deployment, and post-launch support. We define every deliverable before starting so there are no surprise costs.",
   },
   {
     q: "How do revisions work?",
-    a: "We work in agreed review rounds so feedback stays organized. Small polish after launch is normal; larger new features or redesigns are scoped separately so timelines stay predictable.",
+    a: "We review work at agreed milestones so you can share feedback before I move to the next stage. Minor refinements are included, while new feature requests are scoped separately.",
   },
   {
     q: "Do you offer support after launch?",
-    a: "Yes. Many clients want light ongoing support (updates, small enhancements, monitoring). We can define a retainer or an as-needed arrangement that fits how you operate.",
+    a: "Yes, every build includes post-launch bug fixes. If you need ongoing updates or maintenance, I offer monthly retainers and hourly support.",
   },
   {
     q: "How is this different from templates or gig-marketplace work?",
-    a: "You get a partner thinking about narrative, hierarchy, and credibility, not just dropping copy into a theme. The goal is a bespoke experience that fits your offer, your category, and how you actually sell.",
+    a: "I design the layout around your offer instead of filling a theme. Everything is hand-built, so there's no plugin bloat and you own the code.",
   },
 ]
 
@@ -42,7 +42,7 @@ export function HomeFaq() {
             Before You Book
           </h2>
           <p className="text-base xs:text-lg text-muted-foreground leading-relaxed">
-            Straight answers so serious projects start with aligned expectations.
+            Common questions about timelines, deliverables and how I work.
           </p>
         </div>
 

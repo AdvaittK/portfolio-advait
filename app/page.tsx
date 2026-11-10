@@ -9,7 +9,8 @@ import { ShimmerBadge } from "@/components/ui/shimmer-badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { gsap } from "gsap"
-import { SiReact, SiTypescript, SiNextdotjs, SiTailwindcss, SiDiscord } from "react-icons/si"
+import { useTheme } from "next-themes"
+import { SiDiscord } from "react-icons/si"
 import { useIsMobile } from "@/hooks/use-mobile"
 import dynamic from "next/dynamic"
 import { HomePortfolioStrip } from "@/components/ui/home-portfolio-strip"
@@ -18,14 +19,77 @@ import { HomeFeaturedCaseStudies } from "@/components/ui/home-featured-case-stud
 import { HomeProcess } from "@/components/ui/home-process"
 import { HomeFaq } from "@/components/ui/home-faq"
 
-const SkillsRadarBrowser = dynamic(() => import("@/components/ui/skills-radar-browser").then((mod) => ({ default: mod.SkillsRadarBrowser })), {
+const CardSwap = dynamic(() => import("@/components/ui/card-swap"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="animate-pulse text-muted-foreground">Loading...</div>
+    <div className="w-full h-full flex items-center justify-center" aria-hidden="true">
+      <div className="w-72 h-52 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 animate-pulse bg-zinc-100/30 dark:bg-zinc-800/20" />
     </div>
   ),
 })
+
+const heroProjectCards = [
+  {
+    title: "Nirav Panchmatia",
+    image: "/assets/projects/niravp.webp",
+    alt: "Nirav Panchmatia website",
+    link: "https://niravpanchmatia.in",
+  },
+  {
+    title: "Dem's Portfolio",
+    image: "/assets/projects/dem-portfolio.webp",
+    alt: "Dem thumbnail design portfolio",
+    link: "http://demproductions.co/",
+  },
+  {
+    title: "Crevo Studio",
+    image: "/assets/projects/crevio.webp",
+    alt: "Crevo Studio packaging design agency website",
+    link: "https://www.crevostudio.in/",
+  },
+  {
+    title: "Asoka Ferrocast",
+    image: "/assets/projects/aoka.webp",
+    alt: "Asoka Ferrocast industrial corporate website",
+    link: "https://www.asokaferrocast.com/",
+  },
+  {
+    title: "Cult of Content",
+    image: "/assets/projects/coc.webp",
+    alt: "Cult of Content growth agency website",
+    link: "https://www.cultofcontent.agency/",
+  },
+  {
+    title: "Integrated Media Agency",
+    image: "/assets/projects/imga.webp",
+    alt: "Integrated Media Agency personal brand website",
+    link: "https://www.integratedmedia.online/",
+  },
+  {
+    title: "Oriental Air & Ship",
+    image: "/assets/projects/oriental-home.webp",
+    alt: "Oriental Air & Ship Services logistics website",
+    link: "https://www.orientalimited.com/",
+  },
+  {
+    title: "Cult of Content Guitars",
+    image: "/assets/projects/gcoc.webp",
+    alt: "Cult of Content guitar retail agency website",
+    link: "https://guitar.cultofcontent.agency/",
+  },
+  {
+    title: "Sizzle Studios",
+    image: "/assets/projects/sizzle-site.webp",
+    alt: "Sizzle Studios creative agency website",
+    link: "https://www.sizzlestudio.in/",
+  },
+  {
+    title: "VITIRA",
+    image: "/assets/projects/vitira.webp",
+    alt: "VITIRA business website transformation",
+    link: "https://www.vitira.in/",
+  },
+]
 
 const LetsWorkTogetherSection = dynamic(() => import("@/components/ui/lets-work-together-section").then((mod) => ({ default: mod.LetsWorkTogetherSection })), {
   ssr: false,
@@ -52,6 +116,7 @@ const TestimonialsSection = dynamic(() => import("@/components/ui/testimonials-s
 export default function HomePage() {
   const pageTransitionRef = useRef<HTMLDivElement>(null)
   const isMobile = useIsMobile()
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     if (pageTransitionRef.current && !isMobile) {
@@ -97,28 +162,31 @@ export default function HomePage() {
         whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.2) }}
-        className="min-h-fit flex flex-col justify-start pt-28 xs:pt-28 sm:pt-24 items-center relative px-4 xs:px-6 pb-6 xs:pb-8 overflow-hidden md:pt-72"
+        className="min-h-fit flex flex-col justify-start pt-36 xs:pt-36 sm:pt-40 md:pt-48 lg:pt-52 items-center relative px-4 xs:px-6 pb-6 xs:pb-8 overflow-visible z-30"
       >
-        <div className="grid md:grid-cols-5 gap-6 xs:gap-8 w-full max-w-6xl mx-auto items-start relative z-10">
+        <div className="grid md:grid-cols-12 gap-8 lg:gap-12 w-full max-w-6xl mx-auto items-center relative z-20">
           <motion.div
             initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
             animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
             transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.4) }}
-            className="text-left md:col-span-2 lg:col-span-3 z-10"
+            className="text-left md:col-span-6 lg:col-span-6 z-10"
           >
             <div className="space-y-4 xs:space-y-6">
-              <ShimmerBadge text="Premium web experiences for serious brands" />
+              <ShimmerBadge>
+                <span className="relative flex h-2 w-2" aria-hidden="true">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span>Available for new projects</span>
+              </ShimmerBadge>
 
               <motion.h1
                 initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
-                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold mb-2 leading-tight"
+                className="text-3xl xs:text-4xl sm:text-5xl md:text-[42px] lg:text-[46px] xl:text-[50px] font-bold mb-3 leading-[1.12] text-foreground tracking-tight max-w-2xl"
               >
-                Websites that turn clarity into{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-800 to-zinc-500 dark:from-zinc-100 dark:to-zinc-400">
-                  trust, and trust into leads
-                </span>
+                I build websites that make people trust you before they call.
               </motion.h1>
 
               <motion.p
@@ -127,8 +195,7 @@ export default function HomePage() {
                 transition={isMobile ? { duration: 0 } : { duration: getTransitionDuration(), delay: getAnimationDelay(0.75) }}
                 className="text-base xs:text-lg md:text-lg text-muted-foreground max-w-lg leading-relaxed"
               >
-                I design and build fast, elegant frontends for agencies, founders, and established businesses, pairing conversion-minded structure with a polished
-                visual language.
+                I&apos;m Advait, a web developer who builds sites for agencies, coaches and industrial businesses. Fast to load, clear to read, and easy to book a call from.
               </motion.p>
 
               <motion.div
@@ -141,7 +208,7 @@ export default function HomePage() {
                   asChild
                   className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 h-auto text-lg xs:text-lg font-medium"
                 >
-                  <Link href="/appointment">Book a strategy call</Link>
+                  <Link href="/appointment">Book a Call</Link>
                 </Button>
 
                 <Button
@@ -150,7 +217,7 @@ export default function HomePage() {
                   className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 h-auto text-lg xs:text-lg font-medium border-border bg-background hover:bg-secondary hover:text-foreground"
                 >
                   <Link href="#case-studies" className="scroll-smooth">
-                    View case studies
+                    See my work
                   </Link>
                 </Button>
               </motion.div>
@@ -187,79 +254,23 @@ export default function HomePage() {
 
           {!isMobile && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: getTransitionDuration(), delay: getAnimationDelay(0.6) }}
-              className="md:col-span-3 lg:col-span-2 h-[300px] xs:h-[350px] sm:h-[400px] md:h-[450px] hidden md:flex items-center justify-center relative"
+              className="md:col-span-6 lg:col-span-6 h-[440px] sm:h-[480px] md:h-[510px] lg:h-[550px] hidden md:flex items-center justify-center relative w-full -translate-y-4 md:-translate-y-6 lg:-translate-y-8 translate-x-4 md:translate-x-8 lg:translate-x-10 z-40"
             >
-              <SkillsRadarBrowser
-                skills={[
-                  { name: "React", value: 90 },
-                  { name: "TypeScript", value: 85 },
-                  { name: "UI/UX", value: 88 },
-                  { name: "Node.js", value: 75 },
-                  { name: "Next.js", value: 92 },
-                  { name: "Tailwind", value: 95 },
-                ]}
+              <CardSwap
+                items={heroProjectCards}
+                width={470}
+                height={336}
+                cardDistance={32}
+                verticalDistance={36}
+                depth={60}
+                skewAmount={4}
+                cardRadius={18}
+                delay={3500}
+                theme={resolvedTheme === "light" ? "light" : "dark"}
               />
-              <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                  className="absolute -top-5 -right-5 w-16 h-16 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{
-                    y: [0, -15, 0],
-                    rotate: [0, 15, 0, -15, 0],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <SiReact className="w-8 h-8 text-blue-500" />
-                </motion.div>
-                <motion.div
-                  className="absolute -bottom-6 -left-6 w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{
-                    y: [0, 10, 0],
-                    x: [0, 10, 0, -10, 0],
-                    rotate: [0, 10, 0],
-                  }}
-                  transition={{
-                    duration: 7,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <SiTypescript className="w-6 h-6 text-blue-600" />
-                </motion.div>
-                <motion.div
-                  className="absolute top-1/3 -left-4 w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{
-                    x: [0, 10, 0],
-                    rotate: 360,
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <SiTailwindcss className="w-5 h-5 text-cyan-500" />
-                </motion.div>
-                <motion.div
-                  className="absolute bottom-1/4 -right-3 w-9 h-9 bg-zinc-100 dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{
-                    y: [0, -10, 0, 10, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <SiNextdotjs className="w-5 h-5" />
-                </motion.div>
-              </div>
             </motion.div>
           )}
         </div>
