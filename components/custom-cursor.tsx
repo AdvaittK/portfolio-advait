@@ -1,13 +1,15 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion"
 import { useTheme } from "next-themes"
 
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false)
   const [clicked, setClicked] = useState(false)
   const [linkHovered, setLinkHovered] = useState(false)
+  const [cursorText, setCursorText] = useState<string | null>(null)
+  const cursorTextRef = useRef<string | null>(null)
   const [hidden, setHidden] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   // Add a state to track if mouse movement has been detected
@@ -203,6 +205,15 @@ export default function CustomCursor() {
         mouseY.set(e.clientY)
         lastTime = currentTime
       }
+
+      // Check if hovering an element with custom cursor text
+      const target = e.target as HTMLElement | null
+      const cursorEl = target?.closest?.('[data-cursor-text]') as HTMLElement | null
+      const text = cursorEl ? cursorEl.getAttribute('data-cursor-text') : null
+      if (text !== cursorTextRef.current) {
+        cursorTextRef.current = text
+        setCursorText(text)
+      }
     }
 
     const onMouseEnter = () => {
@@ -212,6 +223,8 @@ export default function CustomCursor() {
 
     const onMouseLeave = () => {
       setHidden(true)
+      cursorTextRef.current = null
+      setCursorText(null)
       document.documentElement.style.setProperty('--cursor-trail-opacity', '0')
     }
 
@@ -293,22 +306,61 @@ export default function CustomCursor() {
   
   return (
     <>
-      {/* Primary cursor dot with hardware acceleration */}
+      {/* Primary cursor dot with hardware acceleration or dynamic text pill */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[99999]"
+        className="fixed top-0 left-0 pointer-events-none z-[99999] flex items-center justify-center select-none"
         style={{
           x: smoothX,
           y: smoothY,
           translateX: "-50%",
           translateY: "-50%",
-          scale: linkHovered ? 1.5 : clicked ? 0.8 : 1,
-          backgroundColor: resolvedTheme === 'dark' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.9)',
-          backdropFilter: 'blur(4px)',
-          willChange: 'transform',
+          willChange: "transform",
         }}
-      />
-      
-      {/* Trailing cursor ring with hardware acceleration */}
+      >
+        <AnimatePresence mode="wait">
+          {cursorText ? (
+            <motion.div
+              key="cursor-badge"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: clicked ? 0.92 : 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 450, damping: 28 }}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide whitespace-nowrap shadow-2xl backdrop-blur-md"
+              style={{
+                backgroundColor: resolvedTheme === "dark" ? "#ffffff" : "#18181b",
+                color: resolvedTheme === "dark" ? "#18181b" : "#ffffff",
+                boxShadow:
+                  resolvedTheme === "dark"
+                    ? "0 12px 32px -4px rgba(255, 255, 255, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.35)"
+                    : "0 12px 32px -4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.15)",
+              }}
+            >
+              <span>{cursorText}</span>
+              <svg
+                className="w-3.5 h-3.5 shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="cursor-dot"
+              className="w-4 h-4 rounded-full"
+              style={{
+                scale: linkHovered ? 1.5 : clicked ? 0.8 : 1,
+                backgroundColor: resolvedTheme === "dark" ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.9)",
+                backdropFilter: "blur(4px)",
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Trailing cursor ring with hardware acceleration - hidden when badge is active */}
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[99999]"
         style={{
@@ -316,11 +368,13 @@ export default function CustomCursor() {
           y: trailY,
           translateX: "-50%",
           translateY: "-50%",
-          scale: clicked ? 0.9 : 1,
-          border: `2px solid ${resolvedTheme === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)'}`,
-          backdropFilter: 'blur(1px)',
-          willChange: 'transform',
+          scale: cursorText ? 0 : clicked ? 0.9 : 1,
+          opacity: cursorText ? 0 : 1,
+          border: `2px solid ${resolvedTheme === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)"}`,
+          backdropFilter: "blur(1px)",
+          willChange: "transform",
         }}
+        transition={{ duration: 0.15 }}
       />
     </>
   )

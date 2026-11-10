@@ -425,8 +425,13 @@ const CardSwap = forwardRef<CardSwapHandle, CardSwapProps>(
           shade.style.opacity = (s.dim * 0.62 * depthT).toFixed(3);
         }
         el.style.cursor = card.phase === 'drag' ? 'grabbing' : 'pointer';
-        if (card.pos === 0) el.setAttribute('data-front', '');
-        else el.removeAttribute('data-front');
+        if (card.pos === 0) {
+          el.setAttribute('data-front', '');
+          el.setAttribute('data-cursor-text', 'View Website');
+        } else {
+          el.removeAttribute('data-front');
+          el.removeAttribute('data-cursor-text');
+        }
       };
 
       const writeStage = (s: any) => {

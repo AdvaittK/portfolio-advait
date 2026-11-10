@@ -206,7 +206,7 @@ export default function HomePage() {
               >
                 <Button
                   asChild
-                  className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 h-auto text-lg xs:text-lg font-medium"
+                  className="w-full xs:w-auto rounded-full px-5 xs:px-6 py-2.5 h-auto text-sm xs:text-base font-medium shadow-sm"
                 >
                   <Link href="/appointment">Book a Call</Link>
                 </Button>
@@ -214,7 +214,7 @@ export default function HomePage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full xs:w-auto rounded-full px-6 xs:px-8 py-3 h-auto text-lg xs:text-lg font-medium border-border bg-background hover:bg-secondary hover:text-foreground"
+                  className="w-full xs:w-auto rounded-full px-5 xs:px-6 py-2.5 h-auto text-sm xs:text-base font-medium border-border bg-background hover:bg-secondary hover:text-foreground"
                 >
                   <Link href="#case-studies" className="scroll-smooth">
                     See my work
