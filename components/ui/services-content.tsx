@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, type Variants } from "framer-motion"
 
 const services = [
   {
@@ -79,7 +79,7 @@ const services = [
   }
 ]
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -90,7 +90,7 @@ const containerVariants = {
   }
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -112,7 +112,7 @@ const itemVariants = {
   }
 }
 
-const featureVariants = {
+const featureVariants: Variants = {
   hidden: { opacity: 0, x: -10 },
   visible: (i: number) => ({
     opacity: 1,
@@ -124,7 +124,7 @@ const featureVariants = {
   })
 }
 
-const iconVariants = {
+const iconVariants: Variants = {
   hidden: { scale: 0, rotate: -180 },
   visible: {
     scale: 1,

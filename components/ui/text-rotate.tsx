@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, Transition } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface TextRotateProps {
@@ -9,11 +9,7 @@ interface TextRotateProps {
     rotationInterval?: number
     className?: string
     staggerDuration?: number
-    transition?: {
-        type: string
-        stiffness: number
-        damping: number
-    }
+    transition?: Transition
 }
 
 export function TextRotate({

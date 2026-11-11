@@ -1,13 +1,13 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { format } from "date-fns"
 import { ArrowRight, BookOpen, Clock, Tag } from "lucide-react"
 import type { BlogPost } from "@/lib/blog-config"
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -15,7 +15,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,

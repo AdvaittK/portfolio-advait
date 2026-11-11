@@ -17,7 +17,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
 import { featuredProjects } from "@/lib/featured-projects"
@@ -51,7 +50,7 @@ function CaseStudyModalContent({
   return (
     <div className="flex flex-col gap-4 text-left">
       {/* Header Info */}
-      <DialogHeader className="space-y-2 pr-6 text-left">
+      <div className="space-y-2 pr-6 text-left">
         <div className="flex flex-wrap items-center gap-1.5">
           {study.category && (
             <span className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-2.5 py-0.5 text-[11px] font-semibold text-zinc-900 dark:text-zinc-100">
@@ -75,9 +74,9 @@ function CaseStudyModalContent({
 
         <div>
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
-            <DialogTitle className="text-xl sm:text-2xl font-bold tracking-tight text-foreground leading-tight">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground leading-tight">
               {study.clientLabel}
-            </DialogTitle>
+            </h3>
             <a
               href={project.demoLink}
               target="_blank"
@@ -93,11 +92,11 @@ function CaseStudyModalContent({
               {meta}
             </p>
           )}
-          <DialogDescription className="text-xs sm:text-sm font-normal text-muted-foreground mt-1 leading-snug">
+          <p className="text-xs sm:text-sm font-normal text-muted-foreground mt-1 leading-snug">
             {study.headline}
-          </DialogDescription>
+          </p>
         </div>
-      </DialogHeader>
+      </div>
 
       {/* The Challenge / Problem */}
       <div className="rounded-xl border border-zinc-200/90 dark:border-zinc-800/90 bg-zinc-50 dark:bg-zinc-900/40 p-3 sm:p-3.5 space-y-1">
@@ -461,7 +460,11 @@ export function HomeFeaturedCaseStudies() {
         >
           <DialogContent className="max-w-2xl w-[92vw] max-h-[88vh] overflow-y-auto rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 sm:p-7 shadow-2xl focus:outline-none">
             {selectedStudy && selectedProject ? (
-              <CaseStudyModalContent study={selectedStudy} project={selectedProject} />
+              <>
+                <DialogTitle className="sr-only">{selectedStudy.clientLabel}</DialogTitle>
+                <DialogDescription className="sr-only">{selectedStudy.headline}</DialogDescription>
+                <CaseStudyModalContent study={selectedStudy} project={selectedProject} />
+              </>
             ) : null}
           </DialogContent>
         </Dialog>

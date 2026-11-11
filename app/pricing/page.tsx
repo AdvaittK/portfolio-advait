@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, type Variants } from "framer-motion"
 import {
   ArrowRight,
   Check,
@@ -26,7 +26,7 @@ import { PageContainer } from "@/components/layout/page-container"
 import { ShimmerBadge } from "@/components/ui/shimmer-badge"
 import { CostEstimator } from "@/components/ui/cost-estimator"
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -34,7 +34,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 18, opacity: 0 },
   visible: {
     y: 0,

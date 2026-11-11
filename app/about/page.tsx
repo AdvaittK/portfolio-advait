@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -9,7 +9,7 @@ import { Code2, Layout, Server, LineChart, Shield, Database, Award, Briefcase, G
 import XIcon from "@/components/ui/x-icon"
 import { SiDiscord } from "react-icons/si"
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,7 +20,7 @@ const containerVariants = {
   }
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,

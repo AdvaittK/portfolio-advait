@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 import { ArrowRight, Code2, Layout, Server, LineChart, Shield, Database, Check, HelpCircle } from "lucide-react"
 import { PageContainer } from "@/components/layout/page-container"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, type Variants } from "framer-motion"
 import Link from "next/link"
 import { Price } from "@/components/ui/price"
 
@@ -111,7 +111,7 @@ const serviceRules = [
   }
 ]
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -123,7 +123,7 @@ const containerVariants = {
   }
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -144,7 +144,7 @@ const itemVariants = {
   }
 }
 
-const titleVariants = {
+const titleVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
   visible: {
     opacity: 1,
@@ -157,7 +157,7 @@ const titleVariants = {
   }
 }
 
-const descriptionVariants = {
+const descriptionVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1, 
@@ -170,7 +170,7 @@ const descriptionVariants = {
   }
 }
 
-const buttonVariants = {
+const buttonVariants: Variants = {
   hover: {
     scale: 1.05,
     transition: {
@@ -184,7 +184,7 @@ const buttonVariants = {
   }
 }
 
-const featureVariants = {
+const featureVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,

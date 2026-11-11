@@ -1,7 +1,7 @@
 "use client"
 
-import { ReactNode } from 'react'
-import Lottie from 'lottie-react'
+import { ReactNode, useRef, useEffect } from 'react'
+import Lottie, { LottieRefCurrentProps } from 'lottie-react'
 
 interface LottieAnimationProps {
   animationData?: any
@@ -22,6 +22,14 @@ export default function LottieAnimation({
   speed = 1,
   children,
 }: LottieAnimationProps) {
+  const lottieRef = useRef<LottieRefCurrentProps>(null)
+
+  useEffect(() => {
+    if (lottieRef.current && speed !== 1) {
+      lottieRef.current.setSpeed(speed)
+    }
+  }, [speed])
+
   // If no animation data is provided, show children or return null
   if (!customAnimationData) {
     if (children) {
@@ -32,13 +40,12 @@ export default function LottieAnimation({
 
   return (
     <Lottie
+      lottieRef={lottieRef}
       animationData={customAnimationData}
       loop={loop}
       autoplay={autoplay}
       className={className}
       style={style}
-      speed={speed}
     />
   )
 }
-
