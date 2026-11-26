@@ -9,6 +9,7 @@ import { toast } from "sonner"
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null)
   const [mountedAt] = useState(() => Date.now())
   const [formData, setFormData] = useState({
     name: "",
@@ -21,6 +22,7 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setStatusMessage(null)
 
     try {
       const response = await fetch('/api/contact', {
@@ -46,11 +48,14 @@ export function ContactForm() {
       }
 
       setIsSubmitted(true)
+      setStatusMessage({ type: 'success', text: 'Message sent successfully! I will get back to you shortly.' })
       toast.success('Message sent successfully! I will get back to you shortly.')
       setFormData({ name: "", email: "", subject: "", message: "", b_url_trap: "" })
       setTimeout(() => setIsSubmitted(false), 5000)
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Failed to send message. Please try again.')
+      const errorMsg = error instanceof Error ? error.message : 'Failed to send message. Please try again.'
+      setStatusMessage({ type: 'error', text: errorMsg })
+      toast.error(errorMsg)
     } finally {
       setIsSubmitting(false)
     }
@@ -157,6 +162,18 @@ export function ContactForm() {
             placeholder="Your message..."
           />
         </div>
+        {statusMessage && (
+          <div
+            role="alert"
+            className={`rounded-lg px-4 py-3 text-sm border ${
+              statusMessage.type === 'error'
+                ? 'bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400'
+                : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+            }`}
+          >
+            {statusMessage.text}
+          </div>
+        )}
         <Button
           type="submit"
           disabled={isSubmitting || isSubmitted}

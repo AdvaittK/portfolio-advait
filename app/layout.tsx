@@ -14,6 +14,7 @@ import { SITE_URL } from "@/lib/blog-config"
 import AOSProvider from "@/components/aos-provider"
 import ServiceWorkerRegister from "@/components/service-worker-register"
 import SmoothScrollProvider from "@/components/smooth-scroll-provider"
+import { Toaster } from "@/components/ui/sonner"
 
 // DM Sans Variable - Primary font for headings (from local files)
 const dmSans = localFont({
@@ -301,6 +302,7 @@ export default function RootLayout({
                     </ClientLayout>
                   </main>
                   <Footer />
+                  <Toaster richColors position="bottom-right" />
                   {process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN && (
                     <Script
                       defer
