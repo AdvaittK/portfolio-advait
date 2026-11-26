@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
+import Script from "next/script"
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -8,8 +9,6 @@ import Footer from "@/components/layout/footer"
 import ClientLayout from "@/components/client-layout"
 import ClientCursor from "@/components/client-cursor"
 import ClientMetallicBg from "@/components/ui/client-metallic-bg"
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { CurrencyProvider } from "@/lib/currency-provider"
 import { SITE_URL } from "@/lib/blog-config"
 import AOSProvider from "@/components/aos-provider"
@@ -163,11 +162,11 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* DNS Prefetch and Preconnect for External Resources */}
-        <link rel="dns-prefetch" href="https://vercel.live" />
-        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
-        <link rel="preconnect" href="https://vercel.live" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://vitals.vercel-insights.com" crossOrigin="anonymous" />
+        {/* DNS Prefetch and Preconnect for Cloudflare Web Analytics */}
+        <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+        <link rel="dns-prefetch" href="https://cloudflareinsights.com" />
+        <link rel="preconnect" href="https://static.cloudflareinsights.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cloudflareinsights.com" crossOrigin="anonymous" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="geo.region" content="IN-MH" />
@@ -302,8 +301,17 @@ export default function RootLayout({
                     </ClientLayout>
                   </main>
                   <Footer />
-                  <Analytics />
-                  <SpeedInsights />
+                  {process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN && (
+                    <Script
+                      defer
+                      src="https://static.cloudflareinsights.com/beacon.min.js"
+                      data-cf-beacon={JSON.stringify({
+                        token: process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN,
+                        spa: true,
+                      })}
+                      strategy="afterInteractive"
+                    />
+                  )}
                 </div>
               </AOSProvider>
             </SmoothScrollProvider>

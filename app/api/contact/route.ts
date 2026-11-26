@@ -36,8 +36,11 @@ async function verifyTurnstile(token?: string, ip?: string): Promise<boolean> {
 export async function POST(req: Request) {
   try {
     // 1. IP Rate Limiting (10 requests per 10 minutes)
+    const cfConnectingIp = req.headers.get('cf-connecting-ip')
     const forwardedFor = req.headers.get('x-forwarded-for')
-    const clientIp = forwardedFor ? forwardedFor.split(',')[0].trim() : '127.0.0.1'
+    const clientIp =
+      cfConnectingIp?.trim() ||
+      (forwardedFor ? forwardedFor.split(',')[0].trim() : '127.0.0.1')
 
     const rateLimit = checkRateLimit(clientIp, { limit: 10, windowMs: 10 * 60 * 1000 })
     if (!rateLimit.success) {

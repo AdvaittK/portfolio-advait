@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-4">3. Analytics and Tracking</h2>
             <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-              We use Vercel Analytics to collect anonymous usage data to improve our website. This includes:
+              We use Cloudflare Web Analytics to collect privacy-first, cookieless usage data to improve our website. This includes:
             </p>
             <ul className="list-disc pl-6 text-zinc-600 dark:text-zinc-400 space-y-2">
               <li>Page views and navigation patterns</li>

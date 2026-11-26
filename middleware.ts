@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { geolocation } from '@vercel/edge';
 
 const LEGACY_DOMAIN = 'advaitt.tech';
 const CANONICAL_DOMAIN = 'advaitt.dev';
@@ -38,9 +37,11 @@ export default function middleware(request: NextRequest) {
     const response = NextResponse.next();
 
     if (request.nextUrl.pathname === '/pricing' || request.nextUrl.pathname === '/projects') {
-      const { country } = geolocation(request);
+      const country =
+        request.headers.get('cf-ipcountry') ??
+        request.headers.get('x-vercel-ip-country');
       const currency =
-        typeof country === 'string' && country === 'IN' ? 'INR' : 'USD';
+        typeof country === 'string' && country.toUpperCase() === 'IN' ? 'INR' : 'USD';
 
       response.cookies.set('currency', currency, {
         maxAge: 60 * 60 * 24 * 30,
